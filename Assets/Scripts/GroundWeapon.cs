@@ -3,15 +3,12 @@ using UnityEngine;
 public class GroundWeapon : MonoBehaviour
 {
     public WeaponSlot weaponSlot;
-
-    
     private Rigidbody rb;
     private Collider[] colliders;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
         colliders = GetComponents<Collider>();
     }
 
@@ -22,12 +19,8 @@ public class GroundWeapon : MonoBehaviour
             PlayerInventory inventory = other.GetComponent<PlayerInventory>();
             if (inventory != null)
             {
-                
-                bool pickedUp = inventory.PickupWeapon(this.gameObject, weaponSlot);
-
-                if (pickedUp)
+                if (inventory.PickupWeapon(this.gameObject, weaponSlot))
                 {
-                    
                     rb.isKinematic = true;
                     foreach (Collider col in colliders) col.enabled = false;
                 }
@@ -35,7 +28,6 @@ public class GroundWeapon : MonoBehaviour
         }
     }
 
-    
     public void EnablePhysics()
     {
         rb.isKinematic = false;

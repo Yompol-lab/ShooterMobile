@@ -19,38 +19,38 @@ public class PlayerInventory : MonoBehaviour
     public List<GameObject> currentUtilities = new List<GameObject>();
 
     private WeaponSlot activeSlot;
-    private int utilityIndex = 0; 
+    private int utilityIndex = 0;
 
     void Update()
     {
         if (Keyboard.current != null)
         {
-            
+
             if (Keyboard.current.digit1Key.wasPressedThisFrame && currentPrimary != null) EquipSlot(WeaponSlot.Primary);
             if (Keyboard.current.digit2Key.wasPressedThisFrame && currentSecondary != null) EquipSlot(WeaponSlot.Secondary);
             if (Keyboard.current.digit3Key.wasPressedThisFrame && currentKnife != null) EquipSlot(WeaponSlot.Knife);
 
-            
+
             if (Keyboard.current.digit4Key.wasPressedThisFrame && currentUtilities.Count > 0) CycleUtilities();
 
-            
+
             if (Keyboard.current.digit5Key.wasPressedThisFrame && currentBomb != null) EquipSlot(WeaponSlot.Bomb);
 
-            
+
             if (Keyboard.current.gKey.wasPressedThisFrame) DropCurrentWeapon();
         }
     }
 
     public void EquipSlot(WeaponSlot slot)
     {
-        
+
         if (currentPrimary != null) currentPrimary.SetActive(false);
         if (currentSecondary != null) currentSecondary.SetActive(false);
         if (currentKnife != null) currentKnife.SetActive(false);
         if (currentBomb != null) currentBomb.SetActive(false);
         foreach (var util in currentUtilities) util.SetActive(false);
 
-        
+
         switch (slot)
         {
             case WeaponSlot.Primary: currentPrimary.SetActive(true); break;
@@ -62,9 +62,16 @@ public class PlayerInventory : MonoBehaviour
                 break;
         }
         activeSlot = slot;
-    }
+ 
+        PlayerWeaponController shotController = GetComponent<PlayerWeaponController>();
+        if (shotController != null && weaponContainer != null)
+        {
+            
+            shotController.currentMuzzlePoint = weaponContainer.GetComponentInChildren<Transform>().Find("MuzzlePoint");
+        }
+    } 
 
-    void CycleUtilities()
+        void CycleUtilities()
     {
         
         if (activeSlot == WeaponSlot.Utility)

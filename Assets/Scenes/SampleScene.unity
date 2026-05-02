@@ -1025,12 +1025,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponController
   mainCamera: {fileID: 616135784}
   currentMuzzlePoint: {fileID: 0}
-  muzzleFlashPrefab: {fileID: 0}
-  bulletHolePrefab: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
+  bulletHolePrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
   range: 100
   impactLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
 --- !u!1001 &591310375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1853,6 +1853,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
+--- !u!1 &949353483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949353484}
+  m_Layer: 0
+  m_Name: MuzzlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &949353484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949353483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0673, z: 0.581}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1867177693}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &958081380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2949,9 +2980,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6919063143193470971, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 949353484}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
+--- !u!4 &1867177693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6919063143193470971, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
+  m_PrefabInstance: {fileID: 1867177692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918533737
 PrefabInstance:
   m_ObjectHideFlags: 0

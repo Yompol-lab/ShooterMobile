@@ -3,77 +3,161 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    [Header("Referencias de Disparo")]
-    [Tooltip("La cámara principal (desde donde sale la bala central)")]
+    [Header("Referencias")]
     public Camera mainCamera;
 
-    [Header("Configuración del Arma Activa (Se llena por script)")]
-    [Tooltip("El punto en la punta del cañón del arma actual")]
-    public Transform currentMuzzlePoint;
+    [Header("Arma Actual")]
+    public Weapon currentWeapon;
 
-    [Header("Assets Visuales (Prefabs)")]
-    [Tooltip("El prefab del fogonazo")]
-    public GameObject muzzleFlashPrefab;
-    [Tooltip("El prefab del agujero de la pared")]
-    public GameObject bulletHolePrefab;
-
-    [Header("Configuración Física")]
-    [Tooltip("A qué distancia llega la bala")]
-    public float range = 100f;
-    [Tooltip("Qué capas de físicas (Layers) pueden ser impactadas (ej: Paredes, Enemigos)")]
+    [Header("Capas")]
     public LayerMask impactLayers;
 
-    
-    private PlayerInventory inventory;
+    [Header("Decal")]
+    public float decalOffset = 0.01f;
+    public float decalLifeTime = 25f;
+    public float impactLifeTime = 3f;
 
-    void Awake()
-    {
-        inventory = GetComponent<PlayerInventory>();
-    }
+    private float nextTimeToFire = 0f;
 
     void Update()
     {
-        
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (currentWeapon == null) return;
+        if (currentWeapon.weaponData == null) return;
+        if (currentWeapon.muzzlePoint == null) return;
+
+        WeaponData data = currentWeapon.weaponData;
+
+        if (data.automatic)
         {
-           
-            if (currentMuzzlePoint != null)
+            if (Mouse.current.leftButton.isPressed)
             {
-                Shoot();
+                TryShoot();
             }
         }
+        else
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                TryShoot();
+            }
+        }
+    }
+
+    void TryShoot()
+    {
+        WeaponData data = currentWeapon.weaponData;
+
+        if (Time.time < nextTimeToFire) return;
+
+        nextTimeToFire = Time.time + data.fireRate;
+
+        Shoot();
     }
 
     void Shoot()
     {
-        
-        if (muzzleFlashPrefab != null && currentMuzzlePoint != null)
+        WeaponData data = currentWeapon.weaponData;
+
+        if (data.muzzleFlashPrefab != null)
         {
-            
-            Instantiate(muzzleFlashPrefab, currentMuzzlePoint.position, currentMuzzlePoint.rotation);
+            GameObject flash = Instantiate(
+                data.muzzleFlashPrefab,
+                currentWeapon.muzzlePoint.position,
+                currentWeapon.muzzlePoint.rotation
+            );
+
+            Destroy(flash, 1f);
         }
 
-        
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); 
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        Vector3 shootDirection = ray.direction;
+
+        shootDirection += new Vector3(
+            Random.Range(-data.spread, data.spread),
+            Random.Range(-data.spread, data.spread),
+            0f
+        );
+
+        shootDirection.Normalize();
+
         RaycastHit hit;
 
-        
-        if (Physics.Raycast(ray, out hit, range, impactLayers))
+        if (Physics.Raycast(ray.origin, shootDirection, out hit, data.range, impactLayers))
         {
             Debug.Log("Impacto en: " + hit.collider.name);
 
-            
-            if (bulletHolePrefab != null)
-            {
-                
-                GameObject hole = Instantiate(bulletHolePrefab, hit.point, Quaternion.identity);
-
-               
-                hole.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
-
-               
-                hole.transform.position += hit.normal * 0.001f;
-            }
+            ApplyDamage(hit, data.damage);
+            SpawnImpact(hit, data);
         }
+    }
+
+    void ApplyDamage(RaycastHit hit, float damage)
+    {
+        Health health = hit.collider.GetComponentInParent<Health>();
+
+        if (health != null)
+        {
+            health.TakeDamage(damage);
+        }
+    }
+
+    void SpawnImpact(RaycastHit hit, WeaponData data)
+    {
+        if (data.bulletImpactPrefab == null) return;
+
+        GameObject impact = Instantiate(
+            data.bulletImpactPrefab,
+            hit.point + hit.normal * decalOffset,
+            Quaternion.LookRotation(hit.normal)
+        );
+
+        impact.transform.SetParent(hit.collider.transform);
+
+        Destroy(impact, impactLifeTime);
+    }
+
+
+    void SpawnMuzzleFlash(WeaponData data)
+    {
+        if (data.muzzleFlashPrefab == null) return;
+        if (currentWeapon == null || currentWeapon.muzzlePoint == null) return;
+
+        GameObject flash = Instantiate(
+            data.muzzleFlashPrefab,
+            currentWeapon.muzzlePoint.position,
+            currentWeapon.muzzlePoint.rotation,
+            currentWeapon.muzzlePoint
+        );
+
+        flash.transform.localPosition = Vector3.zero;
+        flash.transform.localRotation = Quaternion.identity;
+
+        ParticleSystem[] particles = flash.GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem ps in particles)
+        {
+            var main = ps.main;
+            main.loop = false;
+            main.playOnAwake = true;
+
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            ps.Play(true);
+        }
+
+        Light[] lights = flash.GetComponentsInChildren<Light>();
+
+        foreach (Light light in lights)
+        {
+            light.enabled = true;
+        }
+
+        Destroy(flash, 0.07f);
+    }
+
+    public void SetCurrentWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+        nextTimeToFire = 0f;
     }
 }

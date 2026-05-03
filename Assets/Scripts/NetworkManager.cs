@@ -19,6 +19,16 @@ public class NetworkManager : MonoBehaviour
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
 
+        
+        await System.Threading.Tasks.Task.Delay(500);
+
+        
+        if (VivoxManager.Instance != null)
+        {
+            VivoxManager.Instance.Login();
+            VivoxManager.Instance.JoinVoice("team");
+        }
+
         SpawnPlayer();
     }
 

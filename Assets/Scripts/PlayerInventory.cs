@@ -43,35 +43,65 @@ public class PlayerInventory : MonoBehaviour
 
     public void EquipSlot(WeaponSlot slot)
     {
-
         if (currentPrimary != null) currentPrimary.SetActive(false);
         if (currentSecondary != null) currentSecondary.SetActive(false);
         if (currentKnife != null) currentKnife.SetActive(false);
         if (currentBomb != null) currentBomb.SetActive(false);
-        foreach (var util in currentUtilities) util.SetActive(false);
 
+        foreach (var util in currentUtilities)
+        {
+            util.SetActive(false);
+        }
+
+        GameObject equippedWeaponObject = null;
 
         switch (slot)
         {
-            case WeaponSlot.Primary: currentPrimary.SetActive(true); break;
-            case WeaponSlot.Secondary: currentSecondary.SetActive(true); break;
-            case WeaponSlot.Knife: currentKnife.SetActive(true); break;
-            case WeaponSlot.Bomb: currentBomb.SetActive(true); break;
+            case WeaponSlot.Primary:
+                currentPrimary.SetActive(true);
+                equippedWeaponObject = currentPrimary;
+                break;
+
+            case WeaponSlot.Secondary:
+                currentSecondary.SetActive(true);
+                equippedWeaponObject = currentSecondary;
+                break;
+
+            case WeaponSlot.Knife:
+                currentKnife.SetActive(true);
+                equippedWeaponObject = currentKnife;
+                break;
+
+            case WeaponSlot.Bomb:
+                currentBomb.SetActive(true);
+                equippedWeaponObject = currentBomb;
+                break;
+
             case WeaponSlot.Utility:
-                if (currentUtilities.Count > 0) currentUtilities[utilityIndex].SetActive(true);
+                if (currentUtilities.Count > 0)
+                {
+                    currentUtilities[utilityIndex].SetActive(true);
+                    equippedWeaponObject = currentUtilities[utilityIndex];
+                }
                 break;
         }
-        activeSlot = slot;
- 
-        PlayerWeaponController shotController = GetComponent<PlayerWeaponController>();
-        if (shotController != null && weaponContainer != null)
-        {
-            
-            shotController.currentMuzzlePoint = weaponContainer.GetComponentInChildren<Transform>().Find("MuzzlePoint");
-        }
-    } 
 
-        void CycleUtilities()
+        activeSlot = slot;
+
+        PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
+
+        if (weaponController != null && equippedWeaponObject != null)
+        {
+            Weapon weapon = equippedWeaponObject.GetComponent<Weapon>();
+
+            if (weapon != null)
+            {
+                weaponController.SetCurrentWeapon(weapon);
+            }
+        }
+    }
+
+    void CycleUtilities()
     {
         
         if (activeSlot == WeaponSlot.Utility)

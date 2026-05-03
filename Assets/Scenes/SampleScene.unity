@@ -2645,13 +2645,35 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6919063143193470971, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 949353484}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7732297833616457025, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1867177695}
   m_SourcePrefab: {fileID: 100100000, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
 --- !u!4 &1867177693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6919063143193470971, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
   m_PrefabInstance: {fileID: 1867177692}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1867177694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7732297833616457025, guid: eb8459ac1d6f8e2499fc28cb285886b4, type: 3}
+  m_PrefabInstance: {fileID: 1867177692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867177695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867177694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  weaponData: {fileID: 11400000, guid: 29b9cffb9350e9a40877f00c45e9ded2, type: 2}
+  muzzlePoint: {fileID: 949353484}
 --- !u!1001 &1918533737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2721,6 +2743,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 2209580bdab746f4bb777921428b8b2e, type: 3}
+--- !u!1 &2024579207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2024579209}
+  - component: {fileID: 2024579208}
+  m_Layer: 0
+  m_Name: VivoxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2024579208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024579207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefc6238c5e219b4493be7aabb73f6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VivoxManager
+--- !u!4 &2024579209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024579207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.32805, y: -0.01, z: -5.84914}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2028805401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3157,3 +3223,4 @@ SceneRoots:
   - {fileID: 1476683344}
   - {fileID: 649323148}
   - {fileID: 2143990258}
+  - {fileID: 2024579209}

@@ -187,13 +187,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponController
   mainCamera: {fileID: 1979340233392117924}
-  currentMuzzlePoint: {fileID: 0}
-  muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
-  bulletHolePrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
-  range: 100
+  currentWeapon: {fileID: 0}
   impactLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  decalOffset: 0.01
+  decalLifeTime: 25
+  impactLifeTime: 3
 --- !u!114 &-9134493894121797584
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarterAssets.FirstPersonController
-  MoveSpeed: 70
+  MoveSpeed: 260.1
   SprintSpeed: 25
   RotationSpeed: 1
   SpeedChangeRate: 10
@@ -781,7 +781,7 @@ MonoBehaviour:
   dropPoint: {fileID: 5992625411718715023}
   dropForce: 7
   currentPrimary: {fileID: 0}
-  currentSecondary: {fileID: 0}
+  currentSecondary: {fileID: 9119417485082102614, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
   currentKnife: {fileID: 2600294564298334545}
   currentBomb: {fileID: 0}
   currentUtilities: []

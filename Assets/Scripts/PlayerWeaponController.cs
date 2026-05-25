@@ -14,150 +14,155 @@ public class PlayerWeaponController : MonoBehaviour
 
     [Header("Decal")]
     public float decalOffset = 0.01f;
-    public float decalLifeTime = 25f;
     public float impactLifeTime = 3f;
 
     private float nextTimeToFire = 0f;
+    private ParticleSystem[] waterBeamParticles;
+
+    
+    private float currentChargeTime = 0f;
+    public float waterTravelTime = 0.5f; 
 
     void Update()
     {
-        if (currentWeapon == null) return;
-        if (currentWeapon.weaponData == null) return;
-        if (currentWeapon.muzzlePoint == null) return;
+        if (currentWeapon == null || currentWeapon.weaponData == null || currentWeapon.muzzlePoint == null) return;
 
         WeaponData data = currentWeapon.weaponData;
 
-        if (data.automatic)
+        
+        if (data.weaponName == "PistolaAgua")
         {
-            if (Mouse.current.leftButton.isPressed)
+            bool isHoldingClick = Mouse.current.leftButton.isPressed;
+
+            
+            HandleWaterBeamVisuals(isHoldingClick);
+
+            if (isHoldingClick)
             {
-                TryShoot();
+                
+                currentChargeTime += Time.deltaTime;
+
+                
+                if (currentChargeTime >= waterTravelTime)
+                {
+                    if (Time.time >= nextTimeToFire)
+                    {
+                        nextTimeToFire = Time.time + data.fireRate;
+                        ShootKamehameha(data);
+                    }
+                }
+            }
+            else
+            {
+                
+                currentChargeTime = 0f;
             }
         }
+        
         else
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (data.automatic)
             {
-                TryShoot();
+                if (Mouse.current.leftButton.isPressed) TryShoot();
             }
+            else
+            {
+                if (Mouse.current.leftButton.wasPressedThisFrame) TryShoot();
+            }
+        }
+    }
+
+    void HandleWaterBeamVisuals(bool isFiring)
+    {
+       
+        if (waterBeamParticles == null || waterBeamParticles.Length == 0)
+        {
+            waterBeamParticles = currentWeapon.muzzlePoint.GetComponentsInChildren<ParticleSystem>();
+        }
+
+        foreach (var ps in waterBeamParticles)
+        {
+            if (isFiring && !ps.isPlaying) ps.Play(true);
+            else if (!isFiring && ps.isPlaying) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
     }
 
     void TryShoot()
     {
         WeaponData data = currentWeapon.weaponData;
-
         if (Time.time < nextTimeToFire) return;
 
         nextTimeToFire = Time.time + data.fireRate;
 
-        Shoot();
+        
+        if (data.weaponName == "PistolaAgua") ShootKamehameha(data);
+        else ShootNormal(data);
     }
 
-    void Shoot()
+    void ShootNormal(WeaponData data)
     {
-        WeaponData data = currentWeapon.weaponData;
-
+        
         if (data.muzzleFlashPrefab != null)
         {
-            GameObject flash = Instantiate(
-                data.muzzleFlashPrefab,
-                currentWeapon.muzzlePoint.position,
-                currentWeapon.muzzlePoint.rotation
-            );
-
+            GameObject flash = Instantiate(data.muzzleFlashPrefab, currentWeapon.muzzlePoint.position, currentWeapon.muzzlePoint.rotation);
             Destroy(flash, 1f);
         }
 
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
         Vector3 shootDirection = ray.direction;
-
-        shootDirection += new Vector3(
-            Random.Range(-data.spread, data.spread),
-            Random.Range(-data.spread, data.spread),
-            0f
-        );
-
+        shootDirection += new Vector3(Random.Range(-data.spread, data.spread), Random.Range(-data.spread, data.spread), 0f);
         shootDirection.Normalize();
 
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray.origin, shootDirection, out hit, data.range, impactLayers))
+        if (Physics.Raycast(ray.origin, shootDirection, out RaycastHit hit, data.range, impactLayers))
         {
-            Debug.Log("Impacto en: " + hit.collider.name);
-
-            ApplyDamage(hit, data.damage);
+            ProcessImpact(hit, data);
             SpawnImpact(hit, data);
         }
     }
 
-    void ApplyDamage(RaycastHit hit, float damage)
+    void ShootKamehameha(WeaponData data)
     {
-        Health health = hit.collider.GetComponentInParent<Health>();
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if (health != null)
+       
+        RaycastHit[] hits = Physics.SphereCastAll(ray.origin, data.beamRadius, ray.direction, data.range, impactLayers);
+
+        foreach (var hit in hits)
         {
-            health.TakeDamage(damage);
+            ProcessImpact(hit, data);
+        }
+    }
+
+    void ProcessImpact(RaycastHit hit, WeaponData data)
+    {
+        
+        Health health = hit.collider.GetComponentInParent<Health>();
+        if (health != null) health.TakeDamage(data.damage);
+
+        
+        FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
+        if (extintor != null) extintor.TriggerSmoke();
+
+        
+        if (data.weaponName == "PistolaAgua")
+        {
+            FireTarget fuego = hit.collider.GetComponentInParent<FireTarget>();
+            if (fuego != null) fuego.Extinguish();
         }
     }
 
     void SpawnImpact(RaycastHit hit, WeaponData data)
     {
         if (data.bulletImpactPrefab == null) return;
-
-        GameObject impact = Instantiate(
-            data.bulletImpactPrefab,
-            hit.point + hit.normal * decalOffset,
-            Quaternion.LookRotation(hit.normal)
-        );
-
+        GameObject impact = Instantiate(data.bulletImpactPrefab, hit.point + hit.normal * decalOffset, Quaternion.LookRotation(hit.normal));
         impact.transform.SetParent(hit.collider.transform);
-
         Destroy(impact, impactLifeTime);
-    }
-
-
-    void SpawnMuzzleFlash(WeaponData data)
-    {
-        if (data.muzzleFlashPrefab == null) return;
-        if (currentWeapon == null || currentWeapon.muzzlePoint == null) return;
-
-        GameObject flash = Instantiate(
-            data.muzzleFlashPrefab,
-            currentWeapon.muzzlePoint.position,
-            currentWeapon.muzzlePoint.rotation,
-            currentWeapon.muzzlePoint
-        );
-
-        flash.transform.localPosition = Vector3.zero;
-        flash.transform.localRotation = Quaternion.identity;
-
-        ParticleSystem[] particles = flash.GetComponentsInChildren<ParticleSystem>();
-
-        foreach (ParticleSystem ps in particles)
-        {
-            var main = ps.main;
-            main.loop = false;
-            main.playOnAwake = true;
-
-            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            ps.Play(true);
-        }
-
-        Light[] lights = flash.GetComponentsInChildren<Light>();
-
-        foreach (Light light in lights)
-        {
-            light.enabled = true;
-        }
-
-        Destroy(flash, 0.07f);
     }
 
     public void SetCurrentWeapon(Weapon weapon)
     {
         currentWeapon = weapon;
         nextTimeToFire = 0f;
+        waterBeamParticles = null; 
     }
 }

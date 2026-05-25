@@ -113,27 +113,49 @@ public class PlayerInventory : MonoBehaviour
 
     public bool PickupWeapon(GameObject physicalWeapon, WeaponSlot slot)
     {
-        
         if (slot == WeaponSlot.Primary && currentPrimary != null) return false;
         if (slot == WeaponSlot.Secondary && currentSecondary != null) return false;
         if (slot == WeaponSlot.Bomb && currentBomb != null) return false;
 
-       
-        physicalWeapon.transform.SetParent(weaponContainer);
-        physicalWeapon.transform.localPosition = Vector3.zero;
-        physicalWeapon.transform.localRotation = Quaternion.identity;
+        GroundWeapon groundWeapon = physicalWeapon.GetComponent<GroundWeapon>();
 
-        
-        switch (slot)
+        physicalWeapon.transform.SetParent(weaponContainer);
+
+        if (groundWeapon != null)
         {
-            case WeaponSlot.Primary: currentPrimary = physicalWeapon; break;
-            case WeaponSlot.Secondary: currentSecondary = physicalWeapon; break;
-            case WeaponSlot.Knife: currentKnife = physicalWeapon; break;
-            case WeaponSlot.Bomb: currentBomb = physicalWeapon; break;
-            case WeaponSlot.Utility: currentUtilities.Add(physicalWeapon); break;
+            physicalWeapon.transform.localPosition = groundWeapon.holdPosition;
+            physicalWeapon.transform.localRotation = Quaternion.Euler(groundWeapon.holdRotation);
+            physicalWeapon.transform.localScale = groundWeapon.holdScale;
+        }
+        else
+        {
+            physicalWeapon.transform.localPosition = Vector3.zero;
+            physicalWeapon.transform.localRotation = Quaternion.identity;
         }
 
-        
+        switch (slot)
+        {
+            case WeaponSlot.Primary:
+                currentPrimary = physicalWeapon;
+                break;
+
+            case WeaponSlot.Secondary:
+                currentSecondary = physicalWeapon;
+                break;
+
+            case WeaponSlot.Knife:
+                currentKnife = physicalWeapon;
+                break;
+
+            case WeaponSlot.Bomb:
+                currentBomb = physicalWeapon;
+                break;
+
+            case WeaponSlot.Utility:
+                currentUtilities.Add(physicalWeapon);
+                break;
+        }
+
         physicalWeapon.SetActive(false);
         return true;
     }

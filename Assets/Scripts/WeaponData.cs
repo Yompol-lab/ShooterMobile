@@ -16,6 +16,9 @@ public class WeaponData : ScriptableObject
     [Header("Precisión")]
     public float spread = 0.01f;
 
+    [Header("Kamehameha (Solo Pistola de Agua)")]
+    public float beamRadius = 0.5f; 
+
     [Header("Efectos")]
     public GameObject muzzleFlashPrefab;
 

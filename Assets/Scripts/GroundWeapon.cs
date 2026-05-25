@@ -2,27 +2,63 @@ using UnityEngine;
 
 public class GroundWeapon : MonoBehaviour
 {
+    [Header("Configuración")]
     public WeaponSlot weaponSlot;
+
+    [Header("Posición al equipar")]
+    public Vector3 holdPosition;
+    public Vector3 holdRotation;
+    public Vector3 holdScale = Vector3.one;
+
+    [Header("Colliders")]
+    public Collider pickupTrigger;
+
     private Rigidbody rb;
-    private Collider[] colliders;
+    private Collider[] allColliders;
+    private bool pickedUp = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        colliders = GetComponents<Collider>();
+        allColliders = GetComponentsInChildren<Collider>();
+
+        if (pickupTrigger != null)
+            pickupTrigger.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        TryPickup(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        TryPickup(other);
+    }
+
+    void TryPickup(Collider other)
+    {
+        if (pickedUp) return;
+
+        PlayerInventory inventory = other.GetComponentInParent<PlayerInventory>();
+
+        if (inventory != null)
         {
-            PlayerInventory inventory = other.GetComponent<PlayerInventory>();
-            if (inventory != null)
+            if (inventory.PickupWeapon(gameObject, weaponSlot))
             {
-                if (inventory.PickupWeapon(this.gameObject, weaponSlot))
+                pickedUp = true;
+
+                if (rb != null)
                 {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                    rb.useGravity = false;
                     rb.isKinematic = true;
-                    foreach (Collider col in colliders) col.enabled = false;
+                }
+
+                foreach (Collider col in allColliders)
+                {
+                    col.enabled = false;
                 }
             }
         }
@@ -30,7 +66,20 @@ public class GroundWeapon : MonoBehaviour
 
     public void EnablePhysics()
     {
-        rb.isKinematic = false;
-        foreach (Collider col in colliders) col.enabled = true;
+        pickedUp = false;
+
+        foreach (Collider col in allColliders)
+        {
+            col.enabled = true;
+        }
+
+        if (pickupTrigger != null)
+            pickupTrigger.isTrigger = true;
+
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
     }
 }

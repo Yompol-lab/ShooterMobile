@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: sprint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 5778643957803450620}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule Variant
@@ -313,21 +317,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5528861718188870521}
     m_Modifications:
+    - target: {fileID: 4403575043814503405, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d7e358e75f9801641af96ad36392f4a2, type: 2}
     - target: {fileID: 6969136065300607789, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
       propertyPath: m_Name
       value: Ramirez
       objectReference: {fileID: 0}
     - target: {fileID: 7781244886349212055, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.973
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 7781244886349212055, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.012
+      value: -0.038
       objectReference: {fileID: 0}
     - target: {fileID: 7781244886349212055, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.184
+      value: -0.403
       objectReference: {fileID: 0}
     - target: {fileID: 7781244886349212055, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -365,6 +373,11 @@ PrefabInstance:
 --- !u!4 &491440760691415686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7781244886349212055, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
+  m_PrefabInstance: {fileID: 7867078521934557969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5778643957803450620 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4403575043814503405, guid: f943aafe1b846a8409414e8e212e262d, type: 3}
   m_PrefabInstance: {fileID: 7867078521934557969}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8204222036586411098

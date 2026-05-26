@@ -201,7 +201,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   impactLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 631
   decalOffset: 0.01
   impactLifeTime: 3
   waterTravelTime: 0.5

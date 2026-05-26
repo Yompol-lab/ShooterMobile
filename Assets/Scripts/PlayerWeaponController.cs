@@ -19,9 +19,9 @@ public class PlayerWeaponController : MonoBehaviour
     private float nextTimeToFire = 0f;
     private ParticleSystem[] waterBeamParticles;
 
-    
+
     private float currentChargeTime = 0f;
-    public float waterTravelTime = 0.5f; 
+    public float waterTravelTime = 0.5f;
 
     void Update()
     {
@@ -29,20 +29,20 @@ public class PlayerWeaponController : MonoBehaviour
 
         WeaponData data = currentWeapon.weaponData;
 
-        
+
         if (data.weaponName == "PistolaAgua")
         {
             bool isHoldingClick = Mouse.current.leftButton.isPressed;
 
-            
+
             HandleWaterBeamVisuals(isHoldingClick);
 
             if (isHoldingClick)
             {
-                
+
                 currentChargeTime += Time.deltaTime;
 
-                
+
                 if (currentChargeTime >= waterTravelTime)
                 {
                     if (Time.time >= nextTimeToFire)
@@ -54,11 +54,11 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else
             {
-                
+
                 currentChargeTime = 0f;
             }
         }
-        
+
         else
         {
             if (data.automatic)
@@ -74,7 +74,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     void HandleWaterBeamVisuals(bool isFiring)
     {
-       
+
         if (waterBeamParticles == null || waterBeamParticles.Length == 0)
         {
             waterBeamParticles = currentWeapon.muzzlePoint.GetComponentsInChildren<ParticleSystem>();
@@ -94,18 +94,22 @@ public class PlayerWeaponController : MonoBehaviour
 
         nextTimeToFire = Time.time + data.fireRate;
 
-        
+
         if (data.weaponName == "PistolaAgua") ShootKamehameha(data);
         else ShootNormal(data);
     }
 
     void ShootNormal(WeaponData data)
     {
-        
         if (data.muzzleFlashPrefab != null)
         {
-            GameObject flash = Instantiate(data.muzzleFlashPrefab, currentWeapon.muzzlePoint.position, currentWeapon.muzzlePoint.rotation);
-            Destroy(flash, 1f);
+            
+            GameObject flash = Instantiate(data.muzzleFlashPrefab, currentWeapon.muzzlePoint.position, currentWeapon.muzzlePoint.rotation, currentWeapon.muzzlePoint);
+
+            flash.transform.localScale = Vector3.one;
+
+            
+            Destroy(flash, 0.12f);
         }
 
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
@@ -124,7 +128,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-       
+
         RaycastHit[] hits = Physics.SphereCastAll(ray.origin, data.beamRadius, ray.direction, data.range, impactLayers);
 
         foreach (var hit in hits)
@@ -135,15 +139,15 @@ public class PlayerWeaponController : MonoBehaviour
 
     void ProcessImpact(RaycastHit hit, WeaponData data)
     {
-        
+
         Health health = hit.collider.GetComponentInParent<Health>();
         if (health != null) health.TakeDamage(data.damage);
 
-        
+
         FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
         if (extintor != null) extintor.TriggerSmoke();
 
-        
+
         if (data.weaponName == "PistolaAgua")
         {
             FireTarget fuego = hit.collider.GetComponentInParent<FireTarget>();
@@ -163,6 +167,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
         currentWeapon = weapon;
         nextTimeToFire = 0f;
-        waterBeamParticles = null; 
+        waterBeamParticles = null;
     }
 }

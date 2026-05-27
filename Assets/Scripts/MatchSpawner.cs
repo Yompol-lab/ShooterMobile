@@ -2,16 +2,22 @@ using Fusion;
 using UnityEngine;
 using System.Linq;
 
-public class MatchSpawner : NetworkBehaviour
+public class MatchSpawner : MonoBehaviour
 {
     public NetworkPrefabRef playerPrefab;
     public GameObject teamSelectionUI;
     public GameObject crosshairUI;
 
-    public override void Spawned()
+    private bool alreadySpawned = false;
+
+    private void Start()
     {
-        if (teamSelectionUI != null) teamSelectionUI.SetActive(true);
-        if (crosshairUI != null) crosshairUI.SetActive(false);
+        if (teamSelectionUI != null)
+            teamSelectionUI.SetActive(true);
+
+        if (crosshairUI != null)
+            crosshairUI.SetActive(false);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -28,19 +34,31 @@ public class MatchSpawner : NetworkBehaviour
 
     private void DoSpawn(Team team)
     {
-        if (teamSelectionUI != null) teamSelectionUI.SetActive(false);
-        if (crosshairUI != null) crosshairUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (alreadySpawned)
+            return;
 
-        RPC_Spawn(team, Runner.LocalPlayer);
-    }
+        if (NetworkManager.Instance == null)
+        {
+            Debug.LogError("No existe NetworkManager en la escena.");
+            return;
+        }
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Spawn(Team team, PlayerRef player)
-    {
-        TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        var validSpawns = allSpawns.Where(sp => sp.team == team).ToArray();
+        NetworkRunner runner = NetworkManager.Instance.Runner;
+
+        if (runner == null || !runner.IsRunning)
+        {
+            Debug.LogError("El Runner todavía no está activo. Esperá 1 segundo antes de elegir equipo.");
+            return;
+        }
+
+        TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
+            FindObjectsInactive.Exclude,
+            FindObjectsSortMode.None
+        );
+
+        TeamSpawnPoint[] validSpawns = allSpawns
+            .Where(sp => sp.team == team)
+            .ToArray();
 
         Vector3 spawnPos = Vector3.up * 2f;
         Quaternion spawnRot = Quaternion.identity;
@@ -52,6 +70,17 @@ public class MatchSpawner : NetworkBehaviour
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
 
-        Runner.Spawn(playerPrefab, spawnPos, spawnRot, player);
+        runner.Spawn(playerPrefab, spawnPos, spawnRot, runner.LocalPlayer);
+
+        alreadySpawned = true;
+
+        if (teamSelectionUI != null)
+            teamSelectionUI.SetActive(false);
+
+        if (crosshairUI != null)
+            crosshairUI.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

@@ -25,97 +25,156 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Keyboard.current != null)
         {
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+                EquipSlot(WeaponSlot.Primary);
 
-            if (Keyboard.current.digit1Key.wasPressedThisFrame && currentPrimary != null) EquipSlot(WeaponSlot.Primary);
-            if (Keyboard.current.digit2Key.wasPressedThisFrame && currentSecondary != null) EquipSlot(WeaponSlot.Secondary);
-            if (Keyboard.current.digit3Key.wasPressedThisFrame && currentKnife != null) EquipSlot(WeaponSlot.Knife);
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+                EquipSlot(WeaponSlot.Secondary);
 
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+                EquipSlot(WeaponSlot.Knife);
 
-            if (Keyboard.current.digit4Key.wasPressedThisFrame && currentUtilities.Count > 0) CycleUtilities();
+            if (Keyboard.current.digit4Key.wasPressedThisFrame && currentUtilities.Count > 0)
+                CycleUtilities();
 
+            if (Keyboard.current.digit5Key.wasPressedThisFrame)
+                EquipSlot(WeaponSlot.Bomb);
 
-            if (Keyboard.current.digit5Key.wasPressedThisFrame && currentBomb != null) EquipSlot(WeaponSlot.Bomb);
-
-
-            if (Keyboard.current.gKey.wasPressedThisFrame) DropCurrentWeapon();
+            if (Keyboard.current.gKey.wasPressedThisFrame)
+                DropCurrentWeapon();
         }
     }
 
     public void EquipSlot(WeaponSlot slot)
     {
-        if (currentPrimary != null) currentPrimary.SetActive(false);
-        if (currentSecondary != null) currentSecondary.SetActive(false);
-        if (currentKnife != null) currentKnife.SetActive(false);
-        if (currentBomb != null) currentBomb.SetActive(false);
-
-        foreach (var util in currentUtilities)
-        {
-            util.SetActive(false);
-        }
-
         GameObject equippedWeaponObject = null;
 
         switch (slot)
         {
             case WeaponSlot.Primary:
-                currentPrimary.SetActive(true);
+                if (currentPrimary == null)
+                {
+                    Debug.LogWarning("Todavía no agarraste arma primaria.");
+                    return;
+                }
+
                 equippedWeaponObject = currentPrimary;
                 break;
 
             case WeaponSlot.Secondary:
-                currentSecondary.SetActive(true);
+                if (currentSecondary == null)
+                {
+                    Debug.LogWarning("Todavía no agarraste arma secundaria.");
+                    return;
+                }
+
                 equippedWeaponObject = currentSecondary;
                 break;
 
             case WeaponSlot.Knife:
-                currentKnife.SetActive(true);
+                if (currentKnife == null)
+                {
+                    Debug.LogWarning("Todavía no agarraste cuchillo.");
+                    return;
+                }
+
                 equippedWeaponObject = currentKnife;
                 break;
 
             case WeaponSlot.Bomb:
-                currentBomb.SetActive(true);
+                if (currentBomb == null)
+                {
+                    Debug.LogWarning("Todavía no agarraste bomba.");
+                    return;
+                }
+
                 equippedWeaponObject = currentBomb;
                 break;
 
             case WeaponSlot.Utility:
-                if (currentUtilities.Count > 0)
+                if (currentUtilities.Count <= 0)
                 {
-                    currentUtilities[utilityIndex].SetActive(true);
-                    equippedWeaponObject = currentUtilities[utilityIndex];
+                    Debug.LogWarning("No tenés utilidades.");
+                    return;
                 }
+
+                equippedWeaponObject = currentUtilities[utilityIndex];
                 break;
         }
 
+        HideAllWeapons();
+
+        equippedWeaponObject.SetActive(true);
         activeSlot = slot;
 
         PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
 
-        if (weaponController != null && equippedWeaponObject != null)
+        if (weaponController != null)
         {
             Weapon weapon = equippedWeaponObject.GetComponent<Weapon>();
 
             if (weapon != null)
             {
                 weaponController.SetCurrentWeapon(weapon);
+                Debug.Log("Arma equipada: " + equippedWeaponObject.name);
             }
+            else
+            {
+                Debug.LogWarning("El objeto equipado no tiene script Weapon.");
+            }
+        }
+    }
+
+    private void HideAllWeapons()
+    {
+        if (currentPrimary != null)
+            currentPrimary.SetActive(false);
+
+        if (currentSecondary != null)
+            currentSecondary.SetActive(false);
+
+        if (currentKnife != null)
+            currentKnife.SetActive(false);
+
+        if (currentBomb != null)
+            currentBomb.SetActive(false);
+
+        foreach (var util in currentUtilities)
+        {
+            if (util != null)
+                util.SetActive(false);
         }
     }
 
     void CycleUtilities()
     {
-        
+        if (currentUtilities.Count <= 0)
+            return;
+
         if (activeSlot == WeaponSlot.Utility)
         {
             utilityIndex = (utilityIndex + 1) % currentUtilities.Count;
         }
+
         EquipSlot(WeaponSlot.Utility);
     }
 
     public bool PickupWeapon(GameObject physicalWeapon, WeaponSlot slot)
     {
-        if (slot == WeaponSlot.Primary && currentPrimary != null) return false;
-        if (slot == WeaponSlot.Secondary && currentSecondary != null) return false;
-        if (slot == WeaponSlot.Bomb && currentBomb != null) return false;
+        if (physicalWeapon == null)
+            return false;
+
+        if (slot == WeaponSlot.Primary && currentPrimary != null)
+            return false;
+
+        if (slot == WeaponSlot.Secondary && currentSecondary != null)
+            return false;
+
+        if (slot == WeaponSlot.Knife && currentKnife != null)
+            return false;
+
+        if (slot == WeaponSlot.Bomb && currentBomb != null)
+            return false;
 
         GroundWeapon groundWeapon = physicalWeapon.GetComponent<GroundWeapon>();
 
@@ -131,6 +190,7 @@ public class PlayerInventory : MonoBehaviour
         {
             physicalWeapon.transform.localPosition = Vector3.zero;
             physicalWeapon.transform.localRotation = Quaternion.identity;
+            physicalWeapon.transform.localScale = Vector3.one;
         }
 
         switch (slot)
@@ -157,6 +217,11 @@ public class PlayerInventory : MonoBehaviour
         }
 
         physicalWeapon.SetActive(false);
+
+        Debug.Log("Arma agarrada en slot: " + slot + " / " + physicalWeapon.name);
+
+        EquipSlot(slot);
+
         return true;
     }
 
@@ -164,7 +229,6 @@ public class PlayerInventory : MonoBehaviour
     {
         GameObject weaponToDrop = null;
 
-        
         if (activeSlot == WeaponSlot.Primary && currentPrimary != null)
         {
             weaponToDrop = currentPrimary;
@@ -180,7 +244,6 @@ public class PlayerInventory : MonoBehaviour
             weaponToDrop = currentBomb;
             currentBomb = null;
         }
-        
 
         if (weaponToDrop != null)
         {
@@ -189,13 +252,17 @@ public class PlayerInventory : MonoBehaviour
             weaponToDrop.transform.rotation = dropPoint.rotation;
 
             GroundWeapon groundScript = weaponToDrop.GetComponent<GroundWeapon>();
-            if (groundScript != null) groundScript.EnablePhysics();
+
+            if (groundScript != null)
+                groundScript.EnablePhysics();
 
             Rigidbody rb = weaponToDrop.GetComponent<Rigidbody>();
-            if (rb != null) rb.AddForce(dropPoint.forward * dropForce, ForceMode.Impulse);
 
-            
-            EquipSlot(WeaponSlot.Knife);
+            if (rb != null)
+                rb.AddForce(dropPoint.forward * dropForce, ForceMode.Impulse);
+
+            if (currentKnife != null)
+                EquipSlot(WeaponSlot.Knife);
         }
     }
 }

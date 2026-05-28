@@ -1,6 +1,7 @@
 using Fusion;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 
 public class MatchSpawner : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class MatchSpawner : MonoBehaviour
         if (crosshairUI != null)
             crosshairUI.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        UnlockCursor();
     }
 
     public void JoinPolice()
@@ -70,7 +70,9 @@ public class MatchSpawner : MonoBehaviour
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
 
-        runner.Spawn(playerPrefab, spawnPos, spawnRot, runner.LocalPlayer);
+        NetworkObject spawnedPlayer = runner.Spawn(playerPrefab, spawnPos, spawnRot, runner.LocalPlayer);
+
+        ConnectMobileControls(spawnedPlayer);
 
         alreadySpawned = true;
 
@@ -80,7 +82,62 @@ public class MatchSpawner : MonoBehaviour
         if (crosshairUI != null)
             crosshairUI.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        UnlockCursor();
+
+        StartCoroutine(ForceUnlockCursor());
+    }
+
+    private void ConnectMobileControls(NetworkObject spawnedPlayer)
+    {
+        if (spawnedPlayer == null)
+        {
+            Debug.LogError("No se pudo conectar mobile controls porque spawnedPlayer es null.");
+            return;
+        }
+
+        MobileControlsBridge mobileControls = FindFirstObjectByType<MobileControlsBridge>();
+
+        if (mobileControls == null)
+        {
+            Debug.LogWarning("No encontré MobileControlsBridge en la escena.");
+            return;
+        }
+
+        StarterAssets.StarterAssetsInputs inputs = spawnedPlayer.GetComponent<StarterAssets.StarterAssetsInputs>();
+        PlayerWeaponController weapon = spawnedPlayer.GetComponent<PlayerWeaponController>();
+        PlayerInventory inventory = spawnedPlayer.GetComponent<PlayerInventory>();
+
+        if (inputs == null)
+            Debug.LogWarning("El player spawneado no tiene StarterAssetsInputs.");
+
+        if (weapon == null)
+            Debug.LogWarning("El player spawneado no tiene PlayerWeaponController.");
+
+        if (inventory == null)
+            Debug.LogWarning("El player spawneado no tiene PlayerInventory.");
+
+        mobileControls.starterInputs = inputs;
+        mobileControls.weaponController = weapon;
+        mobileControls.playerInventory = inventory;
+
+        Debug.Log("MobileControls conectado al player spawneado.");
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private IEnumerator ForceUnlockCursor()
+    {
+        yield return null;
+        UnlockCursor();
+
+        yield return new WaitForSeconds(0.1f);
+        UnlockCursor();
+
+        yield return new WaitForSeconds(0.3f);
+        UnlockCursor();
     }
 }

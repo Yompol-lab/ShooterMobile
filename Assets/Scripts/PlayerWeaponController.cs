@@ -9,6 +9,9 @@ public class PlayerWeaponController : MonoBehaviour
     [Header("Arma Actual")]
     public Weapon currentWeapon;
 
+    [Header("Input")]
+    public bool allowMouseShooting = false; 
+
     [Header("Capas")]
     public LayerMask impactLayers;
 
@@ -19,29 +22,32 @@ public class PlayerWeaponController : MonoBehaviour
     private float nextTimeToFire = 0f;
     private ParticleSystem[] waterBeamParticles;
 
-
     private float currentChargeTime = 0f;
     public float waterTravelTime = 0.5f;
 
+    private bool mobileShootHeld = false;
+
     void Update()
     {
-        if (currentWeapon == null || currentWeapon.weaponData == null || currentWeapon.muzzlePoint == null) return;
+        if (currentWeapon == null || currentWeapon.weaponData == null || currentWeapon.muzzlePoint == null)
+            return;
 
         WeaponData data = currentWeapon.weaponData;
 
+        
+        bool pcHoldingClick = allowMouseShooting && Mouse.current != null && Mouse.current.leftButton.isPressed;
+        bool pcClickPressed = allowMouseShooting && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
+
+        bool isHoldingShoot = pcHoldingClick || mobileShootHeld;
+        bool isPressedShoot = pcClickPressed || mobileShootHeld;
 
         if (data.weaponName == "PistolaAgua")
         {
-            bool isHoldingClick = Mouse.current.leftButton.isPressed;
+            HandleWaterBeamVisuals(isHoldingShoot);
 
-
-            HandleWaterBeamVisuals(isHoldingClick);
-
-            if (isHoldingClick)
+            if (isHoldingShoot)
             {
-
                 currentChargeTime += Time.deltaTime;
-
 
                 if (currentChargeTime >= waterTravelTime)
                 {
@@ -54,27 +60,26 @@ public class PlayerWeaponController : MonoBehaviour
             }
             else
             {
-
                 currentChargeTime = 0f;
             }
         }
-
         else
         {
             if (data.automatic)
             {
-                if (Mouse.current.leftButton.isPressed) TryShoot();
+                if (isHoldingShoot)
+                    TryShoot();
             }
             else
             {
-                if (Mouse.current.leftButton.wasPressedThisFrame) TryShoot();
+                if (isPressedShoot)
+                    TryShoot();
             }
         }
     }
 
     void HandleWaterBeamVisuals(bool isFiring)
     {
-
         if (waterBeamParticles == null || waterBeamParticles.Length == 0)
         {
             waterBeamParticles = currentWeapon.muzzlePoint.GetComponentsInChildren<ParticleSystem>();
@@ -82,39 +87,58 @@ public class PlayerWeaponController : MonoBehaviour
 
         foreach (var ps in waterBeamParticles)
         {
-            if (isFiring && !ps.isPlaying) ps.Play(true);
-            else if (!isFiring && ps.isPlaying) ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            if (isFiring && !ps.isPlaying)
+                ps.Play(true);
+            else if (!isFiring && ps.isPlaying)
+                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
     }
 
     void TryShoot()
     {
         WeaponData data = currentWeapon.weaponData;
-        if (Time.time < nextTimeToFire) return;
+
+        if (Time.time < nextTimeToFire)
+            return;
 
         nextTimeToFire = Time.time + data.fireRate;
 
-
-        if (data.weaponName == "PistolaAgua") ShootKamehameha(data);
-        else ShootNormal(data);
+        if (data.weaponName == "PistolaAgua")
+            ShootKamehameha(data);
+        else
+            ShootNormal(data);
     }
 
     void ShootNormal(WeaponData data)
     {
+        if (mainCamera == null)
+        {
+            Debug.LogWarning("No hay Main Camera asignada en PlayerWeaponController.");
+            return;
+        }
+
         if (data.muzzleFlashPrefab != null)
         {
-            
-            GameObject flash = Instantiate(data.muzzleFlashPrefab, currentWeapon.muzzlePoint.position, currentWeapon.muzzlePoint.rotation, currentWeapon.muzzlePoint);
+            GameObject flash = Instantiate(
+                data.muzzleFlashPrefab,
+                currentWeapon.muzzlePoint.position,
+                currentWeapon.muzzlePoint.rotation,
+                currentWeapon.muzzlePoint
+            );
 
             flash.transform.localScale = Vector3.one;
-
-            
             Destroy(flash, 0.12f);
         }
 
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
         Vector3 shootDirection = ray.direction;
-        shootDirection += new Vector3(Random.Range(-data.spread, data.spread), Random.Range(-data.spread, data.spread), 0f);
+        shootDirection += new Vector3(
+            Random.Range(-data.spread, data.spread),
+            Random.Range(-data.spread, data.spread),
+            0f
+        );
+
         shootDirection.Normalize();
 
         if (Physics.Raycast(ray.origin, shootDirection, out RaycastHit hit, data.range, impactLayers))
@@ -126,10 +150,21 @@ public class PlayerWeaponController : MonoBehaviour
 
     void ShootKamehameha(WeaponData data)
     {
+        if (mainCamera == null)
+        {
+            Debug.LogWarning("No hay Main Camera asignada en PlayerWeaponController.");
+            return;
+        }
+
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-
-        RaycastHit[] hits = Physics.SphereCastAll(ray.origin, data.beamRadius, ray.direction, data.range, impactLayers);
+        RaycastHit[] hits = Physics.SphereCastAll(
+            ray.origin,
+            data.beamRadius,
+            ray.direction,
+            data.range,
+            impactLayers
+        );
 
         foreach (var hit in hits)
         {
@@ -139,26 +174,33 @@ public class PlayerWeaponController : MonoBehaviour
 
     void ProcessImpact(RaycastHit hit, WeaponData data)
     {
-
         Health health = hit.collider.GetComponentInParent<Health>();
-        if (health != null) health.TakeDamage(data.damage);
-
+        if (health != null)
+            health.TakeDamage(data.damage);
 
         FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
-        if (extintor != null) extintor.TriggerSmoke();
-
+        if (extintor != null)
+            extintor.TriggerSmoke();
 
         if (data.weaponName == "PistolaAgua")
         {
             FireTarget fuego = hit.collider.GetComponentInParent<FireTarget>();
-            if (fuego != null) fuego.Extinguish();
+            if (fuego != null)
+                fuego.Extinguish();
         }
     }
 
     void SpawnImpact(RaycastHit hit, WeaponData data)
     {
-        if (data.bulletImpactPrefab == null) return;
-        GameObject impact = Instantiate(data.bulletImpactPrefab, hit.point + hit.normal * decalOffset, Quaternion.LookRotation(hit.normal));
+        if (data.bulletImpactPrefab == null)
+            return;
+
+        GameObject impact = Instantiate(
+            data.bulletImpactPrefab,
+            hit.point + hit.normal * decalOffset,
+            Quaternion.LookRotation(hit.normal)
+        );
+
         impact.transform.SetParent(hit.collider.transform);
         Destroy(impact, impactLifeTime);
     }
@@ -168,5 +210,17 @@ public class PlayerWeaponController : MonoBehaviour
         currentWeapon = weapon;
         nextTimeToFire = 0f;
         waterBeamParticles = null;
+        currentChargeTime = 0f;
+        mobileShootHeld = false;
+    }
+
+    public void MobileFireDown()
+    {
+        mobileShootHeld = true;
+    }
+
+    public void MobileFireUp()
+    {
+        mobileShootHeld = false;
     }
 }

@@ -1,30 +1,70 @@
+using Fusion;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
+    [Header("Vida")]
     public float maxHealth = 100f;
-    private float currentHealth;
 
-    void Awake()
+   
+    [Networked]
+    public float currentHealth { get; set; }
+
+    [Networked]
+    public NetworkBool isDead { get; set; }
+
+    [Header("Muerte")]
+    public RagdollController ragdoll;
+
+    [Header("Sangre")]
+    public GameObject bloodPrefab;
+
+    public override void Spawned()
     {
         currentHealth = maxHealth;
+        isDead = false;
+
+        if (ragdoll != null)
+            ragdoll.DisableRagdoll();
     }
 
-    public void TakeDamage(float damage)
+   
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_TakeDamage(float damage, Vector3 hitPosition)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
 
-        Debug.Log(gameObject.name + " recibió daño: " + damage);
+        
+        RPC_PlayBloodEffect(hitPosition);
 
         if (currentHealth <= 0)
         {
-            Die();
+            isDead = true;
+            RPC_Die(); 
         }
     }
 
-    void Die()
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_PlayBloodEffect(Vector3 pos)
+    {
+        if (bloodPrefab != null)
+        {
+            Instantiate(bloodPrefab, pos, Quaternion.identity);
+        }
+    }
+
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_Die()
     {
         Debug.Log(gameObject.name + " murió");
-        gameObject.SetActive(false);
+
+        if (ragdoll != null)
+            ragdoll.EnableRagdoll();
+
+        
     }
 }

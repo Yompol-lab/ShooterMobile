@@ -174,9 +174,22 @@ public class PlayerWeaponController : MonoBehaviour
 
     void ProcessImpact(RaycastHit hit, WeaponData data)
     {
-        Health health = hit.collider.GetComponentInParent<Health>();
-        if (health != null)
-            health.TakeDamage(data.damage);
+        
+        Hitbox hitbox = hit.collider.GetComponent<Hitbox>();
+        if (hitbox != null)
+        {
+            
+            hitbox.TakeDamage(data.damage, hit.point);
+        }
+        else
+        {
+            
+            Health health = hit.collider.GetComponentInParent<Health>();
+            if (health != null)
+            {
+                health.RPC_TakeDamage(data.damage, hit.point);
+            }
+        }
 
         FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
         if (extintor != null)

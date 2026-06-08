@@ -11,7 +11,7 @@ public class MatchSpawner : MonoBehaviour
 
     private bool alreadySpawned = false;
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (teamSelectionUI != null)
             teamSelectionUI.SetActive(true);
@@ -20,18 +20,33 @@ public class MatchSpawner : MonoBehaviour
             crosshairUI.SetActive(false);
 
         UnlockCursor();
+
+        while (NetworkManager.Instance == null ||
+               NetworkManager.Instance.Runner == null ||
+               !NetworkManager.Instance.Runner.IsRunning)
+        {
+            yield return null;
+        }
+
+        runnerReady = true;
+
+        Debug.Log("RUNNER PREPARADO");
     }
 
     public void JoinPolice()
     {
+        Debug.Log("BOTON CT APRETADO");
         DoSpawn(Team.Police);
     }
 
     public void JoinTerrorist()
     {
+        Debug.Log("BOTON T APRETADO");
         DoSpawn(Team.Terrorist);
     }
+    private bool runnerReady = false;
 
+   
     private void DoSpawn(Team team)
     {
         if (alreadySpawned)
@@ -45,11 +60,13 @@ public class MatchSpawner : MonoBehaviour
 
         NetworkRunner runner = NetworkManager.Instance.Runner;
 
-        if (runner == null || !runner.IsRunning)
+        if (!runnerReady)
         {
-            Debug.LogError("El Runner todavía no está activo. Esperá 1 segundo antes de elegir equipo.");
+            Debug.LogError("Esperando conexión...");
             return;
         }
+
+        Debug.Log("RUNNER LISTO");
 
         TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
             FindObjectsInactive.Exclude,
@@ -69,10 +86,43 @@ public class MatchSpawner : MonoBehaviour
             spawnPos = validSpawns[randomIndex].transform.position;
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
+        Debug.Log("SPAWN POS = " + spawnPos);
 
-        NetworkObject spawnedPlayer = runner.Spawn(playerPrefab, spawnPos, spawnRot, runner.LocalPlayer);
+        Debug.Log("IsServer = " + runner.IsServer);
+        Debug.Log("IsClient = " + runner.IsClient);
+        Debug.Log("LocalPlayer = " + runner.LocalPlayer);
+
+        Debug.Log("Runner IsServer = " + runner.IsServer);
+
+        if (!runner.IsServer)
+        {
+            Debug.LogWarning("Cliente no puede hacer Spawn");
+            return;
+        }
+
+        NetworkObject spawnedPlayer = runner.Spawn(
+            playerPrefab,
+            spawnPos,
+            spawnRot,
+            runner.LocalPlayer
+        );
+
+        runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);
+
+        Debug.Log("PlayerObject asignado: " + runner.LocalPlayer);
 
         ConnectMobileControls(spawnedPlayer);
+        Debug.Log("Jugador eligió equipo: " + team);
+        NetworkObject localPlayer =
+    NetworkManager.Instance.Runner.GetPlayerObject(
+        NetworkManager.Instance.Runner.LocalPlayer);
+
+        Debug.Log("LOCAL PLAYER = " + localPlayer);
+
+        if (localPlayer != null)
+        {
+            ConnectMobileControls(localPlayer);
+        }
 
         alreadySpawned = true;
 

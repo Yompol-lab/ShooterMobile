@@ -19,16 +19,23 @@ public class MobileControlsBridge : MonoBehaviour
     private void Update()
     {
         if (starterInputs == null)
+        {
+            Debug.Log("SIN StarterInputs");
             return;
+        }
 
         if (movementJoystick != null)
         {
+            Debug.Log("H = " + movementJoystick.Horizontal);
+            Debug.Log("V = " + movementJoystick.Vertical);
+
             Vector2 moveInput = new Vector2(
                 movementJoystick.Horizontal,
                 movementJoystick.Vertical
             );
 
             starterInputs.MoveInput(moveInput);
+            Debug.Log("ENVIANDO MOVE = " + moveInput);
         }
 
         if (cameraJoystick != null)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Fusion;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -9,7 +10,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class FirstPersonController : MonoBehaviour
+    public class FirstPersonController : NetworkBehaviour
     {
         [Header("Animaciones")]
         [Tooltip("Arrastrá acá el modelo 3D que tiene el Animator")]
@@ -112,8 +113,11 @@ namespace StarterAssets
             _fallTimeoutDelta = FallTimeout;
         }
 
-        private void Update()
+        public override void FixedUpdateNetwork()
         {
+            if (!HasInputAuthority)
+                return;
+
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -121,6 +125,9 @@ namespace StarterAssets
 
         private void LateUpdate()
         {
+            if (!HasInputAuthority)
+                return;
+
             CameraRotation();
         }
 
@@ -174,9 +181,11 @@ namespace StarterAssets
             {
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
             }
-
+            Debug.Log("INPUT MOVE = " + _input.move);
+            Debug.Log("SPEED = " + _speed);
+            Debug.Log("DIR = " + inputDirection);
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+            Debug.Log("POS = " + transform.position);
             // ---> NUEVO: CÓDIGO DE ANIMACIÓN <---
             if (animator != null)
             {

@@ -27,6 +27,18 @@ public class NetworkManager : MonoBehaviour
         runner = Instantiate(runnerPrefab);
         runner.name = "NetworkRunner";
 
+        //FusionPlayerSpawner spawner = FindFirstObjectByType<FusionPlayerSpawner>();
+
+        //if (spawner != null)
+        //{
+        //    runner.AddCallbacks(spawner);
+        //    Debug.Log("FusionPlayerSpawner registrado.");
+        //}
+        //else
+        //{
+        //    Debug.LogError("No encontré FusionPlayerSpawner.");
+        //}
+
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
         var result = await runner.StartGame(new StartGameArgs()
@@ -40,6 +52,9 @@ public class NetworkManager : MonoBehaviour
         if (result.Ok)
         {
             Debug.Log("Fusion conectado correctamente.");
+            Debug.Log("IsServer = " + runner.IsServer);
+            Debug.Log("IsClient = " + runner.IsClient);
+            Debug.Log("LocalPlayer = " + runner.LocalPlayer);
         }
         else
         {

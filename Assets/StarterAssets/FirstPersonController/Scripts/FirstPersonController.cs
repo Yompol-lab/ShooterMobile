@@ -84,9 +84,14 @@ namespace StarterAssets
             get
             {
 #if ENABLE_INPUT_SYSTEM
+
+                if (_playerInput == null)
+                    return false;
+
                 return _playerInput.currentControlScheme == "KeyboardMouse";
+
 #else
-				return false;
+        return false;
 #endif
             }
         }
@@ -105,6 +110,11 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
+            if (_playerInput == null)
+            {
+                Debug.LogError("PLAYER INPUT ES NULL");
+            }
+
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -118,6 +128,25 @@ namespace StarterAssets
             if (!HasInputAuthority)
                 return;
 
+            if (_input == null)
+            {
+                _input = GetComponent<StarterAssetsInputs>();
+
+                if (_input == null)
+                    return;
+            }
+
+            if (_controller == null)
+            {
+                _controller = GetComponent<CharacterController>();
+
+                if (_controller == null)
+                {
+                    Debug.LogError("CONTROLLER ES NULL");
+                    return;
+                }
+            }
+
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -126,6 +155,9 @@ namespace StarterAssets
         private void LateUpdate()
         {
             if (!HasInputAuthority)
+                return;
+
+            if (_input == null)
                 return;
 
             CameraRotation();
@@ -156,6 +188,14 @@ namespace StarterAssets
 
         private void Move()
         {
+
+            Debug.Log("_input = " + (_input != null));
+            Debug.Log("_controller = " + (_controller != null));
+            Debug.Log("_playerInput = " + (_playerInput != null));
+            Debug.Log("CameraTarget = " + (CinemachineCameraTarget != null));
+
+            
+
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;

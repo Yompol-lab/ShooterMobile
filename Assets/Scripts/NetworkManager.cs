@@ -27,18 +27,17 @@ public class NetworkManager : MonoBehaviour
         runner = Instantiate(runnerPrefab);
         runner.name = "NetworkRunner";
 
-        //FusionPlayerSpawner spawner = FindFirstObjectByType<FusionPlayerSpawner>();
+        PlayerJoinSpawner joinSpawner = FindFirstObjectByType<PlayerJoinSpawner>();
 
-        //if (spawner != null)
-        //{
-        //    runner.AddCallbacks(spawner);
-        //    Debug.Log("FusionPlayerSpawner registrado.");
-        //}
-        //else
-        //{
-        //    Debug.LogError("No encontré FusionPlayerSpawner.");
-        //}
-
+        if (joinSpawner != null)
+        {
+            runner.AddCallbacks(joinSpawner);
+            Debug.Log("PlayerJoinSpawner registrado.");
+        }
+        else
+        {
+            Debug.LogError("No encontré PlayerJoinSpawner.");
+        }
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
         var result = await runner.StartGame(new StartGameArgs()

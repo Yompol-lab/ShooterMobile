@@ -96,10 +96,21 @@ public class MatchSpawner : MonoBehaviour
 
         if (!runner.IsServer)
         {
-            Debug.LogWarning("Cliente no puede hacer Spawn");
+            Debug.LogWarning("Cliente detectado");
+
+            TeamSelectionRpc rpc = FindFirstObjectByType<TeamSelectionRpc>();
+
+            if (rpc != null)
+            {
+                rpc.RPC_SelectTeam(
+                    runner.LocalPlayer,
+                    (int)team
+                );
+            }
+
             return;
         }
-
+        Debug.LogError("MATCHSPAWNER SPAWN");
         NetworkObject spawnedPlayer = runner.Spawn(
             playerPrefab,
             spawnPos,

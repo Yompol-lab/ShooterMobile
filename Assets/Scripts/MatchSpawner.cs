@@ -10,14 +10,12 @@ public class MatchSpawner : MonoBehaviour
     public GameObject crosshairUI;
 
     private bool alreadySpawned = false;
+    private bool runnerReady = false;
 
     private IEnumerator Start()
     {
-        if (teamSelectionUI != null)
-            teamSelectionUI.SetActive(true);
-
-        if (crosshairUI != null)
-            crosshairUI.SetActive(false);
+        if (teamSelectionUI != null) teamSelectionUI.SetActive(true);
+        if (crosshairUI != null) crosshairUI.SetActive(false);
 
         UnlockCursor();
 
@@ -29,45 +27,26 @@ public class MatchSpawner : MonoBehaviour
         }
 
         runnerReady = true;
-
-        Debug.Log("RUNNER PREPARADO");
     }
 
-    public void JoinPolice()
-    {
-        Debug.Log("BOTON CT APRETADO");
-        DoSpawn(Team.Police);
-    }
+    public void JoinPolice() { DoSpawn(Team.Police); }
+    public void JoinTerrorist() { DoSpawn(Team.Terrorist); }
 
-    public void JoinTerrorist()
-    {
-        Debug.Log("BOTON T APRETADO");
-        DoSpawn(Team.Terrorist);
-    }
-    private bool runnerReady = false;
-
-   
     private void DoSpawn(Team team)
     {
-        if (alreadySpawned)
-            return;
-
-        if (NetworkManager.Instance == null)
-        {
-            Debug.LogError("No existe NetworkManager en la escena.");
-            return;
-        }
+        if (alreadySpawned || NetworkManager.Instance == null || !runnerReady) return;
 
         NetworkRunner runner = NetworkManager.Instance.Runner;
 
-        if (!runnerReady)
-        {
-            Debug.LogError("Esperando conexión...");
-            return;
-        }
+        alreadySpawned = true;
 
-        Debug.Log("RUNNER LISTO");
+        if (teamSelectionUI != null) teamSelectionUI.SetActive(false);
+        if (crosshairUI != null) crosshairUI.SetActive(true);
 
+        UnlockCursor();
+        StartCoroutine(ForceUnlockCursor());
+
+        
         TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
             FindObjectsInactive.Exclude,
             FindObjectsSortMode.None
@@ -86,31 +65,8 @@ public class MatchSpawner : MonoBehaviour
             spawnPos = validSpawns[randomIndex].transform.position;
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
-        Debug.Log("SPAWN POS = " + spawnPos);
 
-        Debug.Log("IsServer = " + runner.IsServer);
-        Debug.Log("IsClient = " + runner.IsClient);
-        Debug.Log("LocalPlayer = " + runner.LocalPlayer);
-
-        Debug.Log("Runner IsServer = " + runner.IsServer);
-
-        if (!runner.IsServer)
-        {
-            Debug.LogWarning("Cliente detectado");
-
-            TeamSelectionRpc rpc = FindFirstObjectByType<TeamSelectionRpc>();
-
-            if (rpc != null)
-            {
-                rpc.RPC_SelectTeam(
-                    runner.LocalPlayer,
-                    (int)team
-                );
-            }
-
-            return;
-        }
-        Debug.LogError("MATCHSPAWNER SPAWN");
+        
         NetworkObject spawnedPlayer = runner.Spawn(
             playerPrefab,
             spawnPos,
@@ -119,69 +75,6 @@ public class MatchSpawner : MonoBehaviour
         );
 
         runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);
-
-        Debug.Log("PlayerObject asignado: " + runner.LocalPlayer);
-
-        ConnectMobileControls(spawnedPlayer);
-        Debug.Log("Jugador eligió equipo: " + team);
-        NetworkObject localPlayer =
-    NetworkManager.Instance.Runner.GetPlayerObject(
-        NetworkManager.Instance.Runner.LocalPlayer);
-
-        Debug.Log("LOCAL PLAYER = " + localPlayer);
-
-        if (localPlayer != null)
-        {
-            ConnectMobileControls(localPlayer);
-        }
-
-        alreadySpawned = true;
-
-        if (teamSelectionUI != null)
-            teamSelectionUI.SetActive(false);
-
-        if (crosshairUI != null)
-            crosshairUI.SetActive(true);
-
-        UnlockCursor();
-
-        StartCoroutine(ForceUnlockCursor());
-    }
-
-    private void ConnectMobileControls(NetworkObject spawnedPlayer)
-    {
-        if (spawnedPlayer == null)
-        {
-            Debug.LogError("No se pudo conectar mobile controls porque spawnedPlayer es null.");
-            return;
-        }
-
-        MobileControlsBridge mobileControls = FindFirstObjectByType<MobileControlsBridge>();
-
-        if (mobileControls == null)
-        {
-            Debug.LogWarning("No encontré MobileControlsBridge en la escena.");
-            return;
-        }
-
-        StarterAssets.StarterAssetsInputs inputs = spawnedPlayer.GetComponent<StarterAssets.StarterAssetsInputs>();
-        PlayerWeaponController weapon = spawnedPlayer.GetComponent<PlayerWeaponController>();
-        PlayerInventory inventory = spawnedPlayer.GetComponent<PlayerInventory>();
-
-        if (inputs == null)
-            Debug.LogWarning("El player spawneado no tiene StarterAssetsInputs.");
-
-        if (weapon == null)
-            Debug.LogWarning("El player spawneado no tiene PlayerWeaponController.");
-
-        if (inventory == null)
-            Debug.LogWarning("El player spawneado no tiene PlayerInventory.");
-
-        mobileControls.starterInputs = inputs;
-        mobileControls.weaponController = weapon;
-        mobileControls.playerInventory = inventory;
-
-        Debug.Log("MobileControls conectado al player spawneado.");
     }
 
     private void UnlockCursor()
@@ -194,10 +87,8 @@ public class MatchSpawner : MonoBehaviour
     {
         yield return null;
         UnlockCursor();
-
         yield return new WaitForSeconds(0.1f);
         UnlockCursor();
-
         yield return new WaitForSeconds(0.3f);
         UnlockCursor();
     }

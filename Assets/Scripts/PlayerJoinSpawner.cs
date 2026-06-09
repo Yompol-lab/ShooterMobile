@@ -13,19 +13,14 @@ public class PlayerJoinSpawner : MonoBehaviour, INetworkRunnerCallbacks
         Instance = this;
     }
 
-
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        Debug.LogError("ONPLAYERJOINED => " + player);
-
-        NetworkObject obj = runner.GetPlayerObject(player);
-
-        Debug.LogError("PLAYER OBJECT = " + obj);
+        Debug.Log("Jugador conectado a la sala: " + player);
+        
     }
 
     public void SpawnPlayerFor(PlayerRef player, Team team)
     {
-        Debug.LogError("SPAWNPLAYERFOR EJECUTADO -> " + player + " Team=" + team);
         NetworkRunner runner = NetworkManager.Instance.Runner;
 
         if (!runner.IsServer)
@@ -47,7 +42,6 @@ public class PlayerJoinSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (validSpawns.Length > 0)
         {
             int randomIndex = Random.Range(0, validSpawns.Length);
-
             spawnPos = validSpawns[randomIndex].transform.position;
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
@@ -60,10 +54,10 @@ public class PlayerJoinSpawner : MonoBehaviour, INetworkRunnerCallbacks
         );
 
         runner.SetPlayerObject(player, obj);
-
-        Debug.Log("SPAWNEADO PLAYER: " + player);
+        Debug.Log("Jugador instanciado correctamente: " + player);
     }
 
+    
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnInput(NetworkRunner runner, NetworkInput input) { }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }

@@ -16,25 +16,26 @@ public class LocalHealthHUD : MonoBehaviour
             foreach (Health h in allHealths)
             {
                 
-                if (h.Object != null && h.Object.HasInputAuthority)
+                if (h.Object != null && h.Object.IsValid && h.Object.HasInputAuthority)
                 {
                     localPlayerHealth = h;
-                    break; 
+                    break;
                 }
             }
         }
 
-        
+       
         if (localPlayerHealth != null)
         {
+            
+            if (!localPlayerHealth.Object.IsValid) return;
+
             int currentHP = Mathf.CeilToInt(localPlayerHealth.currentHealth);
 
-            
             if (currentHP < 0) currentHP = 0;
 
             healthText.text = currentHP.ToString();
 
-            
             if (currentHP <= 20)
             {
                 healthText.color = Color.red;
@@ -44,7 +45,6 @@ public class LocalHealthHUD : MonoBehaviour
                 healthText.color = Color.white;
             }
 
-            
             if (localPlayerHealth.isDead)
             {
                 healthText.text = "0";

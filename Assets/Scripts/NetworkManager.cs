@@ -42,7 +42,7 @@ public class NetworkManager : MonoBehaviour
 
         var result = await runner.StartGame(new StartGameArgs()
         {
-            GameMode = GameMode.AutoHostOrClient,
+            GameMode = GameMode.Shared, 
             SessionName = "Sala1",
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()

@@ -160,15 +160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.281
+      value: -100.154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.576
+      value: 5.317
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.517
+      value: -13.688
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -341,5 +341,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponData: {fileID: 11400000, guid: e460d8005b7576545802deff7aa26e16, type: 2}
+  weaponData: {fileID: 11400000, guid: 71781130f0daa0240b28b1fc205e95e0, type: 2}
   muzzlePoint: {fileID: 4105920744545825311}

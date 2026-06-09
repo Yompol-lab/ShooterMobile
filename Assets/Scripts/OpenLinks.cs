@@ -4,6 +4,6 @@ public class OpenLinks : MonoBehaviour
 {
    public void OpenLink()
     {
-        Application.OpenURL("https://discord.gg/CVs4JwCnuk");
+        Application.OpenURL("https://discord.gg/AwxGTXgnNy");
     }
 }

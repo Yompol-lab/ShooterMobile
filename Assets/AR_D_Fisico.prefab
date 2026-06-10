@@ -41,15 +41,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285060478189170397, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.99
+      value: -257.33
       objectReference: {fileID: 0}
     - target: {fileID: 285060478189170397, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.14
+      value: -4.44
       objectReference: {fileID: 0}
     - target: {fileID: 285060478189170397, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.7
+      value: -3.59
       objectReference: {fileID: 0}
     - target: {fileID: 285060478189170397, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       propertyPath: m_LocalRotation.w
@@ -95,9 +95,6 @@ PrefabInstance:
       addedObject: {fileID: 7517675216739338507}
     - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2377035933007677477}
-    - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 896329951333809667}
     - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       insertIndex: -1
@@ -105,6 +102,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6795309571494244826}
+    - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1248833883920044655}
+    - targetCorrespondingSourceObject: {fileID: 630341572420416615, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7072762120495472935}
   m_SourcePrefab: {fileID: 100100000, guid: f96b66c4eebeeda4a8394ec9b9b6b395, type: 3}
 --- !u!4 &6919063143193470971 stripped
 Transform:
@@ -143,23 +146,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &2377035933007677477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7732297833616457025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f13230564cfa8469e31652f957a9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GroundWeapon
-  weaponSlot: 0
-  holdPosition: {x: 0, y: 0, z: 0}
-  holdRotation: {x: 0, y: 0, z: 0}
-  holdScale: {x: 1, y: 1, z: 1}
-  pickupTrigger: {fileID: 0}
 --- !u!65 &896329951333809667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -216,3 +202,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   weaponData: {fileID: 11400000, guid: 29b9cffb9350e9a40877f00c45e9ded2, type: 2}
   muzzlePoint: {fileID: 5508612982463105319}
+--- !u!114 &1248833883920044655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732297833616457025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 3528277568
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 7072762120495472935}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &7072762120495472935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7732297833616457025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
+  weaponSlot: 0
+  holdPosition: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 0, z: 0}
+  holdScale: {x: 1, y: 1, z: 1}

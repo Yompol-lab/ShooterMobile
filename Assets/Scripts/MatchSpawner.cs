@@ -46,7 +46,6 @@ public class MatchSpawner : MonoBehaviour
         UnlockCursor();
         StartCoroutine(ForceUnlockCursor());
 
-        
         TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
             FindObjectsInactive.Exclude,
             FindObjectsSortMode.None
@@ -71,7 +70,15 @@ public class MatchSpawner : MonoBehaviour
             playerPrefab,
             spawnPos,
             spawnRot,
-            runner.LocalPlayer
+            runner.LocalPlayer,
+            (rn, obj) =>
+            {
+                ConfiguracionJugadorRed config = obj.GetComponent<ConfiguracionJugadorRed>();
+                if (config != null)
+                {
+                    config.miEquipo = team;
+                }
+            }
         );
 
         runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);

@@ -282,7 +282,8 @@ GameObject:
   - component: {fileID: 8121570668142395771}
   - component: {fileID: 5263389456483507334}
   - component: {fileID: 3379664794527049965}
-  - component: {fileID: 7272013644085170492}
+  - component: {fileID: -6034123132598875268}
+  - component: {fileID: -2803305471355324844}
   m_Layer: 0
   m_Name: Pistol_C_Fisica
   m_TagString: Untagged
@@ -381,7 +382,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.46
   m_Center: {x: 0, y: -0.007609874, z: 0.035060674}
---- !u!114 &7272013644085170492
+--- !u!114 &-6034123132598875268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,10 +391,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 4068275952001220622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f13230564cfa8469e31652f957a9fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GroundWeapon
+  m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
   weaponSlot: 1
+--- !u!114 &-2803305471355324844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068275952001220622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 903997636
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: -6034123132598875268}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &7532180344534436160
 GameObject:
   m_ObjectHideFlags: 0

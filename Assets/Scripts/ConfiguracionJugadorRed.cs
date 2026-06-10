@@ -16,6 +16,61 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
     public PlayerWeaponController miArma;
     public PlayerInventory miInventario;
 
+    [Header("Datos de Partida")]
+    [Networked] public Team miEquipo { get; set; }
+    [Networked] public NetworkBool tieneBomba { get; set; }
+
+    [Header("Configuración de Bomba")]
+    public GameObject modeloBombaEnMano; 
+
+    public void TeletransportarAlSpawn()
+    {
+        TeamSpawnPoint[] todosLosSpawns = FindObjectsByType<TeamSpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        var spawnsValidos = System.Array.FindAll(todosLosSpawns, sp => sp.team == miEquipo);
+
+        if (spawnsValidos.Length > 0)
+        {
+            int rand = Random.Range(0, spawnsValidos.Length);
+            Vector3 nuevaPosicion = spawnsValidos[rand].transform.position;
+            Quaternion nuevaRotacion = spawnsValidos[rand].transform.rotation;
+
+           
+            CharacterController cc = GetComponent<CharacterController>();
+            if (cc != null) cc.enabled = false;
+
+            transform.position = nuevaPosicion;
+            transform.rotation = nuevaRotacion;
+
+            if (cc != null) cc.enabled = true;
+        }
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_RecibirBomba()
+    {
+        tieneBomba = true;
+        if (HasStateAuthority)
+        {
+            Debug.Log("¡ME DIERON LA BOMBA!");
+            
+        }
+    }
+
+    private void Update()
+    {
+       
+        if (HasStateAuthority && misInputs != null && MatchManager.Instance != null)
+        {
+            if (MatchManager.Instance.EstadoActual == MatchState.BuyTime)
+            {
+                
+                misInputs.move = Vector2.zero;
+                misInputs.jump = false;
+                misInputs.sprint = false;
+            }
+        }
+    }
+
     public override void Spawned()
     {
 
@@ -28,6 +83,8 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
                 mobileControls.starterInputs = misInputs;
                 mobileControls.weaponController = miArma;
                 mobileControls.playerInventory = miInventario;
+                mobileControls.jugadorLocal = this;
+
             }
         }
         else
@@ -39,4 +96,29 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
             if (controladorMovimiento != null) controladorMovimiento.enabled = false;
         }
     }
+
+    public void IntentarEquiparBomba()
+    {
+       
+        if (HasStateAuthority && tieneBomba)
+        {
+            
+            bool sacarBomba = !modeloBombaEnMano.activeSelf;
+
+           
+            RPC_AlternarBomba(sacarBomba);
+        }
+    }
+
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_AlternarBomba(bool estadoBomba)
+    {
+        if (modeloBombaEnMano != null) modeloBombaEnMano.SetActive(estadoBomba);
+
+        
+        if (miArma != null) miArma.gameObject.SetActive(!estadoBomba);
+    }
+
+
 }

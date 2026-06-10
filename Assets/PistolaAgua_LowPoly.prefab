@@ -160,15 +160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -100.154
+      value: -247.92
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.317
+      value: -4.393
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.688
+      value: -13.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3217f16616532354dab83986ae842c77, type: 3}
       propertyPath: m_LocalRotation.w
@@ -222,9 +222,6 @@ PrefabInstance:
       addedObject: {fileID: 2245089994458755215}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1376085573898138090}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4179630178625516359}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
       insertIndex: -1
@@ -232,6 +229,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6719228623085788670}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6423254317334640374}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3217f16616532354dab83986ae842c77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3064193235112975923}
   m_SourcePrefab: {fileID: 100100000, guid: 3217f16616532354dab83986ae842c77, type: 3}
 --- !u!4 &3683594252109576731 stripped
 Transform:
@@ -270,23 +273,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1376085573898138090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119417485082102614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f13230564cfa8469e31652f957a9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GroundWeapon
-  weaponSlot: 1
-  holdPosition: {x: 0.23, y: 0, z: 0.49}
-  holdRotation: {x: 0, y: -90, z: 0}
-  holdScale: {x: 0.57, y: 0.57, z: 0.57}
-  pickupTrigger: {fileID: 0}
 --- !u!65 &4179630178625516359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -343,3 +329,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   weaponData: {fileID: 11400000, guid: 71781130f0daa0240b28b1fc205e95e0, type: 2}
   muzzlePoint: {fileID: 4105920744545825311}
+--- !u!114 &6423254317334640374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119417485082102614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
+  weaponSlot: 0
+  holdPosition: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 0, z: 0}
+  holdScale: {x: 1, y: 1, z: 1}
+--- !u!114 &3064193235112975923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119417485082102614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 3008279551
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 6423254317334640374}
+  ForceRemoteRenderTimeframe: 0

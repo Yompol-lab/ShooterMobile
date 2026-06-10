@@ -10,7 +10,11 @@ public class PlayerInventory : NetworkBehaviour
     public Transform dropPoint;
     public float dropForce = 5f;
 
-    [Header("Slots Actuales (Se llenan solos al jugar)")]
+    [Header("C4 y Plantado")]
+    public NetworkPrefabRef prefabBombaPlantada; 
+    public bool enZonaPlantar = false;
+
+    [Header("Slots Actuales")]
     public GameObject currentPrimary;
     public GameObject currentSecondary;
     public GameObject currentKnife;
@@ -20,7 +24,6 @@ public class PlayerInventory : NetworkBehaviour
 
     public override void Spawned()
     {
-        
         if (currentPrimary != null) currentPrimary.SetActive(false);
         if (currentBomb != null) currentBomb.SetActive(false);
 
@@ -28,14 +31,42 @@ public class PlayerInventory : NetworkBehaviour
         else if (currentKnife != null) EquipSlot(WeaponSlot.Knife);
     }
 
-    
+    private void OnTriggerEnter(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = true; }
+    private void OnTriggerExit(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = false; }
+
+    public void PlantarBomba()
+    {
+        if (HasStateAuthority && activeSlot == WeaponSlot.Bomb && enZonaPlantar)
+        {
+            RPC_PlantarBombaRed();
+        }
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_PlantarBombaRed()
+    {
+        if (HasStateAuthority)
+        {
+            Runner.Spawn(prefabBombaPlantada, transform.position, Quaternion.identity, Runner.LocalPlayer);
+            if (MatchManager.Instance != null) MatchManager.Instance.AvisarBombaPlantada();
+        }
+
+        if (currentBomb != null)
+        {
+            NetworkObject bombaNet = currentBomb.GetComponent<NetworkObject>();
+            if (bombaNet != null && HasStateAuthority) Runner.Despawn(bombaNet);
+            currentBomb = null;
+        }
+
+        EquipSlot(WeaponSlot.Knife);
+    }
+
     public void JuntarArmaDelPiso(NetworkObject armaObj, WeaponSlot slot)
     {
         if (slot == WeaponSlot.Primary && currentPrimary != null) return;
         if (slot == WeaponSlot.Secondary && currentSecondary != null) return;
         if (slot == WeaponSlot.Bomb && currentBomb != null) return;
 
-    
         armaObj.RequestStateAuthority();
         RPC_AgarrarArmaRed(armaObj, slot);
     }
@@ -45,10 +76,7 @@ public class PlayerInventory : NetworkBehaviour
     {
         if (armaObj == null) return;
 
-        
         armaObj.transform.SetParent(weaponContainer);
-
-      
         ArmaEnElPisoRed armaScript = armaObj.GetComponent<ArmaEnElPisoRed>();
         if (armaScript != null)
         {
@@ -58,7 +86,6 @@ public class PlayerInventory : NetworkBehaviour
             armaScript.SetFisicas(false);
         }
 
-        // 3. La guardamos en el slot correspondiente
         if (slot == WeaponSlot.Primary) currentPrimary = armaObj.gameObject;
         else if (slot == WeaponSlot.Secondary) currentSecondary = armaObj.gameObject;
         else if (slot == WeaponSlot.Bomb) currentBomb = armaObj.gameObject;
@@ -68,10 +95,7 @@ public class PlayerInventory : NetworkBehaviour
 
     public void BotonTirarArma()
     {
-        if (HasStateAuthority && activeSlot != WeaponSlot.Knife)
-        {
-            RPC_TirarArmaRed(activeSlot);
-        }
+        if (HasStateAuthority && activeSlot != WeaponSlot.Knife) RPC_TirarArmaRed(activeSlot);
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -84,16 +108,13 @@ public class PlayerInventory : NetworkBehaviour
 
         if (weaponToDrop != null)
         {
-          
             weaponToDrop.transform.SetParent(null);
             weaponToDrop.transform.position = dropPoint.position;
             weaponToDrop.transform.rotation = dropPoint.rotation;
 
-            
             ArmaEnElPisoRed armaScript = weaponToDrop.GetComponent<ArmaEnElPisoRed>();
             if (armaScript != null) armaScript.SetFisicas(true);
 
-            // 3. La empujamos
             if (HasStateAuthority)
             {
                 Rigidbody rb = weaponToDrop.GetComponent<Rigidbody>();
@@ -104,8 +125,6 @@ public class PlayerInventory : NetworkBehaviour
                 }
             }
         }
-
-       
         if (currentKnife != null) EquipSlot(WeaponSlot.Knife);
     }
 

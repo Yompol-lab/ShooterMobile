@@ -254,6 +254,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3210420636700797508}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3397632321999913911}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2863725888775702198}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!4 &650697483049167007 stripped
 Transform:
@@ -280,6 +286,9 @@ MonoBehaviour:
   weaponContainer: {fileID: 5317441059084382654}
   dropPoint: {fileID: 5918304670974204092}
   dropForce: 5
+  prefabBombaPlantada:
+    RawGuidValue: 9ffcea8ac557752499733344ae5a8a7f
+  enZonaPlantar: 0
   currentPrimary: {fileID: 0}
   currentSecondary: {fileID: 4634097433547301258}
   currentKnife: {fileID: 5976423285781113313}
@@ -329,6 +338,8 @@ MonoBehaviour:
   - {fileID: -6011231222133212740}
   - {fileID: -7537320220237310870}
   - {fileID: -3210420636700797508}
+  - {fileID: -3397632321999913911}
+  - {fileID: 2863725888775702198}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4893304517471455706
 MonoBehaviour:
@@ -413,6 +424,33 @@ MonoBehaviour:
   _tieneBomba:
     _value: 0
   modeloBombaEnMano: {fileID: 8081599534071367615, guid: 70c504a62fb587641bca7c114b6a0149, type: 3}
+--- !u!114 &-3397632321999913911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95590c31a75e4e347ab5da03f3fafed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EfectoRagdollRed
+  animator: {fileID: 5778643957803450620}
+  characterController: {fileID: 5184108110412190153}
+--- !u!114 &2863725888775702198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f47378b1440ff74d809365474fc4a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaludJugadorRed
+  _Vida: 100
 --- !u!114 &5184108110412190148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -424,6 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &5184108110412190153 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228382, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 3487256142747875223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5184108110412190159 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

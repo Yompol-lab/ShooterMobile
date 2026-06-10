@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5742210218351395788}
   - component: {fileID: 3337437318077083306}
   - component: {fileID: 2310180211656189191}
-  - component: {fileID: 6015631925535511858}
   - component: {fileID: 3567738905010337508}
+  - component: {fileID: -7854866889057697310}
   m_Layer: 0
-  m_Name: "\u04414"
+  m_Name: "\u04414Plant"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,29 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
-  SortKey: 3740575992
+  SortKey: 3788182452
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 6015631925535511858}
+  - {fileID: -7854866889057697310}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &6015631925535511858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8081599534071367615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
-  weaponSlot: 3
-  holdPosition: {x: 0, y: 0, z: 0}
-  holdRotation: {x: 0, y: 0, z: 0}
-  holdScale: {x: 1, y: 1, z: 1}
 --- !u!135 &3567738905010337508
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -211,5 +195,23 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.95
+  m_Radius: 0.28
   m_Center: {x: -0.041482594, y: 0.031997465, z: 0.017284479}
+--- !u!114 &-7854866889057697310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081599534071367615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64293ed76a031ed4e9b246006e4a930c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogicaBombaPlantada
+  radioExplosion: 26.61
+  fuerzaExplosion: 80
+  danioMaximo: 500
+  efectoVisualExplosion: {fileID: 0}
+  sonidoBeep: {fileID: 0}
+  sonidoExplosion: {fileID: 0}

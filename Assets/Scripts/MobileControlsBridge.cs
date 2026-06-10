@@ -18,29 +18,26 @@ public class MobileControlsBridge : MonoBehaviour
 
     [HideInInspector] public ConfiguracionJugadorRed jugadorLocal;
 
-    
     public void BotonTirarArma()
     {
-        if (playerInventory != null)
-        {
-            playerInventory.BotonTirarArma();
-        }
+        if (playerInventory != null) playerInventory.BotonTirarArma();
     }
 
-   
     public void BotonSacarBomba()
     {
         if (playerInventory != null)
         {
-           
-            if (playerInventory.activeSlot == WeaponSlot.Bomb)
+            if (playerInventory.activeSlot == WeaponSlot.Bomb && playerInventory.enZonaPlantar)
+            {
+                playerInventory.PlantarBomba();
+            }
+            else if (playerInventory.activeSlot == WeaponSlot.Bomb)
             {
                 playerInventory.EquipSlot(WeaponSlot.Knife);
                 playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Knife);
             }
             else
             {
-                
                 playerInventory.EquipSlot(WeaponSlot.Bomb);
                 playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Bomb);
             }
@@ -49,86 +46,30 @@ public class MobileControlsBridge : MonoBehaviour
 
     private void Update()
     {
-        if (starterInputs == null)
-        {
-            return;
-        }
+        if (starterInputs == null) return;
 
         if (movementJoystick != null)
         {
-            Vector2 moveInput = new Vector2(
-                movementJoystick.Horizontal,
-                movementJoystick.Vertical
-            );
-
+            Vector2 moveInput = new Vector2(movementJoystick.Horizontal, movementJoystick.Vertical);
             starterInputs.MoveInput(moveInput);
         }
 
         if (cameraJoystick != null)
         {
             float lookX = cameraJoystick.Horizontal;
-            float lookY = cameraJoystick.Vertical;
-
-            lookY *= -1f;
-
-            if (invertY)
-                lookY *= -1f;
-
+            float lookY = cameraJoystick.Vertical * -1f;
+            if (invertY) lookY *= -1f;
             Vector2 lookInput = new Vector2(lookX, lookY) * cameraSensitivity;
-
             starterInputs.LookInput(lookInput);
         }
     }
 
-    public void FireButtonDown()
-    {
-        if (weaponController != null)
-            weaponController.MobileFireDown();
-    }
+    public void FireButtonDown() { if (weaponController != null) weaponController.MobileFireDown(); }
+    public void FireButtonUp() { if (weaponController != null) weaponController.MobileFireUp(); }
+    public void JumpButtonDown() { if (starterInputs != null) starterInputs.JumpInput(true); }
+    public void JumpButtonUp() { if (starterInputs != null) starterInputs.JumpInput(false); }
 
-    public void FireButtonUp()
-    {
-        if (weaponController != null)
-            weaponController.MobileFireUp();
-    }
-
-    public void JumpButtonDown()
-    {
-        if (starterInputs != null)
-            starterInputs.JumpInput(true);
-    }
-
-    public void JumpButtonUp()
-    {
-        if (starterInputs != null)
-            starterInputs.JumpInput(false);
-    }
-
-    
-    public void EquipPrimaryButton()
-    {
-        if (playerInventory != null)
-        {
-            playerInventory.EquipSlot(WeaponSlot.Primary);
-            playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Primary);
-        }
-    }
-
-    public void EquipSecondaryButton()
-    {
-        if (playerInventory != null)
-        {
-            playerInventory.EquipSlot(WeaponSlot.Secondary);
-            playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Secondary);
-        }
-    }
-
-    public void EquipKnifeButton()
-    {
-        if (playerInventory != null)
-        {
-            playerInventory.EquipSlot(WeaponSlot.Knife);
-            playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Knife);
-        }
-    }
+    public void EquipPrimaryButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Primary); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Primary); } }
+    public void EquipSecondaryButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Secondary); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Secondary); } }
+    public void EquipKnifeButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Knife); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Knife); } }
 }

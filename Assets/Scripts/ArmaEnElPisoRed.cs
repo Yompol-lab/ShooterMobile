@@ -26,13 +26,11 @@ public class ArmaEnElPisoRed : NetworkBehaviour
 
     private void IntentarAgarrar(Collider other)
     {
-        
         if (agarrada || Object == null || !Object.IsValid) return;
 
         PlayerInventory inventory = other.GetComponentInParent<PlayerInventory>();
         if (inventory != null && inventory.HasStateAuthority)
         {
-          
             if (weaponSlot == WeaponSlot.Primary && inventory.currentPrimary != null) return;
             if (weaponSlot == WeaponSlot.Secondary && inventory.currentSecondary != null) return;
             if (weaponSlot == WeaponSlot.Bomb && inventory.currentBomb != null) return;
@@ -42,17 +40,14 @@ public class ArmaEnElPisoRed : NetworkBehaviour
         }
     }
 
-    
     public void SetFisicas(bool enElPiso)
     {
         agarrada = !enElPiso;
-
         if (rb != null)
         {
             rb.isKinematic = !enElPiso;
             rb.useGravity = enElPiso;
         }
-
         foreach (Collider col in allColliders)
         {
             col.enabled = enElPiso;

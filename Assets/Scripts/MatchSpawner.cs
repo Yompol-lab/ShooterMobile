@@ -65,7 +65,7 @@ public class MatchSpawner : MonoBehaviour
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
 
-        
+       
         NetworkObject spawnedPlayer = runner.Spawn(
             playerPrefab,
             spawnPos,

@@ -1,59 +1,22 @@
-using Fusion;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class LocalHealthHUD : MonoBehaviour
 {
-    public TextMeshProUGUI healthText;
-    private Health localPlayerHealth;
+    [Header("Referencia UI")]
+    public TextMeshProUGUI textoVida;
 
-    private void Update()
+    void Update()
     {
         
-        if (localPlayerHealth == null)
-        {
-            Health[] allHealths = FindObjectsByType<Health>(FindObjectsSortMode.None);
-            foreach (Health h in allHealths)
-            {
-                
-                if (h.Object != null && h.Object.IsValid && h.Object.HasInputAuthority)
-                {
-                    localPlayerHealth = h;
-                    break;
-                }
-            }
-        }
+        var miJugador = FindObjectsByType<SaludJugadorRed>(FindObjectsSortMode.None)
+            .FirstOrDefault(j => j.Object != null && j.Object.HasInputAuthority);
 
-       
-        if (localPlayerHealth != null)
+        if (miJugador != null && textoVida != null)
         {
             
-            if (!localPlayerHealth.Object.IsValid) return;
-
-            int currentHP = Mathf.CeilToInt(localPlayerHealth.currentHealth);
-
-            if (currentHP < 0) currentHP = 0;
-
-            healthText.text = currentHP.ToString();
-
-            if (currentHP <= 20)
-            {
-                healthText.color = Color.red;
-            }
-            else
-            {
-                healthText.color = Color.white;
-            }
-
-            if (localPlayerHealth.isDead)
-            {
-                healthText.text = "0";
-            }
-        }
-        else
-        {
-            
-            healthText.text = "";
+            textoVida.text = miJugador.Vida.ToString();
         }
     }
 }

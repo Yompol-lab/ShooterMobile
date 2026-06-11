@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 5778643957803450620}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: MoveSpeed
-      value: 10
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
@@ -260,6 +260,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2863725888775702198}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6442430792835497418}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!4 &650697483049167007 stripped
 Transform:
@@ -306,15 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fd77eef3581f546847a5feafa289db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponController
-  mainCamera: {fileID: 1979340233392117924}
   currentWeapon: {fileID: 0}
-  allowMouseShooting: 0
-  impactLayers:
+  playerCamera: {fileID: 0}
+  hitLayers:
     serializedVersion: 2
-    m_Bits: 631
-  decalOffset: 0.01
-  impactLifeTime: 3
-  waterTravelTime: 0.5
+    m_Bits: 257
 --- !u!114 &-9134493894121797584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +333,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 5184108110412190148}
   - {fileID: 8320025052215404778}
+  - {fileID: 1597279581498531534}
   - {fileID: 4893304517471455706}
   - {fileID: -6011231222133212740}
   - {fileID: -7537320220237310870}
@@ -451,6 +451,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaludJugadorRed
   _Vida: 100
+--- !u!54 &6442430792835497418
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!114 &5184108110412190148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

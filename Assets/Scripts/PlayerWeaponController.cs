@@ -1,239 +1,98 @@
+using Fusion;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerWeaponController : MonoBehaviour
+namespace StarterAssets
 {
-    [Header("Referencias")]
-    public Camera mainCamera;
-
-    [Header("Arma Actual")]
-    public Weapon currentWeapon;
-
-    [Header("Input")]
-    public bool allowMouseShooting = false; 
-
-    [Header("Capas")]
-    public LayerMask impactLayers;
-
-    [Header("Decal")]
-    public float decalOffset = 0.01f;
-    public float impactLifeTime = 3f;
-
-    private float nextTimeToFire = 0f;
-    private ParticleSystem[] waterBeamParticles;
-
-    private float currentChargeTime = 0f;
-    public float waterTravelTime = 0.5f;
-
-    private bool mobileShootHeld = false;
-
-    void Update()
+    public class PlayerWeaponController : NetworkBehaviour
     {
-        if (currentWeapon == null || currentWeapon.weaponData == null || currentWeapon.muzzlePoint == null)
-            return;
+        [Header("Inputs")]
+        private StarterAssetsInputs starterInputs;
+        private bool isShooting = false;
 
-        WeaponData data = currentWeapon.weaponData;
+        [Header("Configuración de Armas")]
+        public Weapon currentWeapon;
 
-        
-        bool pcHoldingClick = allowMouseShooting && Mouse.current != null && Mouse.current.leftButton.isPressed;
-        bool pcClickPressed = allowMouseShooting && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
+        [Header("Network Damage Settings")]
+        public Camera playerCamera;
+        public LayerMask hitLayers;
 
-        bool isHoldingShoot = pcHoldingClick || mobileShootHeld;
-        bool isPressedShoot = pcClickPressed || mobileShootHeld;
+        private float nextFireTime = 0f;
 
-        if (data.weaponName == "PistolaAgua")
+        public override void Spawned()
         {
-            HandleWaterBeamVisuals(isHoldingShoot);
+            starterInputs = GetComponent<StarterAssetsInputs>();
+            if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
+        }
 
-            if (isHoldingShoot)
+        public override void FixedUpdateNetwork()
+        {
+            if (!HasStateAuthority || currentWeapon == null || currentWeapon.weaponData == null) return;
+
+            if (isShooting)
             {
-                currentChargeTime += Time.deltaTime;
-
-                if (currentChargeTime >= waterTravelTime)
+                if (Time.time >= nextFireTime)
                 {
-                    if (Time.time >= nextTimeToFire)
+                    Fire();
+
+                    nextFireTime = Time.time + currentWeapon.weaponData.fireRate;
+
+                    if (!currentWeapon.weaponData.automatic) isShooting = false;
+                }
+            }
+        }
+
+        private void Fire()
+        {
+            currentWeapon.OnFireLocal();
+
+            
+            ProcessNetworkHit(currentWeapon.weaponData.damage, currentWeapon.weaponData.range, currentWeapon.weaponData.pelletsPerShot);
+        }
+
+        private void ProcessNetworkHit(float damage, float range, int pellets)
+        {
+            if (playerCamera == null) return;
+
+           
+            for (int i = 0; i < pellets; i++)
+            {
+                Vector3 rayDirection = playerCamera.transform.forward;
+                if (currentWeapon.weaponData.spread > 0)
+                {
+                   
+                    rayDirection += new Vector3(
+                        Random.Range(-currentWeapon.weaponData.spread, currentWeapon.weaponData.spread),
+                        Random.Range(-currentWeapon.weaponData.spread, currentWeapon.weaponData.spread),
+                        0f
+                    );
+                }
+
+                Ray ray = new Ray(playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0)), rayDirection);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, range, hitLayers))
+                {
+                    if (currentWeapon.weaponData.bulletImpactPrefab != null)
                     {
-                        nextTimeToFire = Time.time + data.fireRate;
-                        ShootKamehameha(data);
+                        Instantiate(currentWeapon.weaponData.bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+
+                    SaludJugadorRed targetSalud = hit.collider.GetComponentInParent<SaludJugadorRed>();
+
+                    if (targetSalud != null)
+                    {
+                        
+                        if (targetSalud.Object == Object) continue;
+
+                        int finalDamage = Mathf.RoundToInt(damage);
+                        targetSalud.RPC_TomarDanio(finalDamage, transform.position);
                     }
                 }
             }
-            else
-            {
-                currentChargeTime = 0f;
-            }
-        }
-        else
-        {
-            if (data.automatic)
-            {
-                if (isHoldingShoot)
-                    TryShoot();
-            }
-            else
-            {
-                if (isPressedShoot)
-                    TryShoot();
-            }
-        }
-    }
-
-    void HandleWaterBeamVisuals(bool isFiring)
-    {
-        if (waterBeamParticles == null || waterBeamParticles.Length == 0)
-        {
-            waterBeamParticles = currentWeapon.muzzlePoint.GetComponentsInChildren<ParticleSystem>();
         }
 
-        foreach (var ps in waterBeamParticles)
-        {
-            if (isFiring && !ps.isPlaying)
-                ps.Play(true);
-            else if (!isFiring && ps.isPlaying)
-                ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        }
-    }
-
-    void TryShoot()
-    {
-        WeaponData data = currentWeapon.weaponData;
-
-        if (Time.time < nextTimeToFire)
-            return;
-
-        nextTimeToFire = Time.time + data.fireRate;
-
-        if (data.weaponName == "PistolaAgua")
-            ShootKamehameha(data);
-        else
-            ShootNormal(data);
-    }
-
-    void ShootNormal(WeaponData data)
-    {
-        if (mainCamera == null)
-        {
-            Debug.LogWarning("No hay Main Camera asignada en PlayerWeaponController.");
-            return;
-        }
-
-        if (data.muzzleFlashPrefab != null)
-        {
-            GameObject flash = Instantiate(
-                data.muzzleFlashPrefab,
-                currentWeapon.muzzlePoint.position,
-                currentWeapon.muzzlePoint.rotation,
-                currentWeapon.muzzlePoint
-            );
-
-            flash.transform.localScale = Vector3.one;
-            Destroy(flash, 0.12f);
-        }
-
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-        Vector3 shootDirection = ray.direction;
-        shootDirection += new Vector3(
-            Random.Range(-data.spread, data.spread),
-            Random.Range(-data.spread, data.spread),
-            0f
-        );
-
-        shootDirection.Normalize();
-
-        if (Physics.Raycast(ray.origin, shootDirection, out RaycastHit hit, data.range, impactLayers))
-        {
-            ProcessImpact(hit, data);
-            SpawnImpact(hit, data);
-        }
-    }
-
-    void ShootKamehameha(WeaponData data)
-    {
-        if (mainCamera == null)
-        {
-            Debug.LogWarning("No hay Main Camera asignada en PlayerWeaponController.");
-            return;
-        }
-
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-        RaycastHit[] hits = Physics.SphereCastAll(
-            ray.origin,
-            data.beamRadius,
-            ray.direction,
-            data.range,
-            impactLayers
-        );
-
-        foreach (var hit in hits)
-        {
-            ProcessImpact(hit, data);
-        }
-    }
-
-    void ProcessImpact(RaycastHit hit, WeaponData data)
-    {
-        
-        Hitbox hitbox = hit.collider.GetComponent<Hitbox>();
-        if (hitbox != null)
-        {
-            
-            hitbox.TakeDamage(data.damage, hit.point);
-        }
-        else
-        {
-            
-            Health health = hit.collider.GetComponentInParent<Health>();
-            if (health != null)
-            {
-                health.RPC_TakeDamage(data.damage, hit.point);
-            }
-        }
-
-        FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
-        if (extintor != null)
-            extintor.TriggerSmoke();
-
-        if (data.weaponName == "PistolaAgua")
-        {
-            FireTarget fuego = hit.collider.GetComponentInParent<FireTarget>();
-            if (fuego != null)
-                fuego.Extinguish();
-        }
-    }
-
-    void SpawnImpact(RaycastHit hit, WeaponData data)
-    {
-        if (data.bulletImpactPrefab == null)
-            return;
-
-        GameObject impact = Instantiate(
-            data.bulletImpactPrefab,
-            hit.point + hit.normal * decalOffset,
-            Quaternion.LookRotation(hit.normal)
-        );
-
-        impact.transform.SetParent(hit.collider.transform);
-        Destroy(impact, impactLifeTime);
-    }
-
-    public void SetCurrentWeapon(Weapon weapon)
-    {
-        currentWeapon = weapon;
-        nextTimeToFire = 0f;
-        waterBeamParticles = null;
-        currentChargeTime = 0f;
-        mobileShootHeld = false;
-    }
-
-    public void MobileFireDown()
-    {
-        mobileShootHeld = true;
-    }
-
-    public void MobileFireUp()
-    {
-        mobileShootHeld = false;
+        public void MobileFireDown() { isShooting = true; }
+        public void MobileFireUp() { isShooting = false; }
+        public void SetCurrentWeapon(Weapon weapon) { currentWeapon = weapon; }
     }
 }

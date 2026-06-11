@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Glock
   weaponSlot: 1
-  damage: 25
+  damage: 20
   range: 100
   fireRate: 0.2
   automatic: 0

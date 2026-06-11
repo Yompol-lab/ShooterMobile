@@ -15,13 +15,13 @@ public class VivoxManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
         await VivoxService.Instance.InitializeAsync();
 
-        Debug.Log("Vivox listo");
+        
     }
 
     public async void Login()
     {
         await VivoxService.Instance.LoginAsync();
-        Debug.Log("Logueado en Vivox");
+        
     }
 
     public async void JoinVoice(string channelName)
@@ -31,6 +31,6 @@ public class VivoxManager : MonoBehaviour
             ChatCapability.AudioOnly
         );
 
-        Debug.Log("Entraste al canal: " + channelName);
+        
     }
 }

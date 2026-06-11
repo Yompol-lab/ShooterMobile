@@ -15,7 +15,7 @@ public class PlayerJoinSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        Debug.Log("Jugador conectado a la sala: " + player);
+        
         
     }
 
@@ -54,7 +54,7 @@ public class PlayerJoinSpawner : MonoBehaviour, INetworkRunnerCallbacks
         );
 
         runner.SetPlayerObject(player, obj);
-        Debug.Log("Jugador instanciado correctamente: " + player);
+       
     }
 
     

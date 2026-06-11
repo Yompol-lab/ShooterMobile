@@ -110,10 +110,7 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
-            if (_playerInput == null)
-            {
-                Debug.LogError("PLAYER INPUT ES NULL");
-            }
+           
 
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
@@ -142,7 +139,7 @@ namespace StarterAssets
 
                 if (_controller == null)
                 {
-                    Debug.LogError("CONTROLLER ES NULL");
+                 
                     return;
                 }
             }
@@ -189,10 +186,7 @@ namespace StarterAssets
         private void Move()
         {
 
-            Debug.Log("_input = " + (_input != null));
-            Debug.Log("_controller = " + (_controller != null));
-            Debug.Log("_playerInput = " + (_playerInput != null));
-            Debug.Log("CameraTarget = " + (CinemachineCameraTarget != null));
+            
 
             
 
@@ -221,19 +215,15 @@ namespace StarterAssets
             {
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
             }
-            Debug.Log("INPUT MOVE = " + _input.move);
-            Debug.Log("SPEED = " + _speed);
-            Debug.Log("DIR = " + inputDirection);
+            
             _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            Debug.Log("POS = " + transform.position);
-            // ---> NUEVO: CÓDIGO DE ANIMACIÓN <---
+            
             if (animator != null)
             {
-                // Usamos un pequeño "dampTime" (0.1f) para que la transición de números sea suave y el personaje no patine.
-                // _input.move.x nos da un valor entre -1 (Izquierda) y 1 (Derecha)
+                
                 animator.SetFloat("InputX", _input.move.x, 0.1f, Time.deltaTime);
 
-                // _input.move.y nos da un valor entre -1 (Atrás) y 1 (Adelante)
+                
                 animator.SetFloat("InputY", _input.move.y, 0.1f, Time.deltaTime);
             }
         }

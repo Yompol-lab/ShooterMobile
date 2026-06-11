@@ -13,11 +13,15 @@ public class WeaponData : ScriptableObject
     public float fireRate = 0.2f;
     public bool automatic = false;
 
+    [Header("Escopetas (Perdigones)")]
+    [Tooltip("Poner 1 para rifles/pistolas. Poner 8 o más para escopetas.")]
+    public int pelletsPerShot = 1; 
+
     [Header("Precisión")]
     public float spread = 0.01f;
 
     [Header("Kamehameha (Solo Pistola de Agua)")]
-    public float beamRadius = 0.5f; 
+    public float beamRadius = 0.5f;
 
     [Header("Efectos")]
     public GameObject muzzleFlashPrefab;

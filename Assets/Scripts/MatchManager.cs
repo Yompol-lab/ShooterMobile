@@ -26,6 +26,8 @@ public class MatchManager : NetworkBehaviour
     [Networked] public int PuntajeTerro { get; set; }
     [Networked] public int RondaActual { get; set; }
 
+    [Networked] public Team UltimoGanador { get; set; }
+
     public override void Spawned()
     {
         Instance = this;
@@ -58,7 +60,6 @@ public class MatchManager : NetworkBehaviour
         {
             EstadoActual = MatchState.BombPlanted;
             TiempoRestante = tiempoBomba;
-            Debug.Log("¡BOMBA PLANTADA!");
         }
     }
 
@@ -70,6 +71,9 @@ public class MatchManager : NetworkBehaviour
     {
         EstadoActual = MatchState.RoundEnd;
         TiempoRestante = tiempoFinRonda;
+
+        UltimoGanador = equipoGanador;
+
         if (equipoGanador == Team.Police) PuntajePolicia++; else PuntajeTerro++;
         if (PuntajePolicia >= rondasParaGanar || PuntajeTerro >= rondasParaGanar) EstadoActual = MatchState.MatchFinished;
     }

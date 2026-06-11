@@ -1,6 +1,6 @@
 using Fusion;
 using UnityEngine;
-
+using StarterAssets;
 public class SaludJugadorRed : NetworkBehaviour
 {
     [Header("Configuración")]
@@ -12,19 +12,18 @@ public class SaludJugadorRed : NetworkBehaviour
     public override void Spawned()
     {
         ragdoll = GetComponent<EfectoRagdollRed>();
-        if (ragdoll == null) Debug.LogError("¡Te falta el script EfectoRagdollRed en el jugador!");
         estaMuerto = false;
-        Vida = 100;
+        Vida = 100; 
     }
 
-    
+
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_TomarDanio(int cantidad, Vector3 posicionDelOrígen)
     {
         if (estaMuerto) return;
 
         Vida -= cantidad;
-        Debug.Log($"Vida restante: {Vida}");
+        
 
         if (Vida <= 0)
         {

@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: 8dd42cfce9fbf934e97313e180757b63
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+labels:
+- FusionPrefab
 AssetOrigin:
   serializedVersion: 1
   productId: 283665
@@ -12,3 +9,8 @@ AssetOrigin:
   packageVersion: 1.0
   assetPath: Assets/Low Poly AR Weapon Pack 1/Prefabs/Weapons/ShotGun_B.prefab
   uploadId: 724253
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

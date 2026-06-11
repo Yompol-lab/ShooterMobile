@@ -1,6 +1,6 @@
 using Fusion;
 using UnityEngine;
-
+using StarterAssets;
 public enum WeaponSlot { Primary, Secondary, Knife, Bomb, Utility }
 
 public class PlayerInventory : NetworkBehaviour

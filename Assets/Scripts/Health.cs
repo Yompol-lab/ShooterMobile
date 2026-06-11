@@ -60,7 +60,7 @@ public class Health : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_Die()
     {
-        Debug.Log(gameObject.name + " murió");
+       
 
         if (ragdoll != null)
             ragdoll.EnableRagdoll();

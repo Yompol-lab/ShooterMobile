@@ -19,14 +19,11 @@ public class MinimapPlayer : MonoBehaviour
             }
         }
 
-        if (player == null)
-        {
-            Debug.LogError("No se encontró el jugador local");
-        }
+        
     }
     void Update()
     {
-        Debug.Log(player.position); 
+       
 
         Vector3 pos = player.position;
 

@@ -32,12 +32,9 @@ public class NetworkManager : MonoBehaviour
         if (joinSpawner != null)
         {
             runner.AddCallbacks(joinSpawner);
-            Debug.Log("PlayerJoinSpawner registrado.");
+            
         }
-        else
-        {
-            Debug.LogError("No encontré PlayerJoinSpawner.");
-        }
+        
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
         var result = await runner.StartGame(new StartGameArgs()
@@ -48,16 +45,6 @@ public class NetworkManager : MonoBehaviour
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
 
-        if (result.Ok)
-        {
-            Debug.Log("Fusion conectado correctamente.");
-            Debug.Log("IsServer = " + runner.IsServer);
-            Debug.Log("IsClient = " + runner.IsClient);
-            Debug.Log("LocalPlayer = " + runner.LocalPlayer);
-        }
-        else
-        {
-            Debug.LogError("Fusion no pudo iniciar: " + result.ShutdownReason);
-        }
+        
     }
 }

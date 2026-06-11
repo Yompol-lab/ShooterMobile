@@ -45,16 +45,6 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_RecibirBomba()
-    {
-        tieneBomba = true;
-        if (HasStateAuthority)
-        {
-            Debug.Log("¡ME DIERON LA BOMBA!");
-            
-        }
-    }
 
     private void Update()
     {

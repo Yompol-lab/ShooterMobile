@@ -1,38 +1,54 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class EfectoRagdollRed : NetworkBehaviour
+namespace StarterAssets
 {
-    public Animator animator;
-    public CharacterController characterController;
-    private Rigidbody[] huesos;
-
-    private void Awake()
+    public class EfectoRagdollRed : NetworkBehaviour
     {
-        huesos = GetComponentsInChildren<Rigidbody>();
-        DesactivarRagdoll();
-    }
+        public Animator animator;
+        public CharacterController characterController;
+        private Rigidbody[] huesos;
 
-    public void DesactivarRagdoll()
-    {
-        foreach (Rigidbody rb in huesos) rb.isKinematic = true;
-    }
-
-    public void Morir(Vector3 direccionDelTiro)
-    {
-        if (HasStateAuthority) RPC_ActivarRagdoll(direccionDelTiro);
-    }
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void RPC_ActivarRagdoll(Vector3 direccionImpacto)
-    {
-        if (animator != null) animator.enabled = false;
-        if (characterController != null) characterController.enabled = false;
-
-        foreach (Rigidbody rb in huesos)
+        private void Awake()
         {
-            rb.isKinematic = false;
-            rb.AddForce(direccionImpacto * 50f, ForceMode.Impulse);
+            huesos = GetComponentsInChildren<Rigidbody>();
+            DesactivarRagdoll();
+        }
+
+        public void DesactivarRagdoll()
+        {
+            foreach (Rigidbody rb in huesos) rb.isKinematic = true;
+        }
+
+        public void Morir(Vector3 direccionDelTiro)
+        {
+            if (HasStateAuthority) RPC_ActivarRagdoll(direccionDelTiro);
+        }
+
+        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+        private void RPC_ActivarRagdoll(Vector3 direccionImpacto)
+        {
+            
+            if (animator != null) animator.enabled = false;
+            if (characterController != null) characterController.enabled = false;
+
+            
+            FirstPersonController fpc = GetComponent<FirstPersonController>();
+            if (fpc != null) fpc.enabled = false;
+
+            PlayerInput pi = GetComponent<PlayerInput>();
+            if (pi != null) pi.enabled = false;
+
+            PlayerWeaponController pwc = GetComponent<PlayerWeaponController>();
+            if (pwc != null) pwc.enabled = false;
+
+            
+            foreach (Rigidbody rb in huesos)
+            {
+                rb.isKinematic = false;
+                rb.AddForce(direccionImpacto * 50f, ForceMode.Impulse);
+            }
         }
     }
 }

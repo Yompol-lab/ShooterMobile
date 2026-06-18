@@ -166,4 +166,29 @@ public class PlayerInventory : NetworkBehaviour
     {
         if (!HasStateAuthority) EquipSlot(nuevoSlot);
     }
+
+    public void RecibirArmaComprada(WeaponData datosArma)
+    {
+        if (datosArma.prefabParaMano == null || weaponContainer == null) return;
+
+        
+        GameObject nuevaArma = Instantiate(datosArma.prefabParaMano, weaponContainer);
+
+        
+        if (datosArma.weaponSlot == WeaponSlot.Primary)
+        {
+            if (currentPrimary != null) Destroy(currentPrimary);
+            currentPrimary = nuevaArma;
+        }
+        else if (datosArma.weaponSlot == WeaponSlot.Secondary)
+        {
+            if (currentSecondary != null) Destroy(currentSecondary);
+            currentSecondary = nuevaArma;
+        }
+
+        
+        EquipSlot(datosArma.weaponSlot);
+        if (Object.HasStateAuthority) RPC_SincronizarSlotRed(datosArma.weaponSlot);
+    }
+
 }

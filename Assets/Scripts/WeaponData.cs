@@ -14,8 +14,7 @@ public class WeaponData : ScriptableObject
     public bool automatic = false;
 
     [Header("Escopetas (Perdigones)")]
-    [Tooltip("Poner 1 para rifles/pistolas. Poner 8 o más para escopetas.")]
-    public int pelletsPerShot = 1; 
+    public int pelletsPerShot = 1;
 
     [Header("Precisión")]
     public float spread = 0.01f;
@@ -25,7 +24,10 @@ public class WeaponData : ScriptableObject
 
     [Header("Efectos")]
     public GameObject muzzleFlashPrefab;
-
-    [Tooltip("Prefab que ya trae el impacto y el agujero de bala juntos")]
     public GameObject bulletImpactPrefab;
+
+    
+    [Header("Tienda")]
+    public int precio = 2700;
+    public GameObject prefabParaMano;
 }

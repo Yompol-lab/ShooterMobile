@@ -263,6 +263,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6442430792835497418}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 464360030796126711}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!4 &650697483049167007 stripped
 Transform:
@@ -340,6 +343,7 @@ MonoBehaviour:
   - {fileID: -3210420636700797508}
   - {fileID: -3397632321999913911}
   - {fileID: 2863725888775702198}
+  - {fileID: 464360030796126711}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4893304517471455706
 MonoBehaviour:
@@ -478,6 +482,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &464360030796126711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9ec85b26dcc0a45b08a14b1062c160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EconomiaJugador
+  dineroInicial: 8000
+  _Dinero: 6000
 --- !u!114 &5184108110412190148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

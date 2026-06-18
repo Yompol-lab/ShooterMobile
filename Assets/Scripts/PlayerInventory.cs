@@ -167,12 +167,26 @@ public class PlayerInventory : NetworkBehaviour
         if (!HasStateAuthority) EquipSlot(nuevoSlot);
     }
 
-    public void RecibirArmaComprada(WeaponData datosArma)
+    public bool RecibirArmaComprada(WeaponData datosArma)
     {
-        if (datosArma.prefabParaMano == null || weaponContainer == null) return;
+        if (datosArma.prefabParaMano == null)
+        {
+            Debug.LogError($" ERROR: El archivo WeaponData '{datosArma.weaponName}' no tiene puesto el 'Prefab Para Mano' en el Inspector.");
+            return false;
+        }
+        if (weaponContainer == null)
+        {
+            Debug.LogError(" ERROR: El script PlayerInventory de tu jugador no tiene asignado el 'Weapon Container' (la cámara) en el Inspector.");
+            return false;
+        }
 
         
         GameObject nuevaArma = Instantiate(datosArma.prefabParaMano, weaponContainer);
+
+        
+        nuevaArma.transform.localPosition = Vector3.zero;
+        nuevaArma.transform.localRotation = Quaternion.identity;
+        nuevaArma.transform.localScale = Vector3.one; 
 
         
         if (datosArma.weaponSlot == WeaponSlot.Primary)
@@ -189,6 +203,8 @@ public class PlayerInventory : NetworkBehaviour
         
         EquipSlot(datosArma.weaponSlot);
         if (Object.HasStateAuthority) RPC_SincronizarSlotRed(datosArma.weaponSlot);
+
+        return true;
     }
 
 }

@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class EconomiaJugador : NetworkBehaviour
 {
-    [Header("Billetera")]
-    [Networked] public int Dinero { get; set; } = 800;
+    [Header("Configuración Inicial")]
+    public int dineroInicial = 800; 
+
+    [Header("Billetera Actual (Red)")]
+    [Networked] public int Dinero { get; set; }
 
     public override void Spawned()
     {
-        if (HasStateAuthority) Dinero = 800;
+        
+        if (HasStateAuthority)
+        {
+            Dinero = dineroInicial;
+        }
     }
 
     public bool Gastar(int monto)

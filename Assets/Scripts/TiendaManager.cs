@@ -1,67 +1,108 @@
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using Fusion;
 
 public class TiendaManager : MonoBehaviour
 {
-    [Header("Paneles UI")]
+    [Header("Contenedor Maestro (Fondo y Ruedas)")]
+    public GameObject contenedorTienda;
+
+    [Header("Paneles UI Internos")]
     public GameObject panelTiendaPrincipal;
     public GameObject panelRifles;
     public GameObject panelPistolas;
+    public GameObject panelHeavy;
+    public GameObject botonAtras;
 
     [Header("Textos")]
     public TextMeshProUGUI textoDinero;
 
     private bool estabaEnCompra = false;
+    private EconomiaJugador miEconomiaLocal;
+    private MatchManager miMatchManager;
 
     void Update()
     {
-        if (MatchManager.Instance == null) return;
+        if (miMatchManager == null)
+        {
+            miMatchManager = MatchManager.Instance;
+            if (miMatchManager == null) miMatchManager = FindFirstObjectByType<MatchManager>();
+            if (miMatchManager == null) return;
+        }
 
-        bool esTiempoCompra = MatchManager.Instance.EstadoActual == MatchState.BuyTime;
+        if (miMatchManager.Object == null) return;
 
+        bool esTiempoCompra = miMatchManager.EstadoActual == MatchState.BuyTime;
+
+        
         if (!esTiempoCompra)
         {
             if (estabaEnCompra)
             {
-                panelTiendaPrincipal.SetActive(false);
-                panelRifles.SetActive(false);
-                panelPistolas.SetActive(false);
+                if (contenedorTienda != null) contenedorTienda.SetActive(false);
                 estabaEnCompra = false;
             }
             return;
         }
 
+        
         if (esTiempoCompra && !estabaEnCompra)
         {
-            panelTiendaPrincipal.SetActive(true);
-            panelRifles.SetActive(false);
-            panelPistolas.SetActive(false);
+            if (contenedorTienda != null) contenedorTienda.SetActive(true);
+            VolverAtras(); 
             estabaEnCompra = true;
         }
 
-        var miEco = FindObjectsByType<EconomiaJugador>(FindObjectsSortMode.None).FirstOrDefault(e => e.HasInputAuthority);
-        if (miEco != null && textoDinero != null)
+        
+        if (textoDinero != null)
         {
-            textoDinero.text = "$ " + miEco.Dinero.ToString();
+            if (miEconomiaLocal == null || miEconomiaLocal.Object == null)
+                miEconomiaLocal = FindObjectsByType<EconomiaJugador>(FindObjectsSortMode.None).FirstOrDefault(e => e.Object != null && e.HasInputAuthority);
+
+            if (miEconomiaLocal != null)
+                textoDinero.text = "$ " + miEconomiaLocal.Dinero.ToString();
         }
     }
 
-    public void IrARifles() { panelTiendaPrincipal.SetActive(false); panelRifles.SetActive(true); }
-    public void IrAPistolas() { panelTiendaPrincipal.SetActive(false); panelPistolas.SetActive(true); }
-    public void VolverAtras() { panelRifles.SetActive(false); panelPistolas.SetActive(false); panelTiendaPrincipal.SetActive(true); }
+   
+    private void ApagarRuedasInternas()
+    {
+        if (panelTiendaPrincipal != null) panelTiendaPrincipal.SetActive(false);
+        if (panelRifles != null) panelRifles.SetActive(false);
+        if (panelPistolas != null) panelPistolas.SetActive(false);
+        if (panelHeavy != null) panelHeavy.SetActive(false);
+        if (botonAtras != null) botonAtras.SetActive(false);
+    }
 
-    
+    public void IrARifles() { ApagarRuedasInternas(); if (panelRifles != null) panelRifles.SetActive(true); if (botonAtras != null) botonAtras.SetActive(true); }
+    public void IrAPistolas() { ApagarRuedasInternas(); if (panelPistolas != null) panelPistolas.SetActive(true); if (botonAtras != null) botonAtras.SetActive(true); }
+    public void IrAHeavy() { ApagarRuedasInternas(); if (panelHeavy != null) panelHeavy.SetActive(true); if (botonAtras != null) botonAtras.SetActive(true); }
+
+    public void VolverAtras() { ApagarRuedasInternas(); if (panelTiendaPrincipal != null) panelTiendaPrincipal.SetActive(true); }
+
     public void ComprarArma(WeaponData arma)
     {
-        var miEco = FindObjectsByType<EconomiaJugador>(FindObjectsSortMode.None).FirstOrDefault(e => e.HasInputAuthority);
-        var miInventario = FindObjectsByType<PlayerInventory>(FindObjectsSortMode.None).FirstOrDefault(i => i.HasInputAuthority);
+        if (miMatchManager == null || miMatchManager.Object == null || miMatchManager.EstadoActual != MatchState.BuyTime) return;
+        if (miEconomiaLocal == null) return;
 
-        if (miEco != null && miInventario != null)
+        var miInventario = miEconomiaLocal.GetComponent<PlayerInventory>();
+
+        if (miInventario != null)
         {
-            if (miEco.Gastar(arma.precio))
+            
+            if (miEconomiaLocal.Dinero >= arma.precio)
             {
-                miInventario.RecibirArmaComprada(arma);
+                
+                if (miInventario.RecibirArmaComprada(arma))
+                {
+                    miEconomiaLocal.Gastar(arma.precio);
+                    Debug.Log($" TIENDA: Compra exitosa de {arma.weaponName}. Cobrado: ${arma.precio}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning(" TIENDA: No te alcanza la plata para comprar esta arma.");
             }
         }
     }

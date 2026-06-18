@@ -18,7 +18,10 @@ MonoBehaviour:
   range: 120
   fireRate: 0.15
   automatic: 1
+  pelletsPerShot: 1
   spread: 0.02
   beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
+  precio: 2700
+  prefabParaMano: {fileID: 7732297833616457025, guid: acc80e9abb08e694ba0d0361be5d3860, type: 3}

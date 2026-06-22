@@ -30,4 +30,10 @@ public class WeaponData : ScriptableObject
     [Header("Tienda")]
     public int precio = 2700;
     public GameObject prefabParaMano;
+
+    [Header("Munición y Recarga")]
+    public int tamañoCargador = 30;    
+    public int municionReservaMaxima = 90; 
+    public float tiempoRecarga = 2f;   
+
 }

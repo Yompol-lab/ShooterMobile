@@ -11,7 +11,7 @@ public class PlayerInventory : NetworkBehaviour
     public float dropForce = 5f;
 
     [Header("C4 y Plantado")]
-    public NetworkPrefabRef prefabBombaPlantada; 
+    public NetworkPrefabRef prefabBombaPlantada;
     public bool enZonaPlantar = false;
 
     [Header("Slots Actuales")]
@@ -180,15 +180,20 @@ public class PlayerInventory : NetworkBehaviour
             return false;
         }
 
-        
         GameObject nuevaArma = Instantiate(datosArma.prefabParaMano, weaponContainer);
 
-        
         nuevaArma.transform.localPosition = Vector3.zero;
         nuevaArma.transform.localRotation = Quaternion.identity;
-        nuevaArma.transform.localScale = Vector3.one; 
+        nuevaArma.transform.localScale = Vector3.one;
 
         
+        if (datosArma.tamañoCargador > 0)
+        {
+            MunicionArma scriptBala = nuevaArma.AddComponent<MunicionArma>();
+            scriptBala.Configurar(datosArma);
+        }
+       
+
         if (datosArma.weaponSlot == WeaponSlot.Primary)
         {
             if (currentPrimary != null) Destroy(currentPrimary);
@@ -200,11 +205,19 @@ public class PlayerInventory : NetworkBehaviour
             currentSecondary = nuevaArma;
         }
 
-        
         EquipSlot(datosArma.weaponSlot);
         if (Object.HasStateAuthority) RPC_SincronizarSlotRed(datosArma.weaponSlot);
 
         return true;
     }
 
+   
+    public GameObject GetActiveWeaponObject()
+    {
+        if (activeSlot == WeaponSlot.Primary) return currentPrimary;
+        if (activeSlot == WeaponSlot.Secondary) return currentSecondary;
+        if (activeSlot == WeaponSlot.Knife) return currentKnife;
+        if (activeSlot == WeaponSlot.Bomb) return currentBomb;
+        return null;
+    }
 }

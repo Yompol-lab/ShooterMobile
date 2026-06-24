@@ -32,11 +32,30 @@ namespace StarterAssets
             {
                 if (Time.time >= nextFireTime)
                 {
-                    Fire();
+                   
+                    PlayerInventory inv = GetComponent<PlayerInventory>();
+                    GameObject armaActiva = inv != null ? inv.GetActiveWeaponObject() : null;
+                    bool tieneBalas = true;
 
-                    nextFireTime = Time.time + currentWeapon.weaponData.fireRate;
+                    if (armaActiva != null)
+                    {
+                        MunicionArma mun = armaActiva.GetComponent<MunicionArma>();
+                        
+                        if (mun != null) tieneBalas = mun.IntentarDisparar();
+                    }
 
-                    if (!currentWeapon.weaponData.automatic) isShooting = false;
+                    if (tieneBalas)
+                    {
+                        Fire();
+                        nextFireTime = Time.time + currentWeapon.weaponData.fireRate;
+                        if (!currentWeapon.weaponData.automatic) isShooting = false;
+                    }
+                    else
+                    {
+                      
+                        if (!currentWeapon.weaponData.automatic) isShooting = false;
+                    }
+                    
                 }
             }
         }
@@ -44,8 +63,6 @@ namespace StarterAssets
         private void Fire()
         {
             currentWeapon.OnFireLocal();
-
-            
             ProcessNetworkHit(currentWeapon.weaponData.damage, currentWeapon.weaponData.range, currentWeapon.weaponData.pelletsPerShot);
         }
 
@@ -53,13 +70,11 @@ namespace StarterAssets
         {
             if (playerCamera == null) return;
 
-           
             for (int i = 0; i < pellets; i++)
             {
                 Vector3 rayDirection = playerCamera.transform.forward;
                 if (currentWeapon.weaponData.spread > 0)
                 {
-                   
                     rayDirection += new Vector3(
                         Random.Range(-currentWeapon.weaponData.spread, currentWeapon.weaponData.spread),
                         Random.Range(-currentWeapon.weaponData.spread, currentWeapon.weaponData.spread),
@@ -81,9 +96,7 @@ namespace StarterAssets
 
                     if (targetSalud != null)
                     {
-                        
                         if (targetSalud.Object == Object) continue;
-
                         int finalDamage = Mathf.RoundToInt(damage);
                         targetSalud.RPC_TomarDanio(finalDamage, transform.position);
                     }

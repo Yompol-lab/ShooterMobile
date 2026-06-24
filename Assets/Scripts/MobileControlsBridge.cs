@@ -1,5 +1,6 @@
 using UnityEngine;
 using StarterAssets;
+using TMPro; 
 
 public class MobileControlsBridge : MonoBehaviour
 {
@@ -16,7 +17,25 @@ public class MobileControlsBridge : MonoBehaviour
     public float cameraSensitivity = 2f;
     public bool invertY = false;
 
+    [Header("UI Pantalla")]
+    public TextMeshProUGUI textoMunicionHUD; 
+
     [HideInInspector] public ConfiguracionJugadorRed jugadorLocal;
+
+    
+    public void BotonRecargarUI()
+    {
+        if (playerInventory != null)
+        {
+            GameObject armaObj = playerInventory.GetActiveWeaponObject();
+            if (armaObj != null)
+            {
+                MunicionArma mun = armaObj.GetComponent<MunicionArma>();
+                if (mun != null) mun.IniciarRecarga();
+            }
+        }
+    }
+  
 
     public void BotonTirarArma()
     {
@@ -46,6 +65,24 @@ public class MobileControlsBridge : MonoBehaviour
 
     private void Update()
     {
+        
+        if (textoMunicionHUD != null && playerInventory != null)
+        {
+            GameObject armaObj = playerInventory.GetActiveWeaponObject();
+            if (armaObj != null)
+            {
+                MunicionArma mun = armaObj.GetComponent<MunicionArma>();
+                if (mun != null)
+                {
+                    if (mun.estaRecargando) textoMunicionHUD.text = "Recargando...";
+                    else textoMunicionHUD.text = $"{mun.balasCargador} / {mun.balasReserva}";
+                }
+                else textoMunicionHUD.text = ""; 
+            }
+            else textoMunicionHUD.text = "";
+        }
+        
+
         if (starterInputs == null) return;
 
         if (movementJoystick != null)

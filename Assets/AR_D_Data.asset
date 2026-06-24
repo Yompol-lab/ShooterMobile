@@ -25,3 +25,6 @@ MonoBehaviour:
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
   precio: 2700
   prefabParaMano: {fileID: 7732297833616457025, guid: acc80e9abb08e694ba0d0361be5d3860, type: 3}
+  "tama\xF1oCargador": 30
+  municionReservaMaxima: 90
+  tiempoRecarga: 1

@@ -27,4 +27,4 @@ MonoBehaviour:
   prefabParaMano: {fileID: 7732297833616457025, guid: acc80e9abb08e694ba0d0361be5d3860, type: 3}
   "tama\xF1oCargador": 30
   municionReservaMaxima: 90
-  tiempoRecarga: 1
+  tiempoRecarga: 2

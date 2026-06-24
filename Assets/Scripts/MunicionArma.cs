@@ -8,25 +8,29 @@ public class MunicionArma : MonoBehaviour
     public bool estaRecargando = false;
     private WeaponData data;
 
+    
+    private Animator miAnimador;
+
     public void Configurar(WeaponData armaData)
     {
         data = armaData;
         balasCargador = data.tamañoCargador;
         balasReserva = data.municionReservaMaxima;
+
+        
+        miAnimador = GetComponentInChildren<Animator>();
     }
 
     public bool IntentarDisparar()
     {
-        
         if (estaRecargando || balasCargador <= 0) return false;
 
-        balasCargador--; 
+        balasCargador--;
         return true;
     }
 
     public void IniciarRecarga()
     {
-        
         if (estaRecargando || balasCargador == data.tamañoCargador || balasReserva <= 0) return;
         StartCoroutine(RutinaRecarga());
     }
@@ -35,7 +39,12 @@ public class MunicionArma : MonoBehaviour
     {
         estaRecargando = true;
 
-        
+       
+        if (miAnimador != null)
+        {
+            miAnimador.SetTrigger("Recargar");
+        }
+
         yield return new WaitForSeconds(data.tiempoRecarga);
 
         int balasFaltantes = data.tamañoCargador - balasCargador;

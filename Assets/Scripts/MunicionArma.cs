@@ -8,8 +8,8 @@ public class MunicionArma : MonoBehaviour
     public bool estaRecargando = false;
     private WeaponData data;
 
-    
     private Animator miAnimador;
+    private bool tieneAnimDisparo = false; 
 
     public void Configurar(WeaponData armaData)
     {
@@ -17,8 +17,19 @@ public class MunicionArma : MonoBehaviour
         balasCargador = data.tamañoCargador;
         balasReserva = data.municionReservaMaxima;
 
-        
         miAnimador = GetComponentInChildren<Animator>();
+
+      
+        if (miAnimador != null)
+        {
+            foreach (AnimatorControllerParameter param in miAnimador.parameters)
+            {
+                if (param.name == "Disparar" && param.type == AnimatorControllerParameterType.Trigger)
+                {
+                    tieneAnimDisparo = true;
+                }
+            }
+        }
     }
 
     public bool IntentarDisparar()
@@ -26,6 +37,13 @@ public class MunicionArma : MonoBehaviour
         if (estaRecargando || balasCargador <= 0) return false;
 
         balasCargador--;
+
+        
+        if (miAnimador != null && tieneAnimDisparo)
+        {
+            miAnimador.SetTrigger("Disparar");
+        }
+
         return true;
     }
 
@@ -39,11 +57,7 @@ public class MunicionArma : MonoBehaviour
     {
         estaRecargando = true;
 
-       
-        if (miAnimador != null)
-        {
-            miAnimador.SetTrigger("Recargar");
-        }
+        if (miAnimador != null) miAnimador.SetTrigger("Recargar");
 
         yield return new WaitForSeconds(data.tiempoRecarga);
 

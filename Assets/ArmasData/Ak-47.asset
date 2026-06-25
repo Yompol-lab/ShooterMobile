@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
-  m_Name: AR_D_Data
+  m_Name: Ak-47
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Ar_D
+  weaponName: Ak-47
   weaponSlot: 0
-  damage: 35
-  range: 120
-  fireRate: 0.15
+  damage: 30
+  range: 100
+  fireRate: 0.09
   automatic: 1
   pelletsPerShot: 1
-  spread: 0.02
+  spread: 0.01
   beamRadius: 0.5
-  muzzleFlashPrefab: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
+  muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
   precio: 2700
-  prefabParaMano: {fileID: 7732297833616457025, guid: acc80e9abb08e694ba0d0361be5d3860, type: 3}
+  prefabParaMano: {fileID: 2024066992393438410, guid: 8bb119930f32e2f449de6046ff504669, type: 3}
   "tama\xF1oCargador": 30
   municionReservaMaxima: 90
   tiempoRecarga: 2

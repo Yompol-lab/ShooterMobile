@@ -1,10 +1,7 @@
 fileFormatVersion: 2
 guid: e7461e3cb4dfd384ea54841be167ca84
-PrefabImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+labels:
+- FusionPrefab
 AssetOrigin:
   serializedVersion: 1
   productId: 285693
@@ -12,3 +9,8 @@ AssetOrigin:
   packageVersion: 1.1
   assetPath: Assets/Low Poly Pistol Weapon Pack 1/Prefabs/Weapons/Pistol_B.prefab
   uploadId: 729399
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

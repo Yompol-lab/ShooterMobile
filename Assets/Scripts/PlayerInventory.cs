@@ -174,44 +174,33 @@ public class PlayerInventory : NetworkBehaviour
             Debug.LogError($" ERROR: El archivo WeaponData '{datosArma.weaponName}' no tiene puesto el 'Prefab Para Mano' en el Inspector.");
             return false;
         }
-        if (weaponContainer == null)
-        {
-            Debug.LogError(" ERROR: El script PlayerInventory de tu jugador no tiene asignado el 'Weapon Container' (la cámara) en el Inspector.");
-            return false;
-        }
-
-        GameObject nuevaArma = Instantiate(datosArma.prefabParaMano, weaponContainer);
-
-        nuevaArma.transform.localPosition = Vector3.zero;
-        nuevaArma.transform.localRotation = Quaternion.identity;
-        nuevaArma.transform.localScale = Vector3.one;
+        if (weaponContainer == null) return false;
 
         
-        if (datosArma.tamañoCargador > 0)
-        {
-            MunicionArma scriptBala = nuevaArma.AddComponent<MunicionArma>();
-            scriptBala.Configurar(datosArma);
-        }
-       
+        NetworkObject prefabNet = datosArma.prefabParaMano.GetComponent<NetworkObject>();
 
-        if (datosArma.weaponSlot == WeaponSlot.Primary)
+        if (prefabNet != null && HasStateAuthority)
         {
-            if (currentPrimary != null) Destroy(currentPrimary);
-            currentPrimary = nuevaArma;
-        }
-        else if (datosArma.weaponSlot == WeaponSlot.Secondary)
-        {
-            if (currentSecondary != null) Destroy(currentSecondary);
-            currentSecondary = nuevaArma;
+           
+            NetworkObject nuevaArmaNet = Runner.Spawn(prefabNet, dropPoint.position, dropPoint.rotation, Object.InputAuthority);
+
+            
+            if (datosArma.tamañoCargador > 0)
+            {
+                MunicionArma scriptBala = nuevaArmaNet.gameObject.AddComponent<MunicionArma>();
+                scriptBala.Configurar(datosArma);
+            }
+
+            
+            RPC_AgarrarArmaRed(nuevaArmaNet, datosArma.weaponSlot);
+
+            return true;
         }
 
-        EquipSlot(datosArma.weaponSlot);
-        if (Object.HasStateAuthority) RPC_SincronizarSlotRed(datosArma.weaponSlot);
-
-        return true;
+        return false;
     }
 
-   
+
     public GameObject GetActiveWeaponObject()
     {
         if (activeSlot == WeaponSlot.Primary) return currentPrimary;

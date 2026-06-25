@@ -73,6 +73,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5317441059084382654}
     m_Modifications:
+    - target: {fileID: 4324048795684176957, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
+      propertyPath: SortKey
+      value: 2982853827
+      objectReference: {fileID: 0}
     - target: {fileID: 7173815278906741782, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
       propertyPath: m_Name
       value: Pistol_B
@@ -126,6 +130,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
+--- !u!114 &2288680271187636641 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4324048795684176957, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
+  m_PrefabInstance: {fileID: 2576373365084485020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634097433547301258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
 --- !u!1 &4634097433547301258 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7173815278906741782, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
@@ -332,7 +347,8 @@ MonoBehaviour:
   SortKey: 1226311573
   ObjectInterest: 1
   Flags: 262145
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 2288680271187636641}
   NetworkedBehaviours:
   - {fileID: 5184108110412190148}
   - {fileID: 8320025052215404778}

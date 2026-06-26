@@ -18,7 +18,13 @@ MonoBehaviour:
   range: 100
   fireRate: 0.2
   automatic: 0
+  pelletsPerShot: 1
   spread: 0.01
   beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
+  precio: 200
+  prefabParaMano: {fileID: 2108814982173422605, guid: ee05ce87be1de854fa02314a5d584cea, type: 3}
+  "tama\xF1oCargador": 30
+  municionReservaMaxima: 90
+  tiempoRecarga: 2

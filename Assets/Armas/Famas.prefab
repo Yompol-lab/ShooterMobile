@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponData: {fileID: 0}
-  firePoint: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: a36feaaa748a00446af37364f8dc07b4, type: 2}
+  firePoint: {fileID: 6510516384529135902}
 --- !u!114 &6163884464661208390
 MonoBehaviour:
   m_ObjectHideFlags: 0

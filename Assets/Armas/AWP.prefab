@@ -53,31 +53,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.84875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.904
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2493696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7308475
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.68254083
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 86.085
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8912a08f7517044399d3f0d30aa616b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponData: {fileID: 0}
-  firePoint: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: e5bddd4bb3a89414dadc8ea2bb5af963, type: 2}
+  firePoint: {fileID: 6243710187688285840}
 --- !u!114 &6502767917377327472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ Animator:
   m_GameObject: {fileID: 1006494302640062318}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2015b019fdfb55844904676f934ac403, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -28,3 +28,5 @@ MonoBehaviour:
   "tama\xF1oCargador": 30
   municionReservaMaxima: 90
   tiempoRecarga: 1.75
+  eventoDisparoWwise: Shoot_Ak
+  eventoRecargaWwise: Play_Recarga_AK47

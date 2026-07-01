@@ -1,0 +1,133 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2880737896",
+    "Type": "User",
+    "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
+    "Language": "SFX",
+    "Hash": "{0CF66EBB-7682-3596-92EC-DBC2114ED3FB}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
+    "ShortName": "MainBank",
+    "Path": "MainBank.bnk",
+    "Media": [
+     {
+      "Id": "23431316",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars & n0thing.wav",
+      "CachePath": "D9/{D92C24AF-B5D1-3C43-6895-A89378FC84E9}.wem"
+     },
+     {
+      "Id": "419694564",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Epic Middle-Eastern Battle Music - Holy Land.wav",
+      "CachePath": "97/{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem"
+     },
+     {
+      "Id": "745942567",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ez4ence The Verkkars CS2 MVP MUSIC KIT.wav",
+      "CachePath": "77/{77C56A17-E16C-8C25-6C63-12B22C93B0BE}.wem"
+     },
+     {
+      "Id": "812429598",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Footstep.wav",
+      "CachePath": "6C/{6C14114C-18D3-150A-C4EF-A22BF4905876}.wem"
+     },
+     {
+      "Id": "933764207",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ak-47Disparo1.wav",
+      "CachePath": "B9/{B95C497A-8F01-3580-C4F8-A6C8F167FFF2}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "209422798",
+      "Name": "Play_CTerrorist_Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_CTerrorist_Win",
+      "GUID": "{763B16B1-FA57-4086-9246-906AD153CB79}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.3839455",
+      "DurationMax": "7.3839455",
+      "MediaRefs": [
+       {
+        "Id": "745942567"
+       }
+      ]
+     },
+     {
+      "Id": "2570041344",
+      "Name": "Play_MenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MenuMusic",
+      "GUID": "{88812467-C816-46D3-8D3A-4C2E179D5EC1}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "419694564"
+       }
+      ]
+     },
+     {
+      "Id": "3064026271",
+      "Name": "Play_Terrorist_Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Terrorist_Win",
+      "GUID": "{353FBD6A-2E8E-4DC3-B22F-594757874AC0}",
+      "DurationType": "OneShot",
+      "DurationMin": "9.392479",
+      "DurationMax": "9.392479",
+      "MediaRefs": [
+       {
+        "Id": "23431316"
+       }
+      ]
+     },
+     {
+      "Id": "3052655297",
+      "Name": "Shoot_Ak",
+      "ObjectPath": "\\Events\\Default Work Unit\\Shoot_Ak",
+      "GUID": "{7FCC2669-3C71-490F-AE7E-742D24193A45}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8735147",
+      "DurationMax": "0.8735147",
+      "MediaRefs": [
+       {
+        "Id": "933764207"
+       }
+      ]
+     },
+     {
+      "Id": "2108779966",
+      "Name": "Walk",
+      "ObjectPath": "\\Events\\Default Work Unit\\Walk",
+      "GUID": "{0E254305-B86A-421D-BDFA-556A32EE716D}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8539909",
+      "DurationMax": "0.8539909",
+      "MediaRefs": [
+       {
+        "Id": "812429598"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C7D9BD24-BE76-A7D0-9069-72B1662ADEBC}"
+ }
+}

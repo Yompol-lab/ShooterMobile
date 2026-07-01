@@ -24,7 +24,9 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
   precio: 2700
-  prefabParaMano: {fileID: 0}
+  prefabParaMano: {fileID: 9125674027345714671, guid: 86a076cea9e95d746892a9627c06a39f, type: 3}
   "tama\xF1oCargador": 7
   municionReservaMaxima: 42
   tiempoRecarga: 2
+  eventoDisparoWwise: Escopetazo
+  eventoRecargaWwise: Play_Recarga_Escopeta

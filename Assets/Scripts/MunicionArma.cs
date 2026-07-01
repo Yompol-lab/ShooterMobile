@@ -9,7 +9,7 @@ public class MunicionArma : MonoBehaviour
     private WeaponData data;
 
     private Animator miAnimador;
-    private bool tieneAnimDisparo = false; 
+    private bool tieneAnimDisparo = false;
 
     public void Configurar(WeaponData armaData)
     {
@@ -19,7 +19,6 @@ public class MunicionArma : MonoBehaviour
 
         miAnimador = GetComponentInChildren<Animator>();
 
-      
         if (miAnimador != null)
         {
             foreach (AnimatorControllerParameter param in miAnimador.parameters)
@@ -34,11 +33,17 @@ public class MunicionArma : MonoBehaviour
 
     public bool IntentarDisparar()
     {
+      
         if (estaRecargando || balasCargador <= 0) return false;
 
         balasCargador--;
 
-        
+     
+        if (!string.IsNullOrEmpty(data.eventoDisparoWwise))
+        {
+            AkSoundEngine.PostEvent(data.eventoDisparoWwise, gameObject);
+        }
+
         if (miAnimador != null && tieneAnimDisparo)
         {
             miAnimador.SetTrigger("Disparar");
@@ -59,6 +64,13 @@ public class MunicionArma : MonoBehaviour
 
         if (miAnimador != null) miAnimador.SetTrigger("Recargar");
 
+       
+        if (!string.IsNullOrEmpty(data.eventoRecargaWwise))
+        {
+            AkSoundEngine.PostEvent(data.eventoRecargaWwise, gameObject);
+        }
+
+       
         yield return new WaitForSeconds(data.tiempoRecarga);
 
         int balasFaltantes = data.tamañoCargador - balasCargador;

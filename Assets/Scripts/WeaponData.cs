@@ -26,14 +26,16 @@ public class WeaponData : ScriptableObject
     public GameObject muzzleFlashPrefab;
     public GameObject bulletImpactPrefab;
 
-    
     [Header("Tienda")]
     public int precio = 2700;
     public GameObject prefabParaMano;
 
     [Header("Munición y Recarga")]
-    public int tamañoCargador = 30;    
-    public int municionReservaMaxima = 90; 
-    public float tiempoRecarga = 2f;   
+    public int tamañoCargador = 30;
+    public int municionReservaMaxima = 90;
+    public float tiempoRecarga = 2f;
 
+    [Header("Audio Wwise")]
+    public string eventoDisparoWwise;
+    public string eventoRecargaWwise; 
 }

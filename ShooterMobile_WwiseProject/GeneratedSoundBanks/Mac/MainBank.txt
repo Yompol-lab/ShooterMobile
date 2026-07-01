@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	209422798	Play_CTerrorist_Win			\Default Work Unit\Play_CTerrorist_Win	
+	2108779966	Walk			\Default Work Unit\Walk	
+	2570041344	Play_MenuMusic			\Default Work Unit\Play_MenuMusic	
+	3052655297	Shoot_Ak			\Default Work Unit\Shoot_Ak	
+	3064026271	Play_Terrorist_Win			\Default Work Unit\Play_Terrorist_Win	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	23431316	CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars & n0thing	.cache\D9\{D92C24AF-B5D1-3C43-6895-A89378FC84E9}.wem		\Containers\Default Work Unit\CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars & n0thing		1803452
+	419694564	Epic Middle-Eastern Battle Music - Holy Land	.cache\97\{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem		\Containers\Default Work Unit\Epic Middle-Eastern Battle Music - Holy Land		23986320
+	745942567	Ez4ence The Verkkars CS2 MVP MUSIC KIT	.cache\77\{77C56A17-E16C-8C25-6C63-12B22C93B0BE}.wem		\Containers\Default Work Unit\Ez4ence The Verkkars CS2 MVP MUSIC KIT		1302624
+	812429598	Footstep	.cache\6C\{6C14114C-18D3-150A-C4EF-A22BF4905876}.wem		\Containers\Default Work Unit\Footstep		150740
+	933764207	Ak-47Disparo1	.cache\B9\{B95C497A-8F01-3580-C4F8-A6C8F167FFF2}.wem		\Containers\Default Work Unit\Ak-47Disparo1		154184
+

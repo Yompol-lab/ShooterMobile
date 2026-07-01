@@ -37,6 +37,268 @@
 						<ActiveSource Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{C0015418-5140-4326-8C18-6B712CB93851}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars &amp; n0thing" ID="{50BC8907-130B-42F4-BA5F-1E55581D83B4}" ShortID="774201420">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-17</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars &amp; n0thing" ID="{0C8188E6-AB4E-4EAD-B583-004CF8F7FD14}">
+							<Language>SFX</Language>
+							<AudioFile>CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars &amp; n0thing.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="23431316"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars &amp; n0thing" ID="{0C8188E6-AB4E-4EAD-B583-004CF8F7FD14}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Ez4ence The Verkkars CS2 MVP MUSIC KIT" ID="{1719BB53-1945-4D27-B835-7120ACEA5320}" ShortID="1062874132">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-22</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Ez4ence The Verkkars CS2 MVP MUSIC KIT" ID="{7F89AF3C-6760-41F0-9A88-1FE9F385228C}">
+							<Language>SFX</Language>
+							<AudioFile>Ez4ence The Verkkars CS2 MVP MUSIC KIT.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="745942567"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Ez4ence The Verkkars CS2 MVP MUSIC KIT" ID="{7F89AF3C-6760-41F0-9A88-1FE9F385228C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Ak-47Disparo1" ID="{211769EE-05DA-493D-A780-5EA21304C51B}" ShortID="410771709">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Ak-47Disparo1" ID="{B1ED03F9-42DF-44A0-94E8-0B4F40850E2B}">
+							<Language>SFX</Language>
+							<AudioFile>Ak-47Disparo1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="933764207"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Ak-47Disparo1" ID="{B1ED03F9-42DF-44A0-94E8-0B4F40850E2B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Footstep" ID="{67BF6333-C33F-491D-A223-15942CDFF70D}" ShortID="575112763">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Footstep" ID="{B714F1A5-7226-4938-976E-633F5CFDC48E}">
+							<Language>SFX</Language>
+							<AudioFile>Footstep.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="812429598"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Footstep" ID="{B714F1A5-7226-4938-976E-633F5CFDC48E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="AkReload" ID="{9864892D-9586-427D-9C9C-91104E4CA8FA}" ShortID="936225940">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AkReload" ID="{94D7CF11-39CD-4BD3-B34B-F6C8D5F1B02E}">
+							<Language>SFX</Language>
+							<AudioFile>AkReload.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="903524215"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AkReload" ID="{94D7CF11-39CD-4BD3-B34B-F6C8D5F1B02E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="M4a4Disparo" ID="{9DA15B38-8A5E-4E77-AA2E-EC88B1AC22A6}" ShortID="192892425">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="M4a4Disparo" ID="{DD2B624F-7E1E-4D68-9EF4-2DAC22E2BA65}">
+							<Language>SFX</Language>
+							<AudioFile>M4a4Disparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="78249162"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="M4a4Disparo" ID="{DD2B624F-7E1E-4D68-9EF4-2DAC22E2BA65}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="RecargaM4a4" ID="{E369B6FD-CF07-4D0A-B6C1-E73A416EE834}" ShortID="790683755">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="RecargaM4a4" ID="{C07D0853-3F9F-42E8-8A93-3C8E973873FA}">
+							<Language>SFX</Language>
+							<AudioFile>RecargaM4a4.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="203937467"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="RecargaM4a4" ID="{C07D0853-3F9F-42E8-8A93-3C8E973873FA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Escopetazo" ID="{2BC434DA-0472-4FED-9B3E-423B88E0D716}" ShortID="166811568">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-21</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Escopetazo" ID="{6E9FEBE1-15DF-460E-B55F-B98CB3C6E90C}">
+							<Language>SFX</Language>
+							<AudioFile>Escopetazo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="350320315"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Escopetazo" ID="{6E9FEBE1-15DF-460E-B55F-B98CB3C6E90C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="ChikchikEscopeta" ID="{91C7CB27-E2EE-4F3E-8B10-AC1099511E96}" ShortID="146169702">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ChikchikEscopeta" ID="{1CCED0B1-868D-445F-BCF4-F645A4FF5FF1}">
+							<Language>SFX</Language>
+							<AudioFile>ChikchikEscopeta.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="443015749"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ChikchikEscopeta" ID="{1CCED0B1-868D-445F-BCF4-F645A4FF5FF1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

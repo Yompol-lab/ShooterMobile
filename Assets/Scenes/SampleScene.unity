@@ -8069,8 +8069,9 @@ GameObject:
   - component: {fileID: 553211985}
   - component: {fileID: 553211984}
   - component: {fileID: 553211983}
+  - component: {fileID: 553211986}
   m_Layer: 5
-  m_Name: M4A1
+  m_Name: BenelliM8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8180,6 +8181,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553211981}
   m_CullTransparentMesh: 1
+--- !u!114 &553211986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553211981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: c0ceb87195f35e64295098b50fa4552a, type: 2}
+  textoNombre: {fileID: 149710450}
+  textoPrecio: {fileID: 1233797244}
 --- !u!1 &553622995
 GameObject:
   m_ObjectHideFlags: 0
@@ -20573,7 +20589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1565237564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825646418}
+        m_TargetAssemblyTypeName: TiendaManager, Assembly-CSharp
+        m_MethodName: IrAHeavy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1565237564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23923,6 +23951,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -5645937942226959685, guid: 2209580bdab746f4bb777921428b8b2e, type: 3}
+--- !u!1 &1918725284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918725286}
+  - component: {fileID: 1918725285}
+  m_Layer: 0
+  m_Name: Ak Bank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1918725285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918725284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827e4022cfe671941b371c0d925437e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkBank
+  triggerList: ae8d9d44
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: e999a40fb035d1a46bb046cecd05f79c, type: 2}
+  decodeBank: 0
+  overrideLoadSetting: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!4 &1918725286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918725284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -243.32176, y: -3.94918, z: -10.63682}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924420224
 GameObject:
   m_ObjectHideFlags: 0
@@ -27407,3 +27492,4 @@ SceneRoots:
   - {fileID: 1560588294}
   - {fileID: 134425485}
   - {fileID: 1872674395}
+  - {fileID: 1918725286}

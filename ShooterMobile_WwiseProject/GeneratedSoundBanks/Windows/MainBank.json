@@ -10,11 +10,43 @@
     "Type": "User",
     "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
     "Language": "SFX",
-    "Hash": "{56743CC6-D6E0-010E-D479-DA634ADA9B46}",
+    "Hash": "{F488477C-5CBB-82DE-F0C9-AF560D292ED3}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
     "ShortName": "MainBank",
     "Path": "MainBank.bnk",
     "Media": [
+     {
+      "Id": "23431316",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars & n0thing.wav",
+      "CachePath": "D9/{D92C24AF-B5D1-3C43-6895-A89378FC84E9}.wem"
+     },
+     {
+      "Id": "78249162",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "M4a4Disparo.wav",
+      "CachePath": "36/{36C321BE-9C70-7D46-497A-E005C33CA6C7}.wem"
+     },
+     {
+      "Id": "203937467",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RecargaM4a4.wav",
+      "CachePath": "05/{05B94B3A-2E0F-A899-9B21-2EA4A09411EB}.wem"
+     },
+     {
+      "Id": "350320315",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Escopetazo.wav",
+      "CachePath": "AE/{AE18DEC8-D27A-0F8B-8440-BE8431CD0E7A}.wem"
+     },
      {
       "Id": "419694564",
       "Language": "SFX",
@@ -22,9 +54,77 @@
       "Location": "Memory",
       "ShortName": "Epic Middle-Eastern Battle Music - Holy Land.wav",
       "CachePath": "97/{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem"
+     },
+     {
+      "Id": "443015749",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ChikchikEscopeta.wav",
+      "CachePath": "25/{253B27BD-07D1-E16A-13C7-970D172A726A}.wem"
+     },
+     {
+      "Id": "745942567",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ez4ence The Verkkars CS2 MVP MUSIC KIT.wav",
+      "CachePath": "77/{77C56A17-E16C-8C25-6C63-12B22C93B0BE}.wem"
+     },
+     {
+      "Id": "812429598",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Footstep.wav",
+      "CachePath": "6C/{6C14114C-18D3-150A-C4EF-A22BF4905876}.wem"
+     },
+     {
+      "Id": "903524215",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AkReload.wav",
+      "CachePath": "1D/{1DE5EF57-4726-F7D6-02EC-81B5638066DF}.wem"
+     },
+     {
+      "Id": "933764207",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Ak-47Disparo1.wav",
+      "CachePath": "B9/{B95C497A-8F01-3580-C4F8-A6C8F167FFF2}.wem"
      }
     ],
     "Events": [
+     {
+      "Id": "3513490094",
+      "Name": "Escopetazo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Escopetazo",
+      "GUID": "{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.0168934",
+      "DurationMax": "2.0168934",
+      "MediaRefs": [
+       {
+        "Id": "350320315"
+       }
+      ]
+     },
+     {
+      "Id": "209422798",
+      "Name": "Play_CTerrorist_Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_CTerrorist_Win",
+      "GUID": "{763B16B1-FA57-4086-9246-906AD153CB79}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.3839455",
+      "DurationMax": "7.3839455",
+      "MediaRefs": [
+       {
+        "Id": "745942567"
+       }
+      ]
+     },
      {
       "Id": "2570041344",
       "Name": "Play_MenuMusic",
@@ -36,10 +136,108 @@
         "Id": "419694564"
        }
       ]
+     },
+     {
+      "Id": "1888624163",
+      "Name": "Play_Recarga_AK47",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_AK47",
+      "GUID": "{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.448526",
+      "DurationMax": "1.448526",
+      "MediaRefs": [
+       {
+        "Id": "903524215"
+       }
+      ]
+     },
+     {
+      "Id": "3989193866",
+      "Name": "Play_Recarga_Escopeta",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_Escopeta",
+      "GUID": "{85F3846F-C107-4010-AF4F-099906CAD2C2}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.74292517",
+      "DurationMax": "0.74292517",
+      "MediaRefs": [
+       {
+        "Id": "443015749"
+       }
+      ]
+     },
+     {
+      "Id": "3626292540",
+      "Name": "Play_Recarga_m4a4",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_m4a4",
+      "GUID": "{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7295238",
+      "DurationMax": "1.7295238",
+      "MediaRefs": [
+       {
+        "Id": "203937467"
+       }
+      ]
+     },
+     {
+      "Id": "3064026271",
+      "Name": "Play_Terrorist_Win",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Terrorist_Win",
+      "GUID": "{353FBD6A-2E8E-4DC3-B22F-594757874AC0}",
+      "DurationType": "OneShot",
+      "DurationMin": "9.392479",
+      "DurationMax": "9.392479",
+      "MediaRefs": [
+       {
+        "Id": "23431316"
+       }
+      ]
+     },
+     {
+      "Id": "3052655297",
+      "Name": "Shoot_Ak",
+      "ObjectPath": "\\Events\\Default Work Unit\\Shoot_Ak",
+      "GUID": "{7FCC2669-3C71-490F-AE7E-742D24193A45}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8735147",
+      "DurationMax": "0.8735147",
+      "MediaRefs": [
+       {
+        "Id": "933764207"
+       }
+      ]
+     },
+     {
+      "Id": "3948312705",
+      "Name": "Shoot_m4a4",
+      "ObjectPath": "\\Events\\Default Work Unit\\Shoot_m4a4",
+      "GUID": "{13B24368-FD6E-4BFC-BC08-FE279F4D3FDD}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.89054424",
+      "DurationMax": "0.89054424",
+      "MediaRefs": [
+       {
+        "Id": "78249162"
+       }
+      ]
+     },
+     {
+      "Id": "2108779966",
+      "Name": "Walk",
+      "ObjectPath": "\\Events\\Default Work Unit\\Walk",
+      "GUID": "{0E254305-B86A-421D-BDFA-556A32EE716D}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8539909",
+      "DurationMax": "0.8539909",
+      "MediaRefs": [
+       {
+        "Id": "812429598"
+       }
+      ]
      }
     ]
    }
   ],
-  "FileHash": "{9D98B994-E4D4-A941-1449-2589F4E4D352}"
+  "FileHash": "{077BBFF9-43E2-9018-218C-7D60F65271C4}"
  }
 }

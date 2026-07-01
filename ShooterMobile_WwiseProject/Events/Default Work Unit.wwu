@@ -14,6 +14,105 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Terrorist_Win" ID="{353FBD6A-2E8E-4DC3-B22F-594757874AC0}">
+					<ChildrenList>
+						<Action Name="" ID="{6FFA07CC-9CE4-4288-8662-D39472D95DA1}" ShortID="429979381">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CS_GO Music Kit Adjusted MVP anthem Flashbang Dance by The Verkkars &amp; n0thing" ID="{50BC8907-130B-42F4-BA5F-1E55581D83B4}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CTerrorist_Win" ID="{763B16B1-FA57-4086-9246-906AD153CB79}">
+					<ChildrenList>
+						<Action Name="" ID="{E2138CEB-E28C-4F05-949B-BEF2B712A9E0}" ShortID="804647344">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ez4ence The Verkkars CS2 MVP MUSIC KIT" ID="{1719BB53-1945-4D27-B835-7120ACEA5320}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Walk" ID="{0E254305-B86A-421D-BDFA-556A32EE716D}">
+					<ChildrenList>
+						<Action Name="" ID="{223D1D1F-F1CD-49B8-A4D4-2FFCD7A22BD7}" ShortID="821329249">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footstep" ID="{67BF6333-C33F-491D-A223-15942CDFF70D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shoot_Ak" ID="{7FCC2669-3C71-490F-AE7E-742D24193A45}">
+					<ChildrenList>
+						<Action Name="" ID="{79C4215B-B89E-41AA-A3B0-649F2EBF5F6B}" ShortID="797394742">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ak-47Disparo1" ID="{211769EE-05DA-493D-A780-5EA21304C51B}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Recarga_AK47" ID="{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}">
+					<ChildrenList>
+						<Action Name="" ID="{CA8CAB1C-3EA3-460B-BA03-121E661611ED}" ShortID="661764803">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AkReload" ID="{9864892D-9586-427D-9C9C-91104E4CA8FA}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shoot_m4a4" ID="{13B24368-FD6E-4BFC-BC08-FE279F4D3FDD}">
+					<ChildrenList>
+						<Action Name="" ID="{130E441F-59A1-4D95-8ACF-3BF09014130F}" ShortID="981521294">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="M4a4Disparo" ID="{9DA15B38-8A5E-4E77-AA2E-EC88B1AC22A6}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Recarga_m4a4" ID="{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}">
+					<ChildrenList>
+						<Action Name="" ID="{4B8CCB8E-6F81-41A5-BECD-A641992214D0}" ShortID="352726639">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RecargaM4a4" ID="{E369B6FD-CF07-4D0A-B6C1-E73A416EE834}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Recarga_Escopeta" ID="{85F3846F-C107-4010-AF4F-099906CAD2C2}">
+					<ChildrenList>
+						<Action Name="" ID="{696C76AB-1F27-432F-B7E4-E8144B28786D}" ShortID="903315719">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChikchikEscopeta" ID="{91C7CB27-E2EE-4F3E-8B10-AC1099511E96}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Escopetazo" ID="{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}">
+					<ChildrenList>
+						<Action Name="" ID="{D7C4D41F-B19B-4130-9569-C45B847DB8FB}" ShortID="355576198">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Escopetazo" ID="{2BC434DA-0472-4FED-9B3E-423B88E0D716}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

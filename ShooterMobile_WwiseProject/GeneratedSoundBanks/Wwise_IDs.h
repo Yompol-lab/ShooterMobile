@@ -13,7 +13,16 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID ESCOPETAZO = 3513490094U;
+        static const AkUniqueID PLAY_CTERRORIST_WIN = 209422798U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
+        static const AkUniqueID PLAY_RECARGA_AK47 = 1888624163U;
+        static const AkUniqueID PLAY_RECARGA_ESCOPETA = 3989193866U;
+        static const AkUniqueID PLAY_RECARGA_M4A4 = 3626292540U;
+        static const AkUniqueID PLAY_TERRORIST_WIN = 3064026271U;
+        static const AkUniqueID SHOOT_AK = 3052655297U;
+        static const AkUniqueID SHOOT_M4A4 = 3948312705U;
+        static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 
     namespace BANKS

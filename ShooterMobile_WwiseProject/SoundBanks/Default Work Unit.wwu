@@ -5,7 +5,16 @@
 			<ChildrenList>
 				<SoundBank Name="MainBank" ID="{3A30A403-5126-408C-98B1-9602C4338FF7}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Recarga_Escopeta" ID="{85F3846F-C107-4010-AF4F-099906CAD2C2}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CTerrorist_Win" ID="{763B16B1-FA57-4086-9246-906AD153CB79}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Walk" ID="{0E254305-B86A-421D-BDFA-556A32EE716D}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MenuMusic" ID="{88812467-C816-46D3-8D3A-4C2E179D5EC1}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Recarga_m4a4" ID="{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Recarga_AK47" ID="{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Escopetazo" ID="{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shoot_Ak" ID="{7FCC2669-3C71-490F-AE7E-742D24193A45}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shoot_m4a4" ID="{13B24368-FD6E-4BFC-BC08-FE279F4D3FDD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Terrorist_Win" ID="{353FBD6A-2E8E-4DC3-B22F-594757874AC0}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

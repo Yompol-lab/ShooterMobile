@@ -1220,7 +1220,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 377483290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1724126033}
+        m_TargetAssemblyTypeName: GroupManager, Assembly-CSharp
+        m_MethodName: UnirseGrupo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &377483290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5271,6 +5283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   txtCodigoGrupo: {fileID: 1286711787}
   txtMiembros: {fileID: 165169114}
+  inputCodigo: {fileID: 1244078835}
 --- !u!4 &1724126034
 Transform:
   m_ObjectHideFlags: 0

@@ -32,19 +32,16 @@ public class NetworkManager : MonoBehaviour
         if (joinSpawner != null)
         {
             runner.AddCallbacks(joinSpawner);
-            
         }
-        
+
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
         var result = await runner.StartGame(new StartGameArgs()
         {
-            GameMode = GameMode.Shared, 
+            GameMode = GameMode.Shared,
             SessionName = "Sala1",
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
-
-        
     }
 }

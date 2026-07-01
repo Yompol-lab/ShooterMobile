@@ -50,6 +50,24 @@ public class MenuManager : MonoBehaviour
 
     public void BuscarPartida()
     {
+        if (GroupManager.EnGrupo)
+        {
+            Debug.Log("Buscar partida con grupo. Código: " + GroupManager.CodigoGrupo);
+
+            if (GroupManager.SoyLider)
+            {
+                Debug.Log("Soy el líder del grupo.");
+            }
+            else
+            {
+                Debug.Log("Soy un miembro del grupo.");
+            }
+        }
+        else
+        {
+            Debug.Log("Buscar partida individual.");
+        }
+
         SceneManager.LoadScene("SampleScene");
     }
 

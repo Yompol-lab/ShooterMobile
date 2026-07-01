@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}" SchemaVersion="133">
+	<Containers>
+		<WorkUnit Name="Default Work Unit" ID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{7821493F-BC2E-4C2A-8691-349775DA5E7D}" ShortID="255528499">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-25</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{C0015418-5140-4326-8C18-6B712CB93851}">
+							<PropertyList>
+								<Property Name="LoopEnd" Type="Real64" Value="135.97605"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Epic Middle-Eastern Battle Music - Holy Land.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="419694564"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{C0015418-5140-4326-8C18-6B712CB93851}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>

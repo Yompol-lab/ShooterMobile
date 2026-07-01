@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2880737896",
+    "Type": "User",
+    "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
+    "Language": "SFX",
+    "Hash": "{56743CC6-D6E0-010E-D479-DA634ADA9B46}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
+    "ShortName": "MainBank",
+    "Path": "MainBank.bnk",
+    "Media": [
+     {
+      "Id": "419694564",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Epic Middle-Eastern Battle Music - Holy Land.wav",
+      "CachePath": "97/{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2570041344",
+      "Name": "Play_MenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MenuMusic",
+      "GUID": "{88812467-C816-46D3-8D3A-4C2E179D5EC1}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "419694564"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9D98B994-E4D4-A941-1449-2589F4E4D352}"
+ }
+}

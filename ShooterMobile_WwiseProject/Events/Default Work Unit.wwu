@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" SchemaVersion="133">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_MenuMusic" ID="{88812467-C816-46D3-8D3A-4C2E179D5EC1}">
+					<ChildrenList>
+						<Action Name="" ID="{BB6F9227-8D58-4FD6-A803-6021AF729A88}" ShortID="572920189">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{7821493F-BC2E-4C2A-8691-349775DA5E7D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

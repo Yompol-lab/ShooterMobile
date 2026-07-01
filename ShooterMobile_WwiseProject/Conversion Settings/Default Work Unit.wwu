@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}" SchemaVersion="133">
+	<Conversions>
+		<WorkUnit Name="Default Work Unit" ID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Conversion Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}">
+					<PropertyList>
+						<Property Name="Channels" Type="int32">
+							<ValueList>
+								<Value Platform="Mac">4</Value>
+								<Value Platform="Windows">4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="LRMix" Type="Real64">
+							<ValueList>
+								<Value Platform="Mac">0</Value>
+								<Value Platform="Windows">0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MaxSampleRate" Type="int32">
+							<ValueList>
+								<Value Platform="Mac">48000</Value>
+								<Value Platform="Windows">48000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MinSampleRate" Type="int32">
+							<ValueList>
+								<Value Platform="Mac">0</Value>
+								<Value Platform="Windows">0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SampleRate" Type="int32">
+							<ValueList>
+								<Value Platform="Mac">0</Value>
+								<Value Platform="Windows">0</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ConversionPluginInfoList>
+						<ConversionPluginInfo Platform="Mac">
+							<ConversionPlugin Name="" ID="{FE453B6B-58CC-4436-8D60-F097DB6322C7}" PluginName="PCM" CompanyID="0" PluginID="1"/>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Windows">
+							<ConversionPlugin Name="" ID="{BA4D278C-1414-404C-9D60-F6EF63FE4C31}" PluginName="PCM" CompanyID="0" PluginID="1"/>
+						</ConversionPluginInfo>
+					</ConversionPluginInfoList>
+				</Conversion>
+			</ChildrenList>
+		</WorkUnit>
+	</Conversions>
+</WwiseDocument>

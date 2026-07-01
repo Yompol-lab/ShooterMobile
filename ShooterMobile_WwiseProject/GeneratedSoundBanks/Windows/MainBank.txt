@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2570041344	Play_MenuMusic			\Default Work Unit\Play_MenuMusic	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	419694564	Epic Middle-Eastern Battle Music - Holy Land	.cache\97\{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem		\Containers\Default Work Unit\Epic Middle-Eastern Battle Music - Holy Land		23986320
+

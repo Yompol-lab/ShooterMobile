@@ -74,7 +74,7 @@ public class MobileControlsBridge : MonoBehaviour
                 MunicionArma mun = armaObj.GetComponent<MunicionArma>();
                 if (mun != null)
                 {
-                    if (mun.estaRecargando) textoMunicionHUD.text = "Recargando...";
+                    if (mun.estaRecargando) textoMunicionHUD.text = "Recargando";
                     else textoMunicionHUD.text = $"{mun.balasCargador} / {mun.balasReserva}";
                 }
                 else textoMunicionHUD.text = ""; 

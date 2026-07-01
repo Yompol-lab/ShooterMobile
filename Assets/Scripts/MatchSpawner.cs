@@ -6,16 +6,24 @@ using System.Collections;
 public class MatchSpawner : MonoBehaviour
 {
     public NetworkPrefabRef playerPrefab;
+
     public GameObject teamSelectionUI;
     public GameObject crosshairUI;
+    public GameObject panelVida; // <-- NUEVO
 
     private bool alreadySpawned = false;
     private bool runnerReady = false;
 
     private IEnumerator Start()
     {
-        if (teamSelectionUI != null) teamSelectionUI.SetActive(true);
-        if (crosshairUI != null) crosshairUI.SetActive(false);
+        if (teamSelectionUI != null)
+            teamSelectionUI.SetActive(true);
+
+        if (crosshairUI != null)
+            crosshairUI.SetActive(false);
+
+        if (panelVida != null)
+            panelVida.SetActive(false);
 
         UnlockCursor();
 
@@ -29,19 +37,33 @@ public class MatchSpawner : MonoBehaviour
         runnerReady = true;
     }
 
-    public void JoinPolice() { DoSpawn(Team.Police); }
-    public void JoinTerrorist() { DoSpawn(Team.Terrorist); }
+    public void JoinPolice()
+    {
+        DoSpawn(Team.Police);
+    }
+
+    public void JoinTerrorist()
+    {
+        DoSpawn(Team.Terrorist);
+    }
 
     private void DoSpawn(Team team)
     {
-        if (alreadySpawned || NetworkManager.Instance == null || !runnerReady) return;
+        if (alreadySpawned || NetworkManager.Instance == null || !runnerReady)
+            return;
 
         NetworkRunner runner = NetworkManager.Instance.Runner;
 
         alreadySpawned = true;
 
-        if (teamSelectionUI != null) teamSelectionUI.SetActive(false);
-        if (crosshairUI != null) crosshairUI.SetActive(true);
+        if (teamSelectionUI != null)
+            teamSelectionUI.SetActive(false);
+
+        if (crosshairUI != null)
+            crosshairUI.SetActive(true);
+
+        if (panelVida != null)
+            panelVida.SetActive(true);
 
         UnlockCursor();
         StartCoroutine(ForceUnlockCursor());
@@ -65,7 +87,6 @@ public class MatchSpawner : MonoBehaviour
             spawnRot = validSpawns[randomIndex].transform.rotation;
         }
 
-       
         NetworkObject spawnedPlayer = runner.Spawn(
             playerPrefab,
             spawnPos,
@@ -74,6 +95,7 @@ public class MatchSpawner : MonoBehaviour
             (rn, obj) =>
             {
                 ConfiguracionJugadorRed config = obj.GetComponent<ConfiguracionJugadorRed>();
+
                 if (config != null)
                 {
                     config.miEquipo = team;
@@ -94,8 +116,10 @@ public class MatchSpawner : MonoBehaviour
     {
         yield return null;
         UnlockCursor();
+
         yield return new WaitForSeconds(0.1f);
         UnlockCursor();
+
         yield return new WaitForSeconds(0.3f);
         UnlockCursor();
     }

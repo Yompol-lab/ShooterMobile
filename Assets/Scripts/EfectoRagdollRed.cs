@@ -29,11 +29,9 @@ namespace StarterAssets
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
         private void RPC_ActivarRagdoll(Vector3 direccionImpacto)
         {
-            
             if (animator != null) animator.enabled = false;
             if (characterController != null) characterController.enabled = false;
 
-            
             FirstPersonController fpc = GetComponent<FirstPersonController>();
             if (fpc != null) fpc.enabled = false;
 
@@ -43,12 +41,33 @@ namespace StarterAssets
             PlayerWeaponController pwc = GetComponent<PlayerWeaponController>();
             if (pwc != null) pwc.enabled = false;
 
-            
             foreach (Rigidbody rb in huesos)
             {
                 rb.isKinematic = false;
                 rb.AddForce(direccionImpacto * 50f, ForceMode.Impulse);
             }
+        }
+
+        
+        public void Revivir()
+        {
+          
+            DesactivarRagdoll();
+
+            
+            if (animator != null) animator.enabled = true;
+
+          
+            if (characterController != null) characterController.enabled = true;
+
+            FirstPersonController fpc = GetComponent<FirstPersonController>();
+            if (fpc != null) fpc.enabled = true;
+
+            PlayerInput pi = GetComponent<PlayerInput>();
+            if (pi != null) pi.enabled = true;
+
+            PlayerWeaponController pwc = GetComponent<PlayerWeaponController>();
+            if (pwc != null) pwc.enabled = true;
         }
     }
 }

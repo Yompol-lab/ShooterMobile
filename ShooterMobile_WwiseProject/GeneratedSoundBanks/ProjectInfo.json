@@ -8,6 +8,13 @@
   "CacheRoot": "../.cache",
   "Platforms": [
    {
+    "Name": "Android",
+    "GUID": "{D8513DD8-09B1-47C2-AFBC-C127907D7869}",
+    "BasePlatform": "Android",
+    "BasePlatformGUID": "{A2D401DE-B8B6-4FEB-8142-137C34D507CA}",
+    "Path": "Android"
+   },
+   {
     "Name": "Mac",
     "GUID": "{8BA4F36A-5EF6-4325-BA6A-5C4ABA7591B6}",
     "BasePlatform": "Mac",
@@ -31,6 +38,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{5B1BABAF-8337-831A-5B47-7E60AA38B8FE}"
+  "FileHash": "{C0C60448-F26C-9134-151D-E81F6920FB20}"
  }
 }

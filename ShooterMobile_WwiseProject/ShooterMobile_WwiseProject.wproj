@@ -3,6 +3,7 @@
 	<ProjectInfo>
 		<Project Name="ShooterMobile_WwiseProject" ID="{38DC2394-2BCC-4AF7-8BE5-4EABA6DDE74B}">
 			<Platforms>
+				<Platform Name="Android" ReferencePlatform="Android" ID="{D8513DD8-09B1-47C2-AFBC-C127907D7869}" />
 				<Platform Name="Mac" ReferencePlatform="Mac" ID="{8BA4F36A-5EF6-4325-BA6A-5C4ABA7591B6}" />
 				<Platform Name="Windows" ReferencePlatform="Windows" ID="{98A0EBA9-7DBD-4DE5-9F81-E94A908A10E1}" />
 			</Platforms>
@@ -13,47 +14,70 @@
 				<Language Name="SFX" ID="{BD1FCFD7-0EF5-460D-ADD1-B606B2C0A3AF}" />
 			</LanguageList>
 			<PropertyList>
+				<Property Name="AutoSoundBankEnabled" Type="bool" Value="True" />
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
+						<Value Platform="Android"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="ExternalSourcesOutputPath" Type="string">
 					<ValueList>
 						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Android">GeneratedSoundBanks\Android\</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
 					</ValueList>
 				</Property>
-				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="GenerateSoundBankXML" Type="bool" Value="False" /><Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True" /><Property Name="SoundBankGenerateMaxAttenuationInfo" Type="bool" Value="True" /><Property Name="GenerateSoundBankJSON" Type="bool" Value="True" /><Property Name="SoundBankGeneratePrintGUID" Type="bool" Value="True" /><Property Name="SoundBankGeneratePrintPath" Type="bool" Value="True" /><Property Name="AutoSoundBankEnabled" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks/" />
+				<Property Name="GlobalVoiceInstancesLimit" Type="int16">
+					<ValueList>
+						<Value Platform="Mac">256</Value>
+						<Value Platform="Android">256</Value>
+						<Value Platform="Windows">256</Value>
+					</ValueList>
+				</Property>
+				<Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True" />
+				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks/" />
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
 						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Android">GeneratedSoundBanks\Android\</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdDescription" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
+						<Value Platform="Android"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdLines" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
+						<Value Platform="Android"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPreGenerateCustomCmdDescription" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
+						<Value Platform="Android"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPreGenerateCustomCmdLines" Type="string">
 					<ValueList>
 						<Value Platform="Mac"></Value>
+						<Value Platform="Android"></Value>
 						<Value Platform="Windows"></Value>
+					</ValueList>
+				</Property>
+				<Property Name="VolumeThreshold" Type="Real64">
+					<ValueList>
+						<Value Platform="Mac">-80</Value>
+						<Value Platform="Android">-80</Value>
+						<Value Platform="Windows">-80</Value>
 					</ValueList>
 				</Property>
 				<Property Name="WwiseVersionWhenCreated" Type="string" Value="Branch=wwise_v2025.1.8|Build=9170|VersionName=v2025.1.8|Config=Release" />

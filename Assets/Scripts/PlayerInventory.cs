@@ -1,6 +1,7 @@
 using Fusion;
 using UnityEngine;
 using StarterAssets;
+
 public enum WeaponSlot { Primary, Secondary, Knife, Bomb, Utility }
 
 public class PlayerInventory : NetworkBehaviour
@@ -24,6 +25,10 @@ public class PlayerInventory : NetworkBehaviour
 
     public override void Spawned()
     {
+       
+        InicializarArmaPorDefecto(currentPrimary);
+        InicializarArmaPorDefecto(currentSecondary);
+
         if (currentPrimary != null) currentPrimary.SetActive(false);
         if (currentBomb != null) currentBomb.SetActive(false);
 
@@ -31,6 +36,26 @@ public class PlayerInventory : NetworkBehaviour
         else if (currentKnife != null) EquipSlot(WeaponSlot.Knife);
     }
 
+    private void InicializarArmaPorDefecto(GameObject armaObj)
+    {
+        if (armaObj == null) return;
+
+        Weapon scriptArma = armaObj.GetComponent<Weapon>();
+        if (scriptArma != null && scriptArma.weaponData != null)
+        {
+            if (scriptArma.weaponData.tamañoCargador > 0)
+            {
+                MunicionArma scriptBala = armaObj.GetComponent<MunicionArma>();
+                if (scriptBala == null)
+                {
+                    scriptBala = armaObj.AddComponent<MunicionArma>();
+                }
+                scriptBala.Configurar(scriptArma.weaponData);
+            }
+        }
+    }
+
+ 
     private void OnTriggerEnter(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = true; }
     private void OnTriggerExit(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = false; }
 
@@ -60,6 +85,7 @@ public class PlayerInventory : NetworkBehaviour
 
         EquipSlot(WeaponSlot.Knife);
     }
+    
 
     public void JuntarArmaDelPiso(NetworkObject armaObj, WeaponSlot slot)
     {
@@ -75,6 +101,12 @@ public class PlayerInventory : NetworkBehaviour
     public void RPC_AgarrarArmaRed(NetworkObject armaObj, WeaponSlot slot)
     {
         if (armaObj == null) return;
+
+        Animator anim = armaObj.GetComponent<Animator>();
+        if (anim != null) anim.enabled = true;
+
+        NetworkTransform nt = armaObj.GetComponent<NetworkTransform>();
+        if (nt != null) nt.enabled = false;
 
         armaObj.transform.SetParent(weaponContainer);
         ArmaEnElPisoRed armaScript = armaObj.GetComponent<ArmaEnElPisoRed>();
@@ -108,9 +140,28 @@ public class PlayerInventory : NetworkBehaviour
 
         if (weaponToDrop != null)
         {
+            Animator anim = weaponToDrop.GetComponent<Animator>();
+            if (anim != null) anim.enabled = false;
+
             weaponToDrop.transform.SetParent(null);
-            weaponToDrop.transform.position = dropPoint.position;
-            weaponToDrop.transform.rotation = dropPoint.rotation;
+
+            NetworkTransform nt = weaponToDrop.GetComponent<NetworkTransform>();
+            if (nt != null)
+            {
+                nt.enabled = true;
+                weaponToDrop.transform.position = dropPoint.position;
+                weaponToDrop.transform.rotation = dropPoint.rotation;
+
+                if (HasStateAuthority)
+                {
+                    nt.Teleport(dropPoint.position, dropPoint.rotation);
+                }
+            }
+            else
+            {
+                weaponToDrop.transform.position = dropPoint.position;
+                weaponToDrop.transform.rotation = dropPoint.rotation;
+            }
 
             ArmaEnElPisoRed armaScript = weaponToDrop.GetComponent<ArmaEnElPisoRed>();
             if (armaScript != null) armaScript.SetFisicas(true);
@@ -149,7 +200,7 @@ public class PlayerInventory : NetworkBehaviour
         if (weaponController != null)
         {
             Weapon weapon = (equippedWeaponObject != null) ? equippedWeaponObject.GetComponent<Weapon>() : null;
-            if (weapon != null) weaponController.SetCurrentWeapon(weapon);
+            weaponController.SetCurrentWeapon(weapon);
         }
     }
 
@@ -169,37 +220,27 @@ public class PlayerInventory : NetworkBehaviour
 
     public bool RecibirArmaComprada(WeaponData datosArma)
     {
-        if (datosArma.prefabParaMano == null)
-        {
-            Debug.LogError($" ERROR: El archivo WeaponData '{datosArma.weaponName}' no tiene puesto el 'Prefab Para Mano' en el Inspector.");
-            return false;
-        }
+        if (datosArma.prefabParaMano == null) return false;
         if (weaponContainer == null) return false;
 
-        
         NetworkObject prefabNet = datosArma.prefabParaMano.GetComponent<NetworkObject>();
 
         if (prefabNet != null && HasStateAuthority)
         {
-           
             NetworkObject nuevaArmaNet = Runner.Spawn(prefabNet, dropPoint.position, dropPoint.rotation, Object.InputAuthority);
 
-            
             if (datosArma.tamañoCargador > 0)
             {
                 MunicionArma scriptBala = nuevaArmaNet.gameObject.AddComponent<MunicionArma>();
                 scriptBala.Configurar(datosArma);
             }
 
-            
             RPC_AgarrarArmaRed(nuevaArmaNet, datosArma.weaponSlot);
-
             return true;
         }
 
         return false;
     }
-
 
     public GameObject GetActiveWeaponObject()
     {

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponName: Glock
   weaponSlot: 1
-  damage: 20
+  damage: 12
   range: 100
-  fireRate: 0.2
+  fireRate: 0.11
   automatic: 0
   pelletsPerShot: 1
   spread: 0.01
@@ -25,6 +25,8 @@ MonoBehaviour:
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
   precio: 200
   prefabParaMano: {fileID: 2108814982173422605, guid: ee05ce87be1de854fa02314a5d584cea, type: 3}
-  "tama\xF1oCargador": 30
-  municionReservaMaxima: 90
-  tiempoRecarga: 2
+  "tama\xF1oCargador": 20
+  municionReservaMaxima: 40
+  tiempoRecarga: 1.15
+  eventoDisparoWwise: 
+  eventoRecargaWwise: 

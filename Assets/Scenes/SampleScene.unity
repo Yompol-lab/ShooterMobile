@@ -11451,31 +11451,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -247.92
+      value: -247.165
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.393
+      value: -4.425865
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.86
+      value: -15.386602
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.6020171
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.37091172
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.6020171
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.37091163
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11487,7 +11487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8486326848261607916, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 63.276
       objectReference: {fileID: 0}
     - target: {fileID: 9119417485082102614, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
       propertyPath: m_Name
@@ -26132,6 +26132,7 @@ GameObject:
   - component: {fileID: 2085115535}
   - component: {fileID: 2085115534}
   - component: {fileID: 2085115536}
+  - component: {fileID: 2085115537}
   m_Layer: 0
   m_Name: MatchManager
   m_TagString: Untagged
@@ -26157,6 +26158,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 2085115536}
+  - {fileID: 2085115537}
   ForceRemoteRenderTimeframe: 0
 --- !u!4 &2085115535
 Transform:
@@ -26199,6 +26201,18 @@ MonoBehaviour:
   _PuntajeTerro: 0
   _RondaActual: 0
   _UltimoGanador: 0
+--- !u!114 &2085115537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085115533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fe4abf0f8511d40960656f494c1795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LimpiadorDeRonda
 --- !u!1 &2093300173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4153402303174960572, guid: 304d66337dc53ed44b60fca6fbed9248, type: 3}

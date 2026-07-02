@@ -28,3 +28,5 @@ MonoBehaviour:
   "tama\xF1oCargador": 30
   municionReservaMaxima: 90
   tiempoRecarga: 2
+  eventoDisparoWwise: Play_G36_Disparo
+  eventoRecargaWwise: Play_G36_Recarga

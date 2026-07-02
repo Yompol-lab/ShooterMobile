@@ -299,6 +299,608 @@
 						<ActiveSource Name="ChikchikEscopeta" ID="{1CCED0B1-868D-445F-BCF4-F645A4FF5FF1}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="XmRecarga" ID="{995C1793-0DC9-40D2-B608-DB0D61D3311B}" ShortID="591903180">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="XmRecarga" ID="{548AD586-6963-40B7-BB09-D856C08E2E12}">
+							<Language>SFX</Language>
+							<AudioFile>XmRecarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="779202901"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="XmRecarga" ID="{548AD586-6963-40B7-BB09-D856C08E2E12}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="XMDisparo" ID="{36DBFFE2-FD4E-4DFB-AFE9-B59775FD70BA}" ShortID="528357774">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="XMDisparo" ID="{8F8AECA3-393E-49EE-B246-0F7F843975A7}">
+							<Language>SFX</Language>
+							<AudioFile>XMDisparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="302939321"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="XMDisparo" ID="{8F8AECA3-393E-49EE-B246-0F7F843975A7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="AwpRecarga" ID="{52DB45AD-9A5D-4088-BE8D-E1483CFBE792}" ShortID="401090376">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AwpRecarga" ID="{1F9ADBB9-F950-443E-B876-006328935B9D}">
+							<Language>SFX</Language>
+							<AudioFile>AwpRecarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="933239269"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AwpRecarga" ID="{1F9ADBB9-F950-443E-B876-006328935B9D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="AwpDisparo" ID="{7F47C72A-0D54-468D-B10B-2BB5FC1D85B8}" ShortID="231052457">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AwpDisparo" ID="{C7D54436-15D3-49EF-A24A-333C0EE92DE8}">
+							<Language>SFX</Language>
+							<AudioFile>AwpDisparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="379513054"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AwpDisparo" ID="{C7D54436-15D3-49EF-A24A-333C0EE92DE8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="g36Disparo" ID="{AB4DBFCC-0604-43C7-85C3-183CF47BE1F4}" ShortID="198331600">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-13</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="g36Disparo" ID="{F7AEBC32-14C6-4E8A-968F-58608BD33D0C}">
+							<Language>SFX</Language>
+							<AudioFile>g36Disparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="410987626"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="g36Disparo" ID="{F7AEBC32-14C6-4E8A-968F-58608BD33D0C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="g36Recarga" ID="{BB5684B4-3AF3-4682-8A9B-667A8BA30D7E}" ShortID="962068755">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="g36Recarga" ID="{7373A19D-B34B-4190-8DBD-25E54DF25352}">
+							<Language>SFX</Language>
+							<AudioFile>g36Recarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1051391370"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="g36Recarga" ID="{7373A19D-B34B-4190-8DBD-25E54DF25352}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="1911Recarga" ID="{64D1FFD5-2261-4405-9BDB-BEA1EBE03C70}" ShortID="69688451">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-11</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="1911Recarga" ID="{9D785017-44C9-46C1-B8EA-AD516945A902}">
+							<Language>SFX</Language>
+							<AudioFile>1911Recarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="407444631"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="1911Recarga" ID="{9D785017-44C9-46C1-B8EA-AD516945A902}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="1911Disparo" ID="{452722B1-8DAE-4A7C-B7B0-C05F384685F7}" ShortID="30399296">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="1911Disparo" ID="{5101ABF5-A27D-42D6-BF0B-0D432049CF49}">
+							<Language>SFX</Language>
+							<AudioFile>1911Disparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="530582597"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="1911Disparo" ID="{5101ABF5-A27D-42D6-BF0B-0D432049CF49}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tec9Recarga" ID="{27CC16A8-6E95-4FA5-BEE0-5B0A7DE74F8D}" ShortID="525632364">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tec9Recarga" ID="{F4F7778D-A4F1-4028-95DF-FD8D3F4729AB}">
+							<Language>SFX</Language>
+							<AudioFile>Tec9Recarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="644997884"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Tec9Recarga" ID="{F4F7778D-A4F1-4028-95DF-FD8D3F4729AB}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tec9Disparo" ID="{285467AD-B2C8-421C-B19B-3A287180BE67}" ShortID="821949954">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tec9Disparo" ID="{97C32AE2-B9A1-4105-85FF-84D66BF41DBD}">
+							<Language>SFX</Language>
+							<AudioFile>Tec9Disparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="876168678"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Tec9Disparo" ID="{97C32AE2-B9A1-4105-85FF-84D66BF41DBD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Usprecarga" ID="{9876A699-907E-4DF1-953C-9A753B685B85}" ShortID="306504198">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-18</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Usprecarga" ID="{B964368C-3A01-4311-8F59-2CF34AC5AE46}">
+							<Language>SFX</Language>
+							<AudioFile>Usprecarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="454672338"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Usprecarga" ID="{B964368C-3A01-4311-8F59-2CF34AC5AE46}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DisparoUsp" ID="{4C3CFB4B-24EE-4D51-A0F6-1AA1016CA5C9}" ShortID="1066278851">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-18</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DisparoUsp" ID="{35A9B8B2-08D1-450F-A8DF-3BA7ABE1997B}">
+							<Language>SFX</Language>
+							<AudioFile>DisparoUsp.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="414952582"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DisparoUsp" ID="{35A9B8B2-08D1-450F-A8DF-3BA7ABE1997B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DkRecarga" ID="{51D7A502-CE56-4B55-8F4C-AFA421CAE44D}" ShortID="553110497">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DkRecarga" ID="{1C360AEE-9C21-4CE0-99EC-A685D96492A9}">
+							<Language>SFX</Language>
+							<AudioFile>DkRecarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="694864137"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DkRecarga" ID="{1C360AEE-9C21-4CE0-99EC-A685D96492A9}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DkDisparo" ID="{7A00E163-5612-4099-B53F-D7D31B171D3F}" ShortID="722334823">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DkDisparo" ID="{D1CC5E07-5954-4FD9-99E2-A928FCE85DF7}">
+							<Language>SFX</Language>
+							<AudioFile>DkDisparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="981402845"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DkDisparo" ID="{D1CC5E07-5954-4FD9-99E2-A928FCE85DF7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="RecargaGlock" ID="{E62108A7-C523-4D5A-92D6-D3CE1B8413D5}" ShortID="693364542">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-11</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="RecargaGlock" ID="{F142188C-57DA-4F48-82FF-A63EAFB1552F}">
+							<Language>SFX</Language>
+							<AudioFile>RecargaGlock.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="505888341"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="RecargaGlock" ID="{F142188C-57DA-4F48-82FF-A63EAFB1552F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="GlockDisparo" ID="{BB6711A5-8318-40B5-8DCC-034FF5A57903}" ShortID="744353036">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="GlockDisparo" ID="{89E70D3F-CA56-47C0-B273-C92B86D9A810}">
+							<Language>SFX</Language>
+							<AudioFile>GlockDisparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="965923994"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="GlockDisparo" ID="{89E70D3F-CA56-47C0-B273-C92B86D9A810}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FamasRecarga" ID="{CF0F6CA0-E30A-48C6-951B-ECC7F630CB16}" ShortID="432923806">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-8</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FamasRecarga" ID="{8072F146-92AE-41E1-BBB0-7732C9EC5C77}">
+							<Language>SFX</Language>
+							<AudioFile>FamasRecarga.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="990675005"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FamasRecarga" ID="{8072F146-92AE-41E1-BBB0-7732C9EC5C77}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FamasDisparo" ID="{EA6D3F37-FC47-4311-A10A-FB8168FDF9BB}" ShortID="589074199">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FamasDisparo" ID="{0CDE3F04-FA8F-46EA-9765-D1E93D692B39}">
+							<Language>SFX</Language>
+							<AudioFile>FamasDisparo.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="62626153"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FamasDisparo" ID="{0CDE3F04-FA8F-46EA-9765-D1E93D692B39}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

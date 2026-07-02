@@ -158,4 +158,17 @@ public class SaludJugadorRed : NetworkBehaviour
             ragdoll.Revivir();
         }
     }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.InputAuthority)]
+    public void RPC_CegarPantallaLocal()
+    {
+        
+        MobileControlsBridge uiMobile = FindFirstObjectByType<MobileControlsBridge>();
+        if (uiMobile != null)
+        {
+            
+            uiMobile.StartCoroutine(uiMobile.RutinaEfectoFlash());
+        }
+    }
+
 }

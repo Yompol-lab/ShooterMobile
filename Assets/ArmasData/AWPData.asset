@@ -28,3 +28,5 @@ MonoBehaviour:
   "tama\xF1oCargador": 10
   municionReservaMaxima: 30
   tiempoRecarga: 2.16
+  eventoDisparoWwise: Play_Awp_Disparo
+  eventoRecargaWwise: Play_Awp_Recarga

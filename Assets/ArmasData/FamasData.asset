@@ -28,3 +28,5 @@ MonoBehaviour:
   "tama\xF1oCargador": 20
   municionReservaMaxima: 80
   tiempoRecarga: 2
+  eventoDisparoWwise: Play_Famas_Disparo
+  eventoRecargaWwise: Play_Famas_Recarga

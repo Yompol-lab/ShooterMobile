@@ -26952,6 +26952,7 @@ MonoBehaviour:
   invertY: 0
   textoMunicionHUD: {fileID: 896598588}
   jugadorLocal: {fileID: 0}
+  fondoBlancoFlash: {fileID: 0}
 --- !u!114 &2115471384
 MonoBehaviour:
   m_ObjectHideFlags: 0

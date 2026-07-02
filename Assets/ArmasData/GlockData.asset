@@ -28,5 +28,5 @@ MonoBehaviour:
   "tama\xF1oCargador": 20
   municionReservaMaxima: 40
   tiempoRecarga: 1.15
-  eventoDisparoWwise: 
-  eventoRecargaWwise: 
+  eventoDisparoWwise: Play_Glock_Disparo
+  eventoRecargaWwise: Play_Glock_Recarga

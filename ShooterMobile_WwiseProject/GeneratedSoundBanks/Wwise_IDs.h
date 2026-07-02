@@ -14,12 +14,30 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ESCOPETAZO = 3513490094U;
+        static const AkUniqueID PLAY_1911_DISPARO = 2111365587U;
+        static const AkUniqueID PLAY_1911_RECARGA = 123959724U;
+        static const AkUniqueID PLAY_AWP_DISPARO = 4194686187U;
+        static const AkUniqueID PLAY_AWP_RECARGA = 923844420U;
         static const AkUniqueID PLAY_CTERRORIST_WIN = 209422798U;
+        static const AkUniqueID PLAY_DK_DISPARO = 206058248U;
+        static const AkUniqueID PLAY_DK_RECARGA = 1785532551U;
+        static const AkUniqueID PLAY_FAMAS_DISPARO = 3654096175U;
+        static const AkUniqueID PLAY_FAMAS_RECARGA = 856847256U;
+        static const AkUniqueID PLAY_G36_DISPARO = 4116635323U;
+        static const AkUniqueID PLAY_G36_RECARGA = 4166230836U;
+        static const AkUniqueID PLAY_GLOCK_DISPARO = 2711817465U;
+        static const AkUniqueID PLAY_GLOCK_RECARGA = 8018734U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
         static const AkUniqueID PLAY_RECARGA_AK47 = 1888624163U;
         static const AkUniqueID PLAY_RECARGA_ESCOPETA = 3989193866U;
         static const AkUniqueID PLAY_RECARGA_M4A4 = 3626292540U;
+        static const AkUniqueID PLAY_TEC9_DISPARO = 4294838474U;
+        static const AkUniqueID PLAY_TEC9_RECARGA = 403575789U;
         static const AkUniqueID PLAY_TERRORIST_WIN = 3064026271U;
+        static const AkUniqueID PLAY_USP_DISPARO = 1136421811U;
+        static const AkUniqueID PLAY_USP_RECARGA = 1171709836U;
+        static const AkUniqueID PLAY_XM_DISPARO = 3593958106U;
+        static const AkUniqueID PLAY_XM_RECARGA = 2872757021U;
         static const AkUniqueID SHOOT_AK = 3052655297U;
         static const AkUniqueID SHOOT_M4A4 = 3948312705U;
         static const AkUniqueID WALK = 2108779966U;

@@ -22,7 +22,41 @@ public class MobileControlsBridge : MonoBehaviour
 
     [HideInInspector] public ConfiguracionJugadorRed jugadorLocal;
 
-    
+    [Header("Efecto Flashbang UI")]
+    public CanvasGroup fondoBlancoFlash; 
+
+   
+    public void BotonLanzarFuego() { LanzarUtilidad(TipoGranada.Fuego); }
+    public void BotonLanzarHumo() { LanzarUtilidad(TipoGranada.Humo); }
+    public void BotonLanzarFlash() { LanzarUtilidad(TipoGranada.Flash); }
+
+    private void LanzarUtilidad(TipoGranada tipo)
+    {
+        if (jugadorLocal != null)
+        {
+            ControladorGranadasRed compGranada = jugadorLocal.GetComponent<ControladorGranadasRed>();
+            if (compGranada != null) compGranada.IntentarLanzarGranada(tipo);
+        }
+    }
+
+    public System.Collections.IEnumerator RutinaEfectoFlash()
+    {
+        if (fondoBlancoFlash == null) yield break;
+
+      
+        fondoBlancoFlash.alpha = 1f;
+
+      
+        yield return new WaitForSeconds(2f);
+
+      
+        while (fondoBlancoFlash.alpha > 0f)
+        {
+            fondoBlancoFlash.alpha -= Time.deltaTime * 0.7f;
+            yield return null;
+        }
+    }
+
     public void BotonRecargarUI()
     {
         if (playerInventory != null)

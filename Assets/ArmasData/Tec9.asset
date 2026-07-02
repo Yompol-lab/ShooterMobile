@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
+  m_Name: Tec9
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponName: Tec9
+  weaponSlot: 1
+  damage: 30
+  range: 120
+  fireRate: 0.17
+  automatic: 1
+  pelletsPerShot: 1
+  spread: 0.02
+  beamRadius: 0.5
+  muzzleFlashPrefab: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
+  bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
+  precio: 400
+  prefabParaMano: {fileID: 517116878096175677, guid: 883775139098ab643ab008621b281dcc, type: 3}
+  "tama\xF1oCargador": 20
+  municionReservaMaxima: 80
+  tiempoRecarga: 1.5
+  eventoDisparoWwise: Play_Tec9_Disparo
+  eventoRecargaWwise: Play_Tec9_Recarga

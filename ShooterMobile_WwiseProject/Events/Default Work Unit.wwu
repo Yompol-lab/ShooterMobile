@@ -113,6 +113,204 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_1911_Disparo" ID="{E0330B79-6CA1-4B83-B1C5-160C910A070B}">
+					<ChildrenList>
+						<Action Name="" ID="{C47C77A0-6BE1-43A9-AD03-1257915173C8}" ShortID="184411569">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="1911Disparo" ID="{452722B1-8DAE-4A7C-B7B0-C05F384685F7}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_1911_Recarga" ID="{0C4A9AA4-373A-40D9-9B44-81B43E02FB50}">
+					<ChildrenList>
+						<Action Name="" ID="{3FCF328D-849E-47CC-99B4-620A8803CE46}" ShortID="3676297">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="1911Recarga" ID="{64D1FFD5-2261-4405-9BDB-BEA1EBE03C70}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Awp_Disparo" ID="{7F34548F-BB69-45E1-904F-10EA7FB07A2D}">
+					<ChildrenList>
+						<Action Name="" ID="{99262E78-964A-483A-A0DB-C44AE7C7F321}" ShortID="211909235">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AwpDisparo" ID="{7F47C72A-0D54-468D-B10B-2BB5FC1D85B8}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Awp_Recarga" ID="{C3119C24-2D77-4E17-BD74-EA0E8E886585}">
+					<ChildrenList>
+						<Action Name="" ID="{BEF5271D-69F6-413B-94D8-2BCC2395DE6D}" ShortID="968918145">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AwpRecarga" ID="{52DB45AD-9A5D-4088-BE8D-E1483CFBE792}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Usp_Disparo" ID="{1DCC4B5A-F603-4A46-8F36-1332D3D1F8B3}">
+					<ChildrenList>
+						<Action Name="" ID="{0AD9C274-9F05-4071-BD16-26C3938C5A57}" ShortID="676349282">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DisparoUsp" ID="{4C3CFB4B-24EE-4D51-A0F6-1AA1016CA5C9}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Usp_Recarga" ID="{7088F68A-162B-445B-A025-CF9772CD4C63}">
+					<ChildrenList>
+						<Action Name="" ID="{13A04FE6-3F0E-4BC4-BBF3-90FA41EFC4B5}" ShortID="59497969">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Usprecarga" ID="{9876A699-907E-4DF1-953C-9A753B685B85}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Dk_Disparo" ID="{49457751-97A4-4222-9EB0-4AEE2E13BF46}">
+					<ChildrenList>
+						<Action Name="" ID="{46CB8539-1872-4E43-B035-DD204F2441D4}" ShortID="702381839">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DkDisparo" ID="{7A00E163-5612-4099-B53F-D7D31B171D3F}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Dk_Recarga" ID="{7F4B9B7B-06D6-400B-9470-A35DF677F61A}">
+					<ChildrenList>
+						<Action Name="" ID="{F90E35C6-FC3A-419D-8F4B-574185394D9D}" ShortID="647599545">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DkRecarga" ID="{51D7A502-CE56-4B55-8F4C-AFA421CAE44D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Famas_Disparo" ID="{842CB848-BA01-49BA-9E31-E46069809226}">
+					<ChildrenList>
+						<Action Name="" ID="{47D09429-F896-4FB5-B456-E51F498DB3BF}" ShortID="230385066">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FamasDisparo" ID="{EA6D3F37-FC47-4311-A10A-FB8168FDF9BB}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Famas_Recarga" ID="{A35A681F-A62C-4CD9-AC37-C0FDCBDF70F5}">
+					<ChildrenList>
+						<Action Name="" ID="{0DA53AA8-2F61-4ABB-9936-83B72F909E7F}" ShortID="435448181">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FamasRecarga" ID="{CF0F6CA0-E30A-48C6-951B-ECC7F630CB16}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_G36_Disparo" ID="{66C51E29-0A4C-4C7E-9E2D-CACCCD8A1BD4}">
+					<ChildrenList>
+						<Action Name="" ID="{229F9476-CA09-45CB-850F-DBBB29986D72}" ShortID="419973768">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="g36Disparo" ID="{AB4DBFCC-0604-43C7-85C3-183CF47BE1F4}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_G36_Recarga" ID="{4B02A1B7-2167-4B17-B75D-C6E92282DBB1}">
+					<ChildrenList>
+						<Action Name="" ID="{86DD6045-3E2A-47DB-8BC8-04C0CF9D2BFE}" ShortID="806910190">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="g36Recarga" ID="{BB5684B4-3AF3-4682-8A9B-667A8BA30D7E}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Tec9_Disparo" ID="{06FA7218-9920-4D8A-A3E4-804D9DCC25E7}">
+					<ChildrenList>
+						<Action Name="" ID="{E32BED70-3A3D-4934-8FC7-6B02060F9D46}" ShortID="243430132">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tec9Disparo" ID="{285467AD-B2C8-421C-B19B-3A287180BE67}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Tec9_Recarga" ID="{12847614-C192-4D6E-9793-DB910F42C7DD}">
+					<ChildrenList>
+						<Action Name="" ID="{5E8EEA9B-B4FC-4DBE-B2B4-456644457E12}" ShortID="808276982">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tec9Recarga" ID="{27CC16A8-6E95-4FA5-BEE0-5B0A7DE74F8D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_XM_Disparo" ID="{763BCD20-98D7-424D-951F-C7BE6F343400}">
+					<ChildrenList>
+						<Action Name="" ID="{2028723F-D43A-4887-91FA-1DFD447DA408}" ShortID="73305183">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="XMDisparo" ID="{36DBFFE2-FD4E-4DFB-AFE9-B59775FD70BA}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_XM_Recarga" ID="{3C163D26-47B9-48B7-92A8-BF32E0CE12BD}">
+					<ChildrenList>
+						<Action Name="" ID="{CD2C3C4D-16AA-4233-9C8B-909911F62503}" ShortID="730280195">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="XmRecarga" ID="{995C1793-0DC9-40D2-B608-DB0D61D3311B}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Glock_Disparo" ID="{2493691F-0538-45C1-ACB0-6E1C5926EAE3}">
+					<ChildrenList>
+						<Action Name="" ID="{D66C0A71-96D2-4C6A-BF49-3169A87603DB}" ShortID="141228371">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GlockDisparo" ID="{BB6711A5-8318-40B5-8DCC-034FF5A57903}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Glock_Recarga" ID="{EB754D92-17EE-4FAA-8A85-5C78E88284BE}">
+					<ChildrenList>
+						<Action Name="" ID="{1A7728E1-B512-4B76-AF5F-261EF9345FC1}" ShortID="552052264">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RecargaGlock" ID="{E62108A7-C523-4D5A-92D6-D3CE1B8413D5}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

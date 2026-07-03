@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
     "Language": "SFX",
-    "Hash": "{0CF66EBB-7682-3596-92EC-DBC2114ED3FB}",
+    "Hash": "{C9F8430C-72CC-29A0-D4F7-338B181AA5BD}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
     "ShortName": "MainBank",
     "Path": "MainBank.bnk",
@@ -24,12 +24,132 @@
       "CachePath": "D9/{D92C24AF-B5D1-3C43-6895-A89378FC84E9}.wem"
      },
      {
+      "Id": "62626153",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FamasDisparo.wav",
+      "CachePath": "FC/{FC5D35B8-DB2F-3B15-5BB3-8C0BC454CC3E}.wem"
+     },
+     {
+      "Id": "78249162",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "M4a4Disparo.wav",
+      "CachePath": "36/{36C321BE-9C70-7D46-497A-E005C33CA6C7}.wem"
+     },
+     {
+      "Id": "203937467",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RecargaM4a4.wav",
+      "CachePath": "05/{05B94B3A-2E0F-A899-9B21-2EA4A09411EB}.wem"
+     },
+     {
+      "Id": "302939321",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "XMDisparo.wav",
+      "CachePath": "9E/{9E86D0F7-7423-EE27-F729-E523DF615D5E}.wem"
+     },
+     {
+      "Id": "350320315",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Escopetazo.wav",
+      "CachePath": "AE/{AE18DEC8-D27A-0F8B-8440-BE8431CD0E7A}.wem"
+     },
+     {
+      "Id": "379513054",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AwpDisparo.wav",
+      "CachePath": "04/{04B0F90B-C204-DE2E-A266-D6F6F066CEAF}.wem"
+     },
+     {
+      "Id": "407444631",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "1911Recarga.wav",
+      "CachePath": "DC/{DC8A6213-7CAC-DE0A-54D0-4A5199C6F70F}.wem"
+     },
+     {
+      "Id": "410987626",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "g36Disparo.wav",
+      "CachePath": "78/{78ECA295-923F-982B-D3F3-44644FF0CDBB}.wem"
+     },
+     {
+      "Id": "414952582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DisparoUsp.wav",
+      "CachePath": "DB/{DB02F66E-B580-A6D9-6FB0-BCFA24E81E11}.wem"
+     },
+     {
       "Id": "419694564",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Epic Middle-Eastern Battle Music - Holy Land.wav",
       "CachePath": "97/{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem"
+     },
+     {
+      "Id": "443015749",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ChikchikEscopeta.wav",
+      "CachePath": "25/{253B27BD-07D1-E16A-13C7-970D172A726A}.wem"
+     },
+     {
+      "Id": "454672338",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Usprecarga.wav",
+      "CachePath": "90/{9041C6F4-68A0-936B-D2F6-4C5F7335CE4D}.wem"
+     },
+     {
+      "Id": "505888341",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "RecargaGlock.wav",
+      "CachePath": "9C/{9C4795A5-D652-3119-DD17-F4FFB28B3F39}.wem"
+     },
+     {
+      "Id": "530582597",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "1911Disparo.wav",
+      "CachePath": "DB/{DBEBEE30-6D07-A7D0-F053-B264FD3D0725}.wem"
+     },
+     {
+      "Id": "644997884",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tec9Recarga.wav",
+      "CachePath": "4A/{4A3C0646-55EA-C6A4-C17D-39F9E1DBD6AD}.wem"
+     },
+     {
+      "Id": "694864137",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DkRecarga.wav",
+      "CachePath": "66/{66EA2903-ABD3-2A42-C630-38C90163B929}.wem"
      },
      {
       "Id": "745942567",
@@ -40,6 +160,14 @@
       "CachePath": "77/{77C56A17-E16C-8C25-6C63-12B22C93B0BE}.wem"
      },
      {
+      "Id": "779202901",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "XmRecarga.wav",
+      "CachePath": "E9/{E9CE49A9-2CCE-8DB3-AFC8-B64BBC467A39}.wem"
+     },
+     {
       "Id": "812429598",
       "Language": "SFX",
       "Streaming": "false",
@@ -48,15 +176,141 @@
       "CachePath": "6C/{6C14114C-18D3-150A-C4EF-A22BF4905876}.wem"
      },
      {
+      "Id": "876168678",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Tec9Disparo.wav",
+      "CachePath": "3A/{3AE5A19A-108F-9D93-392F-EA378F0AFFAE}.wem"
+     },
+     {
+      "Id": "903524215",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AkReload.wav",
+      "CachePath": "1D/{1DE5EF57-4726-F7D6-02EC-81B5638066DF}.wem"
+     },
+     {
+      "Id": "933239269",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "AwpRecarga.wav",
+      "CachePath": "54/{543F9FDB-35E8-EDAC-7CD5-C64ADB8ECC71}.wem"
+     },
+     {
       "Id": "933764207",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Ak-47Disparo1.wav",
       "CachePath": "B9/{B95C497A-8F01-3580-C4F8-A6C8F167FFF2}.wem"
+     },
+     {
+      "Id": "965923994",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "GlockDisparo.wav",
+      "CachePath": "0C/{0C03AE31-F35B-FF92-C2E7-42E42F02CBA7}.wem"
+     },
+     {
+      "Id": "981402845",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "DkDisparo.wav",
+      "CachePath": "09/{090376FF-8467-1D05-7FD8-D115D04C0422}.wem"
+     },
+     {
+      "Id": "990675005",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "FamasRecarga.wav",
+      "CachePath": "87/{872506F1-7E64-06C1-D84C-65095C8FC361}.wem"
+     },
+     {
+      "Id": "1051391370",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "g36Recarga.wav",
+      "CachePath": "96/{96D606FE-CB53-5D03-8C41-ABA62810F88E}.wem"
      }
     ],
     "Events": [
+     {
+      "Id": "3513490094",
+      "Name": "Escopetazo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Escopetazo",
+      "GUID": "{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.0168934",
+      "DurationMax": "2.0168934",
+      "MediaRefs": [
+       {
+        "Id": "350320315"
+       }
+      ]
+     },
+     {
+      "Id": "2111365587",
+      "Name": "Play_1911_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_1911_Disparo",
+      "GUID": "{E0330B79-6CA1-4B83-B1C5-160C910A070B}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4720635",
+      "DurationMax": "1.4720635",
+      "MediaRefs": [
+       {
+        "Id": "530582597"
+       }
+      ]
+     },
+     {
+      "Id": "123959724",
+      "Name": "Play_1911_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_1911_Recarga",
+      "GUID": "{0C4A9AA4-373A-40D9-9B44-81B43E02FB50}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.709093",
+      "DurationMax": "0.709093",
+      "MediaRefs": [
+       {
+        "Id": "407444631"
+       }
+      ]
+     },
+     {
+      "Id": "4194686187",
+      "Name": "Play_Awp_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Awp_Disparo",
+      "GUID": "{7F34548F-BB69-45E1-904F-10EA7FB07A2D}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.5629706",
+      "DurationMax": "4.5629706",
+      "MediaRefs": [
+       {
+        "Id": "379513054"
+       }
+      ]
+     },
+     {
+      "Id": "923844420",
+      "Name": "Play_Awp_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Awp_Recarga",
+      "GUID": "{C3119C24-2D77-4E17-BD74-EA0E8E886585}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.9229705",
+      "DurationMax": "1.9229705",
+      "MediaRefs": [
+       {
+        "Id": "933239269"
+       }
+      ]
+     },
      {
       "Id": "209422798",
       "Name": "Play_CTerrorist_Win",
@@ -72,6 +326,118 @@
       ]
      },
      {
+      "Id": "206058248",
+      "Name": "Play_Dk_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Dk_Disparo",
+      "GUID": "{49457751-97A4-4222-9EB0-4AEE2E13BF46}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.00517",
+      "DurationMax": "3.00517",
+      "MediaRefs": [
+       {
+        "Id": "981402845"
+       }
+      ]
+     },
+     {
+      "Id": "1785532551",
+      "Name": "Play_Dk_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Dk_Recarga",
+      "GUID": "{7F4B9B7B-06D6-400B-9470-A35DF677F61A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3612018",
+      "DurationMax": "1.3612018",
+      "MediaRefs": [
+       {
+        "Id": "694864137"
+       }
+      ]
+     },
+     {
+      "Id": "3654096175",
+      "Name": "Play_Famas_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Famas_Disparo",
+      "GUID": "{842CB848-BA01-49BA-9E31-E46069809226}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.6795692",
+      "DurationMax": "2.6795692",
+      "MediaRefs": [
+       {
+        "Id": "62626153"
+       }
+      ]
+     },
+     {
+      "Id": "856847256",
+      "Name": "Play_Famas_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Famas_Recarga",
+      "GUID": "{A35A681F-A62C-4CD9-AC37-C0FDCBDF70F5}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.376576",
+      "DurationMax": "1.376576",
+      "MediaRefs": [
+       {
+        "Id": "990675005"
+       }
+      ]
+     },
+     {
+      "Id": "4116635323",
+      "Name": "Play_G36_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_G36_Disparo",
+      "GUID": "{66C51E29-0A4C-4C7E-9E2D-CACCCD8A1BD4}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.10045352",
+      "DurationMax": "0.10045352",
+      "MediaRefs": [
+       {
+        "Id": "410987626"
+       }
+      ]
+     },
+     {
+      "Id": "4166230836",
+      "Name": "Play_G36_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_G36_Recarga",
+      "GUID": "{4B02A1B7-2167-4B17-B75D-C6E92282DBB1}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4424263",
+      "DurationMax": "1.4424263",
+      "MediaRefs": [
+       {
+        "Id": "1051391370"
+       }
+      ]
+     },
+     {
+      "Id": "2711817465",
+      "Name": "Play_Glock_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Glock_Disparo",
+      "GUID": "{2493691F-0538-45C1-ACB0-6E1C5926EAE3}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5305669",
+      "DurationMax": "1.5305669",
+      "MediaRefs": [
+       {
+        "Id": "965923994"
+       }
+      ]
+     },
+     {
+      "Id": "8018734",
+      "Name": "Play_Glock_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Glock_Recarga",
+      "GUID": "{EB754D92-17EE-4FAA-8A85-5C78E88284BE}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.88455784",
+      "DurationMax": "0.88455784",
+      "MediaRefs": [
+       {
+        "Id": "505888341"
+       }
+      ]
+     },
+     {
       "Id": "2570041344",
       "Name": "Play_MenuMusic",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_MenuMusic",
@@ -80,6 +446,76 @@
       "MediaRefs": [
        {
         "Id": "419694564"
+       }
+      ]
+     },
+     {
+      "Id": "1888624163",
+      "Name": "Play_Recarga_AK47",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_AK47",
+      "GUID": "{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.448526",
+      "DurationMax": "1.448526",
+      "MediaRefs": [
+       {
+        "Id": "903524215"
+       }
+      ]
+     },
+     {
+      "Id": "3989193866",
+      "Name": "Play_Recarga_Escopeta",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_Escopeta",
+      "GUID": "{85F3846F-C107-4010-AF4F-099906CAD2C2}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.74292517",
+      "DurationMax": "0.74292517",
+      "MediaRefs": [
+       {
+        "Id": "443015749"
+       }
+      ]
+     },
+     {
+      "Id": "3626292540",
+      "Name": "Play_Recarga_m4a4",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_m4a4",
+      "GUID": "{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7295238",
+      "DurationMax": "1.7295238",
+      "MediaRefs": [
+       {
+        "Id": "203937467"
+       }
+      ]
+     },
+     {
+      "Id": "4294838474",
+      "Name": "Play_Tec9_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Tec9_Disparo",
+      "GUID": "{06FA7218-9920-4D8A-A3E4-804D9DCC25E7}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8604082",
+      "DurationMax": "1.8604082",
+      "MediaRefs": [
+       {
+        "Id": "876168678"
+       }
+      ]
+     },
+     {
+      "Id": "403575789",
+      "Name": "Play_Tec9_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Tec9_Recarga",
+      "GUID": "{12847614-C192-4D6E-9793-DB910F42C7DD}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.577415",
+      "DurationMax": "1.577415",
+      "MediaRefs": [
+       {
+        "Id": "644997884"
        }
       ]
      },
@@ -98,6 +534,62 @@
       ]
      },
      {
+      "Id": "1136421811",
+      "Name": "Play_Usp_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Usp_Disparo",
+      "GUID": "{1DCC4B5A-F603-4A46-8F36-1332D3D1F8B3}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0877551",
+      "DurationMax": "1.0877551",
+      "MediaRefs": [
+       {
+        "Id": "414952582"
+       }
+      ]
+     },
+     {
+      "Id": "1171709836",
+      "Name": "Play_Usp_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Usp_Recarga",
+      "GUID": "{7088F68A-162B-445B-A025-CF9772CD4C63}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.118821",
+      "DurationMax": "2.118821",
+      "MediaRefs": [
+       {
+        "Id": "454672338"
+       }
+      ]
+     },
+     {
+      "Id": "3593958106",
+      "Name": "Play_XM_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_XM_Disparo",
+      "GUID": "{763BCD20-98D7-424D-951F-C7BE6F343400}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.172948",
+      "DurationMax": "3.172948",
+      "MediaRefs": [
+       {
+        "Id": "302939321"
+       }
+      ]
+     },
+     {
+      "Id": "2872757021",
+      "Name": "Play_XM_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_XM_Recarga",
+      "GUID": "{3C163D26-47B9-48B7-92A8-BF32E0CE12BD}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.2080271",
+      "DurationMax": "2.2080271",
+      "MediaRefs": [
+       {
+        "Id": "779202901"
+       }
+      ]
+     },
+     {
       "Id": "3052655297",
       "Name": "Shoot_Ak",
       "ObjectPath": "\\Events\\Default Work Unit\\Shoot_Ak",
@@ -108,6 +600,20 @@
       "MediaRefs": [
        {
         "Id": "933764207"
+       }
+      ]
+     },
+     {
+      "Id": "3948312705",
+      "Name": "Shoot_m4a4",
+      "ObjectPath": "\\Events\\Default Work Unit\\Shoot_m4a4",
+      "GUID": "{13B24368-FD6E-4BFC-BC08-FE279F4D3FDD}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.89054424",
+      "DurationMax": "0.89054424",
+      "MediaRefs": [
+       {
+        "Id": "78249162"
        }
       ]
      },
@@ -128,6 +634,6 @@
     ]
    }
   ],
-  "FileHash": "{C7D9BD24-BE76-A7D0-9069-72B1662ADEBC}"
+  "FileHash": "{8F9BF1E9-CEF4-0B13-CC02-EF4D13792325}"
  }
 }

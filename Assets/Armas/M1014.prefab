@@ -483,7 +483,7 @@ Transform:
   m_GameObject: {fileID: 2653912407517361347}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.261678, y: 0.979, z: 5.4325995}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -582,8 +582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponData: {fileID: 0}
-  firePoint: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 7df9d5a1f12c9c945b18ed4300a8d97a, type: 2}
+  firePoint: {fileID: 2552302375125615182}
 --- !u!114 &7833700979262252624
 MonoBehaviour:
   m_ObjectHideFlags: 0

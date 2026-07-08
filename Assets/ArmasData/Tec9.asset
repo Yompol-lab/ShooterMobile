@@ -30,3 +30,4 @@ MonoBehaviour:
   tiempoRecarga: 1.5
   eventoDisparoWwise: Play_Tec9_Disparo
   eventoRecargaWwise: Play_Tec9_Recarga
+  iconoArma: {fileID: 21300000, guid: b3a7b30982a464448b703513bf34fdc1, type: 3}

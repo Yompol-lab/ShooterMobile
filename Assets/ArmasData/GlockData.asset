@@ -30,3 +30,4 @@ MonoBehaviour:
   tiempoRecarga: 1.15
   eventoDisparoWwise: Play_Glock_Disparo
   eventoRecargaWwise: Play_Glock_Recarga
+  iconoArma: {fileID: 21300000, guid: cc578806f56f5974fba2677f6a479c1a, type: 3}

@@ -37,5 +37,11 @@ public class WeaponData : ScriptableObject
 
     [Header("Audio Wwise")]
     public string eventoDisparoWwise;
-    public string eventoRecargaWwise; 
+    public string eventoRecargaWwise;
+
+    [Header("Interfaz Visual")]
+    public Sprite iconoArma;
+
+    [Header("Solo para Granadas")]
+    public TipoGranada tipoGranada; 
 }

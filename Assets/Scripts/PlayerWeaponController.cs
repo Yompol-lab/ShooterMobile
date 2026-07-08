@@ -24,23 +24,77 @@ namespace StarterAssets
             if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         }
 
+      
+        public void ResetShooting()
+        {
+            isShooting = false;
+        }
+
         public override void FixedUpdateNetwork()
         {
-            if (!HasStateAuthority || currentWeapon == null || currentWeapon.weaponData == null) return;
+            if (!HasStateAuthority) return;
+
+            PlayerInventory inv = GetComponent<PlayerInventory>();
+            WeaponSlot slotActivo = inv != null ? inv.activeSlot : WeaponSlot.Primary;
 
             if (isShooting)
             {
+               
+                if (slotActivo == WeaponSlot.Fuego || slotActivo == WeaponSlot.Humo ||
+                    slotActivo == WeaponSlot.Flash || slotActivo == WeaponSlot.Explosiva)
+                {
+                    if (Time.time >= nextFireTime)
+                    {
+                        ControladorGranadasRed controlGranadas = GetComponent<ControladorGranadasRed>();
+                        if (controlGranadas != null)
+                        {
+                            TipoGranada tipo = TipoGranada.Fuego;
+                            if (slotActivo == WeaponSlot.Humo) tipo = TipoGranada.Humo;
+                            else if (slotActivo == WeaponSlot.Flash) tipo = TipoGranada.Flash;
+                            else if (slotActivo == WeaponSlot.Explosiva) tipo = TipoGranada.Explosiva;
+
+                            bool puedeTirar = false;
+                            if (tipo == TipoGranada.Fuego && controlGranadas.granadasFuego > 0) puedeTirar = true;
+                            else if (tipo == TipoGranada.Humo && controlGranadas.granadasHumo > 0) puedeTirar = true;
+                            else if (tipo == TipoGranada.Flash && controlGranadas.granadasFlash > 0) puedeTirar = true;
+                            else if (tipo == TipoGranada.Explosiva && controlGranadas.granadasExplosivas > 0) puedeTirar = true;
+
+                            if (puedeTirar)
+                            {
+                               
+                                controlGranadas.IntentarLanzarGranada(tipo);
+
+                                
+                                inv.ConsumirGranadaMano(slotActivo);
+
+                               
+                                if (inv.currentPrimary != null) inv.EquipSlot(WeaponSlot.Primary);
+                                else inv.EquipSlot(WeaponSlot.Knife);
+
+                                nextFireTime = Time.time + 1f; 
+                            }
+                            else
+                            {
+                                if (inv.currentPrimary != null) inv.EquipSlot(WeaponSlot.Primary);
+                                else inv.EquipSlot(WeaponSlot.Knife);
+                            }
+                        }
+                        isShooting = false;
+                    }
+                    return;
+                }
+
+              
+                if (currentWeapon == null || currentWeapon.weaponData == null) return;
+
                 if (Time.time >= nextFireTime)
                 {
-                   
-                    PlayerInventory inv = GetComponent<PlayerInventory>();
                     GameObject armaActiva = inv != null ? inv.GetActiveWeaponObject() : null;
                     bool tieneBalas = true;
 
                     if (armaActiva != null)
                     {
                         MunicionArma mun = armaActiva.GetComponent<MunicionArma>();
-                        
                         if (mun != null) tieneBalas = mun.IntentarDisparar();
                     }
 
@@ -52,10 +106,8 @@ namespace StarterAssets
                     }
                     else
                     {
-                      
                         if (!currentWeapon.weaponData.automatic) isShooting = false;
                     }
-                    
                 }
             }
         }
@@ -99,6 +151,12 @@ namespace StarterAssets
                         if (targetSalud.Object == Object) continue;
                         int finalDamage = Mathf.RoundToInt(damage);
                         targetSalud.RPC_TomarDanio(finalDamage, transform.position);
+                    }
+
+                    FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
+                    if (extintor != null)
+                    {
+                        extintor.TriggerSmoke();
                     }
                 }
             }

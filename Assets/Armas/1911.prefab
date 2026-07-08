@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  weaponData: {fileID: 0}
-  firePoint: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 64ca03776c3dd2f4b81513f3b25c220a, type: 2}
+  firePoint: {fileID: 7287235299592126457}
 --- !u!114 &5208695136696909083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
-  weaponSlot: 0
+  weaponSlot: 1
   holdPosition: {x: 0, y: 0, z: 0}
   holdRotation: {x: 0, y: 0, z: 0}
   holdScale: {x: 1, y: 1, z: 1}

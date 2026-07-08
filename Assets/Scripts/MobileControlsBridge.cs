@@ -1,6 +1,6 @@
 using UnityEngine;
 using StarterAssets;
-using TMPro; 
+using TMPro;
 
 public class MobileControlsBridge : MonoBehaviour
 {
@@ -18,38 +18,65 @@ public class MobileControlsBridge : MonoBehaviour
     public bool invertY = false;
 
     [Header("UI Pantalla")]
-    public TextMeshProUGUI textoMunicionHUD; 
+    public TextMeshProUGUI textoMunicionHUD;
 
     [HideInInspector] public ConfiguracionJugadorRed jugadorLocal;
 
     [Header("Efecto Flashbang UI")]
-    public CanvasGroup fondoBlancoFlash; 
+    public CanvasGroup fondoBlancoFlash;
 
-   
-    public void BotonLanzarFuego() { LanzarUtilidad(TipoGranada.Fuego); }
-    public void BotonLanzarHumo() { LanzarUtilidad(TipoGranada.Humo); }
-    public void BotonLanzarFlash() { LanzarUtilidad(TipoGranada.Flash); }
-
-    private void LanzarUtilidad(TipoGranada tipo)
+    
+    private PlayerInventory GetInv()
     {
-        if (jugadorLocal != null)
+        if (playerInventory != null) return playerInventory;
+        if (jugadorLocal != null) return jugadorLocal.GetComponent<PlayerInventory>();
+        return null;
+    }
+
+    
+    public void BotonEquiparFuego() { EquiparGranada(WeaponSlot.Fuego); }
+    public void BotonEquiparHumo() { EquiparGranada(WeaponSlot.Humo); }
+    public void BotonEquiparFlash() { EquiparGranada(WeaponSlot.Flash); }
+    public void BotonEquiparExplosiva() { EquiparGranada(WeaponSlot.Explosiva); }
+
+    private void EquiparGranada(WeaponSlot slot)
+    {
+        PlayerInventory inv = GetInv();
+
+        if (inv != null)
         {
-            ControladorGranadasRed compGranada = jugadorLocal.GetComponent<ControladorGranadasRed>();
-            if (compGranada != null) compGranada.IntentarLanzarGranada(tipo);
+            ControladorGranadasRed control = inv.GetComponent<ControladorGranadasRed>();
+            if (control != null)
+            {
+                bool tieneMunicion = false;
+                if (slot == WeaponSlot.Fuego && control.granadasFuego > 0) tieneMunicion = true;
+                else if (slot == WeaponSlot.Humo && control.granadasHumo > 0) tieneMunicion = true;
+                else if (slot == WeaponSlot.Flash && control.granadasFlash > 0) tieneMunicion = true;
+                else if (slot == WeaponSlot.Explosiva && control.granadasExplosivas > 0) tieneMunicion = true;
+
+                if (tieneMunicion)
+                {
+                    inv.EquipSlot(slot);
+                    inv.RPC_SincronizarSlotRed(slot);
+                    Debug.Log(" UI: Intentando equipar " + slot.ToString());
+                }
+                else
+                {
+                    Debug.LogWarning(" UI: Tocaste el botón pero no tenés munición de esta granada.");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError(" UI: El Canvas no encuentra a tu jugador local.");
         }
     }
 
     public System.Collections.IEnumerator RutinaEfectoFlash()
     {
         if (fondoBlancoFlash == null) yield break;
-
-      
         fondoBlancoFlash.alpha = 1f;
-
-      
         yield return new WaitForSeconds(2f);
-
-      
         while (fondoBlancoFlash.alpha > 0f)
         {
             fondoBlancoFlash.alpha -= Time.deltaTime * 0.7f;
@@ -59,9 +86,10 @@ public class MobileControlsBridge : MonoBehaviour
 
     public void BotonRecargarUI()
     {
-        if (playerInventory != null)
+        PlayerInventory inv = GetInv();
+        if (inv != null)
         {
-            GameObject armaObj = playerInventory.GetActiveWeaponObject();
+            GameObject armaObj = inv.GetActiveWeaponObject();
             if (armaObj != null)
             {
                 MunicionArma mun = armaObj.GetComponent<MunicionArma>();
@@ -69,40 +97,41 @@ public class MobileControlsBridge : MonoBehaviour
             }
         }
     }
-  
 
     public void BotonTirarArma()
     {
-        if (playerInventory != null) playerInventory.BotonTirarArma();
+        PlayerInventory inv = GetInv();
+        if (inv != null) inv.BotonTirarArma();
     }
 
     public void BotonSacarBomba()
     {
-        if (playerInventory != null)
+        PlayerInventory inv = GetInv();
+        if (inv != null)
         {
-            if (playerInventory.activeSlot == WeaponSlot.Bomb && playerInventory.enZonaPlantar)
+            if (inv.activeSlot == WeaponSlot.Bomb && inv.enZonaPlantar)
             {
-                playerInventory.PlantarBomba();
+                inv.PlantarBomba();
             }
-            else if (playerInventory.activeSlot == WeaponSlot.Bomb)
+            else if (inv.activeSlot == WeaponSlot.Bomb)
             {
-                playerInventory.EquipSlot(WeaponSlot.Knife);
-                playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Knife);
+                inv.EquipSlot(WeaponSlot.Knife);
+                inv.RPC_SincronizarSlotRed(WeaponSlot.Knife);
             }
             else
             {
-                playerInventory.EquipSlot(WeaponSlot.Bomb);
-                playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Bomb);
+                inv.EquipSlot(WeaponSlot.Bomb);
+                inv.RPC_SincronizarSlotRed(WeaponSlot.Bomb);
             }
         }
     }
 
     private void Update()
     {
-        
-        if (textoMunicionHUD != null && playerInventory != null)
+        PlayerInventory inv = GetInv();
+        if (textoMunicionHUD != null && inv != null)
         {
-            GameObject armaObj = playerInventory.GetActiveWeaponObject();
+            GameObject armaObj = inv.GetActiveWeaponObject();
             if (armaObj != null)
             {
                 MunicionArma mun = armaObj.GetComponent<MunicionArma>();
@@ -111,11 +140,10 @@ public class MobileControlsBridge : MonoBehaviour
                     if (mun.estaRecargando) textoMunicionHUD.text = "Recargando";
                     else textoMunicionHUD.text = $"{mun.balasCargador} / {mun.balasReserva}";
                 }
-                else textoMunicionHUD.text = ""; 
+                else textoMunicionHUD.text = "";
             }
             else textoMunicionHUD.text = "";
         }
-        
 
         if (starterInputs == null) return;
 
@@ -140,7 +168,7 @@ public class MobileControlsBridge : MonoBehaviour
     public void JumpButtonDown() { if (starterInputs != null) starterInputs.JumpInput(true); }
     public void JumpButtonUp() { if (starterInputs != null) starterInputs.JumpInput(false); }
 
-    public void EquipPrimaryButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Primary); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Primary); } }
-    public void EquipSecondaryButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Secondary); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Secondary); } }
-    public void EquipKnifeButton() { if (playerInventory != null) { playerInventory.EquipSlot(WeaponSlot.Knife); playerInventory.RPC_SincronizarSlotRed(WeaponSlot.Knife); } }
+    public void EquipPrimaryButton() { PlayerInventory inv = GetInv(); if (inv != null) { inv.EquipSlot(WeaponSlot.Primary); inv.RPC_SincronizarSlotRed(WeaponSlot.Primary); } }
+    public void EquipSecondaryButton() { PlayerInventory inv = GetInv(); if (inv != null) { inv.EquipSlot(WeaponSlot.Secondary); inv.RPC_SincronizarSlotRed(WeaponSlot.Secondary); } }
+    public void EquipKnifeButton() { PlayerInventory inv = GetInv(); if (inv != null) { inv.EquipSlot(WeaponSlot.Knife); inv.RPC_SincronizarSlotRed(WeaponSlot.Knife); } }
 }

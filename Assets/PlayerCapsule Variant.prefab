@@ -285,6 +285,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 464360030796126711}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8754479217609267770}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!4 &650697483049167007 stripped
 Transform:
@@ -318,6 +321,10 @@ MonoBehaviour:
   currentSecondary: {fileID: 4505035457617494417}
   currentKnife: {fileID: 5976423285781113313}
   currentBomb: {fileID: 0}
+  currentFuego: {fileID: 0}
+  currentHumo: {fileID: 0}
+  currentFlash: {fileID: 0}
+  currentExplosiva: {fileID: 0}
   _activeSlot: 1
 --- !u!114 &1597279581498531534
 MonoBehaviour:
@@ -364,6 +371,7 @@ MonoBehaviour:
   - {fileID: -3397632321999913911}
   - {fileID: 2863725888775702198}
   - {fileID: 464360030796126711}
+  - {fileID: 8754479217609267770}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4893304517471455706
 MonoBehaviour:
@@ -516,6 +524,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EconomiaJugador
   dineroInicial: 8000
   _Dinero: 6000
+--- !u!114 &8754479217609267770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4c683605a167841a4ba568b30c60c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControladorGranadasRed
+  prefabGranadaFuego:
+    RawGuidValue: ba919462a3e61334bb6aa7fa5d970aa6
+  prefabGranadaHumo:
+    RawGuidValue: 1936c8f6c693e0e46b7c2839ffce6bc1
+  prefabGranadaFlash:
+    RawGuidValue: 2bb2f6b6464716e4a86b6a3a1d06b9a2
+  prefabGranadaExplosiva:
+    RawGuidValue: c897d19c34e09914fa634aeb339ffb55
+  puntoLanzamiento: {fileID: 5918304670974204092}
+  fuerzaLanzamiento: 18
+  _granadasFuego: 0
+  _granadasHumo: 0
+  _granadasFlash: 0
+  _granadasExplosivas: 0
 --- !u!114 &5184108110412190148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
-  m_Name: PistolaAgua
+  m_Name: GranadaFuegoData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: PistolaAgua
-  weaponSlot: 1
-  damage: 999
+  weaponName: Incendiary
+  weaponSlot: 4
+  damage: 0
   range: 100
   fireRate: 0.2
   automatic: 0
   pelletsPerShot: 1
   spread: 0.01
-  beamRadius: 1
+  beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 0}
   bulletImpactPrefab: {fileID: 0}
-  precio: 2700
-  prefabParaMano: {fileID: 9119417485082102614, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
-  "tama\xF1oCargador": 30
-  municionReservaMaxima: 90
-  tiempoRecarga: 2
+  precio: 400
+  prefabParaMano: {fileID: 2590596452018231639, guid: f62be37200aea4242ba50f0573f7dea2, type: 3}
+  "tama\xF1oCargador": 1
+  municionReservaMaxima: 1
+  tiempoRecarga: 1
   eventoDisparoWwise: 
   eventoRecargaWwise: 
-  iconoArma: {fileID: 21300000, guid: d02dba0fe5301074e9e1ae6845833d25, type: 3}
+  iconoArma: {fileID: 21300000, guid: 510e065b011a74c41a51e05bffbaeed5, type: 3}
+  tipoGranada: 0

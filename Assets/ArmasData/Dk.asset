@@ -30,3 +30,4 @@ MonoBehaviour:
   tiempoRecarga: 1.5
   eventoDisparoWwise: Play_Dk_Disparo
   eventoRecargaWwise: Play_Dk_Recarga
+  iconoArma: {fileID: 21300000, guid: 420c5ccb8a1a9314e9e308dd44bfa2d1, type: 3}

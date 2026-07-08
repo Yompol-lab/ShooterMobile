@@ -2771,6 +2771,7 @@ GameObject:
   - component: {fileID: 176012342}
   - component: {fileID: 176012341}
   - component: {fileID: 176012340}
+  - component: {fileID: 176012343}
   m_Layer: 5
   m_Name: M1014
   m_TagString: Untagged
@@ -2882,6 +2883,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176012338}
   m_CullTransparentMesh: 1
+--- !u!114 &176012343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176012338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 7df9d5a1f12c9c945b18ed4300a8d97a, type: 2}
+  textoNombre: {fileID: 516155202}
+  textoPrecio: {fileID: 2113405893}
 --- !u!1 &181548068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1603920923161665037, guid: 304d66337dc53ed44b60fca6fbed9248, type: 3}
@@ -5635,6 +5651,7 @@ GameObject:
   - component: {fileID: 272660879}
   - component: {fileID: 272660878}
   - component: {fileID: 272660877}
+  - component: {fileID: 272660880}
   m_Layer: 5
   m_Name: Desert Eagle
   m_TagString: Untagged
@@ -5746,6 +5763,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272660875}
   m_CullTransparentMesh: 1
+--- !u!114 &272660880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272660875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 7246209d6d42a4f40be1505d27775c70, type: 2}
+  textoNombre: {fileID: 1896584542}
+  textoPrecio: {fileID: 2116067494}
 --- !u!1 &283776166
 GameObject:
   m_ObjectHideFlags: 0
@@ -8845,6 +8877,7 @@ GameObject:
   - component: {fileID: 477083842}
   - component: {fileID: 477083841}
   - component: {fileID: 477083840}
+  - component: {fileID: 477083843}
   m_Layer: 5
   m_Name: 1911
   m_TagString: Untagged
@@ -8956,6 +8989,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477083838}
   m_CullTransparentMesh: 1
+--- !u!114 &477083843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477083838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 64ca03776c3dd2f4b81513f3b25c220a, type: 2}
+  textoNombre: {fileID: 1822610350}
+  textoPrecio: {fileID: 64761395}
 --- !u!1001 &479866764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9572,6 +9620,7 @@ GameObject:
   - component: {fileID: 511238862}
   - component: {fileID: 511238861}
   - component: {fileID: 511238860}
+  - component: {fileID: 511238863}
   m_Layer: 5
   m_Name: Incendiary grenade
   m_TagString: Untagged
@@ -9683,6 +9732,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511238858}
   m_CullTransparentMesh: 1
+--- !u!114 &511238863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511238858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: e21c15646e4638a43ac233d79841ca2d, type: 2}
+  textoNombre: {fileID: 369963275}
+  textoPrecio: {fileID: 1657132887}
 --- !u!1 &515982703
 GameObject:
   m_ObjectHideFlags: 0
@@ -11342,6 +11406,138 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &634936814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634936815}
+  - component: {fileID: 634936818}
+  - component: {fileID: 634936817}
+  - component: {fileID: 634936816}
+  m_Layer: 5
+  m_Name: BotonBomba (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &634936815
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634936814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2094980128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 144.3, y: -12.4}
+  m_SizeDelta: {x: 54.6367, y: 51.955}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &634936816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634936814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 634936817}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2115471383}
+        m_TargetAssemblyTypeName: MobileControlsBridge, Assembly-CSharp
+        m_MethodName: BotonEquiparFuego
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &634936817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634936814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 510e065b011a74c41a51e05bffbaeed5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &634936818
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634936814}
+  m_CullTransparentMesh: 1
 --- !u!4 &635218139 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2774220344278030320, guid: 87c0d40f2bd10b24ab57c331ab8b18c7, type: 3}
@@ -12045,7 +12241,7 @@ GameObject:
   - component: {fileID: 715569937}
   - component: {fileID: 715569936}
   m_Layer: 5
-  m_Name: Usp-S (1)
+  m_Name: Autralian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12836,7 +13032,7 @@ GameObject:
   - component: {fileID: 775349446}
   - component: {fileID: 775349445}
   m_Layer: 5
-  m_Name: 1911
+  m_Name: Karambit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13246,6 +13442,7 @@ GameObject:
   - component: {fileID: 779708568}
   - component: {fileID: 779708567}
   - component: {fileID: 779708566}
+  - component: {fileID: 779708569}
   m_Layer: 5
   m_Name: Usp-S
   m_TagString: Untagged
@@ -13357,6 +13554,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779708564}
   m_CullTransparentMesh: 1
+--- !u!114 &779708569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779708564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 2e3234173b3a39b45b526f05fd2a461d, type: 2}
+  textoNombre: {fileID: 1030148756}
+  textoPrecio: {fileID: 1797181097}
 --- !u!1 &789149949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7975319185205500293, guid: 304d66337dc53ed44b60fca6fbed9248, type: 3}
@@ -13402,7 +13614,7 @@ GameObject:
   - component: {fileID: 795142299}
   - component: {fileID: 795142298}
   m_Layer: 5
-  m_Name: Glock-18
+  m_Name: Plugs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16468,6 +16680,7 @@ GameObject:
   - component: {fileID: 954471104}
   - component: {fileID: 954471103}
   - component: {fileID: 954471102}
+  - component: {fileID: 954471105}
   m_Layer: 5
   m_Name: Olimpia
   m_TagString: Untagged
@@ -16579,6 +16792,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954471100}
   m_CullTransparentMesh: 1
+--- !u!114 &954471105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954471100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 3222cbc154594864fa228c395b6f975f, type: 2}
+  textoNombre: {fileID: 1387598745}
+  textoPrecio: {fileID: 996890042}
 --- !u!1001 &958081380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16947,6 +17175,7 @@ GameObject:
   - component: {fileID: 979522862}
   - component: {fileID: 979522861}
   - component: {fileID: 979522860}
+  - component: {fileID: 979522863}
   m_Layer: 5
   m_Name: AA 12
   m_TagString: Untagged
@@ -17058,6 +17287,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979522858}
   m_CullTransparentMesh: 1
+--- !u!114 &979522863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979522858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: b98c5f9fef1cdb043bfe24f5b03e7253, type: 2}
+  textoNombre: {fileID: 1189638716}
+  textoPrecio: {fileID: 1019410336}
 --- !u!1 &996890040
 GameObject:
   m_ObjectHideFlags: 0
@@ -21225,8 +21469,9 @@ GameObject:
   - component: {fileID: 1291799069}
   - component: {fileID: 1291799068}
   - component: {fileID: 1291799067}
+  - component: {fileID: 1291799070}
   m_Layer: 5
-  m_Name: Usp-S
+  m_Name: Bayoneta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21335,6 +21580,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291799065}
   m_CullTransparentMesh: 1
+--- !u!114 &1291799070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291799065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 0}
+  textoNombre: {fileID: 1724414182}
+  textoPrecio: {fileID: 0}
 --- !u!1001 &1293908859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22511,6 +22771,7 @@ GameObject:
   - component: {fileID: 1371505860}
   - component: {fileID: 1371505859}
   - component: {fileID: 1371505858}
+  - component: {fileID: 1371505861}
   m_Layer: 5
   m_Name: Tec-9
   m_TagString: Untagged
@@ -22622,6 +22883,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371505856}
   m_CullTransparentMesh: 1
+--- !u!114 &1371505861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371505856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 89672674f8786434d8653713d794357b, type: 2}
+  textoNombre: {fileID: 64836253}
+  textoPrecio: {fileID: 1429608170}
 --- !u!1 &1373828356
 GameObject:
   m_ObjectHideFlags: 0
@@ -24223,6 +24499,7 @@ GameObject:
   - component: {fileID: 1429746268}
   - component: {fileID: 1429746267}
   - component: {fileID: 1429746266}
+  - component: {fileID: 1429746269}
   m_Layer: 5
   m_Name: SASG-12
   m_TagString: Untagged
@@ -24334,6 +24611,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429746264}
   m_CullTransparentMesh: 1
+--- !u!114 &1429746269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429746264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 7a8d882ec59f1ce43bb1d9b3c2c60c24, type: 2}
+  textoNombre: {fileID: 2103178206}
+  textoPrecio: {fileID: 288832513}
 --- !u!1 &1434175352
 GameObject:
   m_ObjectHideFlags: 0
@@ -25549,7 +25841,7 @@ GameObject:
   - component: {fileID: 1530543431}
   - component: {fileID: 1530543430}
   m_Layer: 5
-  m_Name: Desert Eagle
+  m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29090,6 +29382,7 @@ GameObject:
   - component: {fileID: 1839444961}
   - component: {fileID: 1839444960}
   - component: {fileID: 1839444959}
+  - component: {fileID: 1839444962}
   m_Layer: 5
   m_Name: Glock-18
   m_TagString: Untagged
@@ -29201,6 +29494,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839444957}
   m_CullTransparentMesh: 1
+--- !u!114 &1839444962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839444957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f84fdd677831b44885ff06f4e93a595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotonArmaUI
+  armaAsignada: {fileID: 11400000, guid: 5c194b0f1b196ad428cacdf4c8456818, type: 2}
+  textoNombre: {fileID: 1083680397}
+  textoPrecio: {fileID: 878401867}
 --- !u!1001 &1843525483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29666,7 +29974,7 @@ GameObject:
   - component: {fileID: 1874742645}
   - component: {fileID: 1874742644}
   m_Layer: 5
-  m_Name: Tec-9
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33469,6 +33777,7 @@ GameObject:
   - component: {fileID: 2094980128}
   - component: {fileID: 2094980127}
   - component: {fileID: 2094980126}
+  - component: {fileID: 2094980129}
   m_Layer: 5
   m_Name: PanelHUD
   m_TagString: Untagged
@@ -33542,6 +33851,7 @@ RectTransform:
   - {fileID: 1371141508}
   - {fileID: 215830676}
   - {fileID: 213081021}
+  - {fileID: 634936815}
   - {fileID: 395177267}
   - {fileID: 1791474240}
   - {fileID: 896598587}
@@ -33553,6 +33863,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2094980129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094980125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3026a9db7dc628d40bb54edc4cd55a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUDIconosArmas
+  iconoPrincipal: {fileID: 868359208}
+  iconoSecundaria: {fileID: 935175679}
+  iconoCuchillo: {fileID: 1732540905}
+  colorEquipado: {r: 1, g: 0, b: 0, a: 1}
+  colorGuardado: {r: 1, g: 1, b: 1, a: 0.4}
 --- !u!1 &2099747000
 GameObject:
   m_ObjectHideFlags: 0

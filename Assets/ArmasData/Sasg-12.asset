@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
-  m_Name: Ak-47
+  m_Name: Sasg-12
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Ak-47
+  weaponName: AA 12
   weaponSlot: 0
-  damage: 30
+  damage: 20
   range: 100
-  fireRate: 0.09
+  fireRate: 0.36
   automatic: 1
-  pelletsPerShot: 1
-  spread: 0.01
+  pelletsPerShot: 10
+  spread: 0.16
   beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
-  precio: 2700
-  prefabParaMano: {fileID: 2024066992393438410, guid: 8bb119930f32e2f449de6046ff504669, type: 3}
-  "tama\xF1oCargador": 30
-  municionReservaMaxima: 90
-  tiempoRecarga: 1.75
-  eventoDisparoWwise: Shoot_Ak
-  eventoRecargaWwise: Play_Recarga_AK47
-  iconoArma: {fileID: 21300000, guid: 01ac546ff5dc1fc41bdee39dc4755d97, type: 3}
+  precio: 3000
+  prefabParaMano: {fileID: 5423309591495454812, guid: e378edfc56e6ccb4e909f6c5ecc82b1c, type: 3}
+  "tama\xF1oCargador": 7
+  municionReservaMaxima: 42
+  tiempoRecarga: 2
+  eventoDisparoWwise: Escopetazo
+  eventoRecargaWwise: Play_Recarga_Escopeta
+  iconoArma: {fileID: 21300000, guid: 6ca68f26e6b341442a704b6f997c9db1, type: 3}

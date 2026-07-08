@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
-  m_Name: PistolaAgua
+  m_Name: C4
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: PistolaAgua
-  weaponSlot: 1
-  damage: 999
+  weaponName: C4
+  weaponSlot: 3
+  damage: 25
   range: 100
   fireRate: 0.2
   automatic: 0
   pelletsPerShot: 1
   spread: 0.01
-  beamRadius: 1
+  beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 0}
   bulletImpactPrefab: {fileID: 0}
   precio: 2700
-  prefabParaMano: {fileID: 9119417485082102614, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
+  prefabParaMano: {fileID: 0}
   "tama\xF1oCargador": 30
   municionReservaMaxima: 90
   tiempoRecarga: 2
   eventoDisparoWwise: 
   eventoRecargaWwise: 
-  iconoArma: {fileID: 21300000, guid: d02dba0fe5301074e9e1ae6845833d25, type: 3}
+  iconoArma: {fileID: 0}
+  tipoGranada: 0

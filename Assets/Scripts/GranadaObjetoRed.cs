@@ -7,9 +7,10 @@ public class GranadaObjetoRed : NetworkBehaviour
     public float tiempoMecha = 2.5f;
 
     [Header("Prefabs de Efectos Libres (Locales)")]
-    public GameObject efectoVisualFuego; 
-    public GameObject efectoVisualHumo;   
-    public GameObject efectoVisualFlash; 
+    public GameObject efectoVisualFuego;
+    public GameObject efectoVisualHumo;
+    public GameObject efectoVisualFlash;
+    public GameObject efectoVisualExplosion; 
 
     private float tiempoDetonacion;
     private bool yaExploto = false;
@@ -24,11 +25,9 @@ public class GranadaObjetoRed : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        
         if (!Object.HasStateAuthority) return;
         if (yaExploto) return;
 
-        
         if (tipoGranada != TipoGranada.Fuego && Time.time >= tiempoDetonacion)
         {
             DetonarGranada();
@@ -40,7 +39,6 @@ public class GranadaObjetoRed : NetworkBehaviour
         if (!Object.HasStateAuthority) return;
         if (yaExploto) return;
 
-       
         if (tipoGranada == TipoGranada.Fuego)
         {
             DetonarGranada();
@@ -52,16 +50,13 @@ public class GranadaObjetoRed : NetworkBehaviour
         yaExploto = true;
         Vector3 posicionExplosion = transform.position;
 
-     
         RPC_SincronizarEfectosVisuales(posicionExplosion, tipoGranada);
 
-      
         if (tipoGranada == TipoGranada.Flash)
         {
             ProcesarCegueraFlash(posicionExplosion);
         }
 
-        
         Runner.Despawn(Object);
     }
 
@@ -71,36 +66,53 @@ public class GranadaObjetoRed : NetworkBehaviour
         switch (tipo)
         {
             case TipoGranada.Fuego:
-                if (efectoVisualFuego != null) Instantiate(efectoVisualFuego, pos, Quaternion.identity);
+                if (efectoVisualFuego != null)
+                {
+                    GameObject fuegoObj = Instantiate(efectoVisualFuego, pos, Quaternion.identity);
+                    Destroy(fuegoObj, 7f);
+                }
                 break;
+
             case TipoGranada.Humo:
-                if (efectoVisualHumo != null) Instantiate(efectoVisualHumo, pos, Quaternion.identity);
+                if (efectoVisualHumo != null)
+                {
+                    GameObject humoObj = Instantiate(efectoVisualHumo, pos, Quaternion.identity);
+                    Destroy(humoObj, 15f); 
+                }
                 break;
+
             case TipoGranada.Flash:
-                if (efectoVisualFlash != null) Instantiate(efectoVisualFlash, pos, Quaternion.identity);
+                if (efectoVisualFlash != null)
+                {
+                    GameObject flashObj = Instantiate(efectoVisualFlash, pos, Quaternion.identity);
+                    Destroy(flashObj, 3f); 
+                }
+                break;
+
+            case TipoGranada.Explosiva:
+                if (efectoVisualExplosion != null)
+                {
+                    GameObject expObj = Instantiate(efectoVisualExplosion, pos, Quaternion.identity);
+                    Destroy(expObj, 5f); 
+                }
                 break;
         }
     }
 
     private void ProcesarCegueraFlash(Vector3 centroExplosion)
     {
-        
         Collider[] impactados = Physics.OverlapSphere(centroExplosion, 18f);
 
         foreach (Collider col in impactados)
         {
-            
             SaludJugadorRed salud = col.GetComponentInParent<SaludJugadorRed>();
             if (salud != null)
             {
-               
                 Vector3 direccion = (col.transform.position - centroExplosion).normalized;
                 float distancia = Vector3.Distance(centroExplosion, col.transform.position);
 
-               
                 if (!Physics.Raycast(centroExplosion, direccion, distancia, LayerMask.GetMask("Default", "Map")))
                 {
-                    
                     salud.RPC_CegarPantallaLocal();
                 }
             }

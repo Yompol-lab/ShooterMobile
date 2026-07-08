@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &60904793599509740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -6689036041284674117, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_Name
+      value: GranadaFuego_MANO
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220344278030320, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3295269886669372603}
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7920923272664825099}
+  m_SourcePrefab: {fileID: -5645937942226959685, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+--- !u!1 &2590596452018231639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6689036041284674117, guid: 8c82969daab936b47a6e585d5b8458b5, type: 3}
+  m_PrefabInstance: {fileID: 60904793599509740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3295269886669372603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590596452018231639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 3363996179
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 7920923272664825099}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &7920923272664825099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590596452018231639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37879576512643240bc543a47a651cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
+  weaponSlot: 4
+  holdPosition: {x: 0, y: 0, z: 0}
+  holdRotation: {x: 0, y: 0, z: 0}
+  holdScale: {x: 1, y: 1, z: 1}

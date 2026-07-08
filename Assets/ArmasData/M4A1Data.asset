@@ -30,3 +30,4 @@ MonoBehaviour:
   tiempoRecarga: 2
   eventoDisparoWwise: Shoot_m4a4
   eventoRecargaWwise: Play_Recarga_m4a4
+  iconoArma: {fileID: 21300000, guid: 9953ff7a2398604408cd1ba761e8b921, type: 3}

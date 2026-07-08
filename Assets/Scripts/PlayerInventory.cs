@@ -2,7 +2,7 @@ using Fusion;
 using UnityEngine;
 using StarterAssets;
 
-public enum WeaponSlot { Primary, Secondary, Knife, Bomb, Utility }
+public enum WeaponSlot { Primary, Secondary, Knife, Bomb, Fuego, Humo, Flash, Explosiva }
 
 public class PlayerInventory : NetworkBehaviour
 {
@@ -15,22 +15,27 @@ public class PlayerInventory : NetworkBehaviour
     public NetworkPrefabRef prefabBombaPlantada;
     public bool enZonaPlantar = false;
 
-    [Header("Slots Actuales")]
+    [Header("Slots Actuales (Armas)")]
     public GameObject currentPrimary;
     public GameObject currentSecondary;
     public GameObject currentKnife;
     public GameObject currentBomb;
 
+    [Header("Slots Actuales (Granadas en Mano)")]
+    public GameObject currentFuego;
+    public GameObject currentHumo;
+    public GameObject currentFlash;
+    public GameObject currentExplosiva;
+
     [Networked] public WeaponSlot activeSlot { get; set; }
 
     public override void Spawned()
     {
-       
         InicializarArmaPorDefecto(currentPrimary);
         InicializarArmaPorDefecto(currentSecondary);
+        InicializarArmaPorDefecto(currentKnife);
 
-        if (currentPrimary != null) currentPrimary.SetActive(false);
-        if (currentBomb != null) currentBomb.SetActive(false);
+        HideAllWeapons();
 
         if (currentSecondary != null) EquipSlot(WeaponSlot.Secondary);
         else if (currentKnife != null) EquipSlot(WeaponSlot.Knife);
@@ -39,32 +44,21 @@ public class PlayerInventory : NetworkBehaviour
     private void InicializarArmaPorDefecto(GameObject armaObj)
     {
         if (armaObj == null) return;
-
         Weapon scriptArma = armaObj.GetComponent<Weapon>();
-        if (scriptArma != null && scriptArma.weaponData != null)
+        if (scriptArma != null && scriptArma.weaponData != null && scriptArma.weaponData.tamañoCargador > 0)
         {
-            if (scriptArma.weaponData.tamañoCargador > 0)
-            {
-                MunicionArma scriptBala = armaObj.GetComponent<MunicionArma>();
-                if (scriptBala == null)
-                {
-                    scriptBala = armaObj.AddComponent<MunicionArma>();
-                }
-                scriptBala.Configurar(scriptArma.weaponData);
-            }
+            MunicionArma scriptBala = armaObj.GetComponent<MunicionArma>();
+            if (scriptBala == null) scriptBala = armaObj.AddComponent<MunicionArma>();
+            scriptBala.Configurar(scriptArma.weaponData);
         }
     }
 
- 
     private void OnTriggerEnter(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = true; }
     private void OnTriggerExit(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = false; }
 
     public void PlantarBomba()
     {
-        if (HasStateAuthority && activeSlot == WeaponSlot.Bomb && enZonaPlantar)
-        {
-            RPC_PlantarBombaRed();
-        }
+        if (HasStateAuthority && activeSlot == WeaponSlot.Bomb && enZonaPlantar) RPC_PlantarBombaRed();
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -75,23 +69,21 @@ public class PlayerInventory : NetworkBehaviour
             Runner.Spawn(prefabBombaPlantada, transform.position, Quaternion.identity, Runner.LocalPlayer);
             if (MatchManager.Instance != null) MatchManager.Instance.AvisarBombaPlantada();
         }
-
         if (currentBomb != null)
         {
             NetworkObject bombaNet = currentBomb.GetComponent<NetworkObject>();
             if (bombaNet != null && HasStateAuthority) Runner.Despawn(bombaNet);
             currentBomb = null;
         }
-
         EquipSlot(WeaponSlot.Knife);
     }
-    
 
     public void JuntarArmaDelPiso(NetworkObject armaObj, WeaponSlot slot)
     {
         if (slot == WeaponSlot.Primary && currentPrimary != null) return;
         if (slot == WeaponSlot.Secondary && currentSecondary != null) return;
         if (slot == WeaponSlot.Bomb && currentBomb != null) return;
+        if (slot == WeaponSlot.Knife && currentKnife != null) return;
 
         armaObj.RequestStateAuthority();
         RPC_AgarrarArmaRed(armaObj, slot);
@@ -121,13 +113,21 @@ public class PlayerInventory : NetworkBehaviour
         if (slot == WeaponSlot.Primary) currentPrimary = armaObj.gameObject;
         else if (slot == WeaponSlot.Secondary) currentSecondary = armaObj.gameObject;
         else if (slot == WeaponSlot.Bomb) currentBomb = armaObj.gameObject;
+        else if (slot == WeaponSlot.Knife) currentKnife = armaObj.gameObject;
+        else if (slot == WeaponSlot.Fuego) currentFuego = armaObj.gameObject;
+        else if (slot == WeaponSlot.Humo) currentHumo = armaObj.gameObject;
+        else if (slot == WeaponSlot.Flash) currentFlash = armaObj.gameObject;
+        else if (slot == WeaponSlot.Explosiva) currentExplosiva = armaObj.gameObject;
 
         EquipSlot(slot);
     }
 
     public void BotonTirarArma()
     {
-        if (HasStateAuthority && activeSlot != WeaponSlot.Knife) RPC_TirarArmaRed(activeSlot);
+        if (HasStateAuthority && (activeSlot == WeaponSlot.Primary || activeSlot == WeaponSlot.Secondary || activeSlot == WeaponSlot.Bomb))
+        {
+            RPC_TirarArmaRed(activeSlot);
+        }
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -144,23 +144,13 @@ public class PlayerInventory : NetworkBehaviour
             if (anim != null) anim.enabled = false;
 
             weaponToDrop.transform.SetParent(null);
-
             NetworkTransform nt = weaponToDrop.GetComponent<NetworkTransform>();
             if (nt != null)
             {
                 nt.enabled = true;
                 weaponToDrop.transform.position = dropPoint.position;
                 weaponToDrop.transform.rotation = dropPoint.rotation;
-
-                if (HasStateAuthority)
-                {
-                    nt.Teleport(dropPoint.position, dropPoint.rotation);
-                }
-            }
-            else
-            {
-                weaponToDrop.transform.position = dropPoint.position;
-                weaponToDrop.transform.rotation = dropPoint.rotation;
+                if (HasStateAuthority) nt.Teleport(dropPoint.position, dropPoint.rotation);
             }
 
             ArmaEnElPisoRed armaScript = weaponToDrop.GetComponent<ArmaEnElPisoRed>();
@@ -181,6 +171,9 @@ public class PlayerInventory : NetworkBehaviour
 
     public void EquipSlot(WeaponSlot slot)
     {
+        PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
+        if (weaponController != null) weaponController.ResetShooting();
+
         GameObject equippedWeaponObject = null;
         switch (slot)
         {
@@ -188,6 +181,10 @@ public class PlayerInventory : NetworkBehaviour
             case WeaponSlot.Secondary: equippedWeaponObject = currentSecondary; break;
             case WeaponSlot.Knife: equippedWeaponObject = currentKnife; break;
             case WeaponSlot.Bomb: equippedWeaponObject = currentBomb; break;
+            case WeaponSlot.Fuego: equippedWeaponObject = currentFuego; break;
+            case WeaponSlot.Humo: equippedWeaponObject = currentHumo; break;
+            case WeaponSlot.Flash: equippedWeaponObject = currentFlash; break;
+            case WeaponSlot.Explosiva: equippedWeaponObject = currentExplosiva; break;
         }
 
         if (equippedWeaponObject == null && slot != WeaponSlot.Knife) return;
@@ -196,7 +193,6 @@ public class PlayerInventory : NetworkBehaviour
         if (equippedWeaponObject != null) equippedWeaponObject.SetActive(true);
         activeSlot = slot;
 
-        PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
         if (weaponController != null)
         {
             Weapon weapon = (equippedWeaponObject != null) ? equippedWeaponObject.GetComponent<Weapon>() : null;
@@ -210,6 +206,10 @@ public class PlayerInventory : NetworkBehaviour
         if (currentSecondary != null) currentSecondary.SetActive(false);
         if (currentKnife != null) currentKnife.SetActive(false);
         if (currentBomb != null) currentBomb.SetActive(false);
+        if (currentFuego != null) currentFuego.SetActive(false);
+        if (currentHumo != null) currentHumo.SetActive(false);
+        if (currentFlash != null) currentFlash.SetActive(false);
+        if (currentExplosiva != null) currentExplosiva.SetActive(false);
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -218,23 +218,63 @@ public class PlayerInventory : NetworkBehaviour
         if (!HasStateAuthority) EquipSlot(nuevoSlot);
     }
 
+    
     public bool RecibirArmaComprada(WeaponData datosArma)
     {
+        if (datosArma == null) return false;
+
+       
+        if (datosArma.weaponSlot == WeaponSlot.Fuego || datosArma.weaponSlot == WeaponSlot.Humo ||
+            datosArma.weaponSlot == WeaponSlot.Flash || datosArma.weaponSlot == WeaponSlot.Explosiva)
+        {
+            if (HasStateAuthority)
+            {
+                ControladorGranadasRed controlGranadas = GetComponent<ControladorGranadasRed>();
+                if (controlGranadas != null)
+                {
+                    if (datosArma.weaponSlot == WeaponSlot.Fuego) controlGranadas.granadasFuego++;
+                    else if (datosArma.weaponSlot == WeaponSlot.Humo) controlGranadas.granadasHumo++;
+                    else if (datosArma.weaponSlot == WeaponSlot.Flash) controlGranadas.granadasFlash++;
+                    else if (datosArma.weaponSlot == WeaponSlot.Explosiva) controlGranadas.granadasExplosivas++;
+                }
+
+                bool necesitaModelo = false;
+                if (datosArma.weaponSlot == WeaponSlot.Fuego && currentFuego == null) necesitaModelo = true;
+                else if (datosArma.weaponSlot == WeaponSlot.Humo && currentHumo == null) necesitaModelo = true;
+                else if (datosArma.weaponSlot == WeaponSlot.Flash && currentFlash == null) necesitaModelo = true;
+                else if (datosArma.weaponSlot == WeaponSlot.Explosiva && currentExplosiva == null) necesitaModelo = true;
+
+                if (necesitaModelo && datosArma.prefabParaMano != null)
+                {
+                    NetworkObject nuevaArmaNet = Runner.Spawn(datosArma.prefabParaMano.GetComponent<NetworkObject>(), dropPoint.position, dropPoint.rotation, Object.InputAuthority);
+                    RPC_AgarrarArmaRed(nuevaArmaNet, datosArma.weaponSlot);
+                }
+            }
+            return true;
+        }
+
+        
         if (datosArma.prefabParaMano == null) return false;
         if (weaponContainer == null) return false;
-
         NetworkObject prefabNet = datosArma.prefabParaMano.GetComponent<NetworkObject>();
 
         if (prefabNet != null && HasStateAuthority)
         {
-            NetworkObject nuevaArmaNet = Runner.Spawn(prefabNet, dropPoint.position, dropPoint.rotation, Object.InputAuthority);
+            if (datosArma.weaponSlot == WeaponSlot.Primary && currentPrimary != null) { RPC_TirarArmaRed(WeaponSlot.Primary); currentPrimary = null; }
+            else if (datosArma.weaponSlot == WeaponSlot.Secondary && currentSecondary != null) { RPC_TirarArmaRed(WeaponSlot.Secondary); currentSecondary = null; }
+            else if (datosArma.weaponSlot == WeaponSlot.Knife && currentKnife != null)
+            {
+                NetworkObject c = currentKnife.GetComponent<NetworkObject>();
+                if (c != null) Runner.Despawn(c); else Destroy(currentKnife);
+                currentKnife = null;
+            }
 
+            NetworkObject nuevaArmaNet = Runner.Spawn(prefabNet, dropPoint.position, dropPoint.rotation, Object.InputAuthority);
             if (datosArma.tamañoCargador > 0)
             {
                 MunicionArma scriptBala = nuevaArmaNet.gameObject.AddComponent<MunicionArma>();
                 scriptBala.Configurar(datosArma);
             }
-
             RPC_AgarrarArmaRed(nuevaArmaNet, datosArma.weaponSlot);
             return true;
         }
@@ -248,6 +288,26 @@ public class PlayerInventory : NetworkBehaviour
         if (activeSlot == WeaponSlot.Secondary) return currentSecondary;
         if (activeSlot == WeaponSlot.Knife) return currentKnife;
         if (activeSlot == WeaponSlot.Bomb) return currentBomb;
+        if (activeSlot == WeaponSlot.Fuego) return currentFuego;
+        if (activeSlot == WeaponSlot.Humo) return currentHumo;
+        if (activeSlot == WeaponSlot.Flash) return currentFlash;
+        if (activeSlot == WeaponSlot.Explosiva) return currentExplosiva;
         return null;
+    }
+
+    public void ConsumirGranadaMano(WeaponSlot slot)
+    {
+        GameObject granadaObj = null;
+        if (slot == WeaponSlot.Fuego) { granadaObj = currentFuego; currentFuego = null; }
+        else if (slot == WeaponSlot.Humo) { granadaObj = currentHumo; currentHumo = null; }
+        else if (slot == WeaponSlot.Flash) { granadaObj = currentFlash; currentFlash = null; }
+        else if (slot == WeaponSlot.Explosiva) { granadaObj = currentExplosiva; currentExplosiva = null; }
+
+        if (granadaObj != null)
+        {
+            NetworkObject no = granadaObj.GetComponent<NetworkObject>();
+            if (no != null && HasStateAuthority) Runner.Despawn(no);
+            else Destroy(granadaObj);
+        }
     }
 }

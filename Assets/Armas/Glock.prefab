@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArmaEnElPisoRed
   weaponSlot: 1
-  holdPosition: {x: 0, y: 0, z: 0}
+  holdPosition: {x: 0, y: 0, z: 2.03}
   holdRotation: {x: 0, y: 0, z: 0}
   holdScale: {x: 1, y: 1, z: 1}
 --- !u!95 &8286586241195751095

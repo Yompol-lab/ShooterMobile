@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
-  m_Name: Ak-47
+  m_Name: Usp
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: Ak-47
-  weaponSlot: 0
-  damage: 30
+  weaponName: Usp
+  weaponSlot: 1
+  damage: 17
   range: 100
-  fireRate: 0.09
+  fireRate: 0.17
   automatic: 1
   pelletsPerShot: 1
-  spread: 0.01
+  spread: 0.02
   beamRadius: 0.5
-  muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
+  muzzleFlashPrefab: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
-  precio: 2700
-  prefabParaMano: {fileID: 2024066992393438410, guid: 8bb119930f32e2f449de6046ff504669, type: 3}
-  "tama\xF1oCargador": 30
-  municionReservaMaxima: 90
-  tiempoRecarga: 1.75
-  eventoDisparoWwise: Shoot_Ak
-  eventoRecargaWwise: Play_Recarga_AK47
-  iconoArma: {fileID: 21300000, guid: 01ac546ff5dc1fc41bdee39dc4755d97, type: 3}
+  precio: 400
+  prefabParaMano: {fileID: 4068275952001220622, guid: 80d7a5c4086e7d24ab0f3b5146f0955f, type: 3}
+  "tama\xF1oCargador": 20
+  municionReservaMaxima: 80
+  tiempoRecarga: 1.5
+  eventoDisparoWwise: Play_Tec9_Disparo
+  eventoRecargaWwise: Play_Tec9_Recarga
+  iconoArma: {fileID: 21300000, guid: d210a5cd8b974164d94b39bcfb0f9fd9, type: 3}

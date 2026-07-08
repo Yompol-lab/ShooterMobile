@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "559198926562",
+    "project_id": "shootermobile",
+    "storage_bucket": "shootermobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559198926562:android:e515c3e54897c72af350bb",
+        "android_client_info": {
+          "package_name": "com.clutch_or_kick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEtLuJpo6eZZioEfDunbVDfl_08SrYJ2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

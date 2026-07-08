@@ -65,6 +65,11 @@ public class MatchSpawner : MonoBehaviour
         if (panelVida != null)
             panelVida.SetActive(true);
 
+        if (PlayerUIManager.Instance != null)
+        {
+            PlayerUIManager.Instance.MostrarLista();
+        }
+
         UnlockCursor();
         StartCoroutine(ForceUnlockCursor());
 

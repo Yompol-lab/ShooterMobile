@@ -20,6 +20,13 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
     [Networked] public Team miEquipo { get; set; }
     [Networked] public NetworkBool tieneBomba { get; set; }
 
+    // NUEVO
+    [Networked]
+    public NetworkString<_16> nombreJugador { get; set; }
+
+    [Networked]
+    public byte avatarID { get; set; }
+
     [Header("Configuración de Bomba")]
     public GameObject modeloBombaEnMano; 
 
@@ -63,9 +70,12 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
 
     public override void Spawned()
     {
-
         if (HasStateAuthority)
         {
+            Debug.Log("Cargando perfil...");
+            nombreJugador = PlayerPrefs.GetString("NombreJugador", "Jugador");
+            avatarID = (byte)PlayerPrefs.GetInt("AvatarID", 0);
+
             MobileControlsBridge mobileControls = FindFirstObjectByType<MobileControlsBridge>();
 
             if (mobileControls != null)
@@ -74,18 +84,27 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
                 mobileControls.weaponController = miArma;
                 mobileControls.playerInventory = miInventario;
                 mobileControls.jugadorLocal = this;
-
             }
         }
         else
         {
-            
-            if (camaraDelJugador != null) camaraDelJugador.gameObject.SetActive(false);
-            if (audioListener != null) audioListener.enabled = false;
-            if (playerInput != null) playerInput.enabled = false;
-            if (controladorMovimiento != null) controladorMovimiento.enabled = false;
+            if (camaraDelJugador != null)
+                camaraDelJugador.gameObject.SetActive(false);
+
+            if (audioListener != null)
+                audioListener.enabled = false;
+
+            if (playerInput != null)
+                playerInput.enabled = false;
+
+            if (controladorMovimiento != null)
+                controladorMovimiento.enabled = false;
         }
+
+      
     }
+
+   
 
     public void IntentarEquiparBomba()
     {

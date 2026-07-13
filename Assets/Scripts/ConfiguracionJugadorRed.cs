@@ -20,7 +20,7 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
     [Networked] public Team miEquipo { get; set; }
     [Networked] public NetworkBool tieneBomba { get; set; }
 
-    // NUEVO
+   
     [Networked]
     public NetworkString<_16> nombreJugador { get; set; }
 

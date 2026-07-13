@@ -1,98 +1,118 @@
 using Fusion;
 using UnityEngine;
-using System.Linq;
+using StarterAssets; 
 
-public enum MatchState { Warmup, BuyTime, Playing, BombPlanted, RoundEnd, MatchFinished }
+public enum MotivoFinRonda { Eliminacion, Tiempo, Desactivacion, Detonacion }
+public enum TipoEquipo { AntiTerrorista, Terrorista, Ninguno }
+
+
+public enum MatchState { Warmup, BuyTime, InProgress, BombPlanted, RoundEnd, MatchFinished }
 
 public class MatchManager : NetworkBehaviour
 {
-    public static MatchManager Instance;
+    public static MatchManager Instance { get; private set; }
 
-    [Header("Configuración de Tiempos")]
-    public float tiempoCalentamiento = 15f;
-    public float tiempoCompra = 15f;
-    public float tiempoRonda = 120f;
-    public float tiempoBomba = 45f;
-    public float tiempoFinRonda = 10f;
-    public int rondasParaGanar = 5;
-
-    [Header("Prefabs del Juego")]
-    public NetworkPrefabRef prefabBombaC4;
-
-    [Header("Variables de Red (No tocar)")]
+    [Header("Estados de Partida (Restaurados)")]
     [Networked] public MatchState EstadoActual { get; set; }
-    [Networked] public float TiempoRestante { get; set; }
-    [Networked] public int PuntajePolicia { get; set; }
-    [Networked] public int PuntajeTerro { get; set; }
-    [Networked] public int RondaActual { get; set; }
 
+   
+    [Networked] public float TiempoRestante { get; set; }
+    [Networked] public int PuntajeTerro { get; set; }
+    [Networked] public int PuntajePolicia { get; set; }
     [Networked] public Team UltimoGanador { get; set; }
 
-    public override void Spawned()
+    [Header("Estado Sincronizado de Bomba")]
+    [Networked] public bool bombaPlantada { get; set; } = false;
+    [Networked] public PlayerRef jugadorQuePlanto { get; set; } = default;
+
+    private void Awake()
     {
-        Instance = this;
-        if (Runner.IsSharedModeMasterClient)
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
+    
+    public void AvisarBombaPlantada(PlayerRef planter = default)
+    {
+        if (!HasStateAuthority) return;
+        bombaPlantada = true;
+        jugadorQuePlanto = planter;
+        EstadoActual = MatchState.BombPlanted; 
+        Debug.Log($" MATCH: Bomba plantada");
+    }
+
+   
+    public void FinalizarRonda(TipoEquipo equipoGanador, MotivoFinRonda motivo, PlayerRef jugadorEspecial = default)
+    {
+        if (!HasStateAuthority) return;
+
+       
+        EconomiaJugador[] todasLasEconomias = FindObjectsByType<EconomiaJugador>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+
+        foreach (EconomiaJugador eco in todasLasEconomias)
         {
-            Object.RequestStateAuthority();
-            IniciarCalentamiento();
+            PlayerRef jugadorRef = eco.Object.InputAuthority;
+            ConfiguracionJugadorRed config = eco.GetComponent<ConfiguracionJugadorRed>();
+
+            if (config == null) continue;
+
+            TipoEquipo bandoJugador = TipoEquipo.Ninguno;
+            string nombreTeam = config.miEquipo.ToString().ToLower();
+
+            if (nombreTeam.Contains("anti") || nombreTeam.Contains("counter") || nombreTeam == "ct" || nombreTeam.Contains("policia"))
+            {
+                bandoJugador = TipoEquipo.AntiTerrorista;
+            }
+            else if (nombreTeam.Contains("terror") || nombreTeam == "t")
+            {
+                bandoJugador = TipoEquipo.Terrorista;
+            }
+
+            int plataOtorgada = 0;
+
+            
+            if (equipoGanador == TipoEquipo.AntiTerrorista)
+            {
+                if (bandoJugador == TipoEquipo.AntiTerrorista)
+                {
+                    if (motivo == MotivoFinRonda.Eliminacion || motivo == MotivoFinRonda.Tiempo) plataOtorgada = 3250;
+                    else if (motivo == MotivoFinRonda.Desactivacion)
+                    {
+                        plataOtorgada = 3500;
+                        if (jugadorRef == jugadorEspecial) plataOtorgada += 300;
+                    }
+                }
+                else if (bandoJugador == TipoEquipo.Terrorista)
+                {
+                    if (!bombaPlantada) plataOtorgada = 0;
+                    else plataOtorgada = 800;
+                }
+            }
+           
+            else if (equipoGanador == TipoEquipo.Terrorista)
+            {
+                if (bandoJugador == TipoEquipo.Terrorista)
+                {
+                    if (motivo == MotivoFinRonda.Eliminacion) plataOtorgada = 3250;
+                    else if (motivo == MotivoFinRonda.Detonacion)
+                    {
+                        plataOtorgada = 3500;
+                        if (jugadorRef == jugadorQuePlanto) plataOtorgada += 300;
+                    }
+                }
+                else if (bandoJugador == TipoEquipo.AntiTerrorista)
+                {
+                    plataOtorgada = 1400;
+                }
+            }
+
+            if (plataOtorgada > 0)
+            {
+                eco.RPC_SincronizarPremioRonda(plataOtorgada);
+            }
         }
-    }
 
-    public override void FixedUpdateNetwork()
-    {
-        if (!HasStateAuthority || EstadoActual == MatchState.MatchFinished) return;
-
-        TiempoRestante -= Runner.DeltaTime;
-
-        if (TiempoRestante <= 0)
-        {
-            if (EstadoActual == MatchState.Warmup) IniciarTiempoCompra();
-            else if (EstadoActual == MatchState.BuyTime) IniciarRonda();
-            else if (EstadoActual == MatchState.Playing) TerminarRonda(Team.Police);
-            else if (EstadoActual == MatchState.BombPlanted) TerminarRonda(Team.Terrorist);
-            else if (EstadoActual == MatchState.RoundEnd) IniciarTiempoCompra();
-        }
-    }
-
-    public void AvisarBombaPlantada()
-    {
-        if (EstadoActual == MatchState.Playing)
-        {
-            EstadoActual = MatchState.BombPlanted;
-            TiempoRestante = tiempoBomba;
-        }
-    }
-
-    public void IniciarCalentamiento() { EstadoActual = MatchState.Warmup; TiempoRestante = tiempoCalentamiento; PuntajePolicia = 0; PuntajeTerro = 0; RondaActual = 0; }
-    public void IniciarTiempoCompra() { EstadoActual = MatchState.BuyTime; TiempoRestante = tiempoCompra; RondaActual++; RPC_ReiniciarJugadores(); RepartirBomba(); }
-    public void IniciarRonda() { EstadoActual = MatchState.Playing; TiempoRestante = tiempoRonda; }
-
-    public void TerminarRonda(Team equipoGanador)
-    {
-        EstadoActual = MatchState.RoundEnd;
-        TiempoRestante = tiempoFinRonda;
-
-        UltimoGanador = equipoGanador;
-
-        if (equipoGanador == Team.Police) PuntajePolicia++; else PuntajeTerro++;
-        if (PuntajePolicia >= rondasParaGanar || PuntajeTerro >= rondasParaGanar) EstadoActual = MatchState.MatchFinished;
-    }
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_ReiniciarJugadores()
-    {
-        ConfiguracionJugadorRed miJugador = FindObjectsByType<ConfiguracionJugadorRed>(FindObjectsSortMode.None).FirstOrDefault(j => j.HasStateAuthority);
-        if (miJugador != null) miJugador.TeletransportarAlSpawn();
-    }
-
-    private void RepartirBomba()
-    {
-        var terroristas = FindObjectsByType<ConfiguracionJugadorRed>(FindObjectsSortMode.None).Where(j => j.miEquipo == Team.Terrorist).ToList();
-        if (terroristas.Count > 0)
-        {
-            int elegido = Random.Range(0, terroristas.Count);
-            ConfiguracionJugadorRed terroElegido = terroristas[elegido];
-            Runner.Spawn(prefabBombaC4, terroElegido.transform.position + Vector3.up, Quaternion.identity, terroElegido.Object.InputAuthority);
-        }
+        bombaPlantada = false;
+        jugadorQuePlanto = default;
     }
 }

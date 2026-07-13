@@ -9,7 +9,7 @@ public class MatchSpawner : MonoBehaviour
 
     public GameObject teamSelectionUI;
     public GameObject crosshairUI;
-    public GameObject panelVida; // <-- NUEVO
+    public GameObject panelVida; 
 
     private bool alreadySpawned = false;
     private bool runnerReady = false;

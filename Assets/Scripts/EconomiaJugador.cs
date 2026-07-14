@@ -10,7 +10,7 @@ public class EconomiaJugador : NetworkBehaviour
     {
         if (HasStateAuthority)
         {
-            Dinero = 800; 
+            Dinero = 8000; 
         }
     }
 

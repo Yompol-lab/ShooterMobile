@@ -17,7 +17,7 @@ MonoBehaviour:
   damage: 17
   range: 100
   fireRate: 0.17
-  automatic: 1
+  automatic: 0
   pelletsPerShot: 1
   spread: 0.02
   beamRadius: 0.5
@@ -31,3 +31,4 @@ MonoBehaviour:
   eventoDisparoWwise: Play_Tec9_Disparo
   eventoRecargaWwise: Play_Tec9_Recarga
   iconoArma: {fileID: 21300000, guid: d210a5cd8b974164d94b39bcfb0f9fd9, type: 3}
+  tipoGranada: 0

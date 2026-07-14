@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 using StarterAssets;
-using System.Collections; 
+using System.Collections;
 
 public class SaludJugadorRed : NetworkBehaviour
 {
@@ -16,6 +16,16 @@ public class SaludJugadorRed : NetworkBehaviour
         ragdoll = GetComponent<EfectoRagdollRed>();
         estaMuerto = false;
         Vida = 100;
+    }
+
+    public void RestaurarVidaAlMaximo()
+    {
+        if (HasStateAuthority)
+        {
+            Vida = 100;
+            estaMuerto = false;
+            RPC_RevivirRed();
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -38,27 +48,23 @@ public class SaludJugadorRed : NetworkBehaviour
                 ragdoll.Morir(direccionEmpujon);
             }
 
-            
             StartCoroutine(RutinaRespawn());
         }
     }
 
     private System.Collections.IEnumerator RutinaRespawn()
     {
-       
         ConfiguracionJugadorRed miConfig = GetComponent<ConfiguracionJugadorRed>();
         PlayerInventory miInventario = GetComponent<PlayerInventory>();
         MobileControlsBridge uiMobile = null;
 
         if (HasStateAuthority)
         {
-           
             if (miInventario != null)
             {
                 if (miInventario.currentPrimary != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Primary);
                 if (miInventario.currentBomb != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Bomb);
 
-                
                 if (miInventario.currentSecondary != null)
                 {
                     miInventario.EquipSlot(WeaponSlot.Secondary);
@@ -66,13 +72,11 @@ public class SaludJugadorRed : NetworkBehaviour
                 }
                 else
                 {
-                    
                     miInventario.EquipSlot(WeaponSlot.Knife);
                     miInventario.RPC_SincronizarSlotRed(WeaponSlot.Knife);
                 }
             }
 
-            
             if (miConfig != null)
             {
                 if (miConfig.camaraDelJugador != null) miConfig.camaraDelJugador.gameObject.SetActive(false);
@@ -99,7 +103,6 @@ public class SaludJugadorRed : NetworkBehaviour
             yield return new WaitForSeconds(5f);
         }
 
-       
         Vector3 posicionBase = new Vector3(0, 10, 0);
         Quaternion rotacionBase = Quaternion.identity;
 
@@ -116,7 +119,6 @@ public class SaludJugadorRed : NetworkBehaviour
             }
         }
 
-        
         CharacterController cc = GetComponent<CharacterController>();
         if (cc != null) cc.enabled = false;
 
@@ -126,7 +128,6 @@ public class SaludJugadorRed : NetworkBehaviour
         NetworkTransform netTransform = GetComponent<NetworkTransform>();
         if (netTransform != null) netTransform.Teleport(posicionBase);
 
-       
         Vida = 100;
         estaMuerto = false;
 
@@ -162,13 +163,10 @@ public class SaludJugadorRed : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.InputAuthority)]
     public void RPC_CegarPantallaLocal()
     {
-        
         MobileControlsBridge uiMobile = FindFirstObjectByType<MobileControlsBridge>();
         if (uiMobile != null)
         {
-            
             uiMobile.StartCoroutine(uiMobile.RutinaEfectoFlash());
         }
     }
-
 }

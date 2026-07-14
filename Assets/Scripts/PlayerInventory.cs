@@ -184,6 +184,9 @@ public class PlayerInventory : NetworkBehaviour
 
     public void EquipSlot(WeaponSlot slot)
     {
+       
+        GetComponent<ControladorMira>()?.CancelarMira();
+
         PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
         if (weaponController != null) weaponController.ResetShooting();
 

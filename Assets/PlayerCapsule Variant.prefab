@@ -199,6 +199,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8754479217609267770}
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8076187427966585147}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!4 &650697483049167007 stripped
 Transform:
@@ -286,6 +289,7 @@ MonoBehaviour:
   - {fileID: 2863725888775702198}
   - {fileID: 464360030796126711}
   - {fileID: 8754479217609267770}
+  - {fileID: 8076187427966585147}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4893304517471455706
 MonoBehaviour:
@@ -468,6 +472,21 @@ MonoBehaviour:
   _granadasHumo: 0
   _granadasFlash: 0
   _granadasExplosivas: 0
+--- !u!114 &8076187427966585147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184108110412190147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bd89a1a9da56549975ae085e5e8d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControladorMira
+  fovNormal: 60
+  fovZoom: 15
+  velocidadZoom: 15
 --- !u!114 &5184108110412190148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

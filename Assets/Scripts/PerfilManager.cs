@@ -15,22 +15,42 @@ public class PerfilManager : MonoBehaviour
     public GameObject panelPerfil;
     public GameObject panelMenuPrincipal;
 
+    [Header("Audio Wwise")]
+    public AK.Wwise.Event pauseMenuMusic;
+    public AK.Wwise.Event resumeMenuMusic;
+    [Tooltip("Arrastrá acá los 6 eventos de Play en el mismo orden que tus fotos")]
+    public AK.Wwise.Event[] cancionesAvatares;
+    public AK.Wwise.Event stopCancionesAvatares;
+
     private Sprite[] avatares;
     private int avatarActual;
 
     void Start()
     {
-        // Cargar avatares
+        
         avatares = Resources.LoadAll<Sprite>("Avatares");
 
-        // Cargar avatar guardado
+       
         avatarActual = PlayerPrefs.GetInt("AvatarID", 0);
 
         if (avatares.Length > 0)
             avatarImage.sprite = avatares[avatarActual];
 
-        // Cargar nombre guardado
+       
         inputNombre.text = PlayerPrefs.GetString("NombreJugador", "");
+    }
+
+  
+    public void AbrirPanelPerfil()
+    {
+        panelMenuPrincipal.SetActive(false);
+        panelPerfil.SetActive(true);
+
+       
+        pauseMenuMusic.Post(gameObject);
+
+       
+        ReproducirCancionAvatar();
     }
 
     public void SiguienteAvatar()
@@ -44,6 +64,7 @@ public class PerfilManager : MonoBehaviour
             avatarActual = 0;
 
         avatarImage.sprite = avatares[avatarActual];
+        ReproducirCancionAvatar(); 
     }
 
     public void AvatarAnterior()
@@ -57,6 +78,19 @@ public class PerfilManager : MonoBehaviour
             avatarActual = avatares.Length - 1;
 
         avatarImage.sprite = avatares[avatarActual];
+        ReproducirCancionAvatar(); 
+    }
+
+    private void ReproducirCancionAvatar()
+    {
+        
+        stopCancionesAvatares.Post(gameObject);
+
+       
+        if (avatarActual < cancionesAvatares.Length)
+        {
+            cancionesAvatares[avatarActual].Post(gameObject);
+        }
     }
 
     public void GuardarPerfil()
@@ -80,10 +114,16 @@ public class PerfilManager : MonoBehaviour
 
     IEnumerator CerrarPerfil()
     {
+        
+        stopCancionesAvatares.Post(gameObject);
+
         yield return new WaitForSeconds(0.3f);
 
         panelPerfil.SetActive(false);
         panelMenuPrincipal.SetActive(true);
+
+        
+        resumeMenuMusic.Post(gameObject);
     }
 
     public string ObtenerNombre()
@@ -95,4 +135,27 @@ public class PerfilManager : MonoBehaviour
     {
         return avatarActual;
     }
+
+    
+    public void CerrarSinGuardar()
+    {
+       
+        stopCancionesAvatares.Post(gameObject);
+
+        
+        avatarActual = PlayerPrefs.GetInt("AvatarID", 0);
+        if (avatares.Length > 0)
+            avatarImage.sprite = avatares[avatarActual];
+
+        
+        inputNombre.text = PlayerPrefs.GetString("NombreJugador", "");
+
+       
+        panelPerfil.SetActive(false);
+        panelMenuPrincipal.SetActive(true);
+
+       
+        resumeMenuMusic.Post(gameObject);
+    }
+
 }

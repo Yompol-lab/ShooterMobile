@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	384436338	Stop_CancionesAvatares			\Default Work Unit\Stop_CancionesAvatares	
+

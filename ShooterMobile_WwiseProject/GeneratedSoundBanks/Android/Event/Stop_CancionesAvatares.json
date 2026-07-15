@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "384436338",
+    "Type": "Event",
+    "GUID": "{B38F67D5-AF0A-47D1-873F-5C7EC3B0931C}",
+    "Language": "SFX",
+    "Hash": "{EE774D3B-B1E9-57E9-18FF-15BE58EBE851}",
+    "ObjectPath": "Stop_CancionesAvatares",
+    "ShortName": "Stop_CancionesAvatares",
+    "Path": "Event/Stop_CancionesAvatares.bnk",
+    "Events": [
+     {
+      "Id": "384436338",
+      "Name": "Stop_CancionesAvatares",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_CancionesAvatares",
+      "GUID": "{B38F67D5-AF0A-47D1-873F-5C7EC3B0931C}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3E8A9264-DACC-E255-B3D0-4841FCD216E5}"
+ }
+}

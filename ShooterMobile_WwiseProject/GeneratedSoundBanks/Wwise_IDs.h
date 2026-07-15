@@ -14,10 +14,17 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ESCOPETAZO = 3513490094U;
+        static const AkUniqueID PAUSE_MENUMUSIC = 1169399582U;
         static const AkUniqueID PLAY_1911_DISPARO = 2111365587U;
         static const AkUniqueID PLAY_1911_RECARGA = 123959724U;
         static const AkUniqueID PLAY_AWP_DISPARO = 4194686187U;
         static const AkUniqueID PLAY_AWP_RECARGA = 923844420U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_1 = 3572903216U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_2 = 3572903219U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_3 = 3572903218U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_4 = 3572903221U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_5 = 3572903220U;
+        static const AkUniqueID PLAY_CANCIONAVATAR_6 = 3572903223U;
         static const AkUniqueID PLAY_CTERRORIST_WIN = 209422798U;
         static const AkUniqueID PLAY_DK_DISPARO = 206058248U;
         static const AkUniqueID PLAY_DK_RECARGA = 1785532551U;
@@ -38,8 +45,10 @@ namespace AK
         static const AkUniqueID PLAY_USP_RECARGA = 1171709836U;
         static const AkUniqueID PLAY_XM_DISPARO = 3593958106U;
         static const AkUniqueID PLAY_XM_RECARGA = 2872757021U;
+        static const AkUniqueID RESUME_MENUMUSIC = 3795863871U;
         static const AkUniqueID SHOOT_AK = 3052655297U;
         static const AkUniqueID SHOOT_M4A4 = 3948312705U;
+        static const AkUniqueID STOP_CANCIONESAVATARES = 384436338U;
         static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 

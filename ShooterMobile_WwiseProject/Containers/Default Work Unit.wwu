@@ -901,6 +901,173 @@
 						<ActiveSource Name="FamasDisparo" ID="{0CDE3F04-FA8F-46EA-9765-D1E93D692B39}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="NegroTecla" ID="{C17E05AA-9BA1-46B9-96D4-6BF09C3E6793}" ShortID="598496824">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-22</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="NegroTecla" ID="{D2884879-E623-4799-98D6-77216BBCF6AC}">
+							<Language>SFX</Language>
+							<AudioFile>NegroTecla.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="570521395"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="NegroTecla" ID="{D2884879-E623-4799-98D6-77216BBCF6AC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Tiringi" ID="{3A2C143C-4322-4782-A514-267CA48F4C1E}" ShortID="494608727">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Tiringi" ID="{D703AE77-AD8C-44F6-976E-CE2DCE30D37E}">
+							<Language>SFX</Language>
+							<AudioFile>Tiringi.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="490552263"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Tiringi" ID="{D703AE77-AD8C-44F6-976E-CE2DCE30D37E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Gatito" ID="{4CD9284D-6CAA-4F30-BDF4-C789930A585C}" ShortID="92110518">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-24</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Gatito" ID="{D9FD60C7-FBA8-4ED8-9F13-BB9CE5BB265D}">
+							<Language>SFX</Language>
+							<AudioFile>Gatito.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="463124038"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Gatito" ID="{D9FD60C7-FBA8-4ED8-9F13-BB9CE5BB265D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Cucurella" ID="{B9CB7432-8D76-4DBC-818A-25D3E8AE550F}" ShortID="280285119">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Cucurella" ID="{045A0966-A40C-4062-B8A6-C683496CACFD}">
+							<Language>SFX</Language>
+							<AudioFile>Cucurella.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="331334922"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Cucurella" ID="{045A0966-A40C-4062-B8A6-C683496CACFD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Haaland" ID="{6209FD4C-368B-4CB3-BDD2-2951B9E622AD}" ShortID="436971848">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-22</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Haaland" ID="{70890DF3-FC97-4630-A50B-8E215B957B8A}">
+							<Language>SFX</Language>
+							<AudioFile>Haaland.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="504578020"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Haaland" ID="{70890DF3-FC97-4630-A50B-8E215B957B8A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="DictadorMbappe" ID="{D01FD839-1ED2-4FB7-9489-8B1C81ADCA14}" ShortID="896696437">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="DictadorMbappe" ID="{F966AF1C-2FA4-4315-8772-B1902B2D321C}">
+							<Language>SFX</Language>
+							<AudioFile>DictadorMbappe.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="191970467"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="DictadorMbappe" ID="{F966AF1C-2FA4-4315-8772-B1902B2D321C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

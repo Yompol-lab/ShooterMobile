@@ -9,19 +9,25 @@
 						<ObjectRef Name="Play_Recarga_Escopeta" ID="{85F3846F-C107-4010-AF4F-099906CAD2C2}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CTerrorist_Win" ID="{763B16B1-FA57-4086-9246-906AD153CB79}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_1911_Recarga" ID="{0C4A9AA4-373A-40D9-9B44-81B43E02FB50}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_5" ID="{98D41C88-1C76-40FC-8045-7D310F71BE36}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Walk" ID="{0E254305-B86A-421D-BDFA-556A32EE716D}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Dk_Disparo" ID="{49457751-97A4-4222-9EB0-4AEE2E13BF46}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_XM_Disparo" ID="{763BCD20-98D7-424D-951F-C7BE6F343400}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_1" ID="{3240BD59-8D7F-42CF-A79D-2783FFC9ADDC}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_2" ID="{4FFDFACB-FB4F-434A-8066-02B039255795}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Usp_Recarga" ID="{7088F68A-162B-445B-A025-CF9772CD4C63}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Glock_Disparo" ID="{2493691F-0538-45C1-ACB0-6E1C5926EAE3}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Awp_Disparo" ID="{7F34548F-BB69-45E1-904F-10EA7FB07A2D}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MenuMusic" ID="{88812467-C816-46D3-8D3A-4C2E179D5EC1}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Recarga_m4a4" ID="{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Recarga_AK47" ID="{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_6" ID="{317836E3-6FDC-4724-A751-FC7188ED94E9}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Escopetazo" ID="{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_XM_Recarga" ID="{3C163D26-47B9-48B7-92A8-BF32E0CE12BD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_4" ID="{85A066AD-BF20-48C7-9BBD-3087D17EC78E}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shoot_Ak" ID="{7FCC2669-3C71-490F-AE7E-742D24193A45}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Famas_Disparo" ID="{842CB848-BA01-49BA-9E31-E46069809226}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_CancionAvatar_3" ID="{92CC79FB-4F11-4A12-B763-2F4B6149A2E6}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Usp_Disparo" ID="{1DCC4B5A-F603-4A46-8F36-1332D3D1F8B3}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_G36_Recarga" ID="{4B02A1B7-2167-4B17-B75D-C6E92282DBB1}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_1911_Disparo" ID="{E0330B79-6CA1-4B83-B1C5-160C910A070B}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>

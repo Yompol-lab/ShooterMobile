@@ -311,6 +311,166 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Pause_MenuMusic" ID="{3373B4B2-FF0E-412E-B550-05381DB7856C}">
+					<ChildrenList>
+						<Action Name="" ID="{00DEB6D8-DF93-4D7F-AD91-B99BB937B00D}" ShortID="50612857">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{7821493F-BC2E-4C2A-8691-349775DA5E7D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Resume_MenuMusic" ID="{D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9}">
+					<ChildrenList>
+						<Action Name="" ID="{F469EA01-2219-4B3A-8437-7EE11B5CA680}" ShortID="223166569">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="9"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Epic Middle-Eastern Battle Music - Holy Land" ID="{7821493F-BC2E-4C2A-8691-349775DA5E7D}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_CancionesAvatares" ID="{B38F67D5-AF0A-47D1-873F-5C7EC3B0931C}">
+					<ChildrenList>
+						<Action Name="" ID="{1A8A2271-4C68-4971-BB59-491961769D53}" ShortID="906159652">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gatito" ID="{4CD9284D-6CAA-4F30-BDF4-C789930A585C}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{443E3F99-3E14-43F3-8C5A-1273764BDD98}" ShortID="857543448">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tiringi" ID="{3A2C143C-4322-4782-A514-267CA48F4C1E}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E402967A-EA9E-47BB-A813-A5FF50019CAC}" ShortID="766347860">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Haaland" ID="{6209FD4C-368B-4CB3-BDD2-2951B9E622AD}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B8B72134-3398-4FE8-BF88-4843412FC4A9}" ShortID="65702358">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NegroTecla" ID="{C17E05AA-9BA1-46B9-96D4-6BF09C3E6793}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C1F575C6-4805-4496-A067-41A15F8DD066}" ShortID="1025523252">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DictadorMbappe" ID="{D01FD839-1ED2-4FB7-9489-8B1C81ADCA14}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{44A7AECF-7C32-4EA9-96FB-119078543532}" ShortID="557309286">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cucurella" ID="{B9CB7432-8D76-4DBC-818A-25D3E8AE550F}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_1" ID="{3240BD59-8D7F-42CF-A79D-2783FFC9ADDC}">
+					<ChildrenList>
+						<Action Name="" ID="{1CA8FE1F-1494-419C-B7EA-9010A116ACFE}" ShortID="191136874">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Gatito" ID="{4CD9284D-6CAA-4F30-BDF4-C789930A585C}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_6" ID="{317836E3-6FDC-4724-A751-FC7188ED94E9}">
+					<ChildrenList>
+						<Action Name="" ID="{0B873F90-B1CA-4925-8F60-A4CFC7D9C333}" ShortID="85520323">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cucurella" ID="{B9CB7432-8D76-4DBC-818A-25D3E8AE550F}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_4" ID="{85A066AD-BF20-48C7-9BBD-3087D17EC78E}">
+					<ChildrenList>
+						<Action Name="" ID="{6A980598-7275-4E86-A499-7B566DC77D94}" ShortID="43568020">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="NegroTecla" ID="{C17E05AA-9BA1-46B9-96D4-6BF09C3E6793}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_2" ID="{4FFDFACB-FB4F-434A-8066-02B039255795}">
+					<ChildrenList>
+						<Action Name="" ID="{0CCF5224-955A-48CD-9727-65FC541DFED2}" ShortID="198781616">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Tiringi" ID="{3A2C143C-4322-4782-A514-267CA48F4C1E}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_5" ID="{98D41C88-1C76-40FC-8045-7D310F71BE36}">
+					<ChildrenList>
+						<Action Name="" ID="{FF198A89-B6A6-46DC-BA1A-812A958F8C40}" ShortID="35621436">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DictadorMbappe" ID="{D01FD839-1ED2-4FB7-9489-8B1C81ADCA14}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CancionAvatar_3" ID="{92CC79FB-4F11-4A12-B763-2F4B6149A2E6}">
+					<ChildrenList>
+						<Action Name="" ID="{84D47464-EFDC-49FE-B206-AB7E038B4682}" ShortID="893978496">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Haaland" ID="{6209FD4C-368B-4CB3-BDD2-2951B9E622AD}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

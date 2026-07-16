@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3795863871",
+    "Type": "Event",
+    "GUID": "{D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9}",
+    "Language": "SFX",
+    "Hash": "{24A9BC9F-E367-DB0B-78A7-272B6A4BD2C6}",
+    "ObjectPath": "Resume_MenuMusic",
+    "ShortName": "Resume_MenuMusic",
+    "Path": "Event/Resume_MenuMusic.bnk",
+    "Events": [
+     {
+      "Id": "3795863871",
+      "Name": "Resume_MenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Resume_MenuMusic",
+      "GUID": "{D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{845E60F6-9721-1BF2-BD0C-E517FEE933D6}"
+ }
+}

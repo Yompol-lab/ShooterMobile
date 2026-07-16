@@ -1,9 +1,15 @@
-using UnityEngine;
 using Fusion;
 using StarterAssets;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class RadarManager : MonoBehaviour
 {
+    [Header("Prefabs")]
+    public GameObject iconoCTPrefab;
+    public GameObject iconoTPrefab;
+    public Transform contenedorIconos;
+
     [Header("UI")]
     public RectTransform mapa;
 
@@ -21,9 +27,13 @@ public class RadarManager : MonoBehaviour
 
     private FirstPersonController jugador;
 
+    private Dictionary<RadarPlayer, RadarIcon> iconos = new Dictionary<RadarPlayer, RadarIcon>();
+
+    private ConfiguracionJugadorRed miJugador;
+
     void Update()
     {
-        // Buscar el jugador local
+        // Buscar jugador local
         if (jugador == null)
         {
             foreach (FirstPersonController p in FindObjectsOfType<FirstPersonController>())
@@ -39,25 +49,58 @@ public class RadarManager : MonoBehaviour
                 return;
         }
 
+        // Crear iconos de jugadores
+        ActualizarIconos();
+
         Vector3 pos = jugador.transform.position;
 
-        // Posición normalizada dentro del mapa
         float tx = Mathf.InverseLerp(RadarMin.position.x, RadarMax.position.x, pos.x);
         float tz = Mathf.InverseLerp(RadarMin.position.z, RadarMax.position.z, pos.z);
 
-        // Aplicar márgenes independientes
         tx = Mathf.Lerp(margenX, 1f - margenX, tx);
         tz = Mathf.Lerp(margenY, 1f - margenY, tz);
 
-        // Tamaño del mapa
         float ancho = mapa.rect.width;
         float alto = mapa.rect.height;
 
-        // Convertir a coordenadas del radar
         float x = Mathf.Lerp(-ancho * 0.5f, ancho * 0.5f, tx);
         float y = Mathf.Lerp(-alto * 0.5f, alto * 0.5f, tz);
 
-        // Mover el mapa
         mapa.anchoredPosition = new Vector2(-x, -y);
+    }
+
+    void ActualizarIconos()
+    {
+        RadarPlayer[] jugadores = FindObjectsOfType<RadarPlayer>();
+
+        foreach (RadarPlayer rp in jugadores)
+        {
+            if (rp == null)
+                continue;
+
+            if (!iconos.ContainsKey(rp))
+            {
+                ConfiguracionJugadorRed datos = rp.GetComponent<ConfiguracionJugadorRed>();
+
+                if (datos == null)
+                    continue;
+
+                if (miJugador == null && rp.HasInputAuthority)
+                    miJugador = datos;
+
+                GameObject prefab = datos.miEquipo == Team.Police ? iconoCTPrefab : iconoTPrefab;
+
+                GameObject nuevo = Instantiate(prefab, contenedorIconos);
+
+                RadarIcon icono = nuevo.GetComponent<RadarIcon>();
+
+                icono.jugador = rp;
+                icono.mapa = mapa;
+                icono.radarMin = RadarMin;
+                icono.radarMax = RadarMax;
+
+                iconos.Add(rp, icono);
+            }
+        }
     }
 }

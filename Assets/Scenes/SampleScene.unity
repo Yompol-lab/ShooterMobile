@@ -9033,41 +9033,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1790804690922649793, guid: 304d66337dc53ed44b60fca6fbed9248, type: 3}
---- !u!1 &467898669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 467898670}
-  m_Layer: 5
-  m_Name: IconosEventos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &467898670
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467898669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1962785336}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &469948147
 GameObject:
   m_ObjectHideFlags: 0
@@ -9116,11 +9081,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150c259659bfd7244b5fd6b8c033a6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  iconoCTPrefab: {fileID: 7167601185020223301, guid: 9ffed6fe5126d45448a5fdc5a65673c2, type: 3}
+  iconoTPrefab: {fileID: 2155703957501279602, guid: 2e41a4e2a2c101e4386be4002613621d, type: 3}
+  contenedorIconos: {fileID: 1005549603}
   mapa: {fileID: 270562750}
   RadarMin: {fileID: 124866543}
   RadarMax: {fileID: 700267620}
-  margenX: 0.087
-  margenY: 0.136
+  margenX: 0.092
+  margenY: 0.134
 --- !u!1 &476660371
 GameObject:
   m_ObjectHideFlags: 0
@@ -32553,7 +32521,6 @@ RectTransform:
   m_Children:
   - {fileID: 270562750}
   - {fileID: 1005549603}
-  - {fileID: 467898670}
   m_Father: {fileID: 1776071536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

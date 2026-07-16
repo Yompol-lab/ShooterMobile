@@ -54,6 +54,11 @@ namespace AK
         static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 
+    namespace GAME_PARAMETERS
+    {
+        static const AkUniqueID VOLUMEN_MUSICA = 2975884740U;
+    } // namespace GAME_PARAMETERS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;

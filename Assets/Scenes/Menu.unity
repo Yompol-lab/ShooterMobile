@@ -3330,7 +3330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6d020e70b72f54bbecb10610cc9013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  slider: {fileID: 1526197020}
+  sliderMusica: {fileID: 1526197020}
 --- !u!4 &1010022580
 Transform:
   m_ObjectHideFlags: 0

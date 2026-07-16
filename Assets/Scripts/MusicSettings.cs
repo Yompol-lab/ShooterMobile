@@ -3,23 +3,26 @@ using UnityEngine.UI;
 
 public class MusicSettings : MonoBehaviour
 {
-    public Slider slider;
+    public Slider sliderMusica;
 
-    private void Start()
+    [Tooltip("Tiene que llamarse EXACTAMENTE igual que en Wwise")]
+    private string parametroWwise = "Volumen_Musica";
+
+    void Start()
     {
-        float volumen = PlayerPrefs.GetFloat("MusicVolume", 100f);
-
-        slider.value = volumen;
-        AkSoundEngine.SetRTPCValue("MusicVolume", volumen);
-
-        slider.onValueChanged.AddListener(OnSliderChanged);
+        float volumenGuardado = PlayerPrefs.GetFloat("VolumenMusicaGuardado", 100f);
+        sliderMusica.value = volumenGuardado;
+        AkSoundEngine.SetRTPCValue(parametroWwise, volumenGuardado);
+        sliderMusica.onValueChanged.AddListener(CambiarVolumen);
     }
 
-    void OnSliderChanged(float valor)
+    public void CambiarVolumen(float nuevoValor)
     {
-        AkSoundEngine.SetRTPCValue("MusicVolume", valor);
+       
+        AkSoundEngine.SetRTPCValue(parametroWwise, nuevoValor);
 
-        PlayerPrefs.SetFloat("MusicVolume", valor);
+       
+        PlayerPrefs.SetFloat("VolumenMusicaGuardado", nuevoValor);
         PlayerPrefs.Save();
     }
 }

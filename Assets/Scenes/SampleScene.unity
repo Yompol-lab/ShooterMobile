@@ -34439,6 +34439,8 @@ MonoBehaviour:
   _PuntajeTerro: 0
   _PuntajePolicia: 0
   _UltimoGanador: 0
+  prefabBombaC4:
+    RawGuidValue: 70c504a62fb587641bca7c114b6a0149
   _bombaPlantada: 0
 --- !u!114 &2085115537
 MonoBehaviour:
@@ -34568,6 +34570,7 @@ GameObject:
   - component: {fileID: 2094980127}
   - component: {fileID: 2094980126}
   - component: {fileID: 2094980129}
+  - component: {fileID: 2094980130}
   m_Layer: 5
   m_Name: PanelHUD
   m_TagString: Untagged
@@ -34671,6 +34674,18 @@ MonoBehaviour:
   iconoCuchillo: {fileID: 1732540905}
   colorEquipado: {r: 1, g: 0, b: 0, a: 1}
   colorGuardado: {r: 1, g: 1, b: 1, a: 0.4}
+--- !u!114 &2094980130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094980125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97af1a08a3673a498ae635d323c530a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUDPrincipal
 --- !u!1 &2099747000
 GameObject:
   m_ObjectHideFlags: 0

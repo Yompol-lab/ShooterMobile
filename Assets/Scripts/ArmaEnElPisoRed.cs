@@ -29,7 +29,8 @@ public class ArmaEnElPisoRed : NetworkBehaviour
         if (agarrada || Object == null || !Object.IsValid) return;
 
         PlayerInventory inventory = other.GetComponentInParent<PlayerInventory>();
-        if (inventory != null && inventory.HasStateAuthority)
+
+        if (inventory != null && inventory.Object.HasInputAuthority)
         {
             if (weaponSlot == WeaponSlot.Primary && inventory.currentPrimary != null) return;
             if (weaponSlot == WeaponSlot.Secondary && inventory.currentSecondary != null) return;

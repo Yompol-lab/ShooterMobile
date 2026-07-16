@@ -8,6 +8,9 @@ public class SaludJugadorRed : NetworkBehaviour
     [Header("Configuración")]
     [Networked] public int Vida { get; set; } = 100;
 
+    [Header("UI")]
+    [SerializeField] private GameObject panelHUD; 
+
     private EfectoRagdollRed ragdoll;
     private bool estaMuerto = false;
 
@@ -16,6 +19,20 @@ public class SaludJugadorRed : NetworkBehaviour
         ragdoll = GetComponent<EfectoRagdollRed>();
         estaMuerto = false;
         Vida = 100;
+
+        if (HasStateAuthority)
+        {
+            HUDPrincipal miHud = FindFirstObjectByType<HUDPrincipal>();
+
+            if (miHud != null)
+            {
+                panelHUD = miHud.gameObject;
+            }
+            else
+            {
+                Debug.LogWarning("No se encontró ningún objeto con el script HUDPrincipal en la escena.");
+            }
+        }
     }
 
     public void RestaurarVidaAlMaximo()
@@ -52,18 +69,20 @@ public class SaludJugadorRed : NetworkBehaviour
         }
     }
 
-    private System.Collections.IEnumerator RutinaRespawn()
+    private IEnumerator RutinaRespawn()
     {
         ConfiguracionJugadorRed miConfig = GetComponent<ConfiguracionJugadorRed>();
         PlayerInventory miInventario = GetComponent<PlayerInventory>();
-        MobileControlsBridge uiMobile = null;
 
         if (HasStateAuthority)
         {
             if (miInventario != null)
             {
-                if (miInventario.currentPrimary != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Primary);
-                if (miInventario.currentBomb != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Bomb);
+                if (miInventario.currentPrimary != null)
+                    miInventario.RPC_TirarArmaRed(WeaponSlot.Primary);
+
+                if (miInventario.currentBomb != null)
+                    miInventario.RPC_TirarArmaRed(WeaponSlot.Bomb);
 
                 if (miInventario.currentSecondary != null)
                 {
@@ -79,10 +98,22 @@ public class SaludJugadorRed : NetworkBehaviour
 
             if (miConfig != null)
             {
-                if (miConfig.camaraDelJugador != null) miConfig.camaraDelJugador.gameObject.SetActive(false);
+                
+                Camera camaraPrincipal = Camera.main;
+                if (camaraPrincipal != null)
+                {
+                    camaraPrincipal.gameObject.SetActive(true);
+                }
 
-                uiMobile = FindFirstObjectByType<MobileControlsBridge>();
-                if (uiMobile != null) uiMobile.gameObject.SetActive(false);
+                if (miConfig.camaraDelJugador != null)
+                {
+                    miConfig.camaraDelJugador.gameObject.SetActive(false);
+                }
+
+                if (panelHUD != null)
+                {
+                    panelHUD.SetActive(false);
+                }
 
                 if (miConfig.misInputs != null)
                 {
@@ -108,8 +139,13 @@ public class SaludJugadorRed : NetworkBehaviour
 
         if (miConfig != null)
         {
-            TeamSpawnPoint[] todosLosSpawns = FindObjectsByType<TeamSpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-            var spawnsValidos = System.Array.FindAll(todosLosSpawns, sp => sp.team == miConfig.miEquipo);
+            TeamSpawnPoint[] todosLosSpawns = FindObjectsByType<TeamSpawnPoint>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None);
+
+            var spawnsValidos = System.Array.FindAll(
+                todosLosSpawns,
+                sp => sp.team == miConfig.miEquipo);
 
             if (spawnsValidos.Length > 0)
             {
@@ -120,33 +156,40 @@ public class SaludJugadorRed : NetworkBehaviour
         }
 
         CharacterController cc = GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = false;
+        if (cc != null)
+            cc.enabled = false;
 
         transform.position = posicionBase;
         transform.rotation = rotacionBase;
 
         NetworkTransform netTransform = GetComponent<NetworkTransform>();
-        if (netTransform != null) netTransform.Teleport(posicionBase);
+        if (netTransform != null)
+            netTransform.Teleport(posicionBase);
 
         Vida = 100;
         estaMuerto = false;
 
-        if (cc != null) cc.enabled = true;
+        if (cc != null)
+            cc.enabled = true;
 
         RPC_RevivirRed();
 
         if (HasStateAuthority && miConfig != null)
         {
-            if (miConfig.camaraDelJugador != null) miConfig.camaraDelJugador.gameObject.SetActive(true);
-
-            if (uiMobile != null)
+            Camera camaraPrincipal = Camera.main;
+            if (camaraPrincipal != null)
             {
-                uiMobile.gameObject.SetActive(true);
+                camaraPrincipal.gameObject.SetActive(false);
             }
-            else
+
+            if (miConfig.camaraDelJugador != null)
             {
-                uiMobile = FindFirstObjectByType<MobileControlsBridge>(FindObjectsInactive.Include);
-                if (uiMobile != null) uiMobile.gameObject.SetActive(true);
+                miConfig.camaraDelJugador.gameObject.SetActive(true);
+            }
+
+            if (panelHUD != null)
+            {
+                panelHUD.SetActive(true);
             }
         }
     }

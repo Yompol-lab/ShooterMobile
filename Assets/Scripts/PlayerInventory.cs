@@ -35,7 +35,6 @@ public class PlayerInventory : NetworkBehaviour
 
     public override void Spawned()
     {
-        
         currentPrimary = null;
         currentSecondary = null;
         currentKnife = null;
@@ -49,7 +48,6 @@ public class PlayerInventory : NetworkBehaviour
 
         if (HasStateAuthority)
         {
-          
             if (prefabCuchilloInicio.IsValid)
             {
                 NetworkObject cuchilloNet = Runner.Spawn(prefabCuchilloInicio, dropPoint.position, dropPoint.rotation, Object.InputAuthority);
@@ -100,7 +98,7 @@ public class PlayerInventory : NetworkBehaviour
         RPC_AgarrarArmaRed(armaObj, slot);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_AgarrarArmaRed(NetworkObject armaObj, WeaponSlot slot)
     {
         if (armaObj == null) return;
@@ -125,22 +123,17 @@ public class PlayerInventory : NetworkBehaviour
             }
         }
 
-      
         IngresarArmaAlInventario(armaObj.gameObject);
-
         EquipSlot(slot);
     }
 
-   
     private void IngresarArmaAlInventario(GameObject armaObj)
     {
         if (armaObj == null || weaponContainer == null) return;
 
-        
         NetworkTransform nt = armaObj.GetComponent<NetworkTransform>();
         if (nt != null) nt.enabled = false;
 
-        
         Rigidbody rb = armaObj.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -153,17 +146,14 @@ public class PlayerInventory : NetworkBehaviour
             rb.useGravity = false;
         }
 
-      
         Collider[] colisionadores = armaObj.GetComponentsInChildren<Collider>();
         foreach (Collider c in colisionadores)
         {
             if (!c.isTrigger) c.enabled = false;
         }
 
-        
         armaObj.transform.SetParent(weaponContainer);
 
-       
         ArmaEnElPisoRed armaScript = armaObj.GetComponent<ArmaEnElPisoRed>();
         if (armaScript != null)
         {
@@ -184,7 +174,6 @@ public class PlayerInventory : NetworkBehaviour
 
     public void EquipSlot(WeaponSlot slot)
     {
-       
         GetComponent<ControladorMira>()?.CancelarMira();
 
         PlayerWeaponController weaponController = GetComponent<PlayerWeaponController>();
@@ -205,10 +194,8 @@ public class PlayerInventory : NetworkBehaviour
 
         if (equippedWeaponObject == null && slot != WeaponSlot.Knife) return;
 
-       
         HideAllWeapons();
 
-        
         if (equippedWeaponObject != null)
         {
             equippedWeaponObject.SetActive(true);
@@ -225,13 +212,13 @@ public class PlayerInventory : NetworkBehaviour
 
     public void BotonTirarArma()
     {
-        if (HasStateAuthority && (activeSlot == WeaponSlot.Primary || activeSlot == WeaponSlot.Secondary || activeSlot == WeaponSlot.Bomb))
+        if (Object.HasInputAuthority && (activeSlot == WeaponSlot.Primary || activeSlot == WeaponSlot.Secondary || activeSlot == WeaponSlot.Bomb))
         {
             RPC_TirarArmaRed(activeSlot);
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_TirarArmaRed(WeaponSlot slotATirar)
     {
         GameObject weaponToDrop = null;
@@ -245,7 +232,6 @@ public class PlayerInventory : NetworkBehaviour
             Animator anim = weaponToDrop.GetComponent<Animator>();
             if (anim != null) anim.enabled = false;
 
-          
             weaponToDrop.transform.SetParent(null);
 
             NetworkTransform nt = weaponToDrop.GetComponent<NetworkTransform>();

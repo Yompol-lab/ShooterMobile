@@ -15,6 +15,9 @@ public class ArmaEnElPisoRed : NetworkBehaviour
     private Collider[] allColliders;
     private bool agarrada = false;
 
+   
+    private float tiempoPuedeAgarrarse = 0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,6 +29,9 @@ public class ArmaEnElPisoRed : NetworkBehaviour
 
     private void IntentarAgarrar(Collider other)
     {
+       
+        if (Time.time < tiempoPuedeAgarrarse) return;
+
         if (agarrada || Object == null || !Object.IsValid) return;
 
         PlayerInventory inventory = other.GetComponentInParent<PlayerInventory>();
@@ -44,6 +50,13 @@ public class ArmaEnElPisoRed : NetworkBehaviour
     public void SetFisicas(bool enElPiso)
     {
         agarrada = !enElPiso;
+
+       
+        if (enElPiso)
+        {
+            tiempoPuedeAgarrarse = Time.time + 1f; 
+        }
+
         if (rb != null)
         {
             rb.isKinematic = !enElPiso;

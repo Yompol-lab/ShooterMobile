@@ -1068,6 +1068,64 @@
 						<ActiveSource Name="DictadorMbappe" ID="{F966AF1C-2FA4-4315-8772-B1902B2D321C}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="ScarRegarca" ID="{0DAAFBA2-A407-48C9-84E3-6217425B6DA0}" ShortID="208392723">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ScarRegarca" ID="{5040638C-0EA3-46D9-B791-53A0DA9A1FFC}">
+							<Language>SFX</Language>
+							<AudioFile>ScarRegarca.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="371544596"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ScarRegarca" ID="{5040638C-0EA3-46D9-B791-53A0DA9A1FFC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="ScarShoot" ID="{245F59A3-ED4E-4B2C-916D-4A53BC9C2FEF}" ShortID="761820313">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ScarShoot" ID="{52B3BD83-2475-4B73-8C4B-1E7AA55F36E0}">
+							<Language>SFX</Language>
+							<AudioFile>ScarShoot.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="658580730"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ScarShoot" ID="{52B3BD83-2475-4B73-8C4B-1E7AA55F36E0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

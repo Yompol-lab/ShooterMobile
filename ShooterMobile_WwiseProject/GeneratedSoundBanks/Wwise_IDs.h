@@ -38,6 +38,8 @@ namespace AK
         static const AkUniqueID PLAY_RECARGA_AK47 = 1888624163U;
         static const AkUniqueID PLAY_RECARGA_ESCOPETA = 3989193866U;
         static const AkUniqueID PLAY_RECARGA_M4A4 = 3626292540U;
+        static const AkUniqueID PLAY_SCAR_DISPARO = 463614408U;
+        static const AkUniqueID PLAY_SCAR_RECARGA = 2785419335U;
         static const AkUniqueID PLAY_TEC9_DISPARO = 4294838474U;
         static const AkUniqueID PLAY_TEC9_RECARGA = 403575789U;
         static const AkUniqueID PLAY_TERRORIST_WIN = 3064026271U;

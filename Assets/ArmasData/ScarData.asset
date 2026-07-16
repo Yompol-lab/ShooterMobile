@@ -28,6 +28,7 @@ MonoBehaviour:
   "tama\xF1oCargador": 20
   municionReservaMaxima: 80
   tiempoRecarga: 1.5
-  eventoDisparoWwise: 
-  eventoRecargaWwise: 
+  eventoDisparoWwise: Play_Scar_Disparo
+  eventoRecargaWwise: Play_Scar_Recarga
   iconoArma: {fileID: 21300000, guid: f7c77af375b12b94c926c3df161345c7, type: 3}
+  tipoGranada: 0

@@ -15,6 +15,7 @@
 						<ObjectRef Name="Play_XM_Disparo" ID="{763BCD20-98D7-424D-951F-C7BE6F343400}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_1" ID="{3240BD59-8D7F-42CF-A79D-2783FFC9ADDC}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_2" ID="{4FFDFACB-FB4F-434A-8066-02B039255795}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Scar_Recarga" ID="{AB3AA9B9-B805-439C-B91B-AB32558370C7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Usp_Recarga" ID="{7088F68A-162B-445B-A025-CF9772CD4C63}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Glock_Disparo" ID="{2493691F-0538-45C1-ACB0-6E1C5926EAE3}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Awp_Disparo" ID="{7F34548F-BB69-45E1-904F-10EA7FB07A2D}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
@@ -34,6 +35,7 @@
 						<ObjectRef Name="Shoot_m4a4" ID="{13B24368-FD6E-4BFC-BC08-FE279F4D3FDD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_G36_Disparo" ID="{66C51E29-0A4C-4C7E-9E2D-CACCCD8A1BD4}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Famas_Recarga" ID="{A35A681F-A62C-4CD9-AC37-C0FDCBDF70F5}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Scar_Disparo" ID="{D0E59225-DB16-4D19-A287-D8313432CEDC}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Tec9_Recarga" ID="{12847614-C192-4D6E-9793-DB910F42C7DD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Tec9_Disparo" ID="{06FA7218-9920-4D8A-A3E4-804D9DCC25E7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Terrorist_Win" ID="{353FBD6A-2E8E-4DC3-B22F-594757874AC0}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>

@@ -471,6 +471,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Scar_Disparo" ID="{D0E59225-DB16-4D19-A287-D8313432CEDC}">
+					<ChildrenList>
+						<Action Name="" ID="{15875023-D73D-422E-AF08-3372D4A09B65}" ShortID="160212620">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ScarShoot" ID="{245F59A3-ED4E-4B2C-916D-4A53BC9C2FEF}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Scar_Recarga" ID="{AB3AA9B9-B805-439C-B91B-AB32558370C7}">
+					<ChildrenList>
+						<Action Name="" ID="{3886B06A-77F8-4031-A3F4-1C90C0F9880D}" ShortID="222016052">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ScarRegarca" ID="{0DAAFBA2-A407-48C9-84E3-6217425B6DA0}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

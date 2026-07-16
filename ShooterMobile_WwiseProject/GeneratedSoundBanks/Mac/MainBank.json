@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
     "Language": "SFX",
-    "Hash": "{CDCEACCF-ED84-548F-AA46-3F1C8C86EEB2}",
+    "Hash": "{61F13DEF-8D99-866E-0031-7153E4767E8E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
     "ShortName": "MainBank",
     "Path": "MainBank.bnk",
@@ -78,6 +78,14 @@
       "Location": "Memory",
       "ShortName": "Escopetazo.wav",
       "CachePath": "AE/{AE18DEC8-D27A-0F8B-8440-BE8431CD0E7A}.wem"
+     },
+     {
+      "Id": "371544596",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ScarRegarca.wav",
+      "CachePath": "2A/{2A6AAC6E-7A05-12E0-EC18-01BEE5431BE4}.wem"
      },
      {
       "Id": "379513054",
@@ -190,6 +198,14 @@
       "Location": "Memory",
       "ShortName": "Tec9Recarga.wav",
       "CachePath": "4A/{4A3C0646-55EA-C6A4-C17D-39F9E1DBD6AD}.wem"
+     },
+     {
+      "Id": "658580730",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ScarShoot.wav",
+      "CachePath": "04/{04991FDC-0590-F4B6-6BB2-8877685E7444}.wem"
      },
      {
       "Id": "694864137",
@@ -624,6 +640,34 @@
       ]
      },
      {
+      "Id": "463614408",
+      "Name": "Play_Scar_Disparo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Scar_Disparo",
+      "GUID": "{D0E59225-DB16-4D19-A287-D8313432CEDC}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4556689",
+      "DurationMax": "1.4556689",
+      "MediaRefs": [
+       {
+        "Id": "658580730"
+       }
+      ]
+     },
+     {
+      "Id": "2785419335",
+      "Name": "Play_Scar_Recarga",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Scar_Recarga",
+      "GUID": "{AB3AA9B9-B805-439C-B91B-AB32558370C7}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.7076418",
+      "DurationMax": "2.7076418",
+      "MediaRefs": [
+       {
+        "Id": "371544596"
+       }
+      ]
+     },
+     {
       "Id": "4294838474",
       "Name": "Play_Tec9_Disparo",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_Tec9_Disparo",
@@ -766,6 +810,6 @@
     ]
    }
   ],
-  "FileHash": "{2F80E8E4-FE7E-76BC-4AD4-98BF478D767D}"
+  "FileHash": "{E3DB52D5-983A-17B9-2AD2-BA0595EC4D99}"
  }
 }

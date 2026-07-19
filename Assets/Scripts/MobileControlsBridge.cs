@@ -32,14 +32,7 @@ public class MobileControlsBridge : MonoBehaviour
         if (jugadorLocal != null) return jugadorLocal.GetComponent<PlayerInventory>();
         return null;
     }
-
-    
-    public void BotonEquiparFuego() { EquiparGranada(WeaponSlot.Fuego); }
-    public void BotonEquiparHumo() { EquiparGranada(WeaponSlot.Humo); }
-    public void BotonEquiparFlash() { EquiparGranada(WeaponSlot.Flash); }
-    public void BotonEquiparExplosiva() { EquiparGranada(WeaponSlot.Explosiva); }
-
-    private void EquiparGranada(WeaponSlot slot)
+    public void BotonCiclarGranadas()
     {
         PlayerInventory inv = GetInv();
 
@@ -48,27 +41,49 @@ public class MobileControlsBridge : MonoBehaviour
             ControladorGranadasRed control = inv.GetComponent<ControladorGranadasRed>();
             if (control != null)
             {
-                bool tieneMunicion = false;
-                if (slot == WeaponSlot.Fuego && control.granadasFuego > 0) tieneMunicion = true;
-                else if (slot == WeaponSlot.Humo && control.granadasHumo > 0) tieneMunicion = true;
-                else if (slot == WeaponSlot.Flash && control.granadasFlash > 0) tieneMunicion = true;
-                else if (slot == WeaponSlot.Explosiva && control.granadasExplosivas > 0) tieneMunicion = true;
+              
+                WeaponSlot[] ordenGranadas = { WeaponSlot.Explosiva, WeaponSlot.Flash, WeaponSlot.Humo, WeaponSlot.Fuego };
 
-                if (tieneMunicion)
+                
+                int indiceActual = -1;
+                for (int i = 0; i < ordenGranadas.Length; i++)
                 {
-                    inv.EquipSlot(slot);
-                    inv.RPC_SincronizarSlotRed(slot);
-                    Debug.Log(" UI: Intentando equipar " + slot.ToString());
+                    if (inv.activeSlot == ordenGranadas[i])
+                    {
+                        indiceActual = i;
+                        break;
+                    }
                 }
-                else
+
+               
+                for (int i = 1; i <= ordenGranadas.Length; i++)
                 {
-                    Debug.LogWarning(" UI: Tocaste el botón pero no tenés munición de esta granada.");
+                   
+                    int proximoIndice = (indiceActual + i) % ordenGranadas.Length;
+                    WeaponSlot proximoSlot = ordenGranadas[proximoIndice];
+
+                    bool tieneMunicion = false;
+
+                    if (proximoSlot == WeaponSlot.Fuego && control.granadasFuego > 0) tieneMunicion = true;
+                    else if (proximoSlot == WeaponSlot.Humo && control.granadasHumo > 0) tieneMunicion = true;
+                    else if (proximoSlot == WeaponSlot.Flash && control.granadasFlash > 0) tieneMunicion = true;
+                    else if (proximoSlot == WeaponSlot.Explosiva && control.granadasExplosivas > 0) tieneMunicion = true;
+
+                    
+                    if (tieneMunicion)
+                    {
+                        
+                        if (proximoSlot != inv.activeSlot)
+                        {
+                            inv.EquipSlot(proximoSlot);
+                            inv.RPC_SincronizarSlotRed(proximoSlot);
+                        }
+                        return; 
+                    }
                 }
+
+                Debug.LogWarning(" UI: No tenés ninguna granada en la mochila para equipar.");
             }
-        }
-        else
-        {
-            Debug.LogError(" UI: El Canvas no encuentra a tu jugador local.");
         }
     }
 

@@ -170,5 +170,6 @@ MonoBehaviour:
   tipoGranada: 1
   tiempoMecha: 2.5
   efectoVisualFuego: {fileID: 0}
-  efectoVisualHumo: {fileID: 0}
+  efectoVisualHumo: {fileID: 8321743784798473313, guid: 05ec2977e06e5b34f8944a62f3a4b518, type: 3}
   efectoVisualFlash: {fileID: 0}
+  efectoVisualExplosion: {fileID: 0}

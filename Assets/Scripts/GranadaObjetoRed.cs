@@ -10,7 +10,7 @@ public class GranadaObjetoRed : NetworkBehaviour
     public GameObject efectoVisualFuego;
     public GameObject efectoVisualHumo;
     public GameObject efectoVisualFlash;
-    public GameObject efectoVisualExplosion; 
+    public GameObject efectoVisualExplosion;
 
     private float tiempoDetonacion;
     private bool yaExploto = false;
@@ -25,7 +25,8 @@ public class GranadaObjetoRed : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!Object.HasStateAuthority) return;
+      
+        if (Object == null || !Object.IsValid || !Object.HasStateAuthority) return;
         if (yaExploto) return;
 
         if (tipoGranada != TipoGranada.Fuego && Time.time >= tiempoDetonacion)
@@ -36,7 +37,8 @@ public class GranadaObjetoRed : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!Object.HasStateAuthority) return;
+       
+        if (Object == null || !Object.IsValid || !Object.HasStateAuthority) return;
         if (yaExploto) return;
 
         if (tipoGranada == TipoGranada.Fuego)
@@ -56,6 +58,10 @@ public class GranadaObjetoRed : NetworkBehaviour
         {
             ProcesarCegueraFlash(posicionExplosion);
         }
+        else if (tipoGranada == TipoGranada.Explosiva)
+        {
+            ProcesarDanioExplosion(posicionExplosion);
+        }
 
         Runner.Despawn(Object);
     }
@@ -69,15 +75,16 @@ public class GranadaObjetoRed : NetworkBehaviour
                 if (efectoVisualFuego != null)
                 {
                     GameObject fuegoObj = Instantiate(efectoVisualFuego, pos, Quaternion.identity);
-                    Destroy(fuegoObj, 7f);
+                   
                 }
                 break;
 
             case TipoGranada.Humo:
                 if (efectoVisualHumo != null)
                 {
+                    
                     GameObject humoObj = Instantiate(efectoVisualHumo, pos, Quaternion.identity);
-                    Destroy(humoObj, 15f); 
+                    Destroy(humoObj, 15f);
                 }
                 break;
 
@@ -85,7 +92,7 @@ public class GranadaObjetoRed : NetworkBehaviour
                 if (efectoVisualFlash != null)
                 {
                     GameObject flashObj = Instantiate(efectoVisualFlash, pos, Quaternion.identity);
-                    Destroy(flashObj, 3f); 
+                    Destroy(flashObj, 3f);
                 }
                 break;
 
@@ -93,9 +100,35 @@ public class GranadaObjetoRed : NetworkBehaviour
                 if (efectoVisualExplosion != null)
                 {
                     GameObject expObj = Instantiate(efectoVisualExplosion, pos, Quaternion.identity);
-                    Destroy(expObj, 5f); 
+                    Destroy(expObj, 5f);
                 }
                 break;
+        }
+    }
+
+    private void ProcesarDanioExplosion(Vector3 centroExplosion)
+    {
+        float radioMaximo = 12f;
+        float danioMaximo = 75f; 
+
+        Collider[] impactados = Physics.OverlapSphere(centroExplosion, radioMaximo);
+        foreach (Collider col in impactados)
+        {
+            SaludJugadorRed salud = col.GetComponentInParent<SaludJugadorRed>();
+            if (salud != null)
+            {
+                Vector3 direccion = (col.transform.position - centroExplosion).normalized;
+                float distancia = Vector3.Distance(centroExplosion, col.transform.position);
+
+              
+                if (!Physics.Raycast(centroExplosion, direccion, distancia, LayerMask.GetMask("Default", "Map")))
+                {
+                   
+                    float intensidad = Mathf.Clamp01(1f - (distancia / radioMaximo));
+                    int danioFinal = Mathf.RoundToInt(intensidad * danioMaximo);
+                    salud.RPC_TomarDanio(danioFinal, centroExplosion);
+                }
+            }
         }
     }
 
@@ -108,12 +141,25 @@ public class GranadaObjetoRed : NetworkBehaviour
             SaludJugadorRed salud = col.GetComponentInParent<SaludJugadorRed>();
             if (salud != null)
             {
-                Vector3 direccion = (col.transform.position - centroExplosion).normalized;
+               
+                Vector3 dirAlJugador = (col.transform.position - centroExplosion).normalized;
                 float distancia = Vector3.Distance(centroExplosion, col.transform.position);
 
-                if (!Physics.Raycast(centroExplosion, direccion, distancia, LayerMask.GetMask("Default", "Map")))
+                if (!Physics.Raycast(centroExplosion, dirAlJugador, distancia, LayerMask.GetMask("Default", "Map")))
                 {
-                    salud.RPC_CegarPantallaLocal();
+                   
+                    Vector3 dirMiradaJugador = col.transform.forward;
+                   
+                    Vector3 dirHaciaFlash = -dirAlJugador;
+
+                    
+                    float anguloVision = Vector3.Angle(dirMiradaJugador, dirHaciaFlash);
+
+                   
+                    if (anguloVision < 75f)
+                    {
+                        salud.RPC_CegarPantallaLocal();
+                    }
                 }
             }
         }

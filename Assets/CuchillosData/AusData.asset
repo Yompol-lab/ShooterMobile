@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
+  m_Name: AusData
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponName: Australian Knife
+  weaponSlot: 2
+  damage: 25
+  range: 100
+  fireRate: 0.2
+  automatic: 0
+  pelletsPerShot: 1
+  spread: 0.01
+  beamRadius: 0.5
+  muzzleFlashPrefab: {fileID: 0}
+  bulletImpactPrefab: {fileID: 0}
+  precio: 0
+  prefabParaMano: {fileID: 926294963388311117, guid: 3ef51ab3f8e457047ae915bfce722470, type: 3}
+  "tama\xF1oCargador": 0
+  municionReservaMaxima: 0
+  tiempoRecarga: 0
+  eventoDisparoWwise: 
+  eventoRecargaWwise: 
+  iconoArma: {fileID: 21300000, guid: 94e663da4af0c6b49be17d895befa6c9, type: 3}
+  tipoGranada: 0

@@ -90,7 +90,7 @@ public class RadarManager : MonoBehaviour
 
                 GameObject prefab = datos.miEquipo == Team.Police ? iconoCTPrefab : iconoTPrefab;
 
-                GameObject nuevo = Instantiate(prefab, contenedorIconos);
+                GameObject nuevo = Instantiate(prefab, mapa);
 
                 RadarIcon icono = nuevo.GetComponent<RadarIcon>();
 
@@ -98,6 +98,7 @@ public class RadarManager : MonoBehaviour
                 icono.mapa = mapa;
                 icono.radarMin = RadarMin;
                 icono.radarMax = RadarMax;
+                
 
                 iconos.Add(rp, icono);
             }

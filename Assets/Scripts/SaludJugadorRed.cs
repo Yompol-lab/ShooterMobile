@@ -9,7 +9,7 @@ public class SaludJugadorRed : NetworkBehaviour
     [Networked] public int Vida { get; set; } = 100;
 
     [Header("UI")]
-    [SerializeField] private GameObject panelHUD; 
+    [SerializeField] private GameObject panelHUD;
 
     private EfectoRagdollRed ragdoll;
     private bool estaMuerto = false;
@@ -98,7 +98,7 @@ public class SaludJugadorRed : NetworkBehaviour
 
             if (miConfig != null)
             {
-                
+
                 Camera camaraPrincipal = Camera.main;
                 if (camaraPrincipal != null)
                 {

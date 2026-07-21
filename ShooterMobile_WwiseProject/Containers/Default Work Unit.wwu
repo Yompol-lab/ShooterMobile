@@ -1126,6 +1126,35 @@
 						<ActiveSource Name="ScarShoot" ID="{52B3BD83-2475-4B73-8C4B-1E7AA55F36E0}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="SpraySFX" ID="{C64365E9-1E24-42CD-89D3-F10FF3A23BEE}" ShortID="584544041">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SpraySFX" ID="{A9CCB14F-92DF-4C27-96A7-A1BE739E7B8C}">
+							<Language>SFX</Language>
+							<AudioFile>SpraySFX.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="882308059"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SpraySFX" ID="{A9CCB14F-92DF-4C27-96A7-A1BE739E7B8C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

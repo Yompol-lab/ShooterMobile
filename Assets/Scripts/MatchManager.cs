@@ -2,6 +2,7 @@ using Fusion;
 using UnityEngine;
 using StarterAssets;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; // <-- NECESARIO PARA CAMBIAR AL MENÚ
 
 public enum MotivoFinRonda { Eliminacion, Tiempo, Desactivacion, Detonacion }
 public enum TipoEquipo { AntiTerrorista, Terrorista, Ninguno }
@@ -10,6 +11,11 @@ public enum MatchState { Warmup, BuyTime, InProgress, BombPlanted, RoundEnd, Mat
 public class MatchManager : NetworkBehaviour
 {
     public static MatchManager Instance { get; private set; }
+
+    [Header("Configuración de Partida")]
+    public int rondasParaGanar = 5;
+    [Tooltip("El nombre exacto de la escena de tu menú principal (respetando mayúsculas)")]
+    public string nombreEscenaMenu = "MenuPrincipal";
 
     [Header("Estados de Partida")]
     [Networked] public MatchState EstadoActual { get; set; }
@@ -21,7 +27,7 @@ public class MatchManager : NetworkBehaviour
     [Networked] public Team UltimoGanador { get; set; }
 
     [Header("Estado Sincronizado de Bomba")]
-    public NetworkPrefabRef prefabBombaC4; 
+    public NetworkPrefabRef prefabBombaC4;
     [Networked] public bool bombaPlantada { get; set; } = false;
     [Networked] public PlayerRef jugadorQuePlanto { get; set; } = default;
 
@@ -37,6 +43,8 @@ public class MatchManager : NetworkBehaviour
         {
             EstadoActual = MatchState.Warmup;
             TiempoRestante = 5f;
+            PuntajeTerro = 0;
+            PuntajePolicia = 0;
         }
     }
 
@@ -67,6 +75,7 @@ public class MatchManager : NetworkBehaviour
             case MatchState.InProgress: FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Tiempo); break;
             case MatchState.BombPlanted: FinalizarRondaExterna(Team.Terrorist, TipoEquipo.Terrorista, MotivoFinRonda.Detonacion, jugadorQuePlanto); break;
             case MatchState.RoundEnd: IniciarNuevaRonda(); break;
+            case MatchState.MatchFinished: RPC_VolverAlMenu(); break; // <-- CUANDO TERMINA EL TIEMPO FINAL, VUELVEN TODOS AL MENÚ
         }
     }
 
@@ -93,7 +102,6 @@ public class MatchManager : NetworkBehaviour
             }
         }
 
-        
         RepartirBombaAlAzar();
     }
 
@@ -104,7 +112,6 @@ public class MatchManager : NetworkBehaviour
         PlayerInventory[] todosLosJugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         List<PlayerInventory> terroristas = new List<PlayerInventory>();
 
-        
         foreach (PlayerInventory jugador in todosLosJugadores)
         {
             ConfiguracionJugadorRed config = jugador.GetComponent<ConfiguracionJugadorRed>();
@@ -119,20 +126,17 @@ public class MatchManager : NetworkBehaviour
             int rnd = Random.Range(0, terroristas.Count);
             PlayerInventory terroElegido = terroristas[rnd];
 
-           
             NetworkObject bombaObj = Runner.Spawn(prefabBombaC4, terroElegido.transform.position, Quaternion.identity, terroElegido.Object.InputAuthority, (runner, obj) =>
             {
                 ArmaEnElPisoRed armaScript = obj.GetComponent<ArmaEnElPisoRed>();
                 if (armaScript != null) armaScript.SetFisicas(false);
             });
 
-            
             terroElegido.RPC_AgarrarArmaRed(bombaObj, WeaponSlot.Bomb);
             Debug.Log($" Bomba entregada al jugador: {terroElegido.gameObject.name}");
         }
     }
 
-   
     public void AvisarBombaPlantada(PlayerRef planter = default)
     {
         if (!HasStateAuthority) return;
@@ -142,19 +146,53 @@ public class MatchManager : NetworkBehaviour
         TiempoRestante = 40f;
     }
 
+    public void AvisarBombaDefusada(PlayerRef defuser)
+    {
+        if (!HasStateAuthority) return;
+        if (EstadoActual != MatchState.BombPlanted) return;
+
+        bombaPlantada = false;
+        FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Desactivacion, defuser);
+    }
+
     public void FinalizarRondaExterna(Team equipoGanadorHUD, TipoEquipo equipoEconomia, MotivoFinRonda motivo, PlayerRef jugadorEspecial = default)
     {
         if (!HasStateAuthority) return;
         if (EstadoActual == MatchState.RoundEnd || EstadoActual == MatchState.MatchFinished) return;
 
-        EstadoActual = MatchState.RoundEnd;
-        TiempoRestante = 7f;
         UltimoGanador = equipoGanadorHUD;
 
+        
         if (equipoGanadorHUD == Team.Police) PuntajePolicia++;
         else if (equipoGanadorHUD == Team.Terrorist) PuntajeTerro++;
 
+      
+        if (PuntajePolicia >= rondasParaGanar || PuntajeTerro >= rondasParaGanar)
+        {
+            EstadoActual = MatchState.MatchFinished;
+            TiempoRestante = 5f; 
+            Debug.Log($"¡PARTIDA TERMINADA! Ganador: {equipoGanadorHUD}");
+        }
+        else
+        {
+            EstadoActual = MatchState.RoundEnd;
+            TiempoRestante = 7f; 
+        }
+
         FinalizarRondaEconomia(equipoEconomia, motivo, jugadorEspecial);
+    }
+
+   
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_VolverAlMenu()
+    {
+        if (Runner != null)
+        {
+            Runner.Shutdown();
+        }
+
+        
+        SceneManager.LoadScene("Menu");
     }
 
     private void FinalizarRondaEconomia(TipoEquipo equipoGanador, MotivoFinRonda motivo, PlayerRef jugadorEspecial = default)

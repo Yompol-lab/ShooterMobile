@@ -178,6 +178,34 @@ public class MobileControlsBridge : MonoBehaviour
         }
     }
 
+    public void MantenerBotonBomba()
+    {
+       
+        PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (PlayerInventory j in jugadores)
+        {
+            if (j.HasStateAuthority)
+            {
+                j.BotonBomba_MantenerPresionado();
+                break;
+            }
+        }
+    }
+
+    public void SoltarBotonBomba()
+    {
+        
+        PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (PlayerInventory j in jugadores)
+        {
+            if (j.HasStateAuthority)
+            {
+                j.BotonBomba_SoltarBoton();
+                break;
+            }
+        }
+    }
+
     public void FireButtonDown() { if (weaponController != null) weaponController.MobileFireDown(); }
     public void FireButtonUp() { if (weaponController != null) weaponController.MobileFireUp(); }
     public void JumpButtonDown() { if (starterInputs != null) starterInputs.JumpInput(true); }

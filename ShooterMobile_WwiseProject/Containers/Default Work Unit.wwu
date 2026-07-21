@@ -259,6 +259,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Escopetazo" ID="{6E9FEBE1-15DF-460E-B55F-B98CB3C6E90C}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Escopetazo.wav</AudioFile>
 							<MediaIDList>

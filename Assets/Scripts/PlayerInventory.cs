@@ -369,4 +369,50 @@ public class PlayerInventory : NetworkBehaviour
             else Destroy(granadaObj);
         }
     }
+
+
+    public void BotonBomba_MantenerPresionado()
+    {
+        ConfiguracionJugadorRed config = GetComponent<ConfiguracionJugadorRed>();
+
+        
+        if (config != null && config.miEquipo == Team.Terrorist)
+        {
+            
+            if (activeSlot != WeaponSlot.Bomb)
+            {
+                if (currentBomb != null) EquipSlot(WeaponSlot.Bomb);
+            }
+            
+            else
+            {
+                PlantarBomba();
+            }
+        }
+      
+        else if (config != null && config.miEquipo == Team.Police)
+        {
+            if (LogicaBombaPlantada.BombaActiva != null)
+            {
+                float distancia = Vector3.Distance(transform.position, LogicaBombaPlantada.BombaActiva.transform.position);
+                if (distancia <= 3f)
+                {
+                    LogicaBombaPlantada.BombaActiva.RPC_IntentarDefusar(Object.InputAuthority, true);
+                }
+            }
+        }
+    }
+
+    public void BotonBomba_SoltarBoton()
+    {
+        ConfiguracionJugadorRed config = GetComponent<ConfiguracionJugadorRed>();
+
+        if (config != null && config.miEquipo == Team.Police)
+        {
+            if (LogicaBombaPlantada.BombaActiva != null)
+            {
+                LogicaBombaPlantada.BombaActiva.RPC_IntentarDefusar(Object.InputAuthority, false);
+            }
+        }
+    }
 }

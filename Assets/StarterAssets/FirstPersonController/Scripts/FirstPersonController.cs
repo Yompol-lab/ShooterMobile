@@ -13,62 +13,38 @@ namespace StarterAssets
     public class FirstPersonController : NetworkBehaviour
     {
         [Header("Animaciones")]
-        [Tooltip("Arrastrá acá el modelo 3D que tiene el Animator")]
         public Animator animator;
 
         [Header("Player")]
-        [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 4.0f;
-        [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 6.0f;
-        [Tooltip("Rotation speed of the character")]
         public float RotationSpeed = 1.0f;
-        [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
-
-        [Space(10)]
-        [Tooltip("The height the player can jump")]
         public float JumpHeight = 1.2f;
-        [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
-
-        [Space(10)]
-        [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
         public float JumpTimeout = 0.1f;
-        [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
         [Header("Player Grounded")]
-        [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
-        [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
-        [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float GroundedRadius = 0.5f;
-        [Tooltip("What layers the character uses as ground")]
         public LayerMask GroundLayers;
 
         [Header("Cinemachine")]
-        [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
-        [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 90.0f;
-        [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -90.0f;
 
-        // cinemachine
-        private float _cinemachineTargetPitch;
+     
+        [Networked] public float _cinemachineTargetPitch { get; set; }
+        [Networked] public float _speed { get; set; }
+        [Networked] public float _rotationVelocity { get; set; }
+        [Networked] public float _verticalVelocity { get; set; }
+        [Networked] public float _jumpTimeoutDelta { get; set; }
+        [Networked] public float _fallTimeoutDelta { get; set; }
 
-        // player
-        private float _speed;
-        private float _rotationVelocity;
-        private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-
-        // timeout deltatime
-        private float _jumpTimeoutDelta;
-        private float _fallTimeoutDelta;
-
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -76,7 +52,6 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
-
         private const float _threshold = 0.01f;
 
         private bool IsCurrentDeviceMouse
@@ -84,24 +59,17 @@ namespace StarterAssets
             get
             {
 #if ENABLE_INPUT_SYSTEM
-
-                if (_playerInput == null)
-                    return false;
-
+                if (_playerInput == null) return false;
                 return _playerInput.currentControlScheme == "KeyboardMouse";
-
 #else
-        return false;
+                return false;
 #endif
             }
         }
 
         private void Awake()
         {
-            if (_mainCamera == null)
-            {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            }
+            if (_mainCamera == null) _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
 
         private void Start()
@@ -110,53 +78,35 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
-           
-
-#else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
+        }
 
+       
+        public override void Spawned()
+        {
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
         public override void FixedUpdateNetwork()
         {
-            if (!HasInputAuthority)
-                return;
+            if (!HasInputAuthority) return;
 
             if (_input == null)
             {
                 _input = GetComponent<StarterAssetsInputs>();
-
-                if (_input == null)
-                    return;
+                if (_input == null) return;
             }
 
             if (_controller == null)
             {
                 _controller = GetComponent<CharacterController>();
-
-                if (_controller == null)
-                {
-                 
-                    return;
-                }
+                if (_controller == null) return;
             }
 
             JumpAndGravity();
             GroundedCheck();
             Move();
-        }
-
-        private void LateUpdate()
-        {
-            if (!HasInputAuthority)
-                return;
-
-            if (_input == null)
-                return;
-
             CameraRotation();
         }
 
@@ -170,7 +120,7 @@ namespace StarterAssets
         {
             if (_input.look.sqrMagnitude >= _threshold)
             {
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Runner.DeltaTime;
 
                 _cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
                 _rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
@@ -178,36 +128,20 @@ namespace StarterAssets
                 _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
                 CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
-
                 transform.Rotate(Vector3.up * _rotationVelocity);
             }
         }
 
         private void Move()
         {
-
-            
-
-            
-
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-            float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
-
-            float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-            if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
-            {
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
-            }
+            
+            _speed = Mathf.Lerp(_speed, targetSpeed * inputMagnitude, Runner.DeltaTime * SpeedChangeRate);
+            _speed = Mathf.Round(_speed * 1000f) / 1000f;
 
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
@@ -215,16 +149,13 @@ namespace StarterAssets
             {
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
             }
-            
-            _controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            
+
+            _controller.Move(inputDirection.normalized * (_speed * Runner.DeltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Runner.DeltaTime);
+
             if (animator != null)
             {
-                
-                animator.SetFloat("InputX", _input.move.x, 0.1f, Time.deltaTime);
-
-                
-                animator.SetFloat("InputY", _input.move.y, 0.1f, Time.deltaTime);
+                animator.SetFloat("InputX", _input.move.x, 0.1f, Runner.DeltaTime);
+                animator.SetFloat("InputY", _input.move.y, 0.1f, Runner.DeltaTime);
             }
         }
 
@@ -246,7 +177,7 @@ namespace StarterAssets
 
                 if (_jumpTimeoutDelta >= 0.0f)
                 {
-                    _jumpTimeoutDelta -= Time.deltaTime;
+                    _jumpTimeoutDelta -= Runner.DeltaTime;
                 }
             }
             else
@@ -255,15 +186,14 @@ namespace StarterAssets
 
                 if (_fallTimeoutDelta >= 0.0f)
                 {
-                    _fallTimeoutDelta -= Time.deltaTime;
+                    _fallTimeoutDelta -= Runner.DeltaTime;
                 }
-
                 _input.jump = false;
             }
 
             if (_verticalVelocity < _terminalVelocity)
             {
-                _verticalVelocity += Gravity * Time.deltaTime;
+                _verticalVelocity += Gravity * Runner.DeltaTime;
             }
         }
 

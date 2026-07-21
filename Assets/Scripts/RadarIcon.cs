@@ -7,6 +7,13 @@ public class RadarIcon : MonoBehaviour
     [HideInInspector] public Transform radarMin;
     [HideInInspector] public Transform radarMax;
 
+    [Header("Calibración")]
+    public float offsetX = 0f;
+    public float offsetY = 0f;
+
+    public float escalaX = 1f;
+    public float escalaY = 1f;
+
     [HideInInspector] public float margenX;
     [HideInInspector] public float margenY;
 
@@ -17,7 +24,7 @@ public class RadarIcon : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (jugador == null || mapa == null)
             return;
@@ -30,12 +37,9 @@ public class RadarIcon : MonoBehaviour
         tx = Mathf.Lerp(margenX, 1f - margenX, tx);
         tz = Mathf.Lerp(margenY, 1f - margenY, tz);
 
-        float ancho = mapa.rect.width;
-        float alto = mapa.rect.height;
+        float x = (tx - 0.5f) * mapa.rect.width * escalaX + offsetX;
+        float y = (tz - 0.5f) * mapa.rect.height * escalaY + offsetY;
 
-        float x = Mathf.Lerp(-ancho * 0.5f, ancho * 0.5f, tx);
-        float y = Mathf.Lerp(-alto * 0.5f, alto * 0.5f, tz);
-
-        rect.anchoredPosition = new Vector2(-x, -y);
+        rect.anchoredPosition = new Vector2(x, y);
     }
 }

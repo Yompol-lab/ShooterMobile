@@ -23,13 +23,24 @@ public class RadarManager : MonoBehaviour
 
     [Header("Margen Vertical")]
     [Range(0f, 0.45f)]
+
+    [Header("Calibración de Iconos")]
+    public float escalaIconosX = 1f;
+    public float escalaIconosY = 1f;
+
+    public float offsetIconosX = 0f;
+    public float offsetIconosY = 0f;
+
     public float margenY = 0.18f;
+
 
     private FirstPersonController jugador;
 
     private Dictionary<RadarPlayer, RadarIcon> iconos = new Dictionary<RadarPlayer, RadarIcon>();
 
     private ConfiguracionJugadorRed miJugador;
+
+
 
     void Update()
     {
@@ -67,6 +78,27 @@ public class RadarManager : MonoBehaviour
         float y = Mathf.Lerp(-alto * 0.5f, alto * 0.5f, tz);
 
         mapa.anchoredPosition = new Vector2(-x, -y);
+
+        foreach (var par in iconos)
+        {
+            RadarPlayer rp = par.Key;
+            RadarIcon icono = par.Value;
+
+            if (rp == null || icono == null)
+                continue;
+
+            ConfiguracionJugadorRed datos = rp.GetComponent<ConfiguracionJugadorRed>();
+
+            if (datos == null || miJugador == null)
+                continue;
+
+            bool esAliado = datos.miEquipo == miJugador.miEquipo;
+
+            if (esAliado)
+                icono.gameObject.SetActive(true);
+            else
+                icono.gameObject.SetActive(rp.visibleEnRadar);
+        }
     }
 
     void ActualizarIconos()
@@ -90,18 +122,28 @@ public class RadarManager : MonoBehaviour
 
                 GameObject prefab = datos.miEquipo == Team.Police ? iconoCTPrefab : iconoTPrefab;
 
-                GameObject nuevo = Instantiate(prefab, mapa);
+                GameObject nuevo = Instantiate(prefab, contenedorIconos);
 
                 RadarIcon icono = nuevo.GetComponent<RadarIcon>();
 
                 icono.jugador = rp;
-                icono.mapa = mapa;
+                icono.mapa = contenedorIconos as RectTransform;
                 icono.radarMin = RadarMin;
                 icono.radarMax = RadarMax;
-                
+
+                icono.margenX = margenX;
+                icono.margenY = margenY;
+
+                icono.escalaX = escalaIconosX;
+                icono.escalaY = escalaIconosY;
+
+                icono.offsetX = offsetIconosX;
+                icono.offsetY = offsetIconosY;
+
 
                 iconos.Add(rp, icono);
             }
         }
     }
+   
 }

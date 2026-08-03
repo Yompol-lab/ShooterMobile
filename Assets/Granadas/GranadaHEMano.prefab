@@ -62,6 +62,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: cebedd1098060e144a1766dca3aed8b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8552928860085864888}
+    - targetCorrespondingSourceObject: {fileID: -6689036041284674117, guid: cebedd1098060e144a1766dca3aed8b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7989116562810210643}
   m_SourcePrefab: {fileID: -5645937942226959685, guid: cebedd1098060e144a1766dca3aed8b7, type: 3}
 --- !u!1 &4362782126114657981 stripped
 GameObject:
@@ -103,3 +106,17 @@ MonoBehaviour:
   holdPosition: {x: 0.98, y: 0.4, z: 0}
   holdRotation: {x: -90, y: 0, z: 0}
   holdScale: {x: 1, y: 1, z: 1}
+--- !u!114 &7989116562810210643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362782126114657981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ae7bb0bf79bd743a1d873c4c2a51c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  weaponData: {fileID: 11400000, guid: 3930f99e11bb741489c3d1993c2892c8, type: 2}
+  firePoint: {fileID: 0}

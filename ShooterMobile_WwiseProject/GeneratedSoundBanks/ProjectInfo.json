@@ -3,7 +3,7 @@
   "Project": {
    "Name": "ShooterMobile_WwiseProject",
    "GUID": "{38DC2394-2BCC-4AF7-8BE5-4EABA6DDE74B}",
-   "Generator": "2025.1.8.9170"
+   "Generator": "2025.1.9.9197"
   },
   "CacheRoot": "../.cache",
   "Platforms": [
@@ -38,6 +38,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{C0C60448-F26C-9134-151D-E81F6920FB20}"
+  "FileHash": "{09B6AB77-3183-6204-5C99-918F3286C5DA}"
  }
 }

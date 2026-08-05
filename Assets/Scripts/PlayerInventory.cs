@@ -101,7 +101,7 @@ public class PlayerInventory : NetworkBehaviour
         if (MatchManager.Instance != null && MatchManager.Instance.bombaPlantada) return;
 
         Runner.Spawn(prefabBombaPlantada, transform.position, Quaternion.identity, Runner.LocalPlayer);
-        if (MatchManager.Instance != null) MatchManager.Instance.AvisarBombaPlantada(Object.InputAuthority);
+        if (MatchManager.Instance != null) MatchManager.Instance.RPC_AvisarBombaPlantada(Object.InputAuthority);
 
         RPC_ConfirmarPlante();
     }

@@ -14,7 +14,6 @@ public class MatchManager : NetworkBehaviour
 
     [Header("Configuración de Partida")]
     public int rondasParaGanar = 5;
-    [Tooltip("El nombre exacto de la escena de tu menú principal (respetando mayúsculas)")]
     public string nombreEscenaMenu = "MenuPrincipal";
 
     [Header("Estados de Partida")]
@@ -86,8 +85,6 @@ public class MatchManager : NetworkBehaviour
         bombaPlantada = false;
         jugadorQuePlanto = default;
 
-        Debug.Log(" MATCH: Arranca nueva ronda - Fase de Compra y Teletransporte");
-
         ConfiguracionJugadorRed[] jugadores = FindObjectsByType<ConfiguracionJugadorRed>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach (ConfiguracionJugadorRed jugador in jugadores)
         {
@@ -133,15 +130,13 @@ public class MatchManager : NetworkBehaviour
             });
 
             terroElegido.RPC_AgarrarArmaRed(bombaObj, WeaponSlot.Bomb);
-            Debug.Log($" Bomba entregada al jugador: {terroElegido.gameObject.name}");
         }
     }
 
-    public void VerificarBajas()
+  
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_VerificarBajas()
     {
-        if (!HasStateAuthority) return;
-
-        
         if (EstadoActual != MatchState.InProgress && EstadoActual != MatchState.BombPlanted) return;
 
         SaludJugadorRed[] jugadores = FindObjectsByType<SaludJugadorRed>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -149,7 +144,6 @@ public class MatchManager : NetworkBehaviour
         int vivosPolicia = 0;
         int vivosTerro = 0;
 
-        
         foreach (SaludJugadorRed j in jugadores)
         {
             if (j.Vida > 0)
@@ -163,40 +157,37 @@ public class MatchManager : NetworkBehaviour
             }
         }
 
-        
         if (vivosPolicia == 0 && vivosTerro > 0)
         {
-           
             FinalizarRondaExterna(Team.Terrorist, TipoEquipo.Terrorista, MotivoFinRonda.Eliminacion);
         }
         else if (vivosTerro == 0 && vivosPolicia > 0)
         {
-            
             if (!bombaPlantada)
             {
                 FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Eliminacion);
             }
         }
     }
-   
 
-    public void AvisarBombaPlantada(PlayerRef planter = default)
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_AvisarBombaPlantada(PlayerRef planter = default)
     {
-        if (!HasStateAuthority) return;
         bombaPlantada = true;
         jugadorQuePlanto = planter;
         EstadoActual = MatchState.BombPlanted;
         TiempoRestante = 40f;
     }
 
-    public void AvisarBombaDefusada(PlayerRef defuser)
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_AvisarBombaDefusada(PlayerRef defuser)
     {
-        if (!HasStateAuthority) return;
         if (EstadoActual != MatchState.BombPlanted) return;
 
         bombaPlantada = false;
         FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Desactivacion, defuser);
     }
+   
 
     public void FinalizarRondaExterna(Team equipoGanadorHUD, TipoEquipo equipoEconomia, MotivoFinRonda motivo, PlayerRef jugadorEspecial = default)
     {
@@ -212,7 +203,6 @@ public class MatchManager : NetworkBehaviour
         {
             EstadoActual = MatchState.MatchFinished;
             TiempoRestante = 5f;
-            Debug.Log($"¡PARTIDA TERMINADA! Ganador: {equipoGanadorHUD}");
         }
         else
         {
@@ -226,11 +216,7 @@ public class MatchManager : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_VolverAlMenu()
     {
-        if (Runner != null)
-        {
-            Runner.Shutdown();
-        }
-
+        if (Runner != null) Runner.Shutdown();
         SceneManager.LoadScene("Menu");
     }
 

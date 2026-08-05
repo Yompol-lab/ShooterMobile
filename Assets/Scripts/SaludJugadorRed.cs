@@ -64,8 +64,7 @@ public class SaludJugadorRed : NetworkBehaviour
 
             StartCoroutine(RutinaRespawn());
 
-          
-            if (MatchManager.Instance != null) MatchManager.Instance.VerificarBajas();
+            if (MatchManager.Instance != null) MatchManager.Instance.RPC_VerificarBajas();
         }
     }
 

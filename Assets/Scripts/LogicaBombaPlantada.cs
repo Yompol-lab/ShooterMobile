@@ -103,8 +103,11 @@ public class LogicaBombaPlantada : NetworkBehaviour
 
         if (sonidoBeep != null) sonidoBeep.Stop();
 
-       
-        MatchManager.Instance.AvisarBombaDefusada(DefuserActual);
+        
+        if (MatchManager.Instance != null)
+        {
+            MatchManager.Instance.RPC_AvisarBombaDefusada(DefuserActual);
+        }
     }
 
     private void Explosion()

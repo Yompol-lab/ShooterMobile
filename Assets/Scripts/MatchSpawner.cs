@@ -51,7 +51,6 @@ public class MatchSpawner : MonoBehaviour
     {
         if (alreadySpawned || NetworkManager.Instance == null || !runnerReady)
         {
-            Debug.LogWarning("Tranquilo fiera, el servidor todavía está conectando...");
             return;
         }
 
@@ -59,26 +58,18 @@ public class MatchSpawner : MonoBehaviour
 
         if (runner == null || !runner.IsRunning) return;
 
+       
         alreadySpawned = true;
 
         try
         {
-            if (teamSelectionUI != null)
-                teamSelectionUI.SetActive(false);
-
-            if (crosshairUI != null)
-                crosshairUI.SetActive(true);
-
-            if (panelVida != null)
-                panelVida.SetActive(true);
-
-            if (PlayerUIManager.Instance != null)
+          
+            if (runner.SessionInfo == null || !runner.SessionInfo.IsValid)
             {
-                PlayerUIManager.Instance.MostrarLista();
+                Debug.LogWarning("Todavía conectando con los servidores de Fusion...");
+                alreadySpawned = false;
+                return;
             }
-
-            UnlockCursor();
-            StartCoroutine(ForceUnlockCursor());
 
             TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
                 FindObjectsInactive.Exclude,
@@ -99,6 +90,7 @@ public class MatchSpawner : MonoBehaviour
                 spawnRot = validSpawns[randomIndex].transform.rotation;
             }
 
+          
             NetworkObject spawnedPlayer = runner.Spawn(
                 playerPrefab,
                 spawnPos,
@@ -115,16 +107,40 @@ public class MatchSpawner : MonoBehaviour
                 }
             );
 
+            
+            if (spawnedPlayer == null)
+            {
+                Debug.LogWarning("El servidor no pudo crear el personaje, reintentando...");
+                alreadySpawned = false;
+                return;
+            }
+
+            
             runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);
+
+          
+            if (teamSelectionUI != null)
+                teamSelectionUI.SetActive(false);
+
+            if (crosshairUI != null)
+                crosshairUI.SetActive(true);
+
+            if (panelVida != null)
+                panelVida.SetActive(true);
+
+            if (PlayerUIManager.Instance != null)
+            {
+                PlayerUIManager.Instance.MostrarLista();
+            }
+
+            UnlockCursor();
+            StartCoroutine(ForceUnlockCursor());
         }
         catch (System.Exception ex)
         {
+            Debug.LogError("Error de conexión temprana al spawnear. Detalle: " + ex.Message);
             alreadySpawned = false;
-
-            if (teamSelectionUI != null) teamSelectionUI.SetActive(true);
-
-            if (crosshairUI != null) crosshairUI.SetActive(false);
-            if (panelVida != null) panelVida.SetActive(false);
+           
         }
     }
 

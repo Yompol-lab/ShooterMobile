@@ -11,7 +11,7 @@ public class HUDIconosArmas : MonoBehaviour
     public Image iconoBomba;
 
     [Header("Efecto Visual Armas Normales")]
-    public Color colorEquipado = new Color(1f, 1f, 1f, 1f);
+    public Color colorEquipado = Color.red;
     public Color colorGuardado = new Color(1f, 1f, 1f, 0.4f);
 
     [Header("Alerta de Bomba")]
@@ -21,7 +21,6 @@ public class HUDIconosArmas : MonoBehaviour
 
     private PlayerInventory jugadorLocal;
 
- 
     private Color colorOriginalBomba;
     private bool colorBombaGuardado = false;
 
@@ -36,13 +35,19 @@ public class HUDIconosArmas : MonoBehaviour
 
     void Update()
     {
+        
+        if (jugadorLocal != null && (jugadorLocal.Object == null || !jugadorLocal.Object.IsValid))
+        {
+            jugadorLocal = null;
+        }
+
         if (jugadorLocal == null)
         {
             BuscarJugadorLocal();
+           
             if (jugadorLocal == null) return;
         }
 
-      
         ActualizarSlot(iconoPrincipal, jugadorLocal.currentPrimary, jugadorLocal.activeSlot == WeaponSlot.Primary);
         ActualizarSlot(iconoSecundaria, jugadorLocal.currentSecondary, jugadorLocal.activeSlot == WeaponSlot.Secondary);
         ActualizarSlot(iconoCuchillo, jugadorLocal.currentKnife, jugadorLocal.activeSlot == WeaponSlot.Knife);
@@ -63,10 +68,8 @@ public class HUDIconosArmas : MonoBehaviour
         }
         ActualizarSlot(iconoGranada, granadaAMostrar, granadaEquipada);
 
-      
         if (iconoBomba != null)
         {
-            
             if (!colorBombaGuardado)
             {
                 colorOriginalBomba = iconoBomba.color;
@@ -78,19 +81,16 @@ public class HUDIconosArmas : MonoBehaviour
             bool esPolicia = config != null && config.miEquipo == Team.Police;
             bool tieneBombaEnInventario = (jugadorLocal.currentBomb != null);
 
-           
             Color colorFinalBomba = colorOriginalBomba;
 
-           
             if (esTerrorista && tieneBombaEnInventario && jugadorLocal.enZonaPlantar)
             {
                 float oscilacion = Mathf.PingPong(Time.time * velocidadParpadeo, 1f);
                 Color colorAlerta = colorParpadeoPlantado;
-                colorAlerta.a = colorOriginalBomba.a; 
+                colorAlerta.a = colorOriginalBomba.a;
 
                 colorFinalBomba = Color.Lerp(colorOriginalBomba, colorAlerta, oscilacion);
             }
-            
             else if (esPolicia && LogicaBombaPlantada.BombaActiva != null)
             {
                 float distancia = Vector3.Distance(jugadorLocal.transform.position, LogicaBombaPlantada.BombaActiva.transform.position);
@@ -99,13 +99,12 @@ public class HUDIconosArmas : MonoBehaviour
                 {
                     float oscilacion = Mathf.PingPong(Time.time * velocidadParpadeo, 1f);
                     Color colorAlerta = colorParpadeoDefuse;
-                    colorAlerta.a = colorOriginalBomba.a; 
+                    colorAlerta.a = colorOriginalBomba.a;
 
                     colorFinalBomba = Color.Lerp(colorOriginalBomba, colorAlerta, oscilacion);
                 }
             }
 
-           
             iconoBomba.color = colorFinalBomba;
         }
     }
@@ -115,7 +114,7 @@ public class HUDIconosArmas : MonoBehaviour
         PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach (PlayerInventory j in jugadores)
         {
-            if (j.Object != null && j.HasStateAuthority)
+            if (j.Object != null && j.Object.IsValid && j.HasStateAuthority)
             {
                 jugadorLocal = j;
                 break;
@@ -127,7 +126,6 @@ public class HUDIconosArmas : MonoBehaviour
     {
         if (imagenUI == null) return;
 
-        
         if (armaObj == null)
         {
             imagenUI.enabled = false;
@@ -138,7 +136,7 @@ public class HUDIconosArmas : MonoBehaviour
         if (scriptArma != null && scriptArma.weaponData != null && scriptArma.weaponData.iconoArma != null)
         {
             imagenUI.sprite = scriptArma.weaponData.iconoArma;
-            imagenUI.enabled = true; 
+            imagenUI.enabled = true;
             imagenUI.color = estaEquipada ? colorEquipado : colorGuardado;
             imagenUI.preserveAspect = true;
         }

@@ -375,6 +375,9 @@ public class PlayerInventory : NetworkBehaviour
 
     public GameObject GetActiveWeaponObject()
     {
+       
+        if (Object == null || !Object.IsValid) return null;
+
         if (activeSlot == WeaponSlot.Primary) return currentPrimary;
         if (activeSlot == WeaponSlot.Secondary) return currentSecondary;
         if (activeSlot == WeaponSlot.Knife) return currentKnife;

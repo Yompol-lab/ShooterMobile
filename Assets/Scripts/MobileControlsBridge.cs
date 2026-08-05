@@ -28,10 +28,11 @@ public class MobileControlsBridge : MonoBehaviour
     
     private PlayerInventory GetInv()
     {
-        if (playerInventory != null) return playerInventory;
-        if (jugadorLocal != null) return jugadorLocal.GetComponent<PlayerInventory>();
+        if (playerInventory != null && playerInventory.Object != null && playerInventory.Object.IsValid) return playerInventory;
+        if (jugadorLocal != null && jugadorLocal.Object != null && jugadorLocal.Object.IsValid) return jugadorLocal.GetComponent<PlayerInventory>();
         return null;
     }
+
     public void BotonCiclarGranadas()
     {
         PlayerInventory inv = GetInv();
@@ -41,10 +42,8 @@ public class MobileControlsBridge : MonoBehaviour
             ControladorGranadasRed control = inv.GetComponent<ControladorGranadasRed>();
             if (control != null)
             {
-              
                 WeaponSlot[] ordenGranadas = { WeaponSlot.Explosiva, WeaponSlot.Flash, WeaponSlot.Humo, WeaponSlot.Fuego };
 
-                
                 int indiceActual = -1;
                 for (int i = 0; i < ordenGranadas.Length; i++)
                 {
@@ -55,10 +54,8 @@ public class MobileControlsBridge : MonoBehaviour
                     }
                 }
 
-               
                 for (int i = 1; i <= ordenGranadas.Length; i++)
                 {
-                   
                     int proximoIndice = (indiceActual + i) % ordenGranadas.Length;
                     WeaponSlot proximoSlot = ordenGranadas[proximoIndice];
 
@@ -69,20 +66,18 @@ public class MobileControlsBridge : MonoBehaviour
                     else if (proximoSlot == WeaponSlot.Flash && control.granadasFlash > 0) tieneMunicion = true;
                     else if (proximoSlot == WeaponSlot.Explosiva && control.granadasExplosivas > 0) tieneMunicion = true;
 
-                    
                     if (tieneMunicion)
                     {
-                        
                         if (proximoSlot != inv.activeSlot)
                         {
                             inv.EquipSlot(proximoSlot);
                             inv.RPC_SincronizarSlotRed(proximoSlot);
                         }
-                        return; 
+                        return;
                     }
                 }
 
-                Debug.LogWarning(" UI: No tenés ninguna granada en la mochila para equipar.");
+                
             }
         }
     }
@@ -180,11 +175,11 @@ public class MobileControlsBridge : MonoBehaviour
 
     public void MantenerBotonBomba()
     {
-       
         PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach (PlayerInventory j in jugadores)
         {
-            if (j.HasStateAuthority)
+            
+            if (j.Object != null && j.Object.IsValid && j.HasStateAuthority)
             {
                 j.BotonBomba_MantenerPresionado();
                 break;
@@ -194,11 +189,11 @@ public class MobileControlsBridge : MonoBehaviour
 
     public void SoltarBotonBomba()
     {
-        
         PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach (PlayerInventory j in jugadores)
         {
-            if (j.HasStateAuthority)
+            
+            if (j.Object != null && j.Object.IsValid && j.HasStateAuthority)
             {
                 j.BotonBomba_SoltarBoton();
                 break;

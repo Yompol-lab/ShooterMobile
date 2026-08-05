@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class BotonApuntarUI : MonoBehaviour
 {
@@ -13,24 +13,20 @@ public class BotonApuntarUI : MonoBehaviour
 
     private void Start()
     {
-       
         imagenBoton = GetComponent<Image>();
         boton = GetComponent<Button>();
     }
 
     private void Update()
     {
-        
-        if (jugadorLocal == null)
+        if (jugadorLocal == null || jugadorLocal.Object == null || !jugadorLocal.Object.IsValid)
         {
             BuscarJugadorLocal();
-            if (jugadorLocal == null) return;
+            if (jugadorLocal == null || jugadorLocal.Object == null || !jugadorLocal.Object.IsValid) return;
         }
 
-      
         bool tieneAWP = false;
 
-        
         if (jugadorLocal.activeSlot == WeaponSlot.Primary)
         {
             GameObject armaActiva = jugadorLocal.GetActiveWeaponObject();
@@ -39,7 +35,6 @@ public class BotonApuntarUI : MonoBehaviour
                 Weapon scriptArma = armaActiva.GetComponent<Weapon>();
                 if (scriptArma != null && scriptArma.weaponData != null)
                 {
-                    
                     if (scriptArma.weaponData.weaponName.ToUpper().Contains(nombreDelAWP.ToUpper()))
                     {
                         tieneAWP = true;
@@ -48,7 +43,6 @@ public class BotonApuntarUI : MonoBehaviour
             }
         }
 
-       
         if (imagenBoton != null) imagenBoton.enabled = tieneAWP;
         if (boton != null) boton.interactable = tieneAWP;
     }
@@ -58,7 +52,8 @@ public class BotonApuntarUI : MonoBehaviour
         PlayerInventory[] jugadores = FindObjectsByType<PlayerInventory>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach (PlayerInventory j in jugadores)
         {
-            if (j.Object != null && j.HasStateAuthority)
+           
+            if (j.Object != null && j.Object.IsValid && j.HasStateAuthority)
             {
                 jugadorLocal = j;
                 break;
@@ -66,30 +61,25 @@ public class BotonApuntarUI : MonoBehaviour
         }
     }
 
-   
     public void PresionarApuntar()
     {
-        Debug.Log(" PASO 1: El botón de la UI detectó tu dedo.");
 
         ControladorMira[] jugadores = FindObjectsByType<ControladorMira>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        Debug.Log($" PASO 2: Encontré {jugadores.Length} jugadores en la partida que tienen el script ControladorMira.");
 
         bool encontreAlLocal = false;
 
         foreach (ControladorMira jugador in jugadores)
         {
-            if (jugador.HasStateAuthority)
+            
+            if (jugador.Object != null && jugador.Object.IsValid && jugador.HasStateAuthority)
             {
                 encontreAlLocal = true;
-                Debug.Log(" PASO 3: ¡Jugador tuyo encontrado! Dando la orden de apuntar...");
+               
                 jugador.AlternarMira();
                 break;
             }
         }
 
-        if (!encontreAlLocal && jugadores.Length > 0)
-        {
-            Debug.LogWarning(" ATENCIÓN: Encontré jugadores, pero ninguno tuyo (ninguno tiene StateAuthority).");
-        }
+      
     }
 }

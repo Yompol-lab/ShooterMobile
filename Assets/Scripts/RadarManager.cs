@@ -23,6 +23,7 @@ public class RadarManager : MonoBehaviour
 
     [Header("Margen Vertical")]
     [Range(0f, 0.45f)]
+    public float margenY = 0.18f;
 
     [Header("Calibración de Iconos")]
     public float escalaIconosX = 1f;
@@ -31,36 +32,30 @@ public class RadarManager : MonoBehaviour
     public float offsetIconosX = 0f;
     public float offsetIconosY = 0f;
 
-    public float margenY = 0.18f;
-
-
     private FirstPersonController jugador;
 
     private Dictionary<RadarPlayer, RadarIcon> iconos = new Dictionary<RadarPlayer, RadarIcon>();
 
     private ConfiguracionJugadorRed miJugador;
 
-
-
     void Update()
     {
-        // Buscar jugador local
-        if (jugador == null)
+      
+        if (jugador == null || jugador.Object == null || !jugador.Object.IsValid)
         {
-            foreach (FirstPersonController p in FindObjectsOfType<FirstPersonController>())
+            FirstPersonController[] todosLosJugadores = FindObjectsByType<FirstPersonController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (FirstPersonController p in todosLosJugadores)
             {
-                if (p.HasInputAuthority)
+                if (p.Object != null && p.Object.IsValid && p.HasInputAuthority)
                 {
                     jugador = p;
                     break;
                 }
             }
 
-            if (jugador == null)
-                return;
+            if (jugador == null) return;
         }
 
-        // Crear iconos de jugadores
         ActualizarIconos();
 
         Vector3 pos = jugador.transform.position;
@@ -84,13 +79,12 @@ public class RadarManager : MonoBehaviour
             RadarPlayer rp = par.Key;
             RadarIcon icono = par.Value;
 
-            if (rp == null || icono == null)
-                continue;
+            if (rp == null || icono == null) continue;
 
             ConfiguracionJugadorRed datos = rp.GetComponent<ConfiguracionJugadorRed>();
 
-            if (datos == null || miJugador == null)
-                continue;
+            if (datos == null || datos.Object == null || !datos.Object.IsValid) continue;
+            if (miJugador == null || miJugador.Object == null || !miJugador.Object.IsValid) continue;
 
             bool esAliado = datos.miEquipo == miJugador.miEquipo;
 
@@ -103,27 +97,23 @@ public class RadarManager : MonoBehaviour
 
     void ActualizarIconos()
     {
-        RadarPlayer[] jugadores = FindObjectsOfType<RadarPlayer>();
+        RadarPlayer[] jugadores = FindObjectsByType<RadarPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 
         foreach (RadarPlayer rp in jugadores)
         {
-            if (rp == null)
-                continue;
+            if (rp == null || rp.Object == null || !rp.Object.IsValid) continue;
 
             if (!iconos.ContainsKey(rp))
             {
                 ConfiguracionJugadorRed datos = rp.GetComponent<ConfiguracionJugadorRed>();
 
-                if (datos == null)
-                    continue;
+                if (datos == null || datos.Object == null || !datos.Object.IsValid) continue;
 
-                if (miJugador == null && rp.HasInputAuthority)
-                    miJugador = datos;
+                if (miJugador == null && rp.HasInputAuthority) miJugador = datos;
 
                 GameObject prefab = datos.miEquipo == Team.Police ? iconoCTPrefab : iconoTPrefab;
 
                 GameObject nuevo = Instantiate(prefab, contenedorIconos);
-
                 RadarIcon icono = nuevo.GetComponent<RadarIcon>();
 
                 icono.jugador = rp;
@@ -140,10 +130,8 @@ public class RadarManager : MonoBehaviour
                 icono.offsetX = offsetIconosX;
                 icono.offsetY = offsetIconosY;
 
-
                 iconos.Add(rp, icono);
             }
         }
     }
-   
 }

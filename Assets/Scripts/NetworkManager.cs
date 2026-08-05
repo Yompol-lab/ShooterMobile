@@ -10,16 +10,9 @@ public class NetworkManager : MonoBehaviour
     public NetworkRunner runnerPrefab;
     private NetworkRunner runner;
 
-    async void Awake()
+    void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     async void Start()
@@ -36,6 +29,7 @@ public class NetworkManager : MonoBehaviour
 
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
+      
         var result = await runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,

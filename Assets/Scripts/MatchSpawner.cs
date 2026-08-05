@@ -9,7 +9,7 @@ public class MatchSpawner : MonoBehaviour
 
     public GameObject teamSelectionUI;
     public GameObject crosshairUI;
-    public GameObject panelVida; 
+    public GameObject panelVida;
 
     private bool alreadySpawned = false;
     private bool runnerReady = false;
@@ -50,65 +50,82 @@ public class MatchSpawner : MonoBehaviour
     private void DoSpawn(Team team)
     {
         if (alreadySpawned || NetworkManager.Instance == null || !runnerReady)
+        {
+            Debug.LogWarning("Tranquilo fiera, el servidor todavía está conectando...");
             return;
+        }
 
         NetworkRunner runner = NetworkManager.Instance.Runner;
 
+        if (runner == null || !runner.IsRunning) return;
+
         alreadySpawned = true;
 
-        if (teamSelectionUI != null)
-            teamSelectionUI.SetActive(false);
-
-        if (crosshairUI != null)
-            crosshairUI.SetActive(true);
-
-        if (panelVida != null)
-            panelVida.SetActive(true);
-
-        if (PlayerUIManager.Instance != null)
+        try
         {
-            PlayerUIManager.Instance.MostrarLista();
-        }
+            if (teamSelectionUI != null)
+                teamSelectionUI.SetActive(false);
 
-        UnlockCursor();
-        StartCoroutine(ForceUnlockCursor());
+            if (crosshairUI != null)
+                crosshairUI.SetActive(true);
 
-        TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
-            FindObjectsInactive.Exclude,
-            FindObjectsSortMode.None
-        );
+            if (panelVida != null)
+                panelVida.SetActive(true);
 
-        TeamSpawnPoint[] validSpawns = allSpawns
-            .Where(sp => sp.team == team)
-            .ToArray();
-
-        Vector3 spawnPos = Vector3.up * 2f;
-        Quaternion spawnRot = Quaternion.identity;
-
-        if (validSpawns.Length > 0)
-        {
-            int randomIndex = Random.Range(0, validSpawns.Length);
-            spawnPos = validSpawns[randomIndex].transform.position;
-            spawnRot = validSpawns[randomIndex].transform.rotation;
-        }
-
-        NetworkObject spawnedPlayer = runner.Spawn(
-            playerPrefab,
-            spawnPos,
-            spawnRot,
-            runner.LocalPlayer,
-            (rn, obj) =>
+            if (PlayerUIManager.Instance != null)
             {
-                ConfiguracionJugadorRed config = obj.GetComponent<ConfiguracionJugadorRed>();
-
-                if (config != null)
-                {
-                    config.miEquipo = team;
-                }
+                PlayerUIManager.Instance.MostrarLista();
             }
-        );
 
-        runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);
+            UnlockCursor();
+            StartCoroutine(ForceUnlockCursor());
+
+            TeamSpawnPoint[] allSpawns = FindObjectsByType<TeamSpawnPoint>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None
+            );
+
+            TeamSpawnPoint[] validSpawns = allSpawns
+                .Where(sp => sp.team == team)
+                .ToArray();
+
+            Vector3 spawnPos = Vector3.up * 2f;
+            Quaternion spawnRot = Quaternion.identity;
+
+            if (validSpawns.Length > 0)
+            {
+                int randomIndex = Random.Range(0, validSpawns.Length);
+                spawnPos = validSpawns[randomIndex].transform.position + (Vector3.up * 2f);
+                spawnRot = validSpawns[randomIndex].transform.rotation;
+            }
+
+            NetworkObject spawnedPlayer = runner.Spawn(
+                playerPrefab,
+                spawnPos,
+                spawnRot,
+                runner.LocalPlayer,
+                (rn, obj) =>
+                {
+                    ConfiguracionJugadorRed config = obj.GetComponent<ConfiguracionJugadorRed>();
+
+                    if (config != null)
+                    {
+                        config.miEquipo = team;
+                    }
+                }
+            );
+
+            runner.SetPlayerObject(runner.LocalPlayer, spawnedPlayer);
+        }
+        catch (System.Exception ex)
+        {
+            alreadySpawned = false;
+
+            if (teamSelectionUI != null) teamSelectionUI.SetActive(true);
+
+            if (crosshairUI != null) crosshairUI.SetActive(false);
+            if (panelVida != null) panelVida.SetActive(false);
+        }
     }
 
     private void UnlockCursor()

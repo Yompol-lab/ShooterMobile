@@ -28,10 +28,7 @@ public class SaludJugadorRed : NetworkBehaviour
             {
                 panelHUD = miHud.gameObject;
             }
-            else
-            {
-                Debug.LogWarning("No se encontró ningún objeto con el script HUDPrincipal en la escena.");
-            }
+            
         }
     }
 
@@ -78,11 +75,8 @@ public class SaludJugadorRed : NetworkBehaviour
         {
             if (miInventario != null)
             {
-                if (miInventario.currentPrimary != null)
-                    miInventario.RPC_TirarArmaRed(WeaponSlot.Primary);
-
-                if (miInventario.currentBomb != null)
-                    miInventario.RPC_TirarArmaRed(WeaponSlot.Bomb);
+                if (miInventario.currentPrimary != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Primary);
+                if (miInventario.currentBomb != null) miInventario.RPC_TirarArmaRed(WeaponSlot.Bomb);
 
                 if (miInventario.currentSecondary != null)
                 {
@@ -98,22 +92,10 @@ public class SaludJugadorRed : NetworkBehaviour
 
             if (miConfig != null)
             {
-
                 Camera camaraPrincipal = Camera.main;
-                if (camaraPrincipal != null)
-                {
-                    camaraPrincipal.gameObject.SetActive(true);
-                }
-
-                if (miConfig.camaraDelJugador != null)
-                {
-                    miConfig.camaraDelJugador.gameObject.SetActive(false);
-                }
-
-                if (panelHUD != null)
-                {
-                    panelHUD.SetActive(false);
-                }
+                if (camaraPrincipal != null) camaraPrincipal.gameObject.SetActive(true);
+                if (miConfig.camaraDelJugador != null) miConfig.camaraDelJugador.gameObject.SetActive(false);
+                if (panelHUD != null) panelHUD.SetActive(false);
 
                 if (miConfig.misInputs != null)
                 {
@@ -139,58 +121,42 @@ public class SaludJugadorRed : NetworkBehaviour
 
         if (miConfig != null)
         {
-            TeamSpawnPoint[] todosLosSpawns = FindObjectsByType<TeamSpawnPoint>(
-                FindObjectsInactive.Exclude,
-                FindObjectsSortMode.None);
-
-            var spawnsValidos = System.Array.FindAll(
-                todosLosSpawns,
-                sp => sp.team == miConfig.miEquipo);
+            TeamSpawnPoint[] todosLosSpawns = FindObjectsByType<TeamSpawnPoint>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            var spawnsValidos = System.Array.FindAll(todosLosSpawns, sp => sp.team == miConfig.miEquipo);
 
             if (spawnsValidos.Length > 0)
             {
                 int rand = Random.Range(0, spawnsValidos.Length);
-                posicionBase = spawnsValidos[rand].transform.position + (Vector3.up * 1.5f);
+                posicionBase = spawnsValidos[rand].transform.position + (Vector3.up * 2.0f);
                 rotacionBase = spawnsValidos[rand].transform.rotation;
             }
         }
 
         CharacterController cc = GetComponent<CharacterController>();
-        if (cc != null)
-            cc.enabled = false;
+        if (cc != null) cc.enabled = false;
 
         transform.position = posicionBase;
         transform.rotation = rotacionBase;
 
         NetworkTransform netTransform = GetComponent<NetworkTransform>();
-        if (netTransform != null)
-            netTransform.Teleport(posicionBase);
+        if (netTransform != null) netTransform.Teleport(posicionBase);
+
+        yield return new WaitForFixedUpdate();
+        yield return null;
 
         Vida = 100;
         estaMuerto = false;
 
-        if (cc != null)
-            cc.enabled = true;
+        if (cc != null) cc.enabled = true;
 
         RPC_RevivirRed();
 
         if (HasStateAuthority && miConfig != null)
         {
             Camera camaraPrincipal = Camera.main;
-            if (camaraPrincipal != null)
-            {
-                camaraPrincipal.gameObject.SetActive(false);
-            }
-
-            if (miConfig.camaraDelJugador != null)
-            {
-                miConfig.camaraDelJugador.gameObject.SetActive(true);
-            }
-
-            if (panelHUD != null)
-            {
-                panelHUD.SetActive(true);
-            }
+            if (camaraPrincipal != null) camaraPrincipal.gameObject.SetActive(false);
+            if (miConfig.camaraDelJugador != null) miConfig.camaraDelJugador.gameObject.SetActive(true);
+            if (panelHUD != null) panelHUD.SetActive(true);
         }
     }
 

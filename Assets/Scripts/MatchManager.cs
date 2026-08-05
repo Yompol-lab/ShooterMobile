@@ -2,7 +2,7 @@ using Fusion;
 using UnityEngine;
 using StarterAssets;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement; // <-- NECESARIO PARA CAMBIAR AL MENÚ
+using UnityEngine.SceneManagement;
 
 public enum MotivoFinRonda { Eliminacion, Tiempo, Desactivacion, Detonacion }
 public enum TipoEquipo { AntiTerrorista, Terrorista, Ninguno }
@@ -75,7 +75,7 @@ public class MatchManager : NetworkBehaviour
             case MatchState.InProgress: FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Tiempo); break;
             case MatchState.BombPlanted: FinalizarRondaExterna(Team.Terrorist, TipoEquipo.Terrorista, MotivoFinRonda.Detonacion, jugadorQuePlanto); break;
             case MatchState.RoundEnd: IniciarNuevaRonda(); break;
-            case MatchState.MatchFinished: RPC_VolverAlMenu(); break; // <-- CUANDO TERMINA EL TIEMPO FINAL, VUELVEN TODOS AL MENÚ
+            case MatchState.MatchFinished: RPC_VolverAlMenu(); break;
         }
     }
 
@@ -137,6 +137,49 @@ public class MatchManager : NetworkBehaviour
         }
     }
 
+    public void VerificarBajas()
+    {
+        if (!HasStateAuthority) return;
+
+        
+        if (EstadoActual != MatchState.InProgress && EstadoActual != MatchState.BombPlanted) return;
+
+        SaludJugadorRed[] jugadores = FindObjectsByType<SaludJugadorRed>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+
+        int vivosPolicia = 0;
+        int vivosTerro = 0;
+
+        
+        foreach (SaludJugadorRed j in jugadores)
+        {
+            if (j.Vida > 0)
+            {
+                ConfiguracionJugadorRed config = j.GetComponent<ConfiguracionJugadorRed>();
+                if (config != null)
+                {
+                    if (config.miEquipo == Team.Police) vivosPolicia++;
+                    else if (config.miEquipo == Team.Terrorist) vivosTerro++;
+                }
+            }
+        }
+
+        
+        if (vivosPolicia == 0 && vivosTerro > 0)
+        {
+           
+            FinalizarRondaExterna(Team.Terrorist, TipoEquipo.Terrorista, MotivoFinRonda.Eliminacion);
+        }
+        else if (vivosTerro == 0 && vivosPolicia > 0)
+        {
+            
+            if (!bombaPlantada)
+            {
+                FinalizarRondaExterna(Team.Police, TipoEquipo.AntiTerrorista, MotivoFinRonda.Eliminacion);
+            }
+        }
+    }
+   
+
     public void AvisarBombaPlantada(PlayerRef planter = default)
     {
         if (!HasStateAuthority) return;
@@ -162,27 +205,24 @@ public class MatchManager : NetworkBehaviour
 
         UltimoGanador = equipoGanadorHUD;
 
-        
         if (equipoGanadorHUD == Team.Police) PuntajePolicia++;
         else if (equipoGanadorHUD == Team.Terrorist) PuntajeTerro++;
 
-      
         if (PuntajePolicia >= rondasParaGanar || PuntajeTerro >= rondasParaGanar)
         {
             EstadoActual = MatchState.MatchFinished;
-            TiempoRestante = 5f; 
+            TiempoRestante = 5f;
             Debug.Log($"¡PARTIDA TERMINADA! Ganador: {equipoGanadorHUD}");
         }
         else
         {
             EstadoActual = MatchState.RoundEnd;
-            TiempoRestante = 7f; 
+            TiempoRestante = 7f;
         }
 
         FinalizarRondaEconomia(equipoEconomia, motivo, jugadorEspecial);
     }
 
-   
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_VolverAlMenu()
     {
@@ -191,7 +231,6 @@ public class MatchManager : NetworkBehaviour
             Runner.Shutdown();
         }
 
-        
         SceneManager.LoadScene("Menu");
     }
 

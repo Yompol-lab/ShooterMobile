@@ -493,6 +493,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MusicaFondo" ID="{EF27254A-0080-4838-944A-F5471B5ACB6E}">
+					<ChildrenList>
+						<Action Name="" ID="{AF5E140C-4DF9-488D-99F0-F880EBAF3D5B}" ShortID="887934240">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicaFondo" ID="{5DDE7EF7-A661-4D01-A2A3-842730115287}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

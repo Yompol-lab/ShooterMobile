@@ -35,6 +35,7 @@ namespace AK
         static const AkUniqueID PLAY_GLOCK_DISPARO = 2711817465U;
         static const AkUniqueID PLAY_GLOCK_RECARGA = 8018734U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
+        static const AkUniqueID PLAY_MUSICAFONDO = 2944545518U;
         static const AkUniqueID PLAY_RECARGA_AK47 = 1888624163U;
         static const AkUniqueID PLAY_RECARGA_ESCOPETA = 3989193866U;
         static const AkUniqueID PLAY_RECARGA_M4A4 = 3626292540U;

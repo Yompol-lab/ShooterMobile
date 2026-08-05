@@ -23,6 +23,7 @@
 						<ObjectRef Name="Play_Recarga_m4a4" ID="{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Recarga_AK47" ID="{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_6" ID="{317836E3-6FDC-4724-A751-FC7188ED94E9}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MusicaFondo" ID="{EF27254A-0080-4838-944A-F5471B5ACB6E}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Escopetazo" ID="{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_XM_Recarga" ID="{3C163D26-47B9-48B7-92A8-BF32E0CE12BD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_4" ID="{85A066AD-BF20-48C7-9BBD-3087D17EC78E}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
     "Language": "SFX",
-    "Hash": "{61F13DEF-8D99-866E-0031-7153E4767E8E}",
+    "Hash": "{2B110010-E056-5FE8-7C59-AE11FB766845}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
     "ShortName": "MainBank",
     "Path": "MainBank.bnk",
@@ -294,6 +294,14 @@
       "Location": "Memory",
       "ShortName": "FamasRecarga.wav",
       "CachePath": "87/{872506F1-7E64-06C1-D84C-65095C8FC361}.wem"
+     },
+     {
+      "Id": "1007898626",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MusicaFondo.wav",
+      "CachePath": "EF/{EF19320E-BC2C-8F98-6AB4-3128F6D1EEC9}.wem"
      },
      {
       "Id": "1051391370",
@@ -598,6 +606,18 @@
       ]
      },
      {
+      "Id": "2944545518",
+      "Name": "Play_MusicaFondo",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MusicaFondo",
+      "GUID": "{EF27254A-0080-4838-944A-F5471B5ACB6E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "1007898626"
+       }
+      ]
+     },
+     {
       "Id": "1888624163",
       "Name": "Play_Recarga_AK47",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_Recarga_AK47",
@@ -810,6 +830,6 @@
     ]
    }
   ],
-  "FileHash": "{6776334F-8060-ED74-B731-B640B3DBF7F0}"
+  "FileHash": "{127331DF-098E-4792-99D5-6956A518CCAC}"
  }
 }

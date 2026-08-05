@@ -17,6 +17,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2711817465	Play_Glock_Disparo			\Default Work Unit\Play_Glock_Disparo	
 	2785419335	Play_Scar_Recarga			\Default Work Unit\Play_Scar_Recarga	
 	2872757021	Play_XM_Recarga			\Default Work Unit\Play_XM_Recarga	
+	2944545518	Play_MusicaFondo			\Default Work Unit\Play_MusicaFondo	
 	3052655297	Shoot_Ak			\Default Work Unit\Shoot_Ak	
 	3064026271	Play_Terrorist_Win			\Default Work Unit\Play_Terrorist_Win	
 	3513490094	Escopetazo			\Default Work Unit\Escopetazo	
@@ -72,5 +73,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	965923994	GlockDisparo	.cache\0C\{0C03AE31-F35B-FF92-C2E7-42E42F02CBA7}.wem		\Containers\Default Work Unit\GlockDisparo		270088
 	981402845	DkDisparo	.cache\09\{090376FF-8467-1D05-7FD8-D115D04C0422}.wem		\Containers\Default Work Unit\DkDisparo		530208
 	990675005	FamasRecarga	.cache\87\{872506F1-7E64-06C1-D84C-65095C8FC361}.wem		\Containers\Default Work Unit\FamasRecarga		242924
+	1007898626	MusicaFondo	.cache\EF\{EF19320E-BC2C-8F98-6AB4-3128F6D1EEC9}.wem		\Containers\Default Work Unit\MusicaFondo		68919392
 	1051391370	g36Recarga	.cache\96\{96D606FE-CB53-5D03-8C41-ABA62810F88E}.wem		\Containers\Default Work Unit\g36Recarga		254540
 

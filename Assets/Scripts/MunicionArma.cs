@@ -11,6 +11,9 @@ public class MunicionArma : MonoBehaviour
     private Animator miAnimador;
     private bool tieneAnimDisparo = false;
 
+    [Header("Efecto Pistola de Agua")]
+    public ParticleSystem chorroAgua;
+
     public void Configurar(WeaponData armaData)
     {
         data = armaData;
@@ -33,12 +36,10 @@ public class MunicionArma : MonoBehaviour
 
     public bool IntentarDisparar()
     {
-      
         if (estaRecargando || balasCargador <= 0) return false;
 
         balasCargador--;
 
-     
         if (!string.IsNullOrEmpty(data.eventoDisparoWwise))
         {
             AkSoundEngine.PostEvent(data.eventoDisparoWwise, gameObject);
@@ -47,6 +48,11 @@ public class MunicionArma : MonoBehaviour
         if (miAnimador != null && tieneAnimDisparo)
         {
             miAnimador.SetTrigger("Disparar");
+        }
+
+        if (chorroAgua != null)
+        {
+            chorroAgua.Play();
         }
 
         return true;
@@ -64,13 +70,11 @@ public class MunicionArma : MonoBehaviour
 
         if (miAnimador != null) miAnimador.SetTrigger("Recargar");
 
-       
         if (!string.IsNullOrEmpty(data.eventoRecargaWwise))
         {
             AkSoundEngine.PostEvent(data.eventoRecargaWwise, gameObject);
         }
 
-       
         yield return new WaitForSeconds(data.tiempoRecarga);
 
         int balasFaltantes = data.tamañoCargador - balasCargador;

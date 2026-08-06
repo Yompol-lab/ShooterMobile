@@ -21,7 +21,8 @@ public class WeaponData : ScriptableObject
 
     [Header("Kamehameha (Solo Pistola de Agua)")]
     public float beamRadius = 0.5f;
-
+    public GameObject prefabChorroAgua;
+   
     [Header("Efectos")]
     public GameObject muzzleFlashPrefab;
     public GameObject bulletImpactPrefab;

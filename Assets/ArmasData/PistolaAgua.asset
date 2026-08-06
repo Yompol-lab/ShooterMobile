@@ -21,13 +21,15 @@ MonoBehaviour:
   pelletsPerShot: 1
   spread: 0.01
   beamRadius: 1
+  prefabChorroAgua: {fileID: 0}
   muzzleFlashPrefab: {fileID: 0}
   bulletImpactPrefab: {fileID: 0}
   precio: 2700
   prefabParaMano: {fileID: 9119417485082102614, guid: 493e08d557de4884d8149ddb2f422cc4, type: 3}
-  "tama\xF1oCargador": 30
-  municionReservaMaxima: 90
+  "tama\xF1oCargador": 1
+  municionReservaMaxima: 1
   tiempoRecarga: 2
   eventoDisparoWwise: 
   eventoRecargaWwise: 
   iconoArma: {fileID: 21300000, guid: d02dba0fe5301074e9e1ae6845833d25, type: 3}
+  tipoGranada: 0

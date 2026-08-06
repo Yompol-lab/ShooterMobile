@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63a0b3450e2e7e48a69011dcdfd473b, type: 3}
   m_Name: Sasg-12
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: AA 12
+  weaponName: Sasg-12
   weaponSlot: 0
   damage: 20
   range: 100
   fireRate: 0.36
   automatic: 1
   pelletsPerShot: 10
-  spread: 0.16
+  spread: 0.1
   beamRadius: 0.5
   muzzleFlashPrefab: {fileID: 100000, guid: 03a4a1935a9f4454c861dfa0aa6df562, type: 3}
   bulletImpactPrefab: {fileID: 100006, guid: 94a130fb17f1cae4388a8fe1d8bd3055, type: 3}
@@ -31,3 +31,4 @@ MonoBehaviour:
   eventoDisparoWwise: Escopetazo
   eventoRecargaWwise: Play_Recarga_Escopeta
   iconoArma: {fileID: 21300000, guid: 6ca68f26e6b341442a704b6f997c9db1, type: 3}
+  tipoGranada: 0

@@ -1188,6 +1188,35 @@
 						<ActiveSource Name="MusicaFondo" ID="{AAA3A578-08E8-42BB-BE37-29E0F8978ECC}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="MusicaCreditos" ID="{792C8AB1-10AC-4A0D-BE23-BFD5A0145A0F}" ShortID="551754419">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-23</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E700816D-49F7-4D2C-8BB8-9021E00F776F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E0E579A3-C25C-408F-BE98-A1C7C917C2C5}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MusicaCreditos" ID="{159141A6-7C3C-4EB9-9A60-CA82FBFF9BE6}">
+							<Language>SFX</Language>
+							<AudioFile>MusicaCreditos.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="449148792"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="MusicaCreditos" ID="{159141A6-7C3C-4EB9-9A60-CA82FBFF9BE6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

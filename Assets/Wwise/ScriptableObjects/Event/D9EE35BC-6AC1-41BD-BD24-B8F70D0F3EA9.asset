@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Resume_MenuMusic
   id: 3795863871
   guid: D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

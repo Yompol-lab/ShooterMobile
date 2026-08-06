@@ -3,11 +3,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	123959724	Play_1911_Recarga			\Default Work Unit\Play_1911_Recarga	
 	206058248	Play_Dk_Disparo			\Default Work Unit\Play_Dk_Disparo	
 	209422798	Play_CTerrorist_Win			\Default Work Unit\Play_CTerrorist_Win	
+	384436338	Stop_CancionesAvatares			\Default Work Unit\Stop_CancionesAvatares	
 	403575789	Play_Tec9_Recarga			\Default Work Unit\Play_Tec9_Recarga	
 	463614408	Play_Scar_Disparo			\Default Work Unit\Play_Scar_Disparo	
 	856847256	Play_Famas_Recarga			\Default Work Unit\Play_Famas_Recarga	
 	923844420	Play_Awp_Recarga			\Default Work Unit\Play_Awp_Recarga	
 	1136421811	Play_Usp_Disparo			\Default Work Unit\Play_Usp_Disparo	
+	1169399582	Pause_MenuMusic			\Default Work Unit\Pause_MenuMusic	
 	1171709836	Play_Usp_Recarga			\Default Work Unit\Play_Usp_Recarga	
 	1785532551	Play_Dk_Recarga			\Default Work Unit\Play_Dk_Recarga	
 	1888624163	Play_Recarga_AK47			\Default Work Unit\Play_Recarga_AK47	
@@ -18,6 +20,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2785419335	Play_Scar_Recarga			\Default Work Unit\Play_Scar_Recarga	
 	2872757021	Play_XM_Recarga			\Default Work Unit\Play_XM_Recarga	
 	2944545518	Play_MusicaFondo			\Default Work Unit\Play_MusicaFondo	
+	2962603001	Play_MusicaCreditos			\Default Work Unit\Play_MusicaCreditos	
 	3052655297	Shoot_Ak			\Default Work Unit\Shoot_Ak	
 	3064026271	Play_Terrorist_Win			\Default Work Unit\Play_Terrorist_Win	
 	3513490094	Escopetazo			\Default Work Unit\Escopetazo	
@@ -30,9 +33,11 @@ Event	ID	Name			Wwise Object Path	Notes
 	3593958106	Play_XM_Disparo			\Default Work Unit\Play_XM_Disparo	
 	3626292540	Play_Recarga_m4a4			\Default Work Unit\Play_Recarga_m4a4	
 	3654096175	Play_Famas_Disparo			\Default Work Unit\Play_Famas_Disparo	
+	3795863871	Resume_MenuMusic			\Default Work Unit\Resume_MenuMusic	
 	3948312705	Shoot_m4a4			\Default Work Unit\Shoot_m4a4	
 	3989193866	Play_Recarga_Escopeta			\Default Work Unit\Play_Recarga_Escopeta	
 	4116635323	Play_G36_Disparo			\Default Work Unit\Play_G36_Disparo	
+	4127782102	StopMusicaCreditos			\Default Work Unit\StopMusicaCreditos	
 	4166230836	Play_G36_Recarga			\Default Work Unit\Play_G36_Recarga	
 	4194686187	Play_Awp_Disparo			\Default Work Unit\Play_Awp_Disparo	
 	4294838474	Play_Tec9_Disparo			\Default Work Unit\Play_Tec9_Disparo	
@@ -53,6 +58,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	414952582	DisparoUsp	.cache\DB\{DB02F66E-B580-A6D9-6FB0-BCFA24E81E11}.wem		\Containers\Default Work Unit\DisparoUsp		191976
 	419694564	Epic Middle-Eastern Battle Music - Holy Land	.cache\97\{97017EF0-1101-FBB9-E712-59BEE80215B2}.wem		\Containers\Default Work Unit\Epic Middle-Eastern Battle Music - Holy Land		23986320
 	443015749	ChikchikEscopeta	.cache\25\{253B27BD-07D1-E16A-13C7-970D172A726A}.wem		\Containers\Default Work Unit\ChikchikEscopeta		131148
+	449148792	MusicaCreditos	.cache\50\{505DA172-E2A3-F4D4-6E42-20995D912870}.wem		\Containers\Default Work Unit\MusicaCreditos		43307104
 	454672338	Usprecarga	.cache\90\{9041C6F4-68A0-936B-D2F6-4C5F7335CE4D}.wem		\Containers\Default Work Unit\Usprecarga		373856
 	463124038	Gatito	.cache\CE\{CE8BE492-F6CF-A16D-7197-BCE9C8DF1BC2}.wem		\Containers\Default Work Unit\Gatito		40587360
 	490552263	Tiringi	.cache\76\{76A3E2FF-719F-42A6-5B0A-31C6DC9B5F4A}.wem		\Containers\Default Work Unit\Tiringi		43323488

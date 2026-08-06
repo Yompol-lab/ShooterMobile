@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Stop_CancionesAvatares
   id: 384436338
   guid: B38F67D5-AF0A-47D1-873F-5C7EC3B0931C
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

@@ -35,7 +35,7 @@ public class HUDIconosArmas : MonoBehaviour
 
     void Update()
     {
-        
+            
         if (jugadorLocal != null && (jugadorLocal.Object == null || !jugadorLocal.Object.IsValid))
         {
             jugadorLocal = null;

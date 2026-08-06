@@ -35,6 +35,7 @@ namespace AK
         static const AkUniqueID PLAY_GLOCK_DISPARO = 2711817465U;
         static const AkUniqueID PLAY_GLOCK_RECARGA = 8018734U;
         static const AkUniqueID PLAY_MENUMUSIC = 2570041344U;
+        static const AkUniqueID PLAY_MUSICACREDITOS = 2962603001U;
         static const AkUniqueID PLAY_MUSICAFONDO = 2944545518U;
         static const AkUniqueID PLAY_RECARGA_AK47 = 1888624163U;
         static const AkUniqueID PLAY_RECARGA_ESCOPETA = 3989193866U;
@@ -52,6 +53,7 @@ namespace AK
         static const AkUniqueID SHOOT_AK = 3052655297U;
         static const AkUniqueID SHOOT_M4A4 = 3948312705U;
         static const AkUniqueID STOP_CANCIONESAVATARES = 384436338U;
+        static const AkUniqueID STOPMUSICACREDITOS = 4127782102U;
         static const AkUniqueID WALK = 2108779966U;
     } // namespace EVENTS
 

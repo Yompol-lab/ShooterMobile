@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{3A30A403-5126-408C-98B1-9602C4338FF7}",
     "Language": "SFX",
-    "Hash": "{2B110010-E056-5FE8-7C59-AE11FB766845}",
+    "Hash": "{92FE2862-025C-5D6B-DF8B-12BF14216407}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainBank",
     "ShortName": "MainBank",
     "Path": "MainBank.bnk",
@@ -134,6 +134,14 @@
       "Location": "Memory",
       "ShortName": "ChikchikEscopeta.wav",
       "CachePath": "25/{253B27BD-07D1-E16A-13C7-970D172A726A}.wem"
+     },
+     {
+      "Id": "449148792",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MusicaCreditos.wav",
+      "CachePath": "50/{505DA172-E2A3-F4D4-6E42-20995D912870}.wem"
      },
      {
       "Id": "454672338",
@@ -326,6 +334,16 @@
         "Id": "350320315"
        }
       ]
+     },
+     {
+      "Id": "1169399582",
+      "Name": "Pause_MenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Pause_MenuMusic",
+      "GUID": "{3373B4B2-FF0E-412E-B550-05381DB7856C}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
      },
      {
       "Id": "2111365587",
@@ -606,6 +624,20 @@
       ]
      },
      {
+      "Id": "2962603001",
+      "Name": "Play_MusicaCreditos",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MusicaCreditos",
+      "GUID": "{930F0042-FCE5-49FE-A1ED-4BEAFD8A597B}",
+      "DurationType": "OneShot",
+      "DurationMin": "245.50458",
+      "DurationMax": "245.50458",
+      "MediaRefs": [
+       {
+        "Id": "449148792"
+       }
+      ]
+     },
+     {
       "Id": "2944545518",
       "Name": "Play_MusicaFondo",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_MusicaFondo",
@@ -786,6 +818,16 @@
       ]
      },
      {
+      "Id": "3795863871",
+      "Name": "Resume_MenuMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\Resume_MenuMusic",
+      "GUID": "{D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
       "Id": "3052655297",
       "Name": "Shoot_Ak",
       "ObjectPath": "\\Events\\Default Work Unit\\Shoot_Ak",
@@ -814,6 +856,26 @@
       ]
      },
      {
+      "Id": "384436338",
+      "Name": "Stop_CancionesAvatares",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_CancionesAvatares",
+      "GUID": "{B38F67D5-AF0A-47D1-873F-5C7EC3B0931C}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "4127782102",
+      "Name": "StopMusicaCreditos",
+      "ObjectPath": "\\Events\\Default Work Unit\\StopMusicaCreditos",
+      "GUID": "{D3DB9697-6846-4D84-A39D-B57B2D274AEE}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
       "Id": "2108779966",
       "Name": "Walk",
       "ObjectPath": "\\Events\\Default Work Unit\\Walk",
@@ -830,6 +892,6 @@
     ]
    }
   ],
-  "FileHash": "{127331DF-098E-4792-99D5-6956A518CCAC}"
+  "FileHash": "{10395B48-7FF9-BD7A-D3D9-81915BB45662}"
  }
 }

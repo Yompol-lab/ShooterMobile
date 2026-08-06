@@ -10,6 +10,8 @@
 						<ObjectRef Name="Play_CTerrorist_Win" ID="{763B16B1-FA57-4086-9246-906AD153CB79}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_1911_Recarga" ID="{0C4A9AA4-373A-40D9-9B44-81B43E02FB50}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_5" ID="{98D41C88-1C76-40FC-8045-7D310F71BE36}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Pause_MenuMusic" ID="{3373B4B2-FF0E-412E-B550-05381DB7856C}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Resume_MenuMusic" ID="{D9EE35BC-6AC1-41BD-BD24-B8F70D0F3EA9}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Walk" ID="{0E254305-B86A-421D-BDFA-556A32EE716D}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Dk_Disparo" ID="{49457751-97A4-4222-9EB0-4AEE2E13BF46}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_XM_Disparo" ID="{763BCD20-98D7-424D-951F-C7BE6F343400}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
@@ -23,12 +25,14 @@
 						<ObjectRef Name="Play_Recarga_m4a4" ID="{F9BAD2E7-CBD7-470A-A3D4-52123F83E8A7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Recarga_AK47" ID="{F6048CF1-66FF-4722-BD00-0A618FB8DB7F}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_6" ID="{317836E3-6FDC-4724-A751-FC7188ED94E9}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_CancionesAvatares" ID="{B38F67D5-AF0A-47D1-873F-5C7EC3B0931C}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_MusicaFondo" ID="{EF27254A-0080-4838-944A-F5471B5ACB6E}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Escopetazo" ID="{54408D2C-1D55-4885-8A1A-B7EFAD3ADBAF}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_XM_Recarga" ID="{3C163D26-47B9-48B7-92A8-BF32E0CE12BD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_4" ID="{85A066AD-BF20-48C7-9BBD-3087D17EC78E}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Shoot_Ak" ID="{7FCC2669-3C71-490F-AE7E-742D24193A45}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Famas_Disparo" ID="{842CB848-BA01-49BA-9E31-E46069809226}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MusicaCreditos" ID="{930F0042-FCE5-49FE-A1ED-4BEAFD8A597B}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_CancionAvatar_3" ID="{92CC79FB-4F11-4A12-B763-2F4B6149A2E6}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Usp_Disparo" ID="{1DCC4B5A-F603-4A46-8F36-1332D3D1F8B3}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_G36_Recarga" ID="{4B02A1B7-2167-4B17-B75D-C6E92282DBB1}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
@@ -38,6 +42,7 @@
 						<ObjectRef Name="Play_Famas_Recarga" ID="{A35A681F-A62C-4CD9-AC37-C0FDCBDF70F5}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Scar_Disparo" ID="{D0E59225-DB16-4D19-A287-D8313432CEDC}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Tec9_Recarga" ID="{12847614-C192-4D6E-9793-DB910F42C7DD}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="StopMusicaCreditos" ID="{D3DB9697-6846-4D84-A39D-B57B2D274AEE}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Tec9_Disparo" ID="{06FA7218-9920-4D8A-A3E4-804D9DCC25E7}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Terrorist_Win" ID="{353FBD6A-2E8E-4DC3-B22F-594757874AC0}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Awp_Recarga" ID="{C3119C24-2D77-4E17-BD74-EA0E8E886585}" WorkUnitID="{38D287BC-5F84-41B7-A5FC-3FADB7ABC374}" Origin="Manual" Filter="7"/>

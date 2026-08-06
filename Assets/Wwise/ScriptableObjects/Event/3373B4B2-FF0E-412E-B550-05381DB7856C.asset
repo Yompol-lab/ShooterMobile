@@ -15,4 +15,4 @@ MonoBehaviour:
   objectName: Pause_MenuMusic
   id: 1169399582
   guid: 3373B4B2-FF0E-412E-B550-05381DB7856C
-  IsInUserDefinedSoundBank: 0
+  IsInUserDefinedSoundBank: 1

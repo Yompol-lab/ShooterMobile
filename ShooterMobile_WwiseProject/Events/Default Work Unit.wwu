@@ -504,6 +504,31 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_MusicaCreditos" ID="{930F0042-FCE5-49FE-A1ED-4BEAFD8A597B}">
+					<ChildrenList>
+						<Action Name="" ID="{D28A0C00-C58F-4A70-B41E-AAB2817F41C7}" ShortID="541969840">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicaCreditos" ID="{792C8AB1-10AC-4A0D-BE23-BFD5A0145A0F}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="StopMusicaCreditos" ID="{D3DB9697-6846-4D84-A39D-B57B2D274AEE}">
+					<ChildrenList>
+						<Action Name="" ID="{BDC75192-DA4D-46BA-8525-37877751B8D0}" ShortID="64833725">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MusicaCreditos" ID="{792C8AB1-10AC-4A0D-BE23-BFD5A0145A0F}" WorkUnitID="{81E46F1D-3195-4C0C-B069-1A8AA78D661C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

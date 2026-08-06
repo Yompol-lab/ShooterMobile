@@ -67,7 +67,6 @@ public class PlayerInventory : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-       
         if (Vector3.Distance(transform.position, ultimaPosicion) > 3f)
         {
             enZonaPlantar = false;
@@ -78,7 +77,6 @@ public class PlayerInventory : NetworkBehaviour
     private void OnTriggerEnter(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = true; }
     private void OnTriggerExit(Collider other) { if (other.GetComponent<ZonaPlantar>() != null) enZonaPlantar = false; }
 
-    
     public void PlantarBomba()
     {
         if (activeSlot == WeaponSlot.Bomb && currentBomb != null && enZonaPlantar)
@@ -118,7 +116,6 @@ public class PlayerInventory : NetworkBehaviour
         EquipSlot(WeaponSlot.Knife);
     }
 
-   
     public void JuntarArmaDelPiso(NetworkObject armaObj, WeaponSlot slot)
     {
         if (slot == WeaponSlot.Primary && currentPrimary != null) return;
@@ -178,10 +175,11 @@ public class PlayerInventory : NetworkBehaviour
             rb.useGravity = false;
         }
 
+        
         Collider[] colisionadores = armaObj.GetComponentsInChildren<Collider>();
         foreach (Collider c in colisionadores)
         {
-            if (!c.isTrigger) c.enabled = false;
+            c.enabled = false;
         }
 
         armaObj.transform.SetParent(weaponContainer);
@@ -264,7 +262,9 @@ public class PlayerInventory : NetworkBehaviour
             Animator anim = weaponToDrop.GetComponent<Animator>();
             if (anim != null) anim.enabled = false;
 
+        
             weaponToDrop.transform.SetParent(null);
+            weaponToDrop.transform.localScale = Vector3.one;
 
             NetworkTransform nt = weaponToDrop.GetComponent<NetworkTransform>();
             if (nt != null)
@@ -287,10 +287,18 @@ public class PlayerInventory : NetworkBehaviour
                 }
             }
 
+            
             Collider[] colisionadores = weaponToDrop.GetComponentsInChildren<Collider>();
             foreach (Collider c in colisionadores)
             {
-                if (!c.isTrigger) c.enabled = true;
+                c.enabled = true;
+            }
+
+           
+            weaponToDrop.layer = 0;
+            foreach (Transform hijo in weaponToDrop.transform)
+            {
+                hijo.gameObject.layer = 0;
             }
 
             ArmaEnElPisoRed armaScript = weaponToDrop.GetComponent<ArmaEnElPisoRed>();
@@ -375,7 +383,6 @@ public class PlayerInventory : NetworkBehaviour
 
     public GameObject GetActiveWeaponObject()
     {
-       
         if (Object == null || !Object.IsValid) return null;
 
         if (activeSlot == WeaponSlot.Primary) return currentPrimary;
@@ -405,7 +412,6 @@ public class PlayerInventory : NetworkBehaviour
         }
     }
 
-   
     public void BotonBomba_MantenerPresionado()
     {
         ConfiguracionJugadorRed config = GetComponent<ConfiguracionJugadorRed>();

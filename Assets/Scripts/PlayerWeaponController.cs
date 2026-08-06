@@ -24,7 +24,6 @@ namespace StarterAssets
             if (playerCamera == null) playerCamera = GetComponentInChildren<Camera>();
         }
 
-      
         public void ResetShooting()
         {
             isShooting = false;
@@ -39,7 +38,6 @@ namespace StarterAssets
 
             if (isShooting)
             {
-               
                 if (slotActivo == WeaponSlot.Fuego || slotActivo == WeaponSlot.Humo ||
                     slotActivo == WeaponSlot.Flash || slotActivo == WeaponSlot.Explosiva)
                 {
@@ -61,17 +59,13 @@ namespace StarterAssets
 
                             if (puedeTirar)
                             {
-                               
                                 controlGranadas.IntentarLanzarGranada(tipo);
-
-                                
                                 inv.ConsumirGranadaMano(slotActivo);
 
-                               
                                 if (inv.currentPrimary != null) inv.EquipSlot(WeaponSlot.Primary);
                                 else inv.EquipSlot(WeaponSlot.Knife);
 
-                                nextFireTime = Time.time + 1f; 
+                                nextFireTime = Time.time + 1f;
                             }
                             else
                             {
@@ -84,7 +78,6 @@ namespace StarterAssets
                     return;
                 }
 
-              
                 if (currentWeapon == null || currentWeapon.weaponData == null) return;
 
                 if (Time.time >= nextFireTime)
@@ -118,6 +111,7 @@ namespace StarterAssets
             ProcessNetworkHit(currentWeapon.weaponData.damage, currentWeapon.weaponData.range, currentWeapon.weaponData.pelletsPerShot);
         }
 
+        
         private void ProcessNetworkHit(float damage, float range, int pellets)
         {
             if (playerCamera == null) return;
@@ -135,25 +129,48 @@ namespace StarterAssets
                 }
 
                 Ray ray = new Ray(playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0)), rayDirection);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, range, hitLayers))
+                RaycastHit[] hits = Physics.RaycastAll(ray, range, hitLayers);
+                System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+                bool impactoValidoEncontrado = false;
+                RaycastHit impactoFinal = default;
+
+                foreach (var hit in hits)
+                {
+                    SaludJugadorRed targetSalud = hit.collider.GetComponentInParent<SaludJugadorRed>();
+                    if (targetSalud != null && targetSalud.Object == Object)
+                    {
+                        continue;
+                    }
+
+                    impactoFinal = hit;
+                    impactoValidoEncontrado = true;
+                    break;
+                }
+
+                if (impactoValidoEncontrado)
                 {
                     if (currentWeapon.weaponData.bulletImpactPrefab != null)
                     {
-                        Instantiate(currentWeapon.weaponData.bulletImpactPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+                        Instantiate(currentWeapon.weaponData.bulletImpactPrefab, impactoFinal.point, Quaternion.LookRotation(impactoFinal.normal));
                     }
 
-                    SaludJugadorRed targetSalud = hit.collider.GetComponentInParent<SaludJugadorRed>();
-
+                    SaludJugadorRed targetSalud = impactoFinal.collider.GetComponentInParent<SaludJugadorRed>();
                     if (targetSalud != null)
                     {
-                        if (targetSalud.Object == Object) continue;
                         int finalDamage = Mathf.RoundToInt(damage);
                         targetSalud.RPC_TomarDanio(finalDamage, transform.position);
                     }
 
-                    FireExtinguisher extintor = hit.collider.GetComponentInParent<FireExtinguisher>();
+                    DummyEntrenamiento dummy = impactoFinal.collider.GetComponentInParent<DummyEntrenamiento>();
+                    if (dummy != null)
+                    {
+                        int finalDamage = Mathf.RoundToInt(damage);
+                        dummy.RPC_TomarDanio(finalDamage, transform.position);
+                    }
+
+                    FireExtinguisher extintor = impactoFinal.collider.GetComponentInParent<FireExtinguisher>();
                     if (extintor != null)
                     {
                         extintor.TriggerSmoke();

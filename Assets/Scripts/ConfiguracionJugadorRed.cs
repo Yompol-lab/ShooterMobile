@@ -1,4 +1,4 @@
-using Fusion;
+﻿using Fusion;
 using UnityEngine;
 using StarterAssets;
 using UnityEngine.InputSystem;
@@ -27,7 +27,7 @@ public class ConfiguracionJugadorRed : NetworkBehaviour
     [Networked]
     public byte avatarID { get; set; }
 
-    [Header("Configuraci�n de Bomba")]
+    [Header("Configuración de Bomba")]
     public GameObject modeloBombaEnMano; 
 
     public void TeletransportarAlSpawn()

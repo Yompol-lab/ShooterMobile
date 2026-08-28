@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [Header("Paneles del Menú")]
+    [Header("Paneles del MenÃº")]
     public GameObject panelMenu;
     public GameObject panelJugar;
     public GameObject panelPerfil;
@@ -11,13 +12,16 @@ public class MenuManager : MonoBehaviour
     public GameObject panelGrupo;
     public GameObject panelCreditos;
 
-    [Header("Configuración de Créditos")]
+    [Header("Networking")]
+    public TMP_InputField inputNombreSala;
+
+    [Header("ConfiguraciÃ³n de CrÃ©ditos")]
     public RectTransform textoCreditos;
     public float velocidadScroll = 100f;
     public float posicionInicialY = -800f;
 
-    [Header("Configuración de Audio")]
-    [Tooltip("Arrastrá acá el objeto que tiene el AkAmbient que reproduce la música del menú (ej: Main Camera u objeto vacío)")]
+    [Header("ConfiguraciÃ³n de Audio")]
+    [Tooltip("ArrastrÃ¡ acÃ¡ el objeto que tiene el AkAmbient que reproduce la mÃºsica del menÃº (ej: Main Camera u objeto vacÃ­o)")]
     public GameObject objetoEmisorDeAudio;
 
     public string playCreditos = "Play_MusicaCreditos";
@@ -111,13 +115,31 @@ public class MenuManager : MonoBehaviour
 
     public void BuscarPartida()
     {
-        if (GroupManager.EnGrupo)
+        string nombreSala = "";
+        
+        if (inputNombreSala != null && !string.IsNullOrEmpty(inputNombreSala.text))
         {
-            Debug.Log("Buscar partida con grupo. Código: " + GroupManager.CodigoGrupo);
+            nombreSala = inputNombreSala.text.ToUpper();
         }
         else
         {
-            Debug.Log("Buscar partida individual.");
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            for (int i = 0; i < 6; i++)
+            {
+                nombreSala += chars[Random.Range(0, chars.Length)];
+            }
+        }
+
+        PlayerPrefs.SetString("RoomName", nombreSala);
+        PlayerPrefs.Save();
+
+        if (GroupManager.EnGrupo)
+        {
+            Debug.Log("Buscar partida con grupo. CÃ³digo: " + GroupManager.CodigoGrupo);
+        }
+        else
+        {
+            Debug.Log("Buscar partida individual. Sala: " + nombreSala);
         }
 
         SceneManager.LoadScene("SampleScene");

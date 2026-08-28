@@ -9,7 +9,7 @@ namespace StarterAssets
         private StarterAssetsInputs starterInputs;
         private bool isShooting = false;
 
-        [Header("Configuración de Armas")]
+        [Header("ConfiguraciÃ³n de Armas")]
         public Weapon currentWeapon;
 
         [Header("Network Damage Settings")]
@@ -41,7 +41,7 @@ namespace StarterAssets
                 if (slotActivo == WeaponSlot.Fuego || slotActivo == WeaponSlot.Humo ||
                     slotActivo == WeaponSlot.Flash || slotActivo == WeaponSlot.Explosiva)
                 {
-                    if (Time.time >= nextFireTime)
+                    if (Runner.SimulationTime >= nextFireTime)
                     {
                         ControladorGranadasRed controlGranadas = GetComponent<ControladorGranadasRed>();
                         if (controlGranadas != null)
@@ -65,7 +65,7 @@ namespace StarterAssets
                                 if (inv.currentPrimary != null) inv.EquipSlot(WeaponSlot.Primary);
                                 else inv.EquipSlot(WeaponSlot.Knife);
 
-                                nextFireTime = Time.time + 1f;
+                                nextFireTime = Runner.SimulationTime + 1f;
                             }
                             else
                             {
@@ -80,7 +80,7 @@ namespace StarterAssets
 
                 if (currentWeapon == null || currentWeapon.weaponData == null) return;
 
-                if (Time.time >= nextFireTime)
+                if (Runner.SimulationTime >= nextFireTime)
                 {
                     GameObject armaActiva = inv != null ? inv.GetActiveWeaponObject() : null;
                     bool tieneBalas = true;
@@ -94,7 +94,7 @@ namespace StarterAssets
                     if (tieneBalas)
                     {
                         Fire();
-                        nextFireTime = Time.time + currentWeapon.weaponData.fireRate;
+                        nextFireTime = Runner.SimulationTime + currentWeapon.weaponData.fireRate;
                         if (!currentWeapon.weaponData.automatic) isShooting = false;
                     }
                     else

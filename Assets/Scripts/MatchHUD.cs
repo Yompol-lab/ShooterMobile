@@ -8,9 +8,23 @@ public class MatchHUD : MonoBehaviour
     public TextMeshProUGUI textoTiempo;
     public TextMeshProUGUI textoPuntajeT;  
     public TextMeshProUGUI textoPuntajeCT; 
+    public TextMeshProUGUI textoNombreSala;
 
     void Update()
     {
+        try
+        {
+            if (textoNombreSala != null && NetworkManager.Instance != null && NetworkManager.Instance.Runner != null && NetworkManager.Instance.Runner.IsRunning)
+            {
+                var sessionInfo = NetworkManager.Instance.Runner.SessionInfo;
+                if (sessionInfo != null && sessionInfo.IsValid)
+                {
+                    textoNombreSala.text = "Código de Sala: " + sessionInfo.Name;
+                }
+            }
+        }
+        catch (System.Exception) { }
+
         
         if (MatchManager.Instance != null && MatchManager.Instance.Object != null && MatchManager.Instance.Object.IsValid)
         {

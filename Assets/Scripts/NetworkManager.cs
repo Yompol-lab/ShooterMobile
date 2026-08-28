@@ -29,11 +29,13 @@ public class NetworkManager : MonoBehaviour
 
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
 
-      
+        string roomName = PlayerPrefs.GetString("RoomName", "");
+
         var result = await runner.StartGame(new StartGameArgs()
         {
             GameMode = GameMode.Shared,
-            SessionName = "Sala1",
+            SessionName = string.IsNullOrEmpty(roomName) ? string.Empty : roomName,
+            PlayerCount = 10,
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });

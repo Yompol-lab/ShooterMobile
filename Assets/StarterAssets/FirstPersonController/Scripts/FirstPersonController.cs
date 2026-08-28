@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Fusion;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -43,6 +43,9 @@ namespace StarterAssets
         [Networked] public float _verticalVelocity { get; set; }
         [Networked] public float _jumpTimeoutDelta { get; set; }
         [Networked] public float _fallTimeoutDelta { get; set; }
+        
+        [Networked] public float _animInputX { get; set; }
+        [Networked] public float _animInputY { get; set; }
 
         private float _terminalVelocity = 53.0f;
 
@@ -152,10 +155,16 @@ namespace StarterAssets
 
             _controller.Move(inputDirection.normalized * (_speed * Runner.DeltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Runner.DeltaTime);
 
+            _animInputX = _input.move.x;
+            _animInputY = _input.move.y;
+        }
+
+        public override void Render()
+        {
             if (animator != null)
             {
-                animator.SetFloat("InputX", _input.move.x, 0.1f, Runner.DeltaTime);
-                animator.SetFloat("InputY", _input.move.y, 0.1f, Runner.DeltaTime);
+                animator.SetFloat("InputX", _animInputX, 0.1f, Time.deltaTime);
+                animator.SetFloat("InputY", _animInputY, 0.1f, Time.deltaTime);
             }
         }
 

@@ -115,34 +115,50 @@ public class MenuManager : MonoBehaviour
 
     public void BuscarPartida()
     {
-        string nombreSala = "";
-        
         if (inputNombreSala != null && !string.IsNullOrEmpty(inputNombreSala.text))
         {
-            nombreSala = inputNombreSala.text.ToUpper();
-        }
-        else
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            for (int i = 0; i < 6; i++)
+            // Join specific room
+            string nombreSala = inputNombreSala.text.ToUpper();
+            PlayerPrefs.SetString("RoomName", nombreSala);
+            PlayerPrefs.Save();
+            
+            if (GroupManager.EnGrupo && GroupManager.SoyLider)
             {
-                nombreSala += chars[Random.Range(0, chars.Length)];
+                GroupManager.Instance.EnviarComandoIrAPartida(nombreSala);
+            }
+            else
+            {
+                SceneManager.LoadScene("SampleScene");
             }
         }
-
-        PlayerPrefs.SetString("RoomName", nombreSala);
-        PlayerPrefs.Save();
-
-        if (GroupManager.EnGrupo)
-        {
-            Debug.Log("Buscar partida con grupo. Código: " + GroupManager.CodigoGrupo);
-        }
         else
         {
-            Debug.Log("Buscar partida individual. Sala: " + nombreSala);
-        }
+            // Run Matchmaking
+            if (GroupManager.EnGrupo && !GroupManager.SoyLider)
+            {
+                Debug.Log("Solo el líder puede buscar partida.");
+                return;
+            }
 
-        SceneManager.LoadScene("SampleScene");
+            Debug.Log("Iniciando búsqueda de partida...");
+            
+            MatchmakingScanner scanner = gameObject.AddComponent<MatchmakingScanner>();
+            int partySize = GroupManager.EnGrupo ? 2 : 1; // Default to 2 for group, but could be dynamic
+            
+            scanner.FindMatch(partySize, (roomCode) => 
+            {
+                if (GroupManager.EnGrupo && GroupManager.SoyLider)
+                {
+                    GroupManager.Instance.EnviarComandoIrAPartida(roomCode);
+                }
+                else
+                {
+                    PlayerPrefs.SetString("RoomName", roomCode);
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("SampleScene");
+                }
+            });
+        }
     }
 
     public void SalirJuego()

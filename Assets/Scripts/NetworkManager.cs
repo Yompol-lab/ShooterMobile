@@ -20,6 +20,9 @@ public class NetworkManager : MonoBehaviour
         runner = Instantiate(runnerPrefab);
         runner.name = "NetworkRunner";
 
+        // Agregamos el reportero de slots de matchmaking
+        gameObject.AddComponent<MatchSlotReporter>();
+
         PlayerJoinSpawner joinSpawner = FindFirstObjectByType<PlayerJoinSpawner>();
 
         if (joinSpawner != null)

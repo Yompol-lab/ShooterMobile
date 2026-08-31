@@ -129,7 +129,7 @@ public class GroupManager : MonoBehaviour, INetworkRunnerCallbacks
         payload[0] = 1; // 1 = Name Message
         Array.Copy(nameBytes, 0, payload, 1, nameBytes.Length);
         
-        ReliableKey key = ReliableKey.FromInt(targetPlayer.RawEncoded); // Unique key per player
+        ReliableKey key = ReliableKey.FromInts(targetPlayer.RawEncoded, 0, 0, 0); // Unique key per player
         _runner.SendReliableDataToPlayer(targetPlayer, key, payload);
     }
 
@@ -147,7 +147,7 @@ public class GroupManager : MonoBehaviour, INetworkRunnerCallbacks
         {
             if (player != _runner.LocalPlayer)
             {
-                ReliableKey key = ReliableKey.FromInt(player.RawEncoded + 100);
+                ReliableKey key = ReliableKey.FromInts(player.RawEncoded + 100, 0, 0, 0);
                 _runner.SendReliableDataToPlayer(player, key, payload);
             }
         }

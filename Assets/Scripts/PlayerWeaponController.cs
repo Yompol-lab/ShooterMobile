@@ -160,7 +160,7 @@ namespace StarterAssets
                     if (targetSalud != null)
                     {
                         int finalDamage = Mathf.RoundToInt(damage);
-                        targetSalud.RPC_TomarDanio(finalDamage, transform.position);
+                        targetSalud.RPC_TomarDanio(finalDamage, transform.position, Object.InputAuthority);
                     }
 
                     DummyEntrenamiento dummy = impactoFinal.collider.GetComponentInParent<DummyEntrenamiento>();

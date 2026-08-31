@@ -5,7 +5,7 @@ using System.Collections;
 
 public class SaludJugadorRed : NetworkBehaviour
 {
-    [Header("Configuración")]
+    [Header("ConfiguraciÃ³n")]
     [Networked] public int Vida { get; set; } = 100;
 
     [Header("UI")]
@@ -43,7 +43,7 @@ public class SaludJugadorRed : NetworkBehaviour
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_TomarDanio(int cantidad, Vector3 posicionDelOrígen)
+    public void RPC_TomarDanio(int cantidad, Vector3 posicionDelOrigen, PlayerRef attacker = default)
     {
         if (estaMuerto) return;
 
@@ -54,12 +54,37 @@ public class SaludJugadorRed : NetworkBehaviour
             Vida = 0;
             estaMuerto = true;
 
-            Vector3 direccionEmpujon = (transform.position - posicionDelOrígen).normalized;
+            Vector3 direccionEmpujon = (transform.position - posicionDelOrigen).normalized;
             direccionEmpujon += Vector3.up * 0.5f;
 
             if (ragdoll != null)
             {
                 ragdoll.Morir(direccionEmpujon);
+            }
+
+            if (attacker.IsValid && attacker != Object.InputAuthority)
+            {
+                ConfiguracionJugadorRed miConfig = GetComponent<ConfiguracionJugadorRed>();
+                ConfiguracionJugadorRed attackerConfig = null;
+                
+                var jugadores = FindObjectsByType<ConfiguracionJugadorRed>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+                foreach (var p in jugadores) 
+                {
+                    if (p.Object != null && p.Object.InputAuthority == attacker) 
+                    { 
+                        attackerConfig = p; 
+                        break; 
+                    }
+                }
+
+                if (miConfig != null && attackerConfig != null && miConfig.miEquipo == attackerConfig.miEquipo)
+                {
+                    EconomiaJugador attackerEco = attackerConfig.GetComponent<EconomiaJugador>();
+                    if (attackerEco != null) 
+                    {
+                        attackerEco.RPC_SincronizarPremioRonda(-1000);
+                    }
+                }
             }
 
             StartCoroutine(RutinaRespawn());

@@ -126,7 +126,7 @@ public class GranadaObjetoRed : NetworkBehaviour
                    
                     float intensidad = Mathf.Clamp01(1f - (distancia / radioMaximo));
                     int danioFinal = Mathf.RoundToInt(intensidad * danioMaximo);
-                    salud.RPC_TomarDanio(danioFinal, centroExplosion);
+                    salud.RPC_TomarDanio(danioFinal, centroExplosion, Object.InputAuthority);
                 }
             }
         }
